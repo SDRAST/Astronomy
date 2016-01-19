@@ -95,10 +95,14 @@ from astropy.coordinates import Angle, Latitude, Longitude          # Angles
 from astropy.time import Time
 import astropy.units as u
 from astropy.units import cds
+from astropy.coordinates.name_resolve import get_icrs_coordinates, \
+                                             NameResolveError
 import ephem
 from ephem import Ecliptic, Equatorial
-from DatesTimes import calendar_date
+
+from DatesTimes import calendar_date, MJD
 from Math.geometry import Circular
+from MonitorControl.Configurations.coordinates import DSS
 
 from math import pi
 c = cds.c.in_units('m / s')
@@ -417,6 +421,17 @@ def current_to_ecliptic(julian_centuries_since_1900,\
   eclip = Ecliptic(eq)
   return eclip.long, eclip.lat
 
+def ecliptic_to_J2000(elong, elat, mjd):
+  """
+  """
+  t = Time(mjd, format='mjd')
+  # t is probably needed for convert from current to J2000
+  eq = Ecliptic(str(elong), str(elat), epoch=2000)
+  ra, dec = Equatorial(eq).to_radec()
+  #print "Astronomy:",type(ra),type(dec)
+  #print "Astronomy:", type(ra.real), type(dec.real)
+  return ra.real, dec.real
+  
 def HaDec_to_AzEl(HourAngle, Declination, Latitude):
   """
   Celestial to horizon coordinates
@@ -479,10 +494,6 @@ def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   """
   Apparent right ascension and declination
 
-  Notes
-  =====
-  This reformats input and output for jplephem.j2000_to_epoch()
-
   @param MJD : int
     mean Julian day
 
@@ -502,9 +513,54 @@ def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   #dec = float(p_apparent['dec'])
   #return float(p_apparent['ra']),float(p_apparent['dec'])
   t = Time(MJD+UT/24., format='mjd')
-  coords = SkyCoord(ra=ra2000*u.hour, dec=dec2000*u.deg, frame=FK5, obstime=t)
-  return coords
+  coords = SkyCoord(ra=ra2000*u.rad, dec=dec2000*u.rad, frame=ICRS, obstime=t)
+  year = t.datetime.year
+  c = coords.transform_to(FK5(equinox='J'+str(year)))
+  return c.ra.hourangle, c.dec.deg
 
+def object_az_el(source, site, year, doy):
+  """
+  Compute object's position in alt-az for a given site and time
+  
+  Also returns the source's apparent coordinates
+  
+  @param source : a source name recognized by Simbad
+  @type  source : str
+  
+  @param year : four digit year
+  @type  year : int
+  
+  @param doy_start : DOY with UT as a fraction of a day
+  @type  doy_start : float
+  
+  @param doy_end : optional second DOY/UT
+  @type  doy_end : float
+  """
+  try:
+    coords = get_icrs_coordinates(source)
+  except NameResolveError, details:
+    raise NameResolveError(details)
+  module_logger.debug("Sky coords: %s", coords)
+  
+  try:
+    dss = DSS(site)
+    module_logger.debug("DSS-%d: %f, %f", site, dss.long*180/pi, dss.lat*180/pi)
+  except KeyError:
+    raise KeyError('%d is not a valid DSS station' % site)
+  loc = EarthLocation(dss.long*u.rad, dss.lat*u.rad)
+  module_logger.debug("Site coords: %s", loc)
+  
+  if doy:
+    mjd = MJD(year,doy)
+  else:
+    raise RuntimeError("no DOY given")
+  tt = Time(mjd, format='mjd')
+  module_logger.debug("ISO time = %s", tt.iso)
+  tt.delta_ut1_utc = 0
+  coords.obstime = tt
+  coords.location = loc
+  return coords.altaz
+  
 def ha_rise_set(el_limit,lat,dec):
   """
   Hour angle from transit for rising and setting.
