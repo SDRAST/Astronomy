@@ -179,7 +179,7 @@ def B_epoch_to_J(ra50, dec50, format=None):
                            '''18d57'51.753000"''')
     Out[8]: ([0, 1, 8.6169], [19, 14, 33.9321])
     
-  Compare to the VLA Calibrator List:
+  Compare to the VLA Calibrator List::
     J2000 A 00h01m08.621563s 19d14'33.801860"
     B1950 A 23h58m34.865400s 18d57'51.753000"
   
@@ -353,7 +353,7 @@ def decimal_day_to_HMS(day):
   
   return "%02d:%02d:%05.2f" % decimal_day_to_tuple(day)
 
-def time_aliases(year,UTdoy,obs_long):
+def time_aliases(year, UTdoy, obs_long):
   """
   Time as days since 1900, centuries since 1900 and LST
 
@@ -386,7 +386,7 @@ def time_aliases(year,UTdoy,obs_long):
   except IndexError:
     module_logger.warning(" Times is outside of range covered by IERS table.")
     t.delta_ut1_utc = 0.
-    lst = t.sidereal_time('mean',longitude=-obs_long*u.deg)
+    lst = t.sidereal_time('mean', longitude = -obs_long*u.deg)
   julian_centuries_since_1900 = days_since_1900/36525.
   return days_since_1900, julian_centuries_since_1900, lst.cycle
 
@@ -527,14 +527,14 @@ def object_az_el(source, site, year, doy):
   @param source : a source name recognized by Simbad
   @type  source : str
   
+  @param site : DSN station number
+  @type  site : int
+  
   @param year : four digit year
   @type  year : int
   
-  @param doy_start : DOY with UT as a fraction of a day
-  @type  doy_start : float
-  
-  @param doy_end : optional second DOY/UT
-  @type  doy_end : float
+  @param doy : DOY with UT as a fraction of a day
+  @type  doy : float
   """
   try:
     coords = get_icrs_coordinates(source)
@@ -561,7 +561,7 @@ def object_az_el(source, site, year, doy):
   coords.location = loc
   return coords.altaz
   
-def ha_rise_set(el_limit,lat,dec):
+def ha_rise_set(el_limit, lat, dec):
   """
   Hour angle from transit for rising and setting.
 
