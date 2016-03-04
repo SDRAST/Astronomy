@@ -203,7 +203,7 @@ def B_epoch_to_J(ra50, dec50, format=None):
     See notes for details.
   """
   coordstr = ra50+" "+dec50
-  coords = SkyCoord(coordstr, frame=FK4)
+  coords = SkyCoord(coordstr, frame=FK4, unit=(u.hourangle,u.deg))
   if format == None:
     rastr, decstr = coords.fk5.to_string('hmsdms').split()
     h = rastr.split('h')[0]
