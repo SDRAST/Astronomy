@@ -95,10 +95,14 @@ from astropy.coordinates import Angle, Latitude, Longitude          # Angles
 from astropy.time import Time
 import astropy.units as u
 from astropy.units import cds
+from astropy.coordinates.name_resolve import get_icrs_coordinates, \
+                                             NameResolveError
 import ephem
 from ephem import Ecliptic, Equatorial
-from DatesTimes import calendar_date
+
+from DatesTimes import calendar_date, MJD
 from Math.geometry import Circular
+from MonitorControl.Configurations.coordinates import DSS
 
 from math import pi
 c = cds.c.in_units('m / s')
@@ -175,7 +179,7 @@ def B_epoch_to_J(ra50, dec50, format=None):
                            '''18d57'51.753000"''')
     Out[8]: ([0, 1, 8.6169], [19, 14, 33.9321])
     
-  Compare to the VLA Calibrator List:
+  Compare to the VLA Calibrator List::
     J2000 A 00h01m08.621563s 19d14'33.801860"
     B1950 A 23h58m34.865400s 18d57'51.753000"
   
@@ -199,8 +203,12 @@ def B_epoch_to_J(ra50, dec50, format=None):
     See notes for details.
   """
   coordstr = ra50+" "+dec50
+<<<<<<< HEAD
   logger.debug("B_epoch_to_J: 1950 coordinates: %s", coordstr)
   coords = SkyCoord(coordstr, frame="fk4", unit=(u.hourangle, u.deg))
+=======
+  coords = SkyCoord(coordstr, frame=FK4, unit=(u.hourangle,u.deg))
+>>>>>>> 3bb56823beeaa2ce1bc84cf3e51138634972ab68
   if format == None:
     rastr, decstr = coords.fk5.to_string('hmsdms').split()
     h = rastr.split('h')[0]
@@ -350,7 +358,7 @@ def decimal_day_to_HMS(day):
   
   return "%02d:%02d:%05.2f" % decimal_day_to_tuple(day)
 
-def time_aliases(year,UTdoy,obs_long):
+def time_aliases(year, UTdoy, obs_long):
   """
   Time as days since 1900, centuries since 1900 and LST
 
@@ -383,7 +391,7 @@ def time_aliases(year,UTdoy,obs_long):
   except IndexError:
     logger.warning(" Times is outside of range covered by IERS table.")
     t.delta_ut1_utc = 0.
-    lst = t.sidereal_time('mean',longitude=-obs_long*u.deg)
+    lst = t.sidereal_time('mean', longitude = -obs_long*u.deg)
   julian_centuries_since_1900 = days_since_1900/36525.
   return days_since_1900, julian_centuries_since_1900, lst.cycle
 
@@ -418,6 +426,17 @@ def current_to_ecliptic(julian_centuries_since_1900,\
   eclip = Ecliptic(eq)
   return eclip.long, eclip.lat
 
+def ecliptic_to_J2000(elong, elat, mjd):
+  """
+  """
+  t = Time(mjd, format='mjd')
+  # t is probably needed for convert from current to J2000
+  eq = Ecliptic(str(elong), str(elat), epoch=2000)
+  ra, dec = Equatorial(eq).to_radec()
+  #print "Astronomy:",type(ra),type(dec)
+  #print "Astronomy:", type(ra.real), type(dec.real)
+  return ra.real, dec.real
+  
 def HaDec_to_AzEl(HourAngle, Declination, Latitude):
   """
   Celestial to horizon coordinates
@@ -480,10 +499,6 @@ def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   """
   Apparent right ascension and declination
 
-  Notes
-  =====
-  This reformats input and output for jplephem.j2000_to_epoch()
-
   @param MJD : int
     mean Julian day
 
@@ -503,10 +518,55 @@ def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   #dec = float(p_apparent['dec'])
   #return float(p_apparent['ra']),float(p_apparent['dec'])
   t = Time(MJD+UT/24., format='mjd')
-  coords = SkyCoord(ra=ra2000*u.hour, dec=dec2000*u.deg, frame='fk5', obstime=t)
-  return coords
+  coords = SkyCoord(ra=ra2000*u.rad, dec=dec2000*u.rad, frame='icrs', obstime=t)
+  year = t.datetime.year
+  c = coords.transform_to(FK5(equinox='J'+str(year)))
+  return c.ra.hourangle, c.dec.deg
 
-def ha_rise_set(el_limit,lat,dec):
+def object_az_el(source, site, year, doy):
+  """
+  Compute object's position in alt-az for a given site and time
+  
+  Also returns the source's apparent coordinates
+  
+  @param source : a source name recognized by Simbad
+  @type  source : str
+  
+  @param site : DSN station number
+  @type  site : int
+  
+  @param year : four digit year
+  @type  year : int
+  
+  @param doy : DOY with UT as a fraction of a day
+  @type  doy : float
+  """
+  try:
+    coords = get_icrs_coordinates(source)
+  except NameResolveError, details:
+    raise NameResolveError(details)
+  module_logger.debug("Sky coords: %s", coords)
+  
+  try:
+    dss = DSS(site)
+    module_logger.debug("DSS-%d: %f, %f", site, dss.long*180/pi, dss.lat*180/pi)
+  except KeyError:
+    raise KeyError('%d is not a valid DSS station' % site)
+  loc = EarthLocation(dss.long*u.rad, dss.lat*u.rad)
+  module_logger.debug("Site coords: %s", loc)
+  
+  if doy:
+    mjd = MJD(year,doy)
+  else:
+    raise RuntimeError("no DOY given")
+  tt = Time(mjd, format='mjd')
+  module_logger.debug("ISO time = %s", tt.iso)
+  tt.delta_ut1_utc = 0
+  coords.obstime = tt
+  coords.location = loc
+  return coords.altaz
+  
+def ha_rise_set(el_limit, lat, dec):
   """
   Hour angle from transit for rising and setting.
 
