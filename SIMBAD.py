@@ -1,4 +1,6 @@
 """
+Submit a data query to SIMBAD for a source
+
 http://simbad.u-strasbg.fr/simbad/sim-id?Ident=3c274&output.format=ASCII
 """
 
