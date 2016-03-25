@@ -83,7 +83,7 @@ https://github.com/firelab/met_utils/blob/master/sun.py has some extensions for
 astropy for that and other things.
 """
 import logging
-module_logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 import math
 import datetime
 import os.path
@@ -203,7 +203,12 @@ def B_epoch_to_J(ra50, dec50, format=None):
     See notes for details.
   """
   coordstr = ra50+" "+dec50
+<<<<<<< HEAD
+  logger.debug("B_epoch_to_J: 1950 coordinates: %s", coordstr)
+  coords = SkyCoord(coordstr, frame="fk4", unit=(u.hourangle, u.deg))
+=======
   coords = SkyCoord(coordstr, frame=FK4, unit=(u.hourangle,u.deg))
+>>>>>>> 3bb56823beeaa2ce1bc84cf3e51138634972ab68
   if format == None:
     rastr, decstr = coords.fk5.to_string('hmsdms').split()
     h = rastr.split('h')[0]
@@ -249,7 +254,7 @@ def J_epoch_to_B(ra2000, dec2000, format):
   @return: tuple of strings
   """
   coordstr = ra2000+" "+dec2000
-  coords = SkyCoord(coordstr, frame=FK5)
+  coords = SkyCoord(coordstr, frame="fk5")
   if format == None:
     rastr, decstr = coords.fk4.to_string('hmsdms').split()
     h = rastr.split('h')[0]
@@ -384,7 +389,7 @@ def time_aliases(year, UTdoy, obs_long):
   try:
     lst = t.sidereal_time('mean',longitude=-obs_long*u.deg)
   except IndexError:
-    module_logger.warning(" Times is outside of range covered by IERS table.")
+    logger.warning(" Times is outside of range covered by IERS table.")
     t.delta_ut1_utc = 0.
     lst = t.sidereal_time('mean', longitude = -obs_long*u.deg)
   julian_centuries_since_1900 = days_since_1900/36525.
@@ -513,7 +518,7 @@ def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   #dec = float(p_apparent['dec'])
   #return float(p_apparent['ra']),float(p_apparent['dec'])
   t = Time(MJD+UT/24., format='mjd')
-  coords = SkyCoord(ra=ra2000*u.rad, dec=dec2000*u.rad, frame=ICRS, obstime=t)
+  coords = SkyCoord(ra=ra2000*u.rad, dec=dec2000*u.rad, frame='icrs', obstime=t)
   year = t.datetime.year
   c = coords.transform_to(FK5(equinox='J'+str(year)))
   return c.ra.hourangle, c.dec.deg
