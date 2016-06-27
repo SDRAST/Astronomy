@@ -12,13 +12,13 @@ letters indicate a decimal part, except s which means sign.
 * No spaces may appear in the designator.
 * Leading zeros are required.
 
-For sources in our galaxy:
+For sources in our galaxy::
   G LLL[.ll]sBB[.bb]
   G LLLllsBBbb
     The G is required. The decimal part of the coordinates, to any precision,
     is optional.
     
-For sidereal sources.
+For sidereal sources::
   J HHMM[SS[.s]]sDDMM[SS[.s]]
   J HHMMsDDMM[.m]
   
@@ -33,8 +33,7 @@ def split_on_sign(designator):
   Separate the ra/l part from the dec/b part of an IAU designation,
 
   It's not the responsibility of this function to filter out bad
-  designations.  These are examples of valid ones:
-  
+  designations.  These are examples of valid ones::
     G001.2-00.3
     G001-00
     J1426.8+6950
