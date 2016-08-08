@@ -100,6 +100,7 @@ from astropy.coordinates.name_resolve import get_icrs_coordinates, \
 import ephem
 from ephem import Ecliptic, Equatorial
 
+from Astronomy.coordconv import coordconv
 from DatesTimes import calendar_date, MJD
 from Math.geometry import Circular
 from MonitorControl.Configurations.coordinates import DSS
@@ -465,22 +466,67 @@ def HaDec_to_AzEl(HourAngle, Declination, Latitude):
   c.location = l
   return c.altaz.az.deg, c.altaz.alt.deg
 
-
-def AzEl_to_HaDec(Azimuth,Elevation,Latitude):
+def oldAzEl_to_HaDec(Azimuth,Elevation,Latitude):
   """
   Horizon coordinates to celestial
+  
+  HA and decl. define a point on the sky with respect to the local meridian,
+  which corresponds to a RA equal to the local sidereal time.  It doesn't
+  matter what the observer's longitude is. The relationship between the RA of
+  the sky point and the LST stays the same. So we can perform the calculation
+  for longitude 0
+  
+    LST is the ST at
+  Greenwich (long 0 deg) minus the west longitude of the local meridian::
+    
+    LST = GST - long
+                    hr
+                    
+  HA is positive to the west, so is the LST minus the RA of the point in the
+  sky::
+  
+    HA = LST - RA
 
-  @param Azimuth : float
-    degrees, clockwise from north
+  Consider a hypothetical observer on the Earth at longitude zero and the
+  latitude of the actual observer. The sidereal time at the hypothetical
+  observer's location is the Greenwich sidereal time, which is the actual
+  observer's LST plus the west longitude. Then the HA at the actual observer's
+  position is the HA at the hypothetical observer's position minus the actual
+  observer's longitude in hours::
+  
+    HA    = HA    - long
+      act     hyp       hr
+  
+  Given the azimuth, elevation and time we compute the RA and dec of the sky
+  position with respect to the hypothetical observer, and then the HA::
+  
+    az, el, lat, time --> RA   ,dec
+                            hyp
+  
+    HA    = GST - RA
+      hyp           hyp
+  
+  The RA of the same az,el w.r.t. the actual observer is then::
+  
+    RA    = RA    - long
+      act     hyp       hr
+  
+    HA    = GST - RA    - long  
+      act           hyp       hr
+          = GST - RA
+                    act
+  
+  @param Azimuth : degrees, clockwise from north
+  @type  Azimuth : float
 
-  @param Elevation : float
-    degrees
+  @param Elevation : degrees above horizon
+  @type  Elevation : float
+  
 
-  @param Latitude : float
-    degrees
+  @param Latitude : east longitude in degrees
+  @type  Latitude : float
 
-  @return: tuple
-    Hour angle in float hours and declination in float degrees
+  @return: tuple, Hour angle in float hours and declination in float degrees
   """
   t = Time.now()
   l = EarthLocation(lon=0*u.deg, lat=Latitude*u.deg)
@@ -488,12 +534,33 @@ def AzEl_to_HaDec(Azimuth,Elevation,Latitude):
   t.delta_ut1_utc = 0
   lst = t.sidereal_time('mean')
   c = AltAz(az=Azimuth*u.deg, alt=Elevation*u.deg, location=l, obstime=t)
+  #
   RAdec = c.transform_to(SkyCoord(0*u.hourangle, 0*u.deg, frame="cirs"))
   return float(lst.hour - RAdec.ra.hour), float(RAdec.dec.deg)
+  
+def AzEl_to_HaDec(Azimuth, Elevation, Latitude):
+  """
+  @param Azimuth : degrees, clockwise from north
+  @type  Azimuth : float
 
+  @param Elevation : degrees above horizon
+  @type  Elevation : float
+  
+
+  @param Latitude : east longitude in degrees
+  @type  Latitude : float
+
+  @return: tuple, Hour angle in float hours and declination in float degrees
+  """
+  azr = Azimuth*pi/180
+  elr = Elevation*pi/180
+  latr = Latitude*pi/180
+  har,decr = coordconv(pi, pi/2-latr, 0, latr, azr, elr)
+  return har*12/pi, decr*180/pi
+  
 def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   """
-  Apparent right ascension and declination
+  Apparent right ascension and declinationhar,decrhar,decr
 
   @param MJD : int
     mean Julian day
