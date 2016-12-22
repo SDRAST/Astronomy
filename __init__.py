@@ -770,3 +770,34 @@ def source_start_stop(HAstart, HAend, HAlimit):
   else:
     result = None
   return result
+
+def galactic_offsets_to_celestial(RA, Dec, glongoff=3, glatoff=0):
+  """
+  Converts offsets in Galactic coordinates to celestial
+  
+  The defaults were chosen by Pineda for Galctic plane survey
+  
+  @param RA : FK5 right ascension in degrees
+  @type  RA : float
+  
+  @param Dec : FK5 declination in degrees
+  @type  Dec : float
+  
+  @param glongoff : Galactic longitude (degrees)
+  @type  glongoff : float
+  
+  @param glatoff : Galactic latitude offset (degrees)
+  @type  glatoff : float
+  """
+  # Initialize SkyCoord Object
+  gc = SkyCoord(ra=RA*u.degree, dec=Dec*u.degree, frame='fk5') 
+  # Add offset in galactic longitude
+  glongOFF=gc.galactic.b.value + glongoff
+  # Add offset in galactic latitude
+  glat=gc.galactic.l.value + glatoff
+  # Convert reference position to RA/DEC
+  radecoff=SkyCoord(l=glat*u.degree, b=glongOFF*u.degree, frame='galactic')
+  # Replace Raoff and Decoff with new values 
+  RAoff = radecoff.fk5.ra.value - RA
+  Decoff = radecoff.fk5.dec.value - Dec     
+  return RAoff, Decoff
