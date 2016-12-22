@@ -721,3 +721,52 @@ def horizon_range(planet_radius, observer_height):
   #theta = math.acos(cos_theta)
   #return planet_radius*math.sin(theta)
   return circle.tangent_distance(observer_height)
+
+def source_start_stop(HAstart, HAend, HAlimit):
+  """
+  Find when sources are up
+  
+  This only handles tracks less than 24 hr long.
+  
+  The result codes are::
+    A  - always up
+    N  - never up
+    R  - rises
+    RS - rises and sets
+    S  - sets
+    SR - sets and rises (up twive during a track
+    
+  @param HAstart - HA at beginning of track
+  @type  HAstart - float or int
+  
+  @param HAend - HA at end of track
+  @type  HAend - float or int
+  
+  @return: str
+  """
+  if abs(HAstart) < HAlimit and abs(HAend) < HAlimit:
+    if HAend > HAstart:
+      result = "always up"
+    else:
+      result = "sets and rises"
+  elif abs(HAstart) > HAlimit and abs(HAend)> HAlimit:
+    if HAend > HAstart:
+      result = "rises and sets"
+    else:
+      result = "never up"
+  elif ((HAstart < 0 and HAstart < -HAlimit) or
+        (HAstart > 0 and HAstart >  HAlimit)):
+    result = "rises"
+  elif (((HAstart > 0 and HAstart <  HAlimit) or
+         (HAstart < 0 and HAstart > -HAlimit)) and
+        ((HAend   > 0 and HAend   >  HAlimit) or
+         (HAend   < 0 and HAend   < -HAlimit))):
+    result = "sets"
+  elif (((HAstart < 0 and HAstart < -HAlimit) or
+         (HAstart > 0 and HAstart >  HAlimit)) and
+        ((HAend   < 0 and HAend   < -HAlimit) or
+         (HAend   > 0 and HAend > HAlimit))):
+    result = "source sets and then rises"
+  else:
+    result = None
+  return result
