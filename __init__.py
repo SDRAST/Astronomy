@@ -746,27 +746,27 @@ def source_start_stop(HAstart, HAend, HAlimit):
   """
   if abs(HAstart) < HAlimit and abs(HAend) < HAlimit:
     if HAend > HAstart:
-      result = "always up"
+      result = "A"
     else:
-      result = "sets and rises"
+      result = "SR"
   elif abs(HAstart) > HAlimit and abs(HAend)> HAlimit:
     if HAend > HAstart:
-      result = "rises and sets"
+      result = "RS"
     else:
-      result = "never up"
+      result = "N"
   elif ((HAstart < 0 and HAstart < -HAlimit) or
         (HAstart > 0 and HAstart >  HAlimit)):
-    result = "rises"
+    result = "R"
   elif (((HAstart > 0 and HAstart <  HAlimit) or
          (HAstart < 0 and HAstart > -HAlimit)) and
         ((HAend   > 0 and HAend   >  HAlimit) or
          (HAend   < 0 and HAend   < -HAlimit))):
-    result = "sets"
+    result = "S"
   elif (((HAstart < 0 and HAstart < -HAlimit) or
          (HAstart > 0 and HAstart >  HAlimit)) and
         ((HAend   < 0 and HAend   < -HAlimit) or
          (HAend   > 0 and HAend > HAlimit))):
-    result = "source sets and then rises"
+    result = "SR"
   else:
     result = None
   return result
