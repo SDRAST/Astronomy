@@ -750,10 +750,16 @@ def source_start_stop(HAstart, HAend, HAlimit):
     else:
       result = "SR"
   elif abs(HAstart) > HAlimit and abs(HAend)> HAlimit:
-    if HAend > HAstart:
-      result = "RS"
+    if math.copysign(1,HAstart) == math.copysign(1,HAend):
+      if (HAend > HAstart):
+        result = "N"
+      else:
+        result = "RS"
     else:
-      result = "N"
+      if (HAend > HAstart):
+        result = "RS"
+      else:
+        result = "N"
   elif ((HAstart < 0 and HAstart < -HAlimit) or
         (HAstart > 0 and HAstart >  HAlimit)):
     result = "R"
