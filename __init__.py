@@ -585,6 +585,42 @@ def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   year = t.datetime.year
   c = coords.transform_to(FK5(equinox='J'+str(year)))
   return c.ra.hourangle, c.dec.deg
+  
+def get_sky_coords(RA, Dec):
+  """
+  return SkyCoord from both float and str inputs
+  """
+  if type(RA) == unicode and type(Dec) == unicode:
+    skypos = SkyCoord(RA, Dec, unit=(u.hourangle, u.deg))
+  elif type(RA) == float and type(Dec) == float:
+    skypos = SkyCoord(RA*u.hour, Dec*u.degree)
+  else:
+    raise RuntimeError(RA, dec, "cannot be parsed")
+  return skypos
+
+def get_altaz(RA, Dec, time, location):
+  """
+  Simplest conversion using astropy
+  
+  @param RA : right ascension in degrees
+  @type  RA : float
+  
+  @param Dec : declination in degrees
+  @type  Dec : float
+  
+  @param time : time of observation
+  @type  time : datetime.datetime object
+  
+  @param location : location of the observatory
+  @type  location : astropy.Location object
+  """
+  skypos = get_sky_coords(RA, Dec)
+  #logger.debug("get_altaz: called for RA,dec: %s", skypos)
+  skypos.obstime = Time(time)
+  skypos.location = location
+  altaz = skypos.altaz.az.deg, skypos.altaz.alt.deg
+  #logger.debug("get_altaz: az,el: %s", altaz)
+  return altaz
 
 def object_az_el(source, site, year, doy):
   """
