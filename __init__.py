@@ -355,6 +355,24 @@ def decimal_day_to_HMS(day):
   
   return "%02d:%02d:%05.2f" % decimal_day_to_tuple(day)
 
+def greenwich_sidereal_time(year,doy):
+  """
+  Approximate sidereal time at Greenwich
+
+  @param year : year of date
+  @type  year : int
+
+  @param doy : day of year
+  @type  doy : float
+
+  @return: Greenwich sidereal time in hours
+  """
+  year_from_1966 = year-1966
+  dt = (year_from_1966*365 + int((year_from_1966 + 1)/4.) + int(doy)-1)/36525.
+  dst = 0.278329562 + (8640184.67*dt+0.0929*dt**2)/86400
+  gst0 = dst % 1 # GST on Jan. 0 of current year
+  return 24*(gst0 + (doy % 1)/0.997269566) % 24
+
 def time_aliases(year, UTdoy, obs_long):
   """
   Time as days since 1900, centuries since 1900 and LST
@@ -557,6 +575,34 @@ def AzEl_to_HaDec(Azimuth, Elevation, Latitude):
   latr = Latitude*pi/180
   har,decr = coordconv(pi, pi/2-latr, 0, latr, azr, elr)
   return har*12/pi, decr*180/pi
+
+def AzEl_to_RaDec(azimuth,elevation,latitude,longitude,date_time):
+  """
+  Convert azimuth and elevation to right ascension and declination
+
+  @param azimuth : east from north (clockwise) in degrees
+  @type  azimuth : float
+
+  @param elevation : above the horizon in degrees
+  @type  elevation :
+
+  @param latitude : above the equator, in degrees
+  @type  latitude : float
+
+  @param longitude : west from Greenwich
+  @type  longitude : float
+
+  @param date_time : (year, DOY) tuple, with fractional day of year
+  @type  date_time : (int, float)
+
+  @return: (RA (hrs), dec (degs))
+  """
+  LST = greenwich_sidereal_time(*date_time)-longitude/15.
+  HA,dec  = AzEl_to_HaDec(azimuth, elevation, latitude)
+  RA = math.fmod(LST - HA, 24.)
+  if RA < 0:
+    RA += 24.
+  return RA,dec
   
 def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   """
