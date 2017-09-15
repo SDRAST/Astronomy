@@ -355,6 +355,24 @@ def decimal_day_to_HMS(day):
   
   return "%02d:%02d:%05.2f" % decimal_day_to_tuple(day)
 
+def greenwich_sidereal_time(year,doy):
+  """
+  Approximate sidereal time at Greenwich
+
+  @param year : year of date
+  @type  year : int
+
+  @param doy : day of year
+  @type  doy : float
+
+  @return: Greenwich sidereal time in hours
+  """
+  year_from_1966 = year-1966
+  dt = (year_from_1966*365 + int((year_from_1966 + 1)/4.) + int(doy)-1)/36525.
+  dst = 0.278329562 + (8640184.67*dt+0.0929*dt**2)/86400
+  gst0 = dst % 1 # GST on Jan. 0 of current year
+  return 24*(gst0 + (doy % 1)/0.997269566) % 24
+
 def time_aliases(year, UTdoy, obs_long):
   """
   Time as days since 1900, centuries since 1900 and LST
@@ -557,6 +575,34 @@ def AzEl_to_HaDec(Azimuth, Elevation, Latitude):
   latr = Latitude*pi/180
   har,decr = coordconv(pi, pi/2-latr, 0, latr, azr, elr)
   return har*12/pi, decr*180/pi
+
+def AzEl_to_RaDec(azimuth,elevation,latitude,longitude,date_time):
+  """
+  Convert azimuth and elevation to right ascension and declination
+
+  @param azimuth : east from north (clockwise) in degrees
+  @type  azimuth : float
+
+  @param elevation : above the horizon in degrees
+  @type  elevation :
+
+  @param latitude : above the equator, in degrees
+  @type  latitude : float
+
+  @param longitude : west from Greenwich
+  @type  longitude : float
+
+  @param date_time : (year, DOY) tuple, with fractional day of year
+  @type  date_time : (int, float)
+
+  @return: (RA (hrs), dec (degs))
+  """
+  LST = greenwich_sidereal_time(*date_time)-longitude/15.
+  HA,dec  = AzEl_to_HaDec(azimuth, elevation, latitude)
+  RA = math.fmod(LST - HA, 24.)
+  if RA < 0:
+    RA += 24.
+  return RA,dec
   
 def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   """
@@ -585,6 +631,42 @@ def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   year = t.datetime.year
   c = coords.transform_to(FK5(equinox='J'+str(year)))
   return c.ra.hourangle, c.dec.deg
+  
+def get_sky_coords(RA, Dec):
+  """
+  return SkyCoord from both float and str inputs
+  """
+  if type(RA) == unicode and type(Dec) == unicode:
+    skypos = SkyCoord(RA, Dec, unit=(u.hourangle, u.deg))
+  elif type(RA) == float and type(Dec) == float:
+    skypos = SkyCoord(RA*u.hour, Dec*u.degree)
+  else:
+    raise RuntimeError(RA, dec, "cannot be parsed")
+  return skypos
+
+def get_altaz(RA, Dec, time, location):
+  """
+  Simplest conversion using astropy
+  
+  @param RA : right ascension in degrees
+  @type  RA : float
+  
+  @param Dec : declination in degrees
+  @type  Dec : float
+  
+  @param time : time of observation
+  @type  time : datetime.datetime object
+  
+  @param location : location of the observatory
+  @type  location : astropy.Location object
+  """
+  skypos = get_sky_coords(RA, Dec)
+  #logger.debug("get_altaz: called for RA,dec: %s", skypos)
+  skypos.obstime = Time(time)
+  skypos.location = location
+  altaz = skypos.altaz.az.deg, skypos.altaz.alt.deg
+  #logger.debug("get_altaz: az,el: %s", altaz)
+  return altaz
 
 def object_az_el(source, site, year, doy):
   """
@@ -746,27 +828,33 @@ def source_start_stop(HAstart, HAend, HAlimit):
   """
   if abs(HAstart) < HAlimit and abs(HAend) < HAlimit:
     if HAend > HAstart:
-      result = "always up"
+      result = "A"
     else:
-      result = "sets and rises"
+      result = "SR"
   elif abs(HAstart) > HAlimit and abs(HAend)> HAlimit:
-    if HAend > HAstart:
-      result = "rises and sets"
+    if math.copysign(1,HAstart) == math.copysign(1,HAend):
+      if (HAend > HAstart):
+        result = "N"
+      else:
+        result = "RS"
     else:
-      result = "never up"
+      if (HAend > HAstart):
+        result = "RS"
+      else:
+        result = "N"
   elif ((HAstart < 0 and HAstart < -HAlimit) or
         (HAstart > 0 and HAstart >  HAlimit)):
-    result = "rises"
+    result = "R"
   elif (((HAstart > 0 and HAstart <  HAlimit) or
          (HAstart < 0 and HAstart > -HAlimit)) and
         ((HAend   > 0 and HAend   >  HAlimit) or
          (HAend   < 0 and HAend   < -HAlimit))):
-    result = "sets"
+    result = "S"
   elif (((HAstart < 0 and HAstart < -HAlimit) or
          (HAstart > 0 and HAstart >  HAlimit)) and
         ((HAend   < 0 and HAend   < -HAlimit) or
          (HAend   > 0 and HAend > HAlimit))):
-    result = "source sets and then rises"
+    result = "SR"
   else:
     result = None
   return result
