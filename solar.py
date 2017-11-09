@@ -5,27 +5,28 @@ module solar - Functions for computing solar orbital and orientation parameters
 The ecliptic, the apparent solar orbit (in reality, the orbit of Earth about
 the Sun), is tilted approximately 23.5 deg with respect to the celestial
 equator. The sun is tilted at an angle of 7.25 deg with respect to the
-ecliptic plane. Both the celestial coordinates and the equatorial coordinates
+ecliptic plane. Both the celestial coordinates and the ecliptic coordinates
 have their zero meridian (RA = 0 h, lambda = 0 deg) at the point where the
 Sun's orbit rises above the celestial plane.
 
 Contents
 ========
 
-Utilities::
-
+Utilities
+---------::
   radians(angle)  - Convert degrees to radians
   truncate(angle) - Bounds an angle between 0 and 360.
 
-Functions Related to Time::
-
+Functions Related to Time
+-------------------------::
   Carrington_Number(jd)        - Carrington Number gives the number of rotations.
   calcJD(y,m,d,t)              - Fractional Julian date
   Julian_centuries_since_2000(jd) - Julian centuries from Jan 1, 2000.
   time_series(jd)                 - List of powers of Julian centuries.
 
-Functions Related to the Ecliptic::
-
+Functions Related to the Ecliptic
+---------------------------------
+T is a tuple with powers (0,1,2,3) of Julian centuries::
   ecliptic_obliquity(T) - Inclination of ecliptic plane w.r.t. celestial equator
   Eccentricity_of_orbit(T)- Eccentricity of the orbit ellipse.
   sun_geom_mean_long(T)   - Geometric Mean Ecliptic Longitude (deg) of Sun
@@ -34,32 +35,32 @@ Functions Related to the Ecliptic::
   Sun_radius_vector(e, tar)   - Distance between the Sun and the Earth
   semidiameter(distance)      - Semi-diameter in arcsec
 
-Functions concerning Nutation::
-
+Functions concerning Nutation
+-----------------------------::
   lunar_long_asc_node(t) - longitude of the mean ascending node of the lunar
-                           orbit on the ecliptic
+                           orbit on the ecliptic; t in Julian centuries
   longitude_nutation(omega) - Nutation in longitude
 
-Functions for Heliographic Coordinates::
-
+Functions for Heliographic Coordinates
+--------------------------------------::
   sun_coords_long_ascen_node(jd) - Ecliptic longitude at which solar equator
                                    intersects the ecliptic plane
-  Sun_central_longitude(anomaly,inclin,Lsun) - Longitude of center of disk
+  Sun_central_longitude(anomaly, inclin, Lsun) - Longitude of center of disk
   Sun_central_latitude(longitude, tilt) - Sun's latitude where central meridian
                                           crosses ecliptic plane
   lat_long(radius,polar_position_angle,radial_distance,position_angle)
                                     - latitude and longitude of an active region
 
-Geometrical Functions::
-
+Geometrical Functions
+---------------------::
   axis_tilt_projection(longitude,tilt) - Projection of Z-axis of a tilted frame
   xy_to_ra_dec(x,y,P,ra0,dec0)    - Convert XY coordinates in a Sun-aligned
                                     frame to RA and dec
   ra_dec_to_xy(ra,dec,P,ra0,dec0) - Convert ra, dec to xy-coordinates aligned
                                     with Sun
 
-Comprehensive Parameter Calculation::
-
+Comprehensive Parameter Calculation
+-----------------------------------::
   calc_solar(jd) - Overall function to calculate various solar data.
 
 
@@ -88,9 +89,6 @@ Supporting definitions can be found at::
 """
 from Astronomy import julian_date
 from math import *
-
-check_one = False
-check_two = False
 
 radian = 180./pi
 sidereal_rotation_period = 25.38 # days
@@ -134,7 +132,7 @@ def Carrington_Number(jd):
 
 def calcJD(y,m,d,t):
   """
-  Fractional Julian date
+  Julian date with fraction for UT
 
   @param y : for digit year
   @type  y : int
@@ -428,7 +426,7 @@ def xy_to_ra_dec(x,y,P,ra0,dec0):
   dec = dec0 -  x*sin(Pr) + y*cos(Pr)
   return ra,dec
 
-def ra_dec_to_xy(ra,dec,P,ra0,dec0):
+def ra_dec_to_xy(ra, dec, P, ra0, dec0):
   """
   Convert ra, dec to xy-coordinates aligned with Sun
 
