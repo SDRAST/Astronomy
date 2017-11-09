@@ -53,14 +53,24 @@ Doppler Shift
 -------------
 astropy documentation for Spectral Doppler Equivalencies
 """
+import astropy.units as u
+import logging
 
-from math import sqrt
+from astropy.coordinates import EarthLocation, SkyCoord
+from math import pi, sqrt
+from novas import compat as novas
+from numpy import array
+
+from Astronomy import MJD, v_sun
+from MonitorControl.Configurations.coordinates import DSS
 
 c            = 3e5;  # km/s
 Ho           = 73.8 # ± 2.40 (km/s)/Mpc
 Mpc          = 3.0856e19;  # km
 sec_per_year = 365.0*24*60*60
 To           = Mpc/Ho/sec_per_year # age of universe,
+
+logger = logging.getLogger(__name__)
 
 # ---------------------------- redshift functions -----------------------------
 
@@ -206,5 +216,57 @@ def doppler_relat(rel_freq, f_ref):
   """
   r = (f_ref+rel_freq)/f_ref
   return doppler_radio(rel_freq, f_ref)*(4*r)/(1+r**2)**2
+
+# ------------------------------- local standard of rest ----------------------
+
+
+def V_LSR(RA, dec, dss, timedate):
+  """
+  Computes the velocity of the local standard of rest w.r.t. the observer
+  
+  @param ra : J2000 right ascension as a float or as "12h34m56.78s"
+  @type  ra : float or str
+  
+  @param dec : J2000 declination as a float or as "-12d34m56.78s"
+  @type  dec : float or str
+  
+  @param observer : DSN station
+  @type  observer : int
+  
+  @param timedate : date/time of the observation
+  @type  timedate : datetime object
+  """
+  if type(RA) == unicode and type(dec) == unicode:
+    skypos = SkyCoord(RA, dec, unit=(u.hourangle, u.deg))
+  elif type(RA) == float and type(dec) == float:
+    skypos = SkyCoord(RA*u.hour,dec*u.degree)
+  else:
+    raise RuntimeError(RA, dec, "cannot be parsed")
+  logger.debug("V_LSR: sky pos: %s", skypos)
+  ra2000, dec2000 = skypos.ra.hour, skypos.dec.deg
+  logger.debug("V_LSR: J2000 coordinates are %f, %f", ra2000, dec2000)
+  sourcename = "%5.2f%+5.2f" % (ra2000,dec2000)
+  cat_entry = novas.make_cat_entry(sourcename,
+                                   "",0,
+                                   ra2000, dec2000,
+                                   0, 0, 0, 0)
+  source = novas.make_object(2, 0, sourcename, cat_entry)
+  station = DSS(dss)
+  logger.debug("V_LSR: station lat=%f", station.lat*180/pi)
+  logger.debug("V_LSR: station long=%f", station.lon*180/pi)
+  observer = novas.make_observer_on_surface(station.lat*180/pi,
+                                         station.lon*180/pi,
+                                         station.elev, 0, 0)
+  jd = novas.julian_date(timedate.year, timedate.month, timedate.day,
+                         timedate.hour+timedate.minute/60.)
+  mjd = MJD(timedate.year, timedate.month, timedate.day)
+  earth = novas.make_object(0, 3, 'Earth', None)
+  urthpos,urthvel = novas.ephemeris((jd,0), earth, origin=0)
+  (obspos,obsvel) = novas.geo_posvel(jd,0,observer,0)
+  totvel = tuple(array(urthvel)+array(obsvel))
+  (srcpos,srcvel) = novas.starvectors(cat_entry)
+  V = novas.rad_vel(source, srcpos, srcvel, totvel,0,0,0)
+  logger.debug("V_LSR: velocity of observer w.r.t. Sun= %.2f", V)
+  return V+v_sun(mjd,ra2000/15.,dec2000)
 
 
