@@ -103,7 +103,6 @@ from ephem import Ecliptic, Equatorial
 from Astronomy.coordconv import coordconv
 from DatesTimes import calendar_date, MJD
 from Math.geometry import Circular
-from MonitorControl.Configurations.coordinates import DSS
 
 from math import pi
 c = cds.c.in_units('m / s')
@@ -121,7 +120,7 @@ MJD         = DT.MJD
 julian_date = DT.julian_date
 leap_year   = DT.leap_year
 
-import MonitorControl.Configurations.coordinates as C
+import DSN_coordinates as C
 get_cartesian_coordinates = C.get_cartesian_coordinates
 get_geodetic_coords = C.get_geodetic_coords
 
@@ -606,7 +605,7 @@ def AzEl_to_RaDec(azimuth,elevation,latitude,longitude,date_time):
   
 def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   """
-  Apparent right ascension and declinationhar,decrhar,decr
+  Apparent right ascension and declination
 
   @param MJD : int
     mean Julian day
@@ -622,14 +621,9 @@ def J2000_to_apparent(MJD, UT, ra2000, dec2000):
 
   @return: tuple
   """
-  #p_apparent = jplephem.j2000_to_epoch(MJD,UT/24.,ra2000,dec2000)
-  #ra = float(p_apparent['ra'])
-  #dec = float(p_apparent['dec'])
-  #return float(p_apparent['ra']),float(p_apparent['dec'])
   t = Time(MJD+UT/24., format='mjd')
-  coords = SkyCoord(ra=ra2000*u.rad, dec=dec2000*u.rad, frame='icrs', obstime=t)
-  year = t.datetime.year
-  c = coords.transform_to(FK5(equinox='J'+str(year)))
+  coords = SkyCoord(ra=ra2000*u.rad, dec=dec2000*u.rad, frame='icrs')
+  c = coords.transform_to(FK5(equinox=t))
   return c.ra.hourangle, c.dec.deg
   
 def get_sky_coords(RA, Dec):
@@ -693,7 +687,7 @@ def object_az_el(source, site, year, doy):
   module_logger.debug("Sky coords: %s", coords)
   
   try:
-    dss = DSS(site)
+    dss = C.DSS(site)
     module_logger.debug("DSS-%d: %f, %f", site, dss.long*180/pi, dss.lat*180/pi)
   except KeyError:
     raise KeyError('%d is not a valid DSS station' % site)

@@ -2,6 +2,9 @@
 Submit a data query to SIMBAD for a source
 
 http://simbad.u-strasbg.fr/simbad/sim-id?Ident=3c274&output.format=ASCII
+
+This is unnecessary if astropy is used. See Automation/apps/find_sources.py for
+an example.
 """
 
 from urllib2 import urlopen
