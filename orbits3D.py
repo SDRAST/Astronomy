@@ -255,7 +255,7 @@ def show_celestial(fig, obliquity, long_perigee, anomaly, Title=None):
     ax.set_title(Title)
   return ax
 
-def show_heliographic(fig,inclin_sun,long_asc_node,anomaly,sun_tilt,Title=None):
+def show_heliographic(fig, inclin_sun, long_asc_node, anomaly, sun_tilt, Title=None):
   """
   Show a celestial coordinate system in heliographic coordinates
 

@@ -48,7 +48,7 @@ Functions for Heliographic Coordinates
   Sun_central_longitude(anomaly, inclin, Lsun) - Longitude of center of disk
   Sun_central_latitude(longitude, tilt) - Sun's latitude where central meridian
                                           crosses ecliptic plane
-  lat_long(radius,polar_position_angle,radial_distance,position_angle)
+  lat_long(radius, polar_position_angle, radial_distance, position_angle)
                                     - latitude and longitude of an active region
 
 Geometrical Functions

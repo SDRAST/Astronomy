@@ -62,7 +62,7 @@ from novas import compat as novas
 from numpy import array
 
 from Astronomy import MJD, v_sun
-from MonitorControl.Configurations.coordinates import DSS
+from Astronomy.DSN_coordinates import DSS
 
 c            = 3e5;  # km/s
 Ho           = 73.8 # ± 2.40 (km/s)/Mpc
