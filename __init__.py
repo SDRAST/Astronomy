@@ -124,6 +124,11 @@ import DSN_coordinates as C
 get_cartesian_coordinates = C.get_cartesian_coordinates
 get_geodetic_coords = C.get_geodetic_coords
 
+# planets recognized by module ephem
+Planets = ['Jupiter', 'Mars', 'Mercury', 'Moon', 'Neptune', 'Pluto',
+           'Saturn', 'Sun', 'Uranus', 'Venus']
+
+
 def refresh_ierstab(url=None, force=False):
   """
   Updates the UT1-UTC offset table from 'url'.

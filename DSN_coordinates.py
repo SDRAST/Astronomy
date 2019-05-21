@@ -138,7 +138,7 @@ def get_geodetic_coords(dss=0,observatory=None):
   https://deepspace.jpl.nasa.gov/dsndocs/810-005/301/301K.pdf Tables 5 and 6
 
   @param dss : int
-    optional DSS number
+    optional DSS numbercomplexCode
 
   @param observatory : string
     optional observatory name
@@ -252,3 +252,33 @@ def get_cartesian_coordinates(station=None):
       return None
   else:
     return coordinates
+
+Complex = {"Canberra":  [34, 35, 36, 43, 45],
+           "Goldstone": [13, 14, 15, 24, 25, 26],
+           "Madrid":    [53, 54, 55, 63, 65]}
+complexID = {"Canberra":  "CDSCC",
+             "Goldstone": "GDSCC",
+             "Madrid":    "MDSCC"}
+complexCode = {"Canberra": 40,
+               "Goldstone": 10,
+               "Madrid": 60}
+
+def DSN_complex_of(dss):
+  """
+  Returns the Complex to which a station belongs
+
+  @param dss : DSN station number
+  @type  dss : int or str
+
+  @return: str
+  """
+  if type(dss) == str:
+    dss = int(dss[-2:])
+#     dss = int(float(dss[-2:]))
+  for cmplx in Complex.keys():
+    try:
+      Complex[cmplx].index(dss)
+      return cmplx
+    except:
+      pass
+  return None
