@@ -132,11 +132,11 @@ def calibrator(name):
     exec(code_line)
     return calibrator
   except Exception as details:
-    module_logger.debug("calibrator: not a planet: {}".format(details))
+    module_logger.info("calibrator: not a planet: {}".format(details))
     # quasar?
     try:
       calibrator = Quasar(name)
       return calibrator
     except Exception as details:
-      module_logger.debug("calibrator: not a quasar: {}".format(details))
+      module_logger.error("calibrator: not a quasar: {}".format(details))
       return None

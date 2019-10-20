@@ -2,8 +2,8 @@ import logging
 
 import ephem
 
-from . import Jnames, Bname_dict, cat_3C_dict, cal_dict, Bnames
-#from support.Ephem import EphemException
+from . import Jnames, Bname_dict, cat_3C_dict, cal_dict, Bnames, EphemException
+#from Astronomy.Ephem import EphemException
 
 module_logger = logging.getLogger(__name__)
 
@@ -38,6 +38,7 @@ class Quasar(ephem.FixedBody):
     name - Julian epoch name without leading "J"
     """
     super(Quasar,self).__init__()
+    self.logger = logging.getLogger(module_logger.name+".Quasar")
     if name[0] == "J":
       self.Jname = self.name
       self.name = name[1:]
@@ -69,11 +70,10 @@ class Quasar(ephem.FixedBody):
       self.Jname = "J"+self.name
       self.Bname = "B"+Bnames[self.name]
     quasar_data = cal_dict[self.name]
-    self._ra = hours(str(quasar_data['ra']))
-    self._dec = degrees(str(quasar_data['dec']))
-    if diag:
-      print self._ra, self._dec
-    self._epoch = J2000
+    self._ra = ephem.hours(str(quasar_data['ra']))
+    self._dec = ephem.degrees(str(quasar_data['dec']))
+    self.logger.debug("__init__: RA, dec.: %.3f, %.3f", self._ra, self._dec)
+    self._epoch = ephem.J2000
     self._class = "Q"
     # to initialize ra, dec to something
     self.compute("2000/1/1 00:00:00")
@@ -83,7 +83,7 @@ class Quasar(ephem.FixedBody):
     self.date = None
     self.pressure = 0
 
-  def interpolate_flux(self,freq,date=None):
+  def interpolate_flux(self, freq, date=None):
     """
     Flux of source at given frequency in GHz.
 
@@ -104,14 +104,13 @@ class Quasar(ephem.FixedBody):
         self.flux = michigan.polate_flux(self.Bname[1:],
                                          date2num(self.date),
                                          freq)
-        if diag:
-          print "Michigan flux is",self.flux
+        self.logger.debug("interpolate_flux: Michigan flux is %.3f", self.flux)
         self.flux_ref = "Michigan"
         return self.flux
       except ValueError:
         # Not in the Michigan catalog or no date given
-        if diag:
-          print self.name,"=",self.Bname,"is not in the Michigan catalog"
+        self.logger.debug("interpolate_flux: %s = %s is not in the Michigan catalog",
+                          self.name, self.Bname)
     else:
       print "Outside Michigan frequency range"
     # try VLA cals
@@ -120,8 +119,7 @@ class Quasar(ephem.FixedBody):
       freqs,fluxes = vla_cal.get_flux_data(cal_data)
       self.flux = vla_cal.interpolate_flux(freqs,fluxes,freq)
       self.flux_ref = "VLA"
-      if diag:
-        print ref,"flux is",self.flux
+      self.logger.debug("interpolate_flux: %s flux is %.3f", self.flux_ref, self.flux)
       return self.flux
     except ValueError:
       self.flux = None
