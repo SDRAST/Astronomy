@@ -1,5 +1,14 @@
 """
 Coordinates for DSN and affiliated antennas
+
+Contents
+========
+
+In this module::
+
+  class DSS
+  function DSSLocation
+  
 """
 from ephem import Observer
 from math import pi
@@ -7,24 +16,37 @@ from math import pi
 import astropy.units as u
 from astropy.coordinates import EarthLocation
 
+Complex = {"Canberra":  [34, 35, 36, 43, 45],
+           "Goldstone": [13, 14, 15, 24, 25, 26],
+           "Madrid":    [53, 54, 55, 63, 65]}
+complexID = {"Canberra":  "CDSCC",
+             "Goldstone": "GDSCC",
+             "Madrid":    "MDSCC"}
+complexCode = {"Canberra": 40,
+               "Goldstone": 10,
+               "Madrid": 60}
+
 class DSS(Observer):
   """
   Observer class for DSN stations based on xephem Observer
 
   For use with xephem.
-  """
-  def __init__(self, number):
-    """
-    Creates an instance of a DSN station Observer()
 
-    Attributes
-    ==========
+  Attributes
+  ==========
+  
+  of this class::
+    
     lon       - east longitude (degrees)
     lat       - north latitude (degrees)
     elevation - altitude (meters)
     timezone  - difference (hours) from UTC
     name      -
     diam      - diameter (m)
+  """
+  def __init__(self, number):
+    """
+    Creates an instance of a DSN station Observer()
 
     @param number : station number
     """
@@ -118,23 +140,23 @@ def get_geodetic_coords(dss=0,observatory=None):
   If the observatory is not found, an empty dictionary is returned.
 
   Notes
-  =====
+  -----
   For an explanation of Earth coordinate systems so
   http://dsnra.jpl.nasa.gov/Antennas/Antennas.html#anchor950381
 
-  Example:
+  Example::
 
-  >>> station_data = get_geodedic_coords()
-  >>> long,lat,alt,tz,name, diam = station_data[13]
-  >>> print long,lat
-  116.794009 35.2477189
+    >>> station_data = get_geodedic_coords()
+    >>> long,lat,alt,tz,name, diam = station_data[13]
+    >>> print long,lat
+    116.794009 35.2477189
 
   Still to Do
-  ===========
+  -----------
   Make both functions more forgiving in the matter of observatory names
 
   Reference
-  =========
+  ---------
   https://deepspace.jpl.nasa.gov/dsndocs/810-005/301/301K.pdf Tables 5 and 6
 
   @param dss : int
@@ -166,6 +188,11 @@ def get_cartesian_coordinates(station=None):
   """
   Get the Cartesian coordinates of a DSN station, or a dictionary of all
 
+  @param station : 13 or 'Venus' or 'DSS 13'
+  @type  station : int or string
+
+  @return: tuple or dict of tuples or None, Cartesian coordinates in meters
+
   This creates a dictionary with the Cartesian coordinates in meters
   of the DSN stations using the ITRF1993 (assuming subreflector-fixed
   configuration). If a valid station ID is given, it returns the coordinates
@@ -175,24 +202,23 @@ def get_cartesian_coordinates(station=None):
   The entry for DSS 21 is a rough one for JPL.
 
   Notes
-  =====
+  -----  
   For an explanation of the coordinate systems see
   http://dsnra.jpl.nasa.gov/Antennas/Antennas.html#anchor950381
+  
   Some other stations have been added.
+  
   An example to get a baseline length::
-  >>> x1,y1,z1 = get_cartesian_coordinates('DSS 24')
-  >>> x2,y2,z2 = get_cartesian_coordinates('DSS 13')
-  >>> print math.sqrt(math.pow(x2-x1,2) + math.pow(y2-y1,2)+math.pow(z2-z1,2))
-  12621.4825356
+  
+    >>> x1,y1,z1 = get_cartesian_coordinates('DSS 24')
+    >>> x2,y2,z2 = get_cartesian_coordinates('DSS 13')
+    >>> print math.sqrt(math.pow(x2-x1,2) + math.pow(y2-y1,2)+math.pow(z2-z1,2))
+    12621.4825356
 
   Reference
-  =========
+  ---------
   https://deepspace.jpl.nasa.gov/dsndocs/810-005/301/301K.pdf Table 2
-
-  @param station : 13 or 'Venus' or 'DSS 13'
-  @type  station : int or string
-
-  @return: tuple or dict of tuples or None, Cartesian coordinates in meters
+  
   """
 
   coordinates = \
@@ -252,16 +278,6 @@ def get_cartesian_coordinates(station=None):
       return None
   else:
     return coordinates
-
-Complex = {"Canberra":  [34, 35, 36, 43, 45],
-           "Goldstone": [13, 14, 15, 24, 25, 26],
-           "Madrid":    [53, 54, 55, 63, 65]}
-complexID = {"Canberra":  "CDSCC",
-             "Goldstone": "GDSCC",
-             "Madrid":    "MDSCC"}
-complexCode = {"Canberra": 40,
-               "Goldstone": 10,
-               "Madrid": 60}
 
 def DSN_complex_of(dss):
   """

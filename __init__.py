@@ -3,6 +3,7 @@ Classes and functions for astronomical calculations
 
 This is a complete re-write of the package to base it on astropy instead of 
 heritage code.  The following were removed::
+
  * List Months,       with long month names
  * default_astro_dir, for source catalogs
  * cat_path,          for source catalogs
@@ -54,6 +55,7 @@ equinox of the date, is exactly 280 degrees.  This moment falls near the
 beginning of the corresponding Gregorian (modern calendar) year.  A 
 "Besselian epoch" can be calculated from the Julian date.  The beginnings of
 some commonly used Besselian years are::
+
   B1900.0 = JD 2415020.3135 = 1900 January 0.8135 TT
   B1950.0 = JD 2433282.4235 = 1950 January 0.9235 TT
 
@@ -81,6 +83,7 @@ Ecliptic Coordinates
 astropy does not yet support ecliptic coordinates so we use pyephem for that.
 https://github.com/firelab/met_utils/blob/master/sun.py has some extensions for
 astropy for that and other things.
+
 """
 import logging
 logger = logging.getLogger(__name__)
@@ -142,6 +145,7 @@ def refresh_ierstab(url=None, force=False):
   @param url : not used
   @param force : not used
   @return: None
+  
   """
   from astropy.utils.data import download_file
   from astropy.utils import iers
@@ -157,11 +161,11 @@ def B_epoch_to_J(ra50, dec50, format=None):
   operator asks for coordinates in J2000 or decimal format.
 
   Tests and validations
-  =====================
-    
+  =====================  
   Basic
   -----
   Example::
+  
    In [1]: import Astronomy as A
    In [2]: A.B_epoch_to_J('''00h02m29.056400s''',
                           '''54d11'43.187000"''', 'decimal')
@@ -174,31 +178,36 @@ def B_epoch_to_J(ra50, dec50, format=None):
    Out[4]: ([0, 5, 4.359], [54, 28, 25.056])
 
   Compare to the VLA Calibrator List::
+  
     J2000 A 00h05m04.363531s 54d28'24.926230"
     B1950 A 00h02m29.056400s 54d11'43.187000"
   
   Crossing the midnight boundary
   ------------------------------
   Example::
+  
     In [8]: A.B_epoch_to_J('''23h58m34.865400s''',
                            '''18d57'51.753000"''')
     Out[8]: ([0, 1, 8.6169], [19, 14, 33.9321])
     
   Compare to the VLA Calibrator List::
+  
     J2000 A 00h01m08.621563s 19d14'33.801860"
     B1950 A 23h58m34.865400s 18d57'51.753000"
   
   Negative declination
   --------------------
   Example::
+  
     In [10]: A.B_epoch_to_J('''00h00m48.4200s''',
                             '''-17d43'54.000"''', 'formatted')
     Out[10]: [u'00h03m21.9921s', u'-17d27m11.6511s']
 
+
   @param ra50 : string
     For example: '00h02m29.056400s'
 
-  @param dec50: string
+  @param dec50 : string
     For example : '''54d11'43.187000"'''
 
   @param format : string
@@ -206,6 +215,7 @@ def B_epoch_to_J(ra50, dec50, format=None):
 
   @return: tuple of strings
     See notes for details.
+    
   """
   coordstr = ra50+" "+dec50
   logger.debug("B_epoch_to_J: 1950 coordinates: %s", coordstr)
@@ -236,6 +246,7 @@ def J_epoch_to_B(ra2000, dec2000, format):
   Notes
   =====
   A test::
+  
     In [1]: import Astronomy as A
     In [2]: A.B_epoch_to_J('''00h02m29.056400s''',
                            '''54d11'43.187000"''', 'formatted')
@@ -276,10 +287,6 @@ def J_epoch_to_B(ra2000, dec2000, format):
 def YMD_to_MJD(year,month,day):
   """
   Modified Julian date from calendar date
-
-  Notes
-  =====
-  This calls coco.full_ymd_to_mjd but output format is simpler.
 
   @param year : four digit year
   @type  year : int
@@ -447,6 +454,7 @@ def current_to_ecliptic(julian_centuries_since_1900,\
 
 def ecliptic_to_J2000(elong, elat, mjd):
   """
+  convert from ecliptic coordinates to RA and dec
   """
   t = Time(mjd, format='mjd')
   # t is probably needed for convert from current to J2000
@@ -487,81 +495,11 @@ def HaDec_to_AzEl(HourAngle, Declination, Latitude):
                obstime=t)
   c.location = l
   return c.altaz.az.deg, c.altaz.alt.deg
-
-def oldAzEl_to_HaDec(Azimuth,Elevation,Latitude):
-  """
-  Horizon coordinates to celestial
-  
-  HA and decl. define a point on the sky with respect to the local meridian,
-  which corresponds to a RA equal to the local sidereal time.  It doesn't
-  matter what the observer's longitude is. The relationship between the RA of
-  the sky point and the LST stays the same. So we can perform the calculation
-  for longitude 0
-  
-    LST is the ST at
-  Greenwich (long 0 deg) minus the west longitude of the local meridian::
-    
-    LST = GST - long
-                    hr
-                    
-  HA is positive to the west, so is the LST minus the RA of the point in the
-  sky::
-  
-    HA = LST - RA
-
-  Consider a hypothetical observer on the Earth at longitude zero and the
-  latitude of the actual observer. The sidereal time at the hypothetical
-  observer's location is the Greenwich sidereal time, which is the actual
-  observer's LST plus the west longitude. Then the HA at the actual observer's
-  position is the HA at the hypothetical observer's position minus the actual
-  observer's longitude in hours::
-  
-    HA    = HA    - long
-      act     hyp       hr
-  
-  Given the azimuth, elevation and time we compute the RA and dec of the sky
-  position with respect to the hypothetical observer, and then the HA::
-  
-    az, el, lat, time --> RA   ,dec
-                            hyp
-  
-    HA    = GST - RA
-      hyp           hyp
-  
-  The RA of the same az,el w.r.t. the actual observer is then::
-  
-    RA    = RA    - long
-      act     hyp       hr
-  
-    HA    = GST - RA    - long  
-      act           hyp       hr
-          = GST - RA
-                    act
-  
-  @param Azimuth : degrees, clockwise from north
-  @type  Azimuth : float
-
-  @param Elevation : degrees above horizon
-  @type  Elevation : float
-  
-
-  @param Latitude : east longitude in degrees
-  @type  Latitude : float
-
-  @return: tuple, Hour angle in float hours and declination in float degrees
-  """
-  t = Time.now()
-  l = EarthLocation(lon=0*u.deg, lat=Latitude*u.deg)
-  t.location = l
-  t.delta_ut1_utc = 0
-  lst = t.sidereal_time('mean')
-  c = AltAz(az=Azimuth*u.deg, alt=Elevation*u.deg, location=l, obstime=t)
-  #
-  RAdec = c.transform_to(SkyCoord(0*u.hourangle, 0*u.deg, frame="cirs"))
-  return float(lst.hour - RAdec.ra.hour), float(RAdec.dec.deg)
   
 def AzEl_to_HaDec(Azimuth, Elevation, Latitude):
   """
+  converts from azimuth and elevation to hour angle and declination
+  
   @param Azimuth : degrees, clockwise from north
   @type  Azimuth : float
 
@@ -600,6 +538,57 @@ def AzEl_to_RaDec(azimuth,elevation,latitude,longitude,date_time):
   @type  date_time : (int, float)
 
   @return: (RA (hrs), dec (degs))
+  
+  
+  Horizon coordinates to celestial
+  --------------------------------
+  
+  HA and decl. define a point on the sky with respect to the local meridian,
+  which corresponds to a RA equal to the local sidereal time.  It doesn't
+  matter what the observer's longitude is. The relationship between the RA of
+  the sky point and the LST stays the same. So we can perform the calculation
+  for longitude 0.
+  
+  LST is the ST at Greenwich (long 0 deg) minus the west longitude of the 
+  local meridian::
+    
+    LST = GST - long
+                    hr
+                    
+  HA is positive to the west, so is the LST minus the RA of the point in the
+  sky::
+  
+    HA = LST - RA
+
+  Consider a hypothetical observer on the Earth at longitude zero and the
+  latitude of the actual observer. The sidereal time at the hypothetical
+  observer's location is the Greenwich sidereal time, which is the actual
+  observer's LST plus the west longitude. Then the HA at the actual observer's
+  position is the HA at the hypothetical observer's position minus the actual
+  observer's longitude in hours::
+  
+    HA    = HA    - long
+      act     hyp       hr
+  
+  Given the azimuth, elevation and time we compute the RA and dec of the sky
+  position with respect to the hypothetical observer, and then the HA::
+  
+    az, el, lat, time --> RA   ,dec
+                            hyp
+  
+    HA    = GST - RA
+      hyp           hyp
+  
+  The RA of the same az,el w.r.t. the actual observer is then::
+  
+    RA    = RA    - long
+      act     hyp       hr
+  
+    HA    = GST - RA    - long  
+      act           hyp       hr
+          = GST - RA
+                    act
+  
   """
   LST = greenwich_sidereal_time(*date_time)-longitude/15.
   HA,dec  = AzEl_to_HaDec(azimuth, elevation, latitude)
@@ -810,6 +799,7 @@ def source_start_stop(HAstart, HAend, HAlimit):
   This only handles tracks less than 24 hr long.
   
   The result codes are::
+  
     A  - always up
     N  - never up
     R  - rises
@@ -862,7 +852,7 @@ def galactic_offsets_to_celestial(RA, Dec, glongoff=3, glatoff=0):
   """
   Converts offsets in Galactic coordinates to celestial
   
-  The defaults were chosen by Pineda for Galctic plane survey
+  The defaults were chosen by Pineda for Galactic plane survey
   
   @param RA : FK5 right ascension in degrees
   @type  RA : float

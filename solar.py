@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-module solar - Functions for computing solar orbital and orientation parameters
+Functions for computing solar orbital and orientation parameters
 
 The ecliptic, the apparent solar orbit (in reality, the orbit of Earth about
 the Sun), is tilted approximately 23.5 deg with respect to the celestial
@@ -13,12 +13,16 @@ Contents
 ========
 
 Utilities
----------::
+---------
+Provided for convenience::
+
   radians(angle)  - Convert degrees to radians
   truncate(angle) - Bounds an angle between 0 and 360.
 
 Functions Related to Time
--------------------------::
+-------------------------
+Converts time to other formats::
+
   Carrington_Number(jd)        - Carrington Number gives the number of rotations.
   calcJD(y,m,d,t)              - Fractional Julian date
   Julian_centuries_since_2000(jd) - Julian centuries from Jan 1, 2000.
@@ -27,6 +31,7 @@ Functions Related to Time
 Functions Related to the Ecliptic
 ---------------------------------
 T is a tuple with powers (0,1,2,3) of Julian centuries::
+
   ecliptic_obliquity(T) - Inclination of ecliptic plane w.r.t. celestial equator
   Eccentricity_of_orbit(T)- Eccentricity of the orbit ellipse.
   sun_geom_mean_long(T)   - Geometric Mean Ecliptic Longitude (deg) of Sun
@@ -36,13 +41,17 @@ T is a tuple with powers (0,1,2,3) of Julian centuries::
   semidiameter(distance)      - Semi-diameter in arcsec
 
 Functions concerning Nutation
------------------------------::
+-----------------------------
+Handle nutation of the Earth's orbit::
+
   lunar_long_asc_node(t) - longitude of the mean ascending node of the lunar
                            orbit on the ecliptic; t in Julian centuries
   longitude_nutation(omega) - Nutation in longitude
 
 Functions for Heliographic Coordinates
---------------------------------------::
+--------------------------------------
+These provide coordinates in the Sun-based lat/long system::
+
   sun_coords_long_ascen_node(jd) - Ecliptic longitude at which solar equator
                                    intersects the ecliptic plane
   Sun_central_longitude(anomaly, inclin, Lsun) - Longitude of center of disk
@@ -52,7 +61,9 @@ Functions for Heliographic Coordinates
                                     - latitude and longitude of an active region
 
 Geometrical Functions
----------------------::
+---------------------
+manage projections to/from plane of the sky ::
+
   axis_tilt_projection(longitude,tilt) - Projection of Z-axis of a tilted frame
   xy_to_ra_dec(x,y,P,ra0,dec0)    - Convert XY coordinates in a Sun-aligned
                                     frame to RA and dec
@@ -60,9 +71,10 @@ Geometrical Functions
                                     with Sun
 
 Comprehensive Parameter Calculation
------------------------------------::
-  calc_solar(jd) - Overall function to calculate various solar data.
+-----------------------------------
+Handles a lot of calculations at once::
 
+  calc_solar(jd) - Overall function to calculate various solar data.
 
 Notes
 =====
@@ -72,25 +84,29 @@ Jan. 1, 1900.
 
 Resources
 =========
-A form for calculating sunspot coordinates
-http://www.nature1st.net/bogan/astro/sun/sunspots.html
+A form for calculating sunspot coordinates::
 
-The embedded Java script in the above form is based on these::
-  Formulae for the Solar Orientation angles were taken from
-Astronomical Algorithms by Meeus::
-  Formulae for Calculating the Sunspot lat-long taken from
-Smith's Astronomical Calculation for Calculators from::
+  http://www.nature1st.net/bogan/astro/sun/sunspots.html
+
+Formulae for the Solar Orientation angles were taken from
+Astronomical Algorithms by Meeus.
+  
+Formulae for Calculating the Sunspot lat-long taken from Smith's Astronomical 
+Calculation for Calculators from::
+
   http://www.idialstars.com/fipl.htm
 
 Supporting definitions can be found at::
+
   http://www.astro.washington.edu/docs/idl/cgi-bin/getpro/library32.html?GET_SUN
   http://sspg1.bnsc.rl.ac.uk/SEG/Coordinates/angles.htm
   http://farside.ph.utexas.edu/syntaxis/Almagest/node34.html
+  
 """
 from Astronomy import julian_date
-from math import *
+import math
 
-radian = 180./pi
+radian = 180./math.pi
 sidereal_rotation_period = 25.38 # days
 
 # -----------------------------utilities-------------------------------
@@ -102,7 +118,7 @@ def radians(degrees):
 
   @return: float
   """
-  return pi/180
+  return math.pi/180
 
 def truncate(angle):
   """
@@ -243,9 +259,9 @@ def equation_of_the_center(M,T):
   @return: float
   """
   Mr = M/radian
-  return   (1.914600 - 0.004817*T[1] - 0.000014*T[2])*sin(Mr)   \
-         + (0.019993 - 0.000101*T[1])                *sin(2*Mr) \
-         +  0.000290                                 *sin(3*Mr)
+  return   (1.914600 - 0.004817*T[1] - 0.000014*T[2])*math.sin(Mr)   \
+         + (0.019993 - 0.000101*T[1])                *math.sin(2*Mr) \
+         +  0.000290                                 *math.sin(3*Mr)
 
 def Sun_radius_vector(e, tar):
   """
@@ -261,7 +277,7 @@ def Sun_radius_vector(e, tar):
 
   @return: AU
   """
-  return 1.0000002*(1. - e**2)/(1. + e*cos(tar))
+  return 1.0000002*(1. - e**2)/(1. + e*math.cos(tar))
 
 def semidiameter(distance):
   """
@@ -298,7 +314,7 @@ def longitude_nutation(omega):
 
   @return: float
   """
-  return -0.00569 - 0.00478*sin(omega/radian)
+  return -0.00569 - 0.00478*math.sin(omega/radian)
 
 #----------------------Functions for Heliographic Coordinates----------------
 
@@ -331,9 +347,9 @@ def Sun_central_longitude(anomaly,inclin,Lsun):
 
   @return: longitude in degrees
   """
-  etay = -sin(anomaly)*cos(inclin)
-  etax = -cos(anomaly)
-  eta = (atan2(etay,etax))*radian; # longitude of the Sun's central meridian
+  etay = -math.sin(anomaly)*math.cos(inclin)
+  etax = -math.cos(anomaly)
+  eta = (math.atan2(etay,etax))*radian; # longitude of the Sun's central meridian
   L0 = (eta - Lsun)
   L0 = fmod(L0,360.)
   if L0 < 0.:
@@ -352,7 +368,7 @@ def Sun_central_latitude(longitude, tilt):
 
   @return: float
   """
-  B0r = asin( sin(longitude)*sin(tilt));   # central latitude
+  B0r = math.asin( math.sin(longitude)*math.sin(tilt));   # central latitude
   return B0r*radian;
 
 def lat_long(radius,polar_position_angle,radial_distance,position_angle):
@@ -371,10 +387,10 @@ def lat_long(radius,polar_position_angle,radial_distance,position_angle):
   """
   Pr = polar_position_angle*radian
   position_angle = position_angle/radian
-  r2 = asin(radial_distance/radius)
+  r2 = math.asin(radial_distance/radius)
   dp = (Pr - position_angle)
-  B = asin(sin(B0r)*cos(r2) + cos(B0r)*sin(r2)*cos(dp))
-  L = asin(sin(r2)*sin(dp)/cos(B)) + L0r
+  B = math.asin(math.sin(B0r)*math.cos(r2) + math.cos(B0r)*math.sin(r2)*math.cos(dp))
+  L = math.asin(math.sin(r2)*math.sin(dp)/math.cos(B)) + L0r
   L = radian * L
   B = radian * B
   return B, L
@@ -395,8 +411,8 @@ def axis_tilt_projection(longitude,tilt):
 
   @return: radians
   """
-  tan_projected_tilt = - cos(longitude)*tan(tilt)
-  projected_tilt = atan(tan_projected_tilt)
+  tan_projected_tilt = - math.cos(longitude)*math.tan(tilt)
+  projected_tilt = math.atan(tan_projected_tilt)
   return projected_tilt
 
 def xy_to_ra_dec(x,y,P,ra0,dec0):
@@ -422,8 +438,8 @@ def xy_to_ra_dec(x,y,P,ra0,dec0):
   """
   Pr = P/radian
   dec0r = dec0/radian
-  ra  = ra0  + (x*cos(Pr) + y*sin(Pr))/cos(dec0r)/15
-  dec = dec0 -  x*sin(Pr) + y*cos(Pr)
+  ra  = ra0  + (x*math.cos(Pr) + y*math.sin(Pr))/math.cos(dec0r)/15
+  dec = dec0 -  x*math.sin(Pr) + y*math.cos(Pr)
   return ra,dec
 
 def ra_dec_to_xy(ra, dec, P, ra0, dec0):
@@ -449,8 +465,8 @@ def ra_dec_to_xy(ra, dec, P, ra0, dec0):
   """
   Pr = P/radian
   dec0r = dec0/radian
-  x = -15*(ra-ra0)*cos(dec0r)*cos(Pr) + (dec-dec0)*sin(Pr)
-  y =  15*(ra-ra0)*cos(dec0r)*sin(Pr) + (dec-dec0)*cos(Pr)
+  x = -15*(ra-ra0)*math.cos(dec0r)*math.cos(Pr) + (dec-dec0)*math.sin(Pr)
+  y =  15*(ra-ra0)*math.cos(dec0r)*math.sin(Pr) + (dec-dec0)*math.cos(Pr)
   return x,y
 
 def calc_solar(jd):

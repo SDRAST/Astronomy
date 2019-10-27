@@ -20,9 +20,10 @@ Examples of use
 
 3. RIGHT ASCENSION, DECLINATION --> GALACTIC LONG & LAT (System I) 
 
-Refer to Kraus, P., RADIO ASTRONOMY, McGraw Hill, New York, 1966, or 
-Allen, C.W., ASTROPHYSICAL QUANTITIES, Athlone Press, London, (1963) for the
-definition of System I::
+  Refer to Kraus, P., RADIO ASTRONOMY, McGraw Hill, New York, 1966, or 
+  Allen, C.W., ASTROPHYSICAL QUANTITIES, Athlone Press, London, (1963) for the
+  definition of System I::
+
        AP=(12. + 40./60.)*PI/12. 
        BP= 28.           *PI/180.
        long_orig=(18. + 40./60.)*PI/12. 
@@ -89,6 +90,8 @@ from math import acos, asin, atan, cos, pi, sin
 
 def coordconv(long_orig, lat_orig, AP, BP, A1, B1):
   """
+  converts between many lat-long style coordinate systems
+  
   @param long_orig : long. of origin of new coordinate system (radians)
   @type  long_orig : float
   

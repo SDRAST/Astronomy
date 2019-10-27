@@ -57,17 +57,18 @@ def parse_ATCA_caldb_response(response):
       parser.feed(line)
   return parser.found
 
-
-url = build_ATCA_caldb_query()
-cj = cookielib.CookieJar()
-opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
-req = urllib2.Request(url)
-req.add_header('User-Agent','Mozilla/5.0')
-resp = opener.open(req)
-sleep(10)
-htmltext = resp.read()
-#response_obj = query_ATCA_caldb(url)
-#found = parse_ATCA_caldb_response(response_obj)
+if __name__ == "__main__":
+  url = build_ATCA_caldb_query()
+  cj = cookielib.CookieJar()
+  opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+  req = urllib2.Request(url)
+  req.add_header('User-Agent','Mozilla/5.0')
+  resp = opener.open(req)
+  sleep(10)
+  htmltext = resp.read()
+  
+  response_obj = query_ATCA_caldb(url)
+  found = parse_ATCA_caldb_response(response_obj)
 
 
 
