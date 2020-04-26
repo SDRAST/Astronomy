@@ -123,7 +123,7 @@ MJD         = DT.MJD
 julian_date = DT.julian_date
 leap_year   = DT.leap_year
 
-import DSN_coordinates as C
+from . import DSN_coordinates as C
 get_cartesian_coordinates = C.get_cartesian_coordinates
 get_geodetic_coords = C.get_geodetic_coords
 
@@ -408,7 +408,7 @@ def time_aliases(year, UTdoy, obs_long):
   date_tuple = calendar_date(year,doy)
   h,m,s = decimal_day_to_tuple(UTdoy-doy)
   dt_tuple = date_tuple+(h,m,int(s),int((s-int(s))*1e6))
-  print dt_tuple
+  logger.debug("dt_tuple: %s", dt_tuple)
   time = datetime.datetime( *dt_tuple )
   t = Time(time)
   days_since_1900 = t.mjd - MJD(1900,1,1) + 1
@@ -624,7 +624,7 @@ def get_sky_coords(RA, Dec):
   """
   return SkyCoord from both float and str inputs
   """
-  if type(RA) == unicode and type(Dec) == unicode:
+  if type(RA) == str and type(Dec) == str:
     skypos = SkyCoord(RA, Dec, unit=(u.hourangle, u.deg))
   elif type(RA) == float and type(Dec) == float:
     skypos = SkyCoord(RA*u.hour, Dec*u.degree)
@@ -676,7 +676,7 @@ def object_az_el(source, site, year, doy):
   """
   try:
     coords = get_icrs_coordinates(source)
-  except NameResolveError, details:
+  except NameResolveError as details:
     raise NameResolveError(details)
   module_logger.debug("Sky coords: %s", coords)
   
