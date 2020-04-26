@@ -1,0 +1,6 @@
+parse_IAU_name
+==============
+
+.. currentmodule:: Astronomy.IAU_names
+
+.. autofunction:: parse_IAU_name

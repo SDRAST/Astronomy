@@ -1,0 +1,6 @@
+parse_decimal_angle
+===================
+
+.. currentmodule:: Astronomy.IAU_names
+
+.. autofunction:: parse_decimal_angle

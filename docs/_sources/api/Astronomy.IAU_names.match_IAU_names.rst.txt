@@ -1,0 +1,6 @@
+match_IAU_names
+===============
+
+.. currentmodule:: Astronomy.IAU_names
+
+.. autofunction:: match_IAU_names

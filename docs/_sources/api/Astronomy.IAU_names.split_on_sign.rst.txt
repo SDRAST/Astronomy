@@ -1,0 +1,6 @@
+split_on_sign
+=============
+
+.. currentmodule:: Astronomy.IAU_names
+
+.. autofunction:: split_on_sign

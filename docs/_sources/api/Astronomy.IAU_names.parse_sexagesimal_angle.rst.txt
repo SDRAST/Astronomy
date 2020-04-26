@@ -1,0 +1,6 @@
+parse_sexagesimal_angle
+=======================
+
+.. currentmodule:: Astronomy.IAU_names
+
+.. autofunction:: parse_sexagesimal_angle

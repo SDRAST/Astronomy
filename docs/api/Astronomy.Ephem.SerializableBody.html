@@ -1,0 +1,236 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SerializableBody &#8212; Astronomy 0.9 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="EphemException" href="Astronomy.Ephem.EphemException.html" />
+    <link rel="prev" title="Pulsar" href="Astronomy.Ephem.Pulsar.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.Ephem.EphemException.html" title="EphemException"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.Ephem.Pulsar.html" title="Pulsar"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Astronomy.Ephem.Pulsar.html"
+                        title="previous chapter">Pulsar</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Astronomy.Ephem.EphemException.html"
+                        title="next chapter">EphemException</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/Astronomy.Ephem.SerializableBody.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="serializablebody">
+<h1>SerializableBody<a class="headerlink" href="#serializablebody" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Astronomy.Ephem.SerializableBody">
+<em class="property">class </em><code class="descclassname">Astronomy.Ephem.</code><code class="descname">SerializableBody</code><span class="sig-paren">(</span><em>info=None</em>, <em>name=''</em>, <em>observer_info=None</em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.Ephem.SerializableBody" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ephem.FixedBody</span></code></p>
+<p>Simple extension to ephem.FixedBody that allows for conversion to and
+from a Python dictionary.</p>
+<p>Examples:</p>
+<p>Usage is similar to <code class="docutils literal notranslate"><span class="pre">ephem.FixedBody</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span class="n">body</span> <span class="o">=</span> <span class="n">SerializableBody</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;0521-365&quot;</span><span class="p">,</span>
+    <span class="n">info</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;flux&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="s2">&quot;6.76&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;K&quot;</span><span class="p">:</span> <span class="s2">&quot;3.50&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;L&quot;</span><span class="p">:</span> <span class="s2">&quot;16&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;S&quot;</span><span class="p">:</span> <span class="s2">&quot;12.50&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;W&quot;</span><span class="p">:</span> <span class="s2">&quot;3.55&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="s2">&quot;5.19&quot;</span>
+        <span class="p">}</span>
+<span class="p">})</span>
+<span class="n">body</span><span class="o">.</span><span class="n">_ra</span> <span class="o">=</span> <span class="mf">1.4092068106703093</span>
+<span class="n">body</span><span class="o">.</span><span class="n">_dec</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.6363220818328413</span>
+<span class="n">body</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="Astronomy.Ephem.SerializableBody.info">
+<code class="descname">info</code><a class="headerlink" href="#Astronomy.Ephem.SerializableBody.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Additional information about source.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Astronomy.Ephem.SerializableBody.name">
+<code class="descname">name</code><a class="headerlink" href="#Astronomy.Ephem.SerializableBody.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of source</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Astronomy.Ephem.SerializableBody.observer_info">
+<code class="descname">observer_info</code><a class="headerlink" href="#Astronomy.Ephem.SerializableBody.observer_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>dictionary containing information about
+an ephem.Observer object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p class="rubric">Methods Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#Astronomy.Ephem.SerializableBody.from_dict" title="Astronomy.Ephem.SerializableBody.from_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_dict</span></code></a>(src_dict)</td>
+<td>Class method for recreating SerializableBody objects from a dictionary.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#Astronomy.Ephem.SerializableBody.get_observer" title="Astronomy.Ephem.SerializableBody.get_observer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_observer</span></code></a>()</td>
+<td>Return an ephem.Observer object from the body’s observer_info dictionary.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#Astronomy.Ephem.SerializableBody.register_with_Pyro4" title="Astronomy.Ephem.SerializableBody.register_with_Pyro4"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_with_Pyro4</span></code></a>()</td>
+<td>Make sure that we can serialize and deserialize this class when sending SerializableBody between Pyro4 clients and servers.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#Astronomy.Ephem.SerializableBody.to_dict" title="Astronomy.Ephem.SerializableBody.to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dict</span></code></a>()</td>
+<td>Dump object to a dictionary.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Documentation</p>
+<dl class="classmethod">
+<dt id="Astronomy.Ephem.SerializableBody.from_dict">
+<em class="property">classmethod </em><code class="descname">from_dict</code><span class="sig-paren">(</span><em>src_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.Ephem.SerializableBody.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class method for recreating SerializableBody objects from a dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>src_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – dictionary returned from <code class="docutils literal notranslate"><span class="pre">to_dict</span></code> instance method.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">SerializableBody</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Astronomy.Ephem.SerializableBody.get_observer">
+<code class="descname">get_observer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.Ephem.SerializableBody.get_observer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an ephem.Observer object from the body’s observer_info dictionary.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="Astronomy.Ephem.SerializableBody.register_with_Pyro4">
+<em class="property">classmethod </em><code class="descname">register_with_Pyro4</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.Ephem.SerializableBody.register_with_Pyro4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make sure that we can serialize and deserialize this class when
+sending SerializableBody between Pyro4 clients and servers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Astronomy.Ephem.SerializableBody.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.Ephem.SerializableBody.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump object to a dictionary.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.Ephem.EphemException.html" title="EphemException"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.Ephem.Pulsar.html" title="Pulsar"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Tom Kuiper.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.0.
+    </div>
+  </body>
+</html>
