@@ -551,6 +551,6 @@ def calc_solar(jd):
 if __name__ == "__main__":
   DOY = day_of_year(2012,5,21)
   jd = julian_date(2012,DOY)+(1./24)
-  print calc_solar(jd)
-  print "Bogan's calculator gives:"
-  print "2123, 57.888144736760296, -1.93752, -19.0764"
+  print(calc_solar(jd))
+  print("Bogan's calculator gives:")
+  print("2123, 57.888144736760296, -1.93752, -19.0764")

@@ -151,12 +151,12 @@ def get_geodetic_coords(dss=0,observatory=None):
     >>> print long,lat
     116.794009 35.2477189
 
-  Still to Do
-  -----------
+  Todo
+  ----
   Make both functions more forgiving in the matter of observatory names
 
-  Reference
-  ---------
+  References
+  ----------
   https://deepspace.jpl.nasa.gov/dsndocs/810-005/301/301K.pdf Tables 5 and 6
 
   @param dss : int
@@ -215,8 +215,8 @@ def get_cartesian_coordinates(station=None):
     >>> print math.sqrt(math.pow(x2-x1,2) + math.pow(y2-y1,2)+math.pow(z2-z1,2))
     12621.4825356
 
-  Reference
-  ---------
+  References
+  ----------
   https://deepspace.jpl.nasa.gov/dsndocs/810-005/301/301K.pdf Table 2
   
   """

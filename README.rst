@@ -3,6 +3,6 @@ Astronomy
 
 Classes and functions for astronomical calculations
 
-Project `Link website <https://github.jpl.nasa.gov/pages/RadioAstronomy/Astronomy/>`_.
+Project `Link website <https://github.com/SDRAST/Astronomy/>`_.
 
-Source code `Link documentation <https://github.jpl.nasa.gov/pages/RadioAstronomy/Astronomy/>`_.
+Source code `Link documentation <https://sdrast.github.io/Astronomy/>`_.

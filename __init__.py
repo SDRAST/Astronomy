@@ -160,11 +160,11 @@ def B_epoch_to_J(ra50, dec50, format=None):
   the coordinate conversion routine.  The need often comes up when an
   operator asks for coordinates in J2000 or decimal format.
 
-  Tests and validations
-  =====================  
-  Basic
-  -----
-  Example::
+  Examples
+  ========  
+  Example
+  -------
+  Basic::
   
    In [1]: import Astronomy as A
    In [2]: A.B_epoch_to_J('''00h02m29.056400s''',
@@ -182,9 +182,9 @@ def B_epoch_to_J(ra50, dec50, format=None):
     J2000 A 00h05m04.363531s 54d28'24.926230"
     B1950 A 00h02m29.056400s 54d11'43.187000"
   
-  Crossing the midnight boundary
-  ------------------------------
-  Example::
+  Example
+  -------
+  Crossing the midnight boundary::
   
     In [8]: A.B_epoch_to_J('''23h58m34.865400s''',
                            '''18d57'51.753000"''')
@@ -195,9 +195,9 @@ def B_epoch_to_J(ra50, dec50, format=None):
     J2000 A 00h01m08.621563s 19d14'33.801860"
     B1950 A 23h58m34.865400s 18d57'51.753000"
   
-  Negative declination
-  --------------------
-  Example::
+  Example
+  -------
+  Negative declination::
   
     In [10]: A.B_epoch_to_J('''00h00m48.4200s''',
                             '''-17d43'54.000"''', 'formatted')
@@ -470,9 +470,7 @@ def HaDec_to_AzEl(HourAngle, Declination, Latitude):
   
   Notes
   =====
-  Sidereal Time
-  -------------
-  Verified with http://tycho.usno.navy.mil/sidereal.html
+  Sidereal Time verified with http://tycho.usno.navy.mil/sidereal.html
 
   @param HourAngle : float
     decimal hours
@@ -539,9 +537,9 @@ def AzEl_to_RaDec(azimuth,elevation,latitude,longitude,date_time):
 
   @return: (RA (hrs), dec (degs))
   
-  
+  Notes
+  =====
   Horizon coordinates to celestial
-  --------------------------------
   
   HA and decl. define a point on the sky with respect to the local meridian,
   which corresponds to a RA equal to the local sidereal time.  It doesn't

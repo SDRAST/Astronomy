@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>J_epoch_to_B &#8212; Astronomy 0.9 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="YMD_to_MJD" href="Astronomy.YMD_to_MJD.html" />
+    <link rel="prev" title="J2000_to_apparent" href="Astronomy.J2000_to_apparent.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.YMD_to_MJD.html" title="YMD_to_MJD"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.J2000_to_apparent.html" title="J2000_to_apparent"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Astronomy.J2000_to_apparent.html"
+                        title="previous chapter">J2000_to_apparent</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Astronomy.YMD_to_MJD.html"
+                        title="next chapter">YMD_to_MJD</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/Astronomy.J_epoch_to_B.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="j-epoch-to-b">
+<h1>J_epoch_to_B<a class="headerlink" href="#j-epoch-to-b" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="Astronomy.J_epoch_to_B">
+<code class="sig-prename descclassname">Astronomy.</code><code class="sig-name descname">J_epoch_to_B</code><span class="sig-paren">(</span><em class="sig-param">ra2000</em>, <em class="sig-param">dec2000</em>, <em class="sig-param">format</em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.J_epoch_to_B" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert J2000 coordinates to B1950.</p>
+<p>See B_epoch_to_J for documentation</p>
+<p class="rubric">Notes</p>
+<p>A test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">Astronomy</span> <span class="k">as</span> <span class="nn">A</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">A</span><span class="o">.</span><span class="n">B_epoch_to_J</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;00h02m29.056400s&#39;&#39;&#39;</span><span class="p">,</span>
+                       <span class="sd">&#39;&#39;&#39;54d11&#39;43.187000&quot;&#39;&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;formatted&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="p">[</span><span class="sa">u</span><span class="s1">&#39;00h05m04.359s&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;+54d28m25.056s&#39;</span><span class="p">]</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">A</span><span class="o">.</span><span class="n">J_epoch_to_B</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;00h05m04.359s&#39;&#39;&#39;</span><span class="p">,</span>
+                       <span class="sd">&#39;&#39;&#39;+54d28&#39;25.056&quot;&#39;&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;formatted&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="p">[</span><span class="sa">u</span><span class="s1">&#39;00h02m29.0564s&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;+54d11m43.1869s&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Seems to be good to about an arcsecond.</p>
+<p>:param ra2000 : string</p>
+<p>:param dec2000 : string</p>
+<p>:param format : string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>tuple of strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.YMD_to_MJD.html" title="YMD_to_MJD"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.J2000_to_apparent.html" title="J2000_to_apparent"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Tom Kuiper.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

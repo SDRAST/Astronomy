@@ -34,6 +34,7 @@ release = u'0.9'
 # If your documentation needs a minimal Sphinx version, state it here.
 #
 # needs_sphinx = '1.0'
+autosummary_generate = True  # Make _autosummary files and include them
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -43,6 +44,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx_epytext',
     'sphinx_automodapi.automodapi',
+    'sphinx_automodapi.smart_resolver',
     'sphinx.ext.napoleon',
     'sphinx.ext.todo',
     'sphinx.ext.githubpages',
