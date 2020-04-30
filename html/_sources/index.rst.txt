@@ -12,6 +12,11 @@ Radio Astronomy Software Tools
 .. automodapi:: Astronomy.DSN_coordinates
 .. automodapi:: Astronomy.formats
 .. automodapi:: Astronomy.northpolar
+.. automodapi:: Astronomy.redshift
+.. automodapi:: Astronomy.ATCA_caldb
+.. automodapi:: Astronomy.TAI
+.. automodapi:: Astronomy.orbits3D
+.. automodapi:: Astronomy.SIMBAD
 
 .. toctree::
    :maxdepth: 2

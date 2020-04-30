@@ -16,7 +16,7 @@ def init_table():
   """
   """
   global data
-  filename = "/usr/local/lib/python2.7/DSN-Sci-packages/Astronomy/TAI-UTC.dat"
+  filename = "/usr/local/RATools/Astronomy/TAI-UTC.dat"
   deltaTfile = open(filename,'r')
   lines = deltaTfile.readlines()
   deltaTfile.close()

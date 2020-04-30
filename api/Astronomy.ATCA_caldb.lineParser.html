@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>lineParser &#8212; Astronomy 0.9 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="dTA" href="Astronomy.TAI.dTA.html" />
+    <link rel="prev" title="query_ATCA_caldb" href="Astronomy.ATCA_caldb.query_ATCA_caldb.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.TAI.dTA.html" title="dTA"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.ATCA_caldb.query_ATCA_caldb.html" title="query_ATCA_caldb"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Astronomy.ATCA_caldb.query_ATCA_caldb.html"
+                        title="previous chapter">query_ATCA_caldb</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Astronomy.TAI.dTA.html"
+                        title="next chapter">dTA</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/Astronomy.ATCA_caldb.lineParser.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="lineparser">
+<h1>lineParser<a class="headerlink" href="#lineparser" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Astronomy.ATCA_caldb.lineParser">
+<em class="property">class </em><code class="sig-prename descclassname">Astronomy.ATCA_caldb.</code><code class="sig-name descname">lineParser</code><a class="headerlink" href="#Astronomy.ATCA_caldb.lineParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/html.parser.html#html.parser.HTMLParser" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">html.parser.HTMLParser</span></code></a></p>
+<p class="rubric">Methods Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#Astronomy.ATCA_caldb.lineParser.handle_data" title="Astronomy.ATCA_caldb.lineParser.handle_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handle_data</span></code></a>(data)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#Astronomy.ATCA_caldb.lineParser.handle_endtag" title="Astronomy.ATCA_caldb.lineParser.handle_endtag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handle_endtag</span></code></a>(tag)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#Astronomy.ATCA_caldb.lineParser.handle_starttag" title="Astronomy.ATCA_caldb.lineParser.handle_starttag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handle_starttag</span></code></a>(tag, attrs)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Documentation</p>
+<dl class="method">
+<dt id="Astronomy.ATCA_caldb.lineParser.handle_data">
+<code class="sig-name descname">handle_data</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.ATCA_caldb.lineParser.handle_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Astronomy.ATCA_caldb.lineParser.handle_endtag">
+<code class="sig-name descname">handle_endtag</code><span class="sig-paren">(</span><em class="sig-param">tag</em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.ATCA_caldb.lineParser.handle_endtag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Astronomy.ATCA_caldb.lineParser.handle_starttag">
+<code class="sig-name descname">handle_starttag</code><span class="sig-paren">(</span><em class="sig-param">tag</em>, <em class="sig-param">attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.ATCA_caldb.lineParser.handle_starttag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.TAI.dTA.html" title="dTA"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.ATCA_caldb.query_ATCA_caldb.html" title="query_ATCA_caldb"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Tom Kuiper.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

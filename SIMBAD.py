@@ -7,7 +7,7 @@ This is unnecessary if astropy is used. See Automation/apps/find_sources.py for
 an example.
 """
 
-from urllib2 import urlopen
+from urllib.request import urlopen
 import re
 
 def build_SIMBAD_query(source):
@@ -45,7 +45,7 @@ def parse_SIMBAD_response(response,
         column = c.strip()
         for cat in catalogs:
           if cat == column.split()[0]:
-            if not found.has_key(cat):
+            if cat not in found:
               found[cat] = []
             found [cat].append(column[len(cat):])
     if line[:8] == "Bibcodes":
@@ -54,10 +54,10 @@ def parse_SIMBAD_response(response,
   return found, coord_str
 
 if __name__ == "__main__":
-  source = raw_input('Enter source name:')
+  source = input('Enter source name:')
   url = build_SIMBAD_query(source)
   response_obj = query_SIMBAD(url)
   found, coords = parse_SIMBAD_response(response_obj)
-  print found
-  print coords
+  print(found)
+  print(coords)
 

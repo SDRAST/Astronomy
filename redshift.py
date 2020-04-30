@@ -4,12 +4,14 @@ module Astronomy.redshift - functions for computing to/from redshift
 
 The redshift is the fractional amount by which a wavelength is shifted
 longward (to the red) due to the recessional velocity of the emitter::
+
       lambda - lambda_0
   z = -----------------
           lambda_0
 
 For large velocities special relativity should be taken into account
 when computing the redshift from recessional velocity and vice-versa::
+
       ( c + V_r ) 1/2
   z = ( ------- )     - 1
       ( c - V_r )
@@ -23,35 +25,32 @@ when computing the redshift from recessional velocity and vice-versa::
 The radial velocity which gives rise to redshift can be calculated
 according to various conventions.  The most convenient is the radio
 astronomy convention which computes redshift as::
+
       f_0 - f
   z = -------
         f_0
         
 The velocity shift in the radio convention is computed as::
+
                df
   dV      = -c ---
     radio      f_0
   
 The optical astronomy convention leads to::
+
                  df  (f_0)2 
   dV        = -c --- (---)
     optical      f_0 ( f )
   
 
-Reference
-=========
+References
+==========
 
-Redshift
---------
-Lang, Astrophys. Formulae, eqns. 2-227 -- 2-229
+Redshift: Lang, Astrophys. Formulae, eqns. 2-227 -- 2-229
 
-Cosmic Time Scale
------------------
-1/Ho; Lang, Astrophys. Formulae, eqn. 5-82
+Cosmic Time Scale: Ho; Lang, Astrophys. Formulae, eqn. 5-82
 
-Doppler Shift
--------------
-astropy documentation for Spectral Doppler Equivalencies
+Doppler Shift: astropy documentation for Spectral Doppler Equivalencies
 """
 import astropy.units as u
 import logging

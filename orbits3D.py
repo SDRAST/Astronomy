@@ -62,7 +62,7 @@ def make_axis(ax, maxval, direction, npts):
   elif direction.lower() == 'z':
     orbit_vector(ax,maxval,0,90,90,npts,"k-")
   else:
-    print "Direction",direction,"is invalid"
+    print("Direction",direction,"is invalid")
     return False
   return True
 

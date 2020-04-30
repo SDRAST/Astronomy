@@ -8,11 +8,11 @@ http://stackoverflow.com/questions/28974634/urllib2-url-open-delay-between-openi
 
 That did not work.
 """
-import urllib2
-from urllib2 import urlopen
-import cookielib
+import urllib.request, urllib.error, urllib.parse
+from urllib.request import urlopen
+import http.cookiejar
 import re
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 from time import sleep
 
 
@@ -53,15 +53,15 @@ def parse_ATCA_caldb_response(response):
   for line in html_data:
     # less work for the parser to process only relevant lines
     if re.search('<A',line):
-      print line
+      print(line)
       parser.feed(line)
   return parser.found
 
 if __name__ == "__main__":
   url = build_ATCA_caldb_query()
-  cj = cookielib.CookieJar()
-  opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
-  req = urllib2.Request(url)
+  cj = http.cookiejar.CookieJar()
+  opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
+  req = urllib.request.Request(url)
   req.add_header('User-Agent','Mozilla/5.0')
   resp = opener.open(req)
   sleep(10)
