@@ -1,12 +1,10 @@
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Index &#8212; Astronomy 0.9 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +13,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
@@ -34,13 +32,11 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -62,7 +58,6 @@
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
- | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
@@ -90,20 +85,18 @@
 </li>
       <li><a href="index.html#module-Astronomy">Astronomy (module)</a>
 </li>
+      <li><a href="index.html#module-Astronomy.ATCA_caldb">Astronomy.ATCA_caldb (module)</a>
+</li>
       <li><a href="index.html#module-Astronomy.coordconv">Astronomy.coordconv (module)</a>
 </li>
       <li><a href="index.html#module-Astronomy.DSN_coordinates">Astronomy.DSN_coordinates (module)</a>
 </li>
-      <li><a href="index.html#module-Astronomy.Ephem">Astronomy.Ephem (module)</a>
-</li>
       <li><a href="index.html#module-Astronomy.formats">Astronomy.formats (module)</a>
 </li>
-      <li><a href="index.html#module-Astronomy.IAU_names">Astronomy.IAU_names (module)</a>
+      <li><a href="index.html#module-Astronomy.northpolar">Astronomy.northpolar (module)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#module-Astronomy.northpolar">Astronomy.northpolar (module)</a>
-</li>
       <li><a href="index.html#module-Astronomy.orbits3D">Astronomy.orbits3D (module)</a>
 </li>
       <li><a href="index.html#module-Astronomy.redshift">Astronomy.redshift (module)</a>
@@ -111,6 +104,8 @@
       <li><a href="index.html#module-Astronomy.SIMBAD">Astronomy.SIMBAD (module)</a>
 </li>
       <li><a href="index.html#module-Astronomy.solar">Astronomy.solar (module)</a>
+</li>
+      <li><a href="index.html#module-Astronomy.TAI">Astronomy.TAI (module)</a>
 </li>
       <li><a href="api/Astronomy.solar.axis_tilt_projection.html#Astronomy.solar.axis_tilt_projection">axis_tilt_projection() (in module Astronomy.solar)</a>
 </li>
@@ -128,6 +123,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/Astronomy.ATCA_caldb.build_ATCA_caldb_query.html#Astronomy.ATCA_caldb.build_ATCA_caldb_query">build_ATCA_caldb_query() (in module Astronomy.ATCA_caldb)</a>
+</li>
       <li><a href="api/Astronomy.SIMBAD.build_SIMBAD_query.html#Astronomy.SIMBAD.build_SIMBAD_query">build_SIMBAD_query() (in module Astronomy.SIMBAD)</a>
 </li>
   </ul></td>
@@ -140,12 +137,10 @@
 </li>
       <li><a href="api/Astronomy.solar.calcJD.html#Astronomy.solar.calcJD">calcJD() (in module Astronomy.solar)</a>
 </li>
-      <li><a href="api/Astronomy.Ephem.calibrator.html#Astronomy.Ephem.calibrator">calibrator() (in module Astronomy.Ephem)</a>
+      <li><a href="api/Astronomy.solar.Carrington_Number.html#Astronomy.solar.Carrington_Number">Carrington_Number() (in module Astronomy.solar)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/Astronomy.solar.Carrington_Number.html#Astronomy.solar.Carrington_Number">Carrington_Number() (in module Astronomy.solar)</a>
-</li>
       <li><a href="api/Astronomy.coordconv.html#Astronomy.coordconv">coordconv() (in module Astronomy)</a>
 
       <ul>
@@ -170,10 +165,10 @@
 </li>
       <li><a href="api/Astronomy.redshift.dop_fac.html#Astronomy.redshift.dop_fac">dop_fac() (in module Astronomy.redshift)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Astronomy.redshift.doppler_optical.html#Astronomy.redshift.doppler_optical">doppler_optical() (in module Astronomy.redshift)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Astronomy.redshift.doppler_radio.html#Astronomy.redshift.doppler_radio">doppler_radio() (in module Astronomy.redshift)</a>
 </li>
       <li><a href="api/Astronomy.redshift.doppler_relat.html#Astronomy.redshift.doppler_relat">doppler_relat() (in module Astronomy.redshift)</a>
@@ -183,6 +178,8 @@
       <li><a href="api/Astronomy.DSN_coordinates.DSS.html#Astronomy.DSN_coordinates.DSS">DSS (class in Astronomy.DSN_coordinates)</a>
 </li>
       <li><a href="api/Astronomy.DSN_coordinates.DSSLocation.html#Astronomy.DSN_coordinates.DSSLocation">DSSLocation() (in module Astronomy.DSN_coordinates)</a>
+</li>
+      <li><a href="api/Astronomy.TAI.dTA.html#Astronomy.TAI.dTA">dTA() (in module Astronomy.TAI)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -198,21 +195,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Astronomy.ecliptic_to_J2000.html#Astronomy.ecliptic_to_J2000">ecliptic_to_J2000() (in module Astronomy)</a>
 </li>
-      <li><a href="api/Astronomy.Ephem.EphemException.html#Astronomy.Ephem.EphemException">EphemException</a>
-</li>
       <li><a href="api/Astronomy.solar.equation_of_the_center.html#Astronomy.solar.equation_of_the_center">equation_of_the_center() (in module Astronomy.solar)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="F">F</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/Astronomy.IAU_names.find_IAU_name_match.html#Astronomy.IAU_names.find_IAU_name_match">find_IAU_name_match() (in module Astronomy.IAU_names)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/Astronomy.Ephem.SerializableBody.html#Astronomy.Ephem.SerializableBody.from_dict">from_dict() (Astronomy.Ephem.SerializableBody class method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -238,8 +221,6 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/Astronomy.Ephem.SerializableBody.html#Astronomy.Ephem.SerializableBody.get_observer">get_observer() (Astronomy.Ephem.SerializableBody method)</a>
-</li>
       <li><a href="api/Astronomy.get_sky_coords.html#Astronomy.get_sky_coords">get_sky_coords() (in module Astronomy)</a>
 </li>
       <li><a href="api/Astronomy.great_circle_angle.html#Astronomy.great_circle_angle">great_circle_angle() (in module Astronomy)</a>
@@ -258,8 +239,14 @@
 </li>
       <li><a href="api/Astronomy.HaDec_to_AzEl.html#Astronomy.HaDec_to_AzEl">HaDec_to_AzEl() (in module Astronomy)</a>
 </li>
+      <li><a href="api/Astronomy.ATCA_caldb.lineParser.html#Astronomy.ATCA_caldb.lineParser.handle_data">handle_data() (Astronomy.ATCA_caldb.lineParser method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/Astronomy.ATCA_caldb.lineParser.html#Astronomy.ATCA_caldb.lineParser.handle_endtag">handle_endtag() (Astronomy.ATCA_caldb.lineParser method)</a>
+</li>
+      <li><a href="api/Astronomy.ATCA_caldb.lineParser.html#Astronomy.ATCA_caldb.lineParser.handle_starttag">handle_starttag() (Astronomy.ATCA_caldb.lineParser method)</a>
+</li>
       <li><a href="api/Astronomy.formats.hms_delimited_angle_to_rads.html#Astronomy.formats.hms_delimited_angle_to_rads">hms_delimited_angle_to_rads() (in module Astronomy.formats)</a>
 </li>
       <li><a href="api/Astronomy.horizon_range.html#Astronomy.horizon_range">horizon_range() (in module Astronomy)</a>
@@ -270,11 +257,7 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/Astronomy.Ephem.SerializableBody.html#Astronomy.Ephem.SerializableBody.info">info (Astronomy.Ephem.SerializableBody attribute)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/Astronomy.Ephem.Quasar.html#Astronomy.Ephem.Quasar.interpolate_flux">interpolate_flux() (Astronomy.Ephem.Quasar method)</a>
+      <li><a href="api/Astronomy.TAI.init_table.html#Astronomy.TAI.init_table">init_table() (in module Astronomy.TAI)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -298,6 +281,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Astronomy.solar.lat_long.html#Astronomy.solar.lat_long">lat_long() (in module Astronomy.solar)</a>
 </li>
+      <li><a href="api/Astronomy.ATCA_caldb.lineParser.html#Astronomy.ATCA_caldb.lineParser">lineParser (class in Astronomy.ATCA_caldb)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Astronomy.solar.longitude_nutation.html#Astronomy.solar.longitude_nutation">longitude_nutation() (in module Astronomy.solar)</a>
@@ -312,13 +297,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Astronomy.orbits3D.make_arc.html#Astronomy.orbits3D.make_arc">make_arc() (in module Astronomy.orbits3D)</a>
 </li>
-      <li><a href="api/Astronomy.orbits3D.make_axis.html#Astronomy.orbits3D.make_axis">make_axis() (in module Astronomy.orbits3D)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/Astronomy.orbits3D.make_orbit.html#Astronomy.orbits3D.make_orbit">make_orbit() (in module Astronomy.orbits3D)</a>
+      <li><a href="api/Astronomy.orbits3D.make_axis.html#Astronomy.orbits3D.make_axis">make_axis() (in module Astronomy.orbits3D)</a>
 </li>
-      <li><a href="api/Astronomy.IAU_names.match_IAU_names.html#Astronomy.IAU_names.match_IAU_names">match_IAU_names() (in module Astronomy.IAU_names)</a>
+      <li><a href="api/Astronomy.orbits3D.make_orbit.html#Astronomy.orbits3D.make_orbit">make_orbit() (in module Astronomy.orbits3D)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -329,8 +312,6 @@
       <li><a href="api/Astronomy.DSN_coordinates.DSS.html#Astronomy.DSN_coordinates.DSS.name">name (Astronomy.DSN_coordinates.DSS attribute)</a>
 
       <ul>
-        <li><a href="api/Astronomy.Ephem.SerializableBody.html#Astronomy.Ephem.SerializableBody.name">(Astronomy.Ephem.SerializableBody attribute)</a>
-</li>
         <li><a href="api/Astronomy.northpolar.NorthPolarAxes.html#Astronomy.northpolar.NorthPolarAxes.name">(Astronomy.northpolar.NorthPolarAxes attribute)</a>
 </li>
       </ul></li>
@@ -346,8 +327,6 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Astronomy.object_az_el.html#Astronomy.object_az_el">object_az_el() (in module Astronomy)</a>
 </li>
-      <li><a href="api/Astronomy.Ephem.SerializableBody.html#Astronomy.Ephem.SerializableBody.observer_info">observer_info (Astronomy.Ephem.SerializableBody attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Astronomy.orbits3D.orbit_text.html#Astronomy.orbits3D.orbit_text">orbit_text() (in module Astronomy.orbits3D)</a>
@@ -360,23 +339,17 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/Astronomy.ATCA_caldb.parse_ATCA_caldb_response.html#Astronomy.ATCA_caldb.parse_ATCA_caldb_response">parse_ATCA_caldb_response() (in module Astronomy.ATCA_caldb)</a>
+</li>
       <li><a href="api/Astronomy.formats.parse_colon_delimited_angles.html#Astronomy.formats.parse_colon_delimited_angles">parse_colon_delimited_angles() (in module Astronomy.formats)</a>
 </li>
-      <li><a href="api/Astronomy.IAU_names.parse_decimal_angle.html#Astronomy.IAU_names.parse_decimal_angle">parse_decimal_angle() (in module Astronomy.IAU_names)</a>
-</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Astronomy.formats.parse_dms_delimited_angle.html#Astronomy.formats.parse_dms_delimited_angle">parse_dms_delimited_angle() (in module Astronomy.formats)</a>
 </li>
       <li><a href="api/Astronomy.formats.parse_hms_delimited_angle.html#Astronomy.formats.parse_hms_delimited_angle">parse_hms_delimited_angle() (in module Astronomy.formats)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/Astronomy.IAU_names.parse_IAU_name.html#Astronomy.IAU_names.parse_IAU_name">parse_IAU_name() (in module Astronomy.IAU_names)</a>
-</li>
-      <li><a href="api/Astronomy.IAU_names.parse_sexagesimal_angle.html#Astronomy.IAU_names.parse_sexagesimal_angle">parse_sexagesimal_angle() (in module Astronomy.IAU_names)</a>
-</li>
       <li><a href="api/Astronomy.SIMBAD.parse_SIMBAD_response.html#Astronomy.SIMBAD.parse_SIMBAD_response">parse_SIMBAD_response() (in module Astronomy.SIMBAD)</a>
-</li>
-      <li><a href="api/Astronomy.Ephem.Pulsar.html#Astronomy.Ephem.Pulsar">Pulsar (class in Astronomy.Ephem)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -384,7 +357,7 @@
 <h2 id="Q">Q</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/Astronomy.Ephem.Quasar.html#Astronomy.Ephem.Quasar">Quasar (class in Astronomy.Ephem)</a>
+      <li><a href="api/Astronomy.ATCA_caldb.query_ATCA_caldb.html#Astronomy.ATCA_caldb.query_ATCA_caldb">query_ATCA_caldb() (in module Astronomy.ATCA_caldb)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -406,8 +379,6 @@
 </li>
       <li><a href="api/Astronomy.refresh_ierstab.html#Astronomy.refresh_ierstab">refresh_ierstab() (in module Astronomy)</a>
 </li>
-      <li><a href="api/Astronomy.Ephem.SerializableBody.html#Astronomy.Ephem.SerializableBody.register_with_Pyro4">register_with_Pyro4() (Astronomy.Ephem.SerializableBody class method)</a>
-</li>
   </ul></td>
 </tr></table>
 
@@ -416,20 +387,16 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Astronomy.solar.semidiameter.html#Astronomy.solar.semidiameter">semidiameter() (in module Astronomy.solar)</a>
 </li>
-      <li><a href="api/Astronomy.Ephem.SerializableBody.html#Astronomy.Ephem.SerializableBody">SerializableBody (class in Astronomy.Ephem)</a>
-</li>
       <li><a href="api/Astronomy.orbits3D.show_celestial.html#Astronomy.orbits3D.show_celestial">show_celestial() (in module Astronomy.orbits3D)</a>
 </li>
       <li><a href="api/Astronomy.orbits3D.show_heliographic.html#Astronomy.orbits3D.show_heliographic">show_heliographic() (in module Astronomy.orbits3D)</a>
 </li>
       <li><a href="api/Astronomy.source_start_stop.html#Astronomy.source_start_stop">source_start_stop() (in module Astronomy)</a>
 </li>
-      <li><a href="api/Astronomy.IAU_names.split_on_sign.html#Astronomy.IAU_names.split_on_sign">split_on_sign() (in module Astronomy.IAU_names)</a>
+      <li><a href="api/Astronomy.solar.Sun_central_latitude.html#Astronomy.solar.Sun_central_latitude">Sun_central_latitude() (in module Astronomy.solar)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/Astronomy.solar.Sun_central_latitude.html#Astronomy.solar.Sun_central_latitude">Sun_central_latitude() (in module Astronomy.solar)</a>
-</li>
       <li><a href="api/Astronomy.solar.Sun_central_longitude.html#Astronomy.solar.Sun_central_longitude">Sun_central_longitude() (in module Astronomy.solar)</a>
 </li>
       <li><a href="api/Astronomy.solar.sun_coords_long_ascen_node.html#Astronomy.solar.sun_coords_long_ascen_node">sun_coords_long_ascen_node() (in module Astronomy.solar)</a>
@@ -448,11 +415,9 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Astronomy.time_aliases.html#Astronomy.time_aliases">time_aliases() (in module Astronomy)</a>
 </li>
-      <li><a href="api/Astronomy.solar.time_series.html#Astronomy.solar.time_series">time_series() (in module Astronomy.solar)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/Astronomy.Ephem.SerializableBody.html#Astronomy.Ephem.SerializableBody.to_dict">to_dict() (Astronomy.Ephem.SerializableBody method)</a>
+      <li><a href="api/Astronomy.solar.time_series.html#Astronomy.solar.time_series">time_series() (in module Astronomy.solar)</a>
 </li>
       <li><a href="api/Astronomy.solar.truncate.html#Astronomy.solar.truncate">truncate() (in module Astronomy.solar)</a>
 </li>
@@ -528,7 +493,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Tom Kuiper.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
     </div>
   </body>
 </html>

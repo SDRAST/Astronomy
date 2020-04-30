@@ -7,26 +7,15 @@ Radio Astronomy Software Tools
 ==============================
 
 .. automodapi:: Astronomy
-   :allowed-package-names: DatesTimes
-   
-.. automodapi:: Astronomy.Ephem
-
-.. automodapi:: Astronomy.redshift
-
 .. automodapi:: Astronomy.solar
-
-.. automodapi:: Astronomy.DSN_coordinates
-
 .. automodapi:: Astronomy.coordconv
-
-.. automodapi:: Astronomy.orbits3D
-
+.. automodapi:: Astronomy.DSN_coordinates
 .. automodapi:: Astronomy.formats
-
-.. automodapi:: Astronomy.IAU_names
-
 .. automodapi:: Astronomy.northpolar
-
+.. automodapi:: Astronomy.redshift
+.. automodapi:: Astronomy.ATCA_caldb
+.. automodapi:: Astronomy.TAI
+.. automodapi:: Astronomy.orbits3D
 .. automodapi:: Astronomy.SIMBAD
 
 .. toctree::

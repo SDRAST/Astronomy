@@ -1,11 +1,9 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>make_arc &#8212; Astronomy 0.9 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,10 +12,11 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="make_axis" href="Astronomy.orbits3D.make_axis.html" /> 
+    <link rel="next" title="make_axis" href="Astronomy.orbits3D.make_axis.html" />
+    <link rel="prev" title="init_table" href="Astronomy.TAI.init_table.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -31,11 +30,17 @@
         <li class="right" >
           <a href="Astronomy.orbits3D.make_axis.html" title="make_axis"
              accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.TAI.init_table.html" title="init_table"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Astronomy.TAI.init_table.html"
+                        title="previous chapter">init_table</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="Astronomy.orbits3D.make_axis.html"
                         title="next chapter">make_axis</a></p>
@@ -47,13 +52,11 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -70,7 +73,7 @@
 <h1>make_arc<a class="headerlink" href="#make-arc" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="Astronomy.orbits3D.make_arc">
-<code class="descclassname">Astronomy.orbits3D.</code><code class="descname">make_arc</code><span class="sig-paren">(</span><em>ax</em>, <em>radius</em>, <em>long_asc_node</em>, <em>inclination</em>, <em>start</em>, <em>end</em>, <em>npts</em>, <em>line_format</em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.orbits3D.make_arc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">Astronomy.orbits3D.</code><code class="sig-name descname">make_arc</code><span class="sig-paren">(</span><em class="sig-param">ax</em>, <em class="sig-param">radius</em>, <em class="sig-param">long_asc_node</em>, <em class="sig-param">inclination</em>, <em class="sig-param">start</em>, <em class="sig-param">end</em>, <em class="sig-param">npts</em>, <em class="sig-param">line_format</em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.orbits3D.make_arc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw an arc centered on the origin</p>
 <p>The arc lies on a plane which intersects the xy plane at the longitude of
 the ascending node with the specified inclination.  The start and end
@@ -111,12 +114,15 @@ points are angles measured along the inclined plane from this intersection.</p>
         <li class="right" >
           <a href="Astronomy.orbits3D.make_axis.html" title="make_axis"
              >next</a> |</li>
+        <li class="right" >
+          <a href="Astronomy.TAI.init_table.html" title="init_table"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Tom Kuiper.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
     </div>
   </body>
 </html>

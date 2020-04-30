@@ -1,11 +1,9 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>HaDec_to_AzEl &#8212; Astronomy 0.9 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +12,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="J2000_to_apparent" href="Astronomy.J2000_to_apparent.html" />
@@ -54,13 +52,11 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -77,27 +73,24 @@
 <h1>HaDec_to_AzEl<a class="headerlink" href="#hadec-to-azel" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="Astronomy.HaDec_to_AzEl">
-<code class="descclassname">Astronomy.</code><code class="descname">HaDec_to_AzEl</code><span class="sig-paren">(</span><em>HourAngle</em>, <em>Declination</em>, <em>Latitude</em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.HaDec_to_AzEl" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">Astronomy.</code><code class="sig-name descname">HaDec_to_AzEl</code><span class="sig-paren">(</span><em class="sig-param">HourAngle</em>, <em class="sig-param">Declination</em>, <em class="sig-param">Latitude</em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.HaDec_to_AzEl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Celestial to horizon coordinates</p>
 <p class="rubric">Notes</p>
-<p>Verified with <a class="reference external" href="http://tycho.usno.navy.mil/sidereal.html">http://tycho.usno.navy.mil/sidereal.html</a></p>
-<dl class="docutils">
-<dt>:param HourAngle <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>decimal hours</dd>
-<dt>:param Declination <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>decimal degrees</dd>
-<dt>:param Latitude <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>decimal degrees</dd>
+<p>Sidereal Time verified with <a class="reference external" href="http://tycho.usno.navy.mil/sidereal.html">http://tycho.usno.navy.mil/sidereal.html</a></p>
+<dl class="simple">
+<dt>:param HourAngle<span class="classifier">float</span></dt><dd><p>decimal hours</p>
+</dd>
+<dt>:param Declination<span class="classifier">float</span></dt><dd><p>decimal degrees</p>
+</dd>
+<dt>:param Latitude<span class="classifier">float</span></dt><dd><p>decimal degrees</p>
+</dd>
 </dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">tuple
-Azimuth and elevation in degrees.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>tuple
+Azimuth and elevation in degrees.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -128,7 +121,7 @@ Azimuth and elevation in degrees.</td>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Tom Kuiper.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
     </div>
   </body>
 </html>

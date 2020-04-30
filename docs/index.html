@@ -1,11 +1,9 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Radio Astronomy Software Tools &#8212; Astronomy 0.9 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +12,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="AzEl_to_HaDec" href="api/Astronomy.AzEl_to_HaDec.html" /> 
@@ -54,25 +52,6 @@
 <li><a class="reference internal" href="#functions">Functions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-Astronomy.Ephem">Astronomy.Ephem Package</a><ul>
-<li><a class="reference internal" href="#module-ephem">module ephem</a></li>
-<li><a class="reference internal" href="#about-celestial-coordinates">About Celestial Coordinates</a></li>
-<li><a class="reference internal" href="#diagnostics">Diagnostics</a></li>
-<li><a class="reference internal" href="#id1">Functions</a></li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
-<li><a class="reference internal" href="#class-inheritance-diagram">Class Inheritance Diagram</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-Astronomy.redshift">Astronomy.redshift Module</a><ul>
-<li><a class="reference internal" href="#reference">Reference</a><ul>
-<li><a class="reference internal" href="#redshift">Redshift</a></li>
-<li><a class="reference internal" href="#cosmic-time-scale">Cosmic Time Scale</a></li>
-<li><a class="reference internal" href="#doppler-shift">Doppler Shift</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id2">Functions</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#module-Astronomy.solar">Astronomy.solar Module</a><ul>
 <li><a class="reference internal" href="#contents">Contents</a><ul>
 <li><a class="reference internal" href="#utilities">Utilities</a></li>
@@ -85,36 +64,46 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#resources">Resources</a></li>
-<li><a class="reference internal" href="#id3">Functions</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-Astronomy.DSN_coordinates">Astronomy.DSN_coordinates Module</a><ul>
-<li><a class="reference internal" href="#id4">Contents</a></li>
-<li><a class="reference internal" href="#id5">Functions</a></li>
-<li><a class="reference internal" href="#id6">Classes</a></li>
-<li><a class="reference internal" href="#id7">Class Inheritance Diagram</a></li>
+<li><a class="reference internal" href="#id1">Functions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-Astronomy.coordconv">Astronomy.coordconv Module</a><ul>
 <li><a class="reference internal" href="#examples-of-use">Examples of use</a></li>
-<li><a class="reference internal" href="#id8">Functions</a></li>
+<li><a class="reference internal" href="#id2">Functions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-Astronomy.orbits3D">Astronomy.orbits3D Module</a><ul>
-<li><a class="reference internal" href="#id9">Functions</a></li>
+<li><a class="reference internal" href="#module-Astronomy.DSN_coordinates">Astronomy.DSN_coordinates Module</a><ul>
+<li><a class="reference internal" href="#id3">Contents</a></li>
+<li><a class="reference internal" href="#id4">Functions</a></li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#class-inheritance-diagram">Class Inheritance Diagram</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-Astronomy.formats">Astronomy.formats Module</a><ul>
-<li><a class="reference internal" href="#id10">Functions</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-Astronomy.IAU_names">Astronomy.IAU_names Module</a><ul>
-<li><a class="reference internal" href="#id11">Functions</a></li>
+<li><a class="reference internal" href="#id5">Functions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-Astronomy.northpolar">Astronomy.northpolar Module</a><ul>
-<li><a class="reference internal" href="#id12">Classes</a></li>
-<li><a class="reference internal" href="#id13">Class Inheritance Diagram</a></li>
+<li><a class="reference internal" href="#id6">Classes</a></li>
+<li><a class="reference internal" href="#id7">Class Inheritance Diagram</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-Astronomy.redshift">Astronomy.redshift Module</a><ul>
+<li><a class="reference internal" href="#id8">Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-Astronomy.ATCA_caldb">Astronomy.ATCA_caldb Module</a><ul>
+<li><a class="reference internal" href="#id9">Functions</a></li>
+<li><a class="reference internal" href="#id10">Classes</a></li>
+<li><a class="reference internal" href="#id11">Class Inheritance Diagram</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-Astronomy.TAI">Astronomy.TAI Module</a><ul>
+<li><a class="reference internal" href="#id12">Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-Astronomy.orbits3D">Astronomy.orbits3D Module</a><ul>
+<li><a class="reference internal" href="#id13">Functions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-Astronomy.SIMBAD">Astronomy.SIMBAD Module</a><ul>
@@ -139,13 +128,11 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -165,7 +152,7 @@
 <p>Classes and functions for astronomical calculations</p>
 <p>This is a complete re-write of the package to base it on astropy instead of
 heritage code.  The following were removed:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">*</span> <span class="n">List</span> <span class="n">Months</span><span class="p">,</span>       <span class="k">with</span> <span class="n">long</span> <span class="n">month</span> <span class="n">names</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">List</span> <span class="n">Months</span><span class="p">,</span>       <span class="k">with</span> <span class="n">long</span> <span class="n">month</span> <span class="n">names</span>
 <span class="o">*</span> <span class="n">default_astro_dir</span><span class="p">,</span> <span class="k">for</span> <span class="n">source</span> <span class="n">catalogs</span>
 <span class="o">*</span> <span class="n">cat_path</span><span class="p">,</span>          <span class="k">for</span> <span class="n">source</span> <span class="n">catalogs</span>
 <span class="o">*</span> <span class="n">eph_url</span><span class="p">,</span>           <span class="n">IERS</span> <span class="n">site</span> <span class="k">for</span> <span class="n">UT1</span><span class="o">-</span><span class="n">UTC</span>
@@ -215,7 +202,7 @@ equinox of the date, is exactly 280 degrees.  This moment falls near the
 beginning of the corresponding Gregorian (modern calendar) year.  A
 “Besselian epoch” can be calculated from the Julian date.  The beginnings of
 some commonly used Besselian years are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">B1900</span><span class="o">.</span><span class="mi">0</span> <span class="o">=</span> <span class="n">JD</span> <span class="mf">2415020.3135</span> <span class="o">=</span> <span class="mi">1900</span> <span class="n">January</span> <span class="mf">0.8135</span> <span class="n">TT</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">B1900</span><span class="o">.</span><span class="mi">0</span> <span class="o">=</span> <span class="n">JD</span> <span class="mf">2415020.3135</span> <span class="o">=</span> <span class="mi">1900</span> <span class="n">January</span> <span class="mf">0.8135</span> <span class="n">TT</span>
 <span class="n">B1950</span><span class="o">.</span><span class="mi">0</span> <span class="o">=</span> <span class="n">JD</span> <span class="mf">2433282.4235</span> <span class="o">=</span> <span class="mi">1950</span> <span class="n">January</span> <span class="mf">0.9235</span> <span class="n">TT</span>
 </pre></div>
 </div>
@@ -248,315 +235,113 @@ astropy for that and other things.</p>
 </div>
 <div class="section" id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.AzEl_to_HaDec.html#Astronomy.AzEl_to_HaDec" title="Astronomy.AzEl_to_HaDec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AzEl_to_HaDec</span></code></a>(Azimuth,&nbsp;Elevation,&nbsp;Latitude)</td>
-<td>converts from azimuth and elevation to hour angle and declination</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.AzEl_to_HaDec.html#Astronomy.AzEl_to_HaDec" title="Astronomy.AzEl_to_HaDec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AzEl_to_HaDec</span></code></a>(Azimuth, Elevation, Latitude)</p></td>
+<td><p>converts from azimuth and elevation to hour angle and declination</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.AzEl_to_RaDec.html#Astronomy.AzEl_to_RaDec" title="Astronomy.AzEl_to_RaDec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AzEl_to_RaDec</span></code></a>(azimuth,&nbsp;elevation,&nbsp;latitude,&nbsp;…)</td>
-<td>Convert azimuth and elevation to right ascension and declination</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.AzEl_to_RaDec.html#Astronomy.AzEl_to_RaDec" title="Astronomy.AzEl_to_RaDec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AzEl_to_RaDec</span></code></a>(azimuth, elevation, latitude, …)</p></td>
+<td><p>Convert azimuth and elevation to right ascension and declination</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.B_epoch_to_J.html#Astronomy.B_epoch_to_J" title="Astronomy.B_epoch_to_J"><code class="xref py py-obj docutils literal notranslate"><span class="pre">B_epoch_to_J</span></code></a>(ra50,&nbsp;dec50[,&nbsp;format])</td>
-<td>Convert B1950 coordinates to J2000</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.B_epoch_to_J.html#Astronomy.B_epoch_to_J" title="Astronomy.B_epoch_to_J"><code class="xref py py-obj docutils literal notranslate"><span class="pre">B_epoch_to_J</span></code></a>(ra50, dec50[, format])</p></td>
+<td><p>Convert B1950 coordinates to J2000</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.HaDec_to_AzEl.html#Astronomy.HaDec_to_AzEl" title="Astronomy.HaDec_to_AzEl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HaDec_to_AzEl</span></code></a>(HourAngle,&nbsp;Declination,&nbsp;Latitude)</td>
-<td>Celestial to horizon coordinates</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.HaDec_to_AzEl.html#Astronomy.HaDec_to_AzEl" title="Astronomy.HaDec_to_AzEl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HaDec_to_AzEl</span></code></a>(HourAngle, Declination, Latitude)</p></td>
+<td><p>Celestial to horizon coordinates</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.J2000_to_apparent.html#Astronomy.J2000_to_apparent" title="Astronomy.J2000_to_apparent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">J2000_to_apparent</span></code></a>(MJD,&nbsp;UT,&nbsp;ra2000,&nbsp;dec2000)</td>
-<td>Apparent right ascension and declination</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.J2000_to_apparent.html#Astronomy.J2000_to_apparent" title="Astronomy.J2000_to_apparent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">J2000_to_apparent</span></code></a>(MJD, UT, ra2000, dec2000)</p></td>
+<td><p>Apparent right ascension and declination</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.J_epoch_to_B.html#Astronomy.J_epoch_to_B" title="Astronomy.J_epoch_to_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">J_epoch_to_B</span></code></a>(ra2000,&nbsp;dec2000,&nbsp;format)</td>
-<td>Convert J2000 coordinates to B1950.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.J_epoch_to_B.html#Astronomy.J_epoch_to_B" title="Astronomy.J_epoch_to_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">J_epoch_to_B</span></code></a>(ra2000, dec2000, format)</p></td>
+<td><p>Convert J2000 coordinates to B1950.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">MJD</span></code>(*args)</td>
-<td>Returns modified Julian date from UNIX time or (year,doy) or (year,month,day)</td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MJD</span></code>(*args)</p></td>
+<td><p>Returns modified Julian date from UNIX time or (year,doy) or (year,month,day)</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.YMD_to_MJD.html#Astronomy.YMD_to_MJD" title="Astronomy.YMD_to_MJD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">YMD_to_MJD</span></code></a>(year,&nbsp;month,&nbsp;day)</td>
-<td>Modified Julian date from calendar date</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.YMD_to_MJD.html#Astronomy.YMD_to_MJD" title="Astronomy.YMD_to_MJD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">YMD_to_MJD</span></code></a>(year, month, day)</p></td>
+<td><p>Modified Julian date from calendar date</p></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">calendar_date</span></code>(year,&nbsp;doy)</td>
-<td>Calendar date from day of year</td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">calendar_date</span></code>(year, doy)</p></td>
+<td><p>Calendar date from day of year</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#module-Astronomy.coordconv" title="Astronomy.coordconv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordconv</span></code></a>(long_orig,&nbsp;lat_orig,&nbsp;AP,&nbsp;BP,&nbsp;A1,&nbsp;B1)</td>
-<td>converts between many lat-long style coordinate systems</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#module-Astronomy.coordconv" title="Astronomy.coordconv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordconv</span></code></a>(long_orig, lat_orig, AP, BP, A1, B1)</p></td>
+<td><p>converts between many lat-long style coordinate systems</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.current_to_ecliptic.html#Astronomy.current_to_ecliptic" title="Astronomy.current_to_ecliptic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_to_ecliptic</span></code></a>(…)</td>
-<td>Apparent ecliptic coordinates from apparent RA and dec</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.current_to_ecliptic.html#Astronomy.current_to_ecliptic" title="Astronomy.current_to_ecliptic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_to_ecliptic</span></code></a>(…)</p></td>
+<td><p>Apparent ecliptic coordinates from apparent RA and dec</p></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">day_of_week</span></code>(doy,&nbsp;year)</td>
-<td>Numeric value for the day of week</td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">day_of_week</span></code>(doy, year)</p></td>
+<td><p>Numeric value for the day of week</p></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">day_of_year</span></code>(year,&nbsp;month,&nbsp;day)</td>
-<td>Day of year</td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">day_of_year</span></code>(year, month, day)</p></td>
+<td><p>Day of year</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.decimal_day_to_HMS.html#Astronomy.decimal_day_to_HMS" title="Astronomy.decimal_day_to_HMS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decimal_day_to_HMS</span></code></a>(day)</td>
-<td>Formatted time to 0.01 seconds</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.decimal_day_to_HMS.html#Astronomy.decimal_day_to_HMS" title="Astronomy.decimal_day_to_HMS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decimal_day_to_HMS</span></code></a>(day)</p></td>
+<td><p>Formatted time to 0.01 seconds</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.decimal_day_to_tuple.html#Astronomy.decimal_day_to_tuple" title="Astronomy.decimal_day_to_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decimal_day_to_tuple</span></code></a>(day)</td>
-<td>Float day to (h,m,s) tuple</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.decimal_day_to_tuple.html#Astronomy.decimal_day_to_tuple" title="Astronomy.decimal_day_to_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decimal_day_to_tuple</span></code></a>(day)</p></td>
+<td><p>Float day to (h,m,s) tuple</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.ecliptic_to_J2000.html#Astronomy.ecliptic_to_J2000" title="Astronomy.ecliptic_to_J2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ecliptic_to_J2000</span></code></a>(elong,&nbsp;elat,&nbsp;mjd)</td>
-<td>convert from ecliptic coordinates to RA and dec</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.ecliptic_to_J2000.html#Astronomy.ecliptic_to_J2000" title="Astronomy.ecliptic_to_J2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ecliptic_to_J2000</span></code></a>(elong, elat, mjd)</p></td>
+<td><p>convert from ecliptic coordinates to RA and dec</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.galactic_offsets_to_celestial.html#Astronomy.galactic_offsets_to_celestial" title="Astronomy.galactic_offsets_to_celestial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">galactic_offsets_to_celestial</span></code></a>(RA,&nbsp;Dec[,&nbsp;…])</td>
-<td>Converts offsets in Galactic coordinates to celestial</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.galactic_offsets_to_celestial.html#Astronomy.galactic_offsets_to_celestial" title="Astronomy.galactic_offsets_to_celestial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">galactic_offsets_to_celestial</span></code></a>(RA, Dec[, …])</p></td>
+<td><p>Converts offsets in Galactic coordinates to celestial</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.get_altaz.html#Astronomy.get_altaz" title="Astronomy.get_altaz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_altaz</span></code></a>(RA,&nbsp;Dec,&nbsp;time,&nbsp;location)</td>
-<td>Simplest conversion using astropy</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.get_altaz.html#Astronomy.get_altaz" title="Astronomy.get_altaz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_altaz</span></code></a>(RA, Dec, time, location)</p></td>
+<td><p>Simplest conversion using astropy</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.get_cartesian_coordinates.html#Astronomy.get_cartesian_coordinates" title="Astronomy.get_cartesian_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cartesian_coordinates</span></code></a>([station])</td>
-<td>Get the Cartesian coordinates of a DSN station, or a dictionary of all</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.get_cartesian_coordinates.html#Astronomy.get_cartesian_coordinates" title="Astronomy.get_cartesian_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cartesian_coordinates</span></code></a>([station])</p></td>
+<td><p>Get the Cartesian coordinates of a DSN station, or a dictionary of all</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.get_geodetic_coords.html#Astronomy.get_geodetic_coords" title="Astronomy.get_geodetic_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_geodetic_coords</span></code></a>([dss,&nbsp;observatory])</td>
-<td>Observatory’s geodetic coordinates</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.get_geodetic_coords.html#Astronomy.get_geodetic_coords" title="Astronomy.get_geodetic_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_geodetic_coords</span></code></a>([dss, observatory])</p></td>
+<td><p>Observatory’s geodetic coordinates</p></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_icrs_coordinates</span></code>(name)</td>
-<td>Retrieve an ICRS object by using an online name resolving service to retrieve coordinates for the specified name.</td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_icrs_coordinates</span></code>(name[, parse])</p></td>
+<td><p>Retrieve an ICRS object by using an online name resolving service to retrieve coordinates for the specified name.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.get_sky_coords.html#Astronomy.get_sky_coords" title="Astronomy.get_sky_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sky_coords</span></code></a>(RA,&nbsp;Dec)</td>
-<td>return SkyCoord from both float and str inputs</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.get_sky_coords.html#Astronomy.get_sky_coords" title="Astronomy.get_sky_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sky_coords</span></code></a>(RA, Dec)</p></td>
+<td><p>return SkyCoord from both float and str inputs</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.great_circle_angle.html#Astronomy.great_circle_angle" title="Astronomy.great_circle_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">great_circle_angle</span></code></a>(lat1,&nbsp;long1,&nbsp;lat2,&nbsp;long2)</td>
-<td>Great circle angle between two points on a sphere</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.great_circle_angle.html#Astronomy.great_circle_angle" title="Astronomy.great_circle_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">great_circle_angle</span></code></a>(lat1, long1, lat2, long2)</p></td>
+<td><p>Great circle angle between two points on a sphere</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.great_circle_distance.html#Astronomy.great_circle_distance" title="Astronomy.great_circle_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">great_circle_distance</span></code></a>(central_angle)</td>
-<td>Great circle distance in km on Earth from great circle angle</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.great_circle_distance.html#Astronomy.great_circle_distance" title="Astronomy.great_circle_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">great_circle_distance</span></code></a>(central_angle)</p></td>
+<td><p>Great circle distance in km on Earth from great circle angle</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.greenwich_sidereal_time.html#Astronomy.greenwich_sidereal_time" title="Astronomy.greenwich_sidereal_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">greenwich_sidereal_time</span></code></a>(year,&nbsp;doy)</td>
-<td>Approximate sidereal time at Greenwich</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.greenwich_sidereal_time.html#Astronomy.greenwich_sidereal_time" title="Astronomy.greenwich_sidereal_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">greenwich_sidereal_time</span></code></a>(year, doy)</p></td>
+<td><p>Approximate sidereal time at Greenwich</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.ha_rise_set.html#Astronomy.ha_rise_set" title="Astronomy.ha_rise_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ha_rise_set</span></code></a>(el_limit,&nbsp;lat,&nbsp;dec)</td>
-<td>Hour angle from transit for rising and setting.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.ha_rise_set.html#Astronomy.ha_rise_set" title="Astronomy.ha_rise_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ha_rise_set</span></code></a>(el_limit, lat, dec)</p></td>
+<td><p>Hour angle from transit for rising and setting.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.horizon_range.html#Astronomy.horizon_range" title="Astronomy.horizon_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">horizon_range</span></code></a>(planet_radius,&nbsp;observer_height)</td>
-<td>Range to horizon</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.horizon_range.html#Astronomy.horizon_range" title="Astronomy.horizon_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">horizon_range</span></code></a>(planet_radius, observer_height)</p></td>
+<td><p>Range to horizon</p></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">julian_date</span></code>(year,&nbsp;doy)</td>
-<td>Julian date</td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">julian_date</span></code>(year, doy)</p></td>
+<td><p>Julian date</p></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">leap_year</span></code>(year)</td>
-<td>Leap year</td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">leap_year</span></code>(year)</p></td>
+<td><p>Leap year</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.object_az_el.html#Astronomy.object_az_el" title="Astronomy.object_az_el"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object_az_el</span></code></a>(source,&nbsp;site,&nbsp;year,&nbsp;doy)</td>
-<td>Compute object’s position in alt-az for a given site and time</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.object_az_el.html#Astronomy.object_az_el" title="Astronomy.object_az_el"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object_az_el</span></code></a>(source, site, year, doy)</p></td>
+<td><p>Compute object’s position in alt-az for a given site and time</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.refresh_ierstab.html#Astronomy.refresh_ierstab" title="Astronomy.refresh_ierstab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refresh_ierstab</span></code></a>([url,&nbsp;force])</td>
-<td>Updates the UT1-UTC offset table from ‘url’.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.refresh_ierstab.html#Astronomy.refresh_ierstab" title="Astronomy.refresh_ierstab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refresh_ierstab</span></code></a>([url, force])</p></td>
+<td><p>Updates the UT1-UTC offset table from ‘url’.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.source_start_stop.html#Astronomy.source_start_stop" title="Astronomy.source_start_stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_start_stop</span></code></a>(HAstart,&nbsp;HAend,&nbsp;HAlimit)</td>
-<td>Find when sources are up</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.source_start_stop.html#Astronomy.source_start_stop" title="Astronomy.source_start_stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_start_stop</span></code></a>(HAstart, HAend, HAlimit)</p></td>
+<td><p>Find when sources are up</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.time_aliases.html#Astronomy.time_aliases" title="Astronomy.time_aliases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_aliases</span></code></a>(year,&nbsp;UTdoy,&nbsp;obs_long)</td>
-<td>Time as days since 1900, centuries since 1900 and LST</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.time_aliases.html#Astronomy.time_aliases" title="Astronomy.time_aliases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_aliases</span></code></a>(year, UTdoy, obs_long)</p></td>
+<td><p>Time as days since 1900, centuries since 1900 and LST</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.v_sun.html#Astronomy.v_sun" title="Astronomy.v_sun"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_sun</span></code></a>(mjd,&nbsp;ra_source,&nbsp;dec_source)</td>
-<td>LSR velocity of the sun</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="module-Astronomy.Ephem">
-<span id="astronomy-ephem-package"></span><h2>Astronomy.Ephem Package<a class="headerlink" href="#module-Astronomy.Ephem" title="Permalink to this headline">¶</a></h2>
-<p>Module Ephem - extends module pyephem for radio astronomy</p>
-<p>Module Ephem extends module ephem (package pyephem).  Everything from
-module ‘ephem’ is inherited.  In addition, it provides the classes
-<code class="docutils literal notranslate"><span class="pre">Quasar</span></code>, <code class="docutils literal notranslate"><span class="pre">Pulsar</span></code> and <code class="docutils literal notranslate"><span class="pre">DSS</span></code>.  It also provides pulsar physical
-data and quasar fluxes.  Use like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">Astronomy</span> <span class="kn">import</span> <span class="n">Ephem</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Ephem</span><span class="o">.</span><span class="n">Pulsar</span><span class="p">(</span><span class="s1">&#39;J1809-0743&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="rubric">Notes</p>
-<div class="section" id="module-ephem">
-<h3>module ephem<a class="headerlink" href="#module-ephem" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://rhodesmill.org/brandon/projects/pyephem-manual.html">http://rhodesmill.org/brandon/projects/pyephem-manual.html</a></p>
-</div>
-<div class="section" id="about-celestial-coordinates">
-<h3>About Celestial Coordinates<a class="headerlink" href="#about-celestial-coordinates" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>a_ra, a_dec: Astrometric geocentric position for epoch (e.g. J2000)</li>
-<li>g_ra, g_dec: Apparent geocentric position for date specified in
-the compute(), after correcting for precession, relativistic
-deflection, nutation and aberration</li>
-<li>ra, dec: Apparent topocentric position, after correction for parallax
-and refraction. Set the <code class="docutils literal notranslate"><span class="pre">Observer</span></code> attribute pressure to zero if
-you want PyEphem to ignore the effects of atmospheric refraction</li>
-</ul>
-</div>
-<div class="section" id="diagnostics">
-<h3>Diagnostics<a class="headerlink" href="#diagnostics" title="Permalink to this headline">¶</a></h3>
-<p>To see what this module does internally:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">Astronomy</span> <span class="kn">import</span> <span class="n">Ephem</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Ephem</span><span class="o">.</span><span class="n">diag</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Ephem</span><span class="o">.</span><span class="n">Pulsar</span><span class="p">(</span><span class="s1">&#39;J1809-0743&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id1">
-<h3>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.Ephem.calibrator.html#Astronomy.Ephem.calibrator" title="Astronomy.Ephem.calibrator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calibrator</span></code></a>(name)</td>
-<td>Creates an Ephem (pyephem) Body() instance for a flux calibrator</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="classes">
-<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.Ephem.Quasar.html#Astronomy.Ephem.Quasar" title="Astronomy.Ephem.Quasar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quasar</span></code></a>(name)</td>
-<td>ephem.FixedBody() with “J” or “B” name</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.Ephem.Pulsar.html#Astronomy.Ephem.Pulsar" title="Astronomy.Ephem.Pulsar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pulsar</span></code></a>(name)</td>
-<td>ephem.FixedBody() with pulsar properties.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.Ephem.SerializableBody.html#Astronomy.Ephem.SerializableBody" title="Astronomy.Ephem.SerializableBody"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SerializableBody</span></code></a>([info,&nbsp;name,&nbsp;observer_info])</td>
-<td>Simple extension to ephem.FixedBody that allows for conversion to and from a Python dictionary.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.Ephem.EphemException.html#Astronomy.Ephem.EphemException" title="Astronomy.Ephem.EphemException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EphemException</span></code></a>([value,&nbsp;details])</td>
-<td>Exception class for Ephem module</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">DSS</span></code>(number)</td>
-<td>Observer class for DSN stations based on xephem Observer</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="class-inheritance-diagram">
-<h3>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h3>
-<div class="graphviz"><img src="_images/inheritance-a64f66cd072b28d26647f32f0efbc87c506282af.png" alt="Inheritance diagram of Astronomy.Ephem.quasar.Quasar, Astronomy.Ephem.pulsar.Pulsar, Astronomy.Ephem.serializable_body.SerializableBody, Astronomy.Ephem.EphemException" usemap="#inheritance05090c75ca" class="inheritance graphviz" /></div>
-<map id="inheritance05090c75ca" name="inheritance05090c75ca">
-<area shape="rect" id="node2" href="api/Astronomy.Ephem.EphemException.html#Astronomy.Ephem.EphemException" target="_top" title="Exception class for Ephem module" alt="" coords="5,5,135,31"/>
-<area shape="rect" id="node4" href="api/Astronomy.Ephem.Pulsar.html#Astronomy.Ephem.Pulsar" target="_top" title="ephem.FixedBody() with pulsar properties." alt="" coords="345,5,417,31"/>
-<area shape="rect" id="node5" href="api/Astronomy.Ephem.Quasar.html#Astronomy.Ephem.Quasar" target="_top" title="ephem.FixedBody() with &quot;J&quot; or &quot;B&quot; name" alt="" coords="345,55,417,80"/>
-<area shape="rect" id="node6" href="api/Astronomy.Ephem.SerializableBody.html#Astronomy.Ephem.SerializableBody" target="_top" title="Simple extension to ephem.FixedBody that allows for conversion to and" alt="" coords="317,104,444,129"/>
-</map></div>
-</div>
-<div class="section" id="module-Astronomy.redshift">
-<span id="astronomy-redshift-module"></span><h2>Astronomy.redshift Module<a class="headerlink" href="#module-Astronomy.redshift" title="Permalink to this headline">¶</a></h2>
-<p>module Astronomy.redshift - functions for computing to/from redshift</p>
-<p>The redshift is the fractional amount by which a wavelength is shifted
-longward (to the red) due to the recessional velocity of the emitter:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre>    <span class="k">lambda</span> <span class="o">-</span> <span class="n">lambda_0</span>
-<span class="n">z</span> <span class="o">=</span> <span class="o">-----------------</span>
-        <span class="n">lambda_0</span>
-</pre></div>
-</div>
-<p>For large velocities special relativity should be taken into account
-when computing the redshift from recessional velocity and vice-versa:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre>    <span class="p">(</span> <span class="n">c</span> <span class="o">+</span> <span class="n">V_r</span> <span class="p">)</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">z</span> <span class="o">=</span> <span class="p">(</span> <span class="o">-------</span> <span class="p">)</span>     <span class="o">-</span> <span class="mi">1</span>
-    <span class="p">(</span> <span class="n">c</span> <span class="o">-</span> <span class="n">V_r</span> <span class="p">)</span>
-
-           <span class="mi">2</span>
-<span class="n">V_r</span>   <span class="p">(</span><span class="n">z</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="o">-</span> <span class="mi">1</span>
-<span class="o">---</span> <span class="o">=</span> <span class="o">----------</span>
- <span class="n">c</span>         <span class="mi">2</span>
-      <span class="p">(</span><span class="n">z</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="o">+</span> <span class="mi">1</span>
-</pre></div>
-</div>
-<p>The radial velocity which gives rise to redshift can be calculated
-according to various conventions.  The most convenient is the radio
-astronomy convention which computes redshift as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre>    <span class="n">f_0</span> <span class="o">-</span> <span class="n">f</span>
-<span class="n">z</span> <span class="o">=</span> <span class="o">-------</span>
-      <span class="n">f_0</span>
-</pre></div>
-</div>
-<p>The velocity shift in the radio convention is computed as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre>             <span class="n">df</span>
-<span class="n">dV</span>      <span class="o">=</span> <span class="o">-</span><span class="n">c</span> <span class="o">---</span>
-  <span class="n">radio</span>      <span class="n">f_0</span>
-</pre></div>
-</div>
-<p>The optical astronomy convention leads to:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre>               <span class="n">df</span>  <span class="p">(</span><span class="n">f_0</span><span class="p">)</span><span class="mi">2</span>
-<span class="n">dV</span>        <span class="o">=</span> <span class="o">-</span><span class="n">c</span> <span class="o">---</span> <span class="p">(</span><span class="o">---</span><span class="p">)</span>
-  <span class="n">optical</span>      <span class="n">f_0</span> <span class="p">(</span> <span class="n">f</span> <span class="p">)</span>
-</pre></div>
-</div>
-<div class="section" id="reference">
-<h3>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="redshift">
-<h4>Redshift<a class="headerlink" href="#redshift" title="Permalink to this headline">¶</a></h4>
-<p>Lang, Astrophys. Formulae, eqns. 2-227 – 2-229</p>
-</div>
-<div class="section" id="cosmic-time-scale">
-<h4>Cosmic Time Scale<a class="headerlink" href="#cosmic-time-scale" title="Permalink to this headline">¶</a></h4>
-<p>1/Ho; Lang, Astrophys. Formulae, eqn. 5-82</p>
-</div>
-<div class="section" id="doppler-shift">
-<h4>Doppler Shift<a class="headerlink" href="#doppler-shift" title="Permalink to this headline">¶</a></h4>
-<p>astropy documentation for Spectral Doppler Equivalencies</p>
-</div>
-</div>
-<div class="section" id="id2">
-<h3>Functions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">MJD</span></code>(*args)</td>
-<td>Returns modified Julian date from UNIX time or (year,doy) or (year,month,day)</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.redshift.V_LSR.html#Astronomy.redshift.V_LSR" title="Astronomy.redshift.V_LSR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">V_LSR</span></code></a>(RA,&nbsp;dec,&nbsp;dss,&nbsp;timedate)</td>
-<td>Computes the velocity of the local standard of rest w.r.t.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.redshift.age.html#Astronomy.redshift.age" title="Astronomy.redshift.age"><code class="xref py py-obj docutils literal notranslate"><span class="pre">age</span></code></a>(z[,&nbsp;hubble_constant])</td>
-<td>Cosmic time scale = age if acceleration = 0</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>(object[,&nbsp;dtype,&nbsp;copy,&nbsp;order,&nbsp;subok,&nbsp;ndmin])</td>
-<td>Create an array.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.redshift.distance.html#Astronomy.redshift.distance" title="Astronomy.redshift.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a>(z[,&nbsp;hubble_constant])</td>
-<td>Distance of a cosmically redshifted source, assuming constant expansion</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.redshift.dop_fac.html#Astronomy.redshift.dop_fac" title="Astronomy.redshift.dop_fac"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dop_fac</span></code></a>(z)</td>
-<td>Redshifted frequency as a ratio: f/f_0</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.redshift.doppler_optical.html#Astronomy.redshift.doppler_optical" title="Astronomy.redshift.doppler_optical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doppler_optical</span></code></a>(rel_freq,&nbsp;f_ref)</td>
-<td>Returns the Doppler shift for a frequency offset by the optical convention</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.redshift.doppler_radio.html#Astronomy.redshift.doppler_radio" title="Astronomy.redshift.doppler_radio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doppler_radio</span></code></a>(rel_freq,&nbsp;f_ref)</td>
-<td>Returns the Doppler shift for a frequency offset by the radio convention</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.redshift.doppler_relat.html#Astronomy.redshift.doppler_relat" title="Astronomy.redshift.doppler_relat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doppler_relat</span></code></a>(rel_freq,&nbsp;f_ref)</td>
-<td>Returns the relativistic Doppler shift for a frequency offset</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.redshift.redshift.html#Astronomy.redshift.redshift" title="Astronomy.redshift.redshift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redshift</span></code></a>([v_recess,&nbsp;dop_fac])</td>
-<td>Redshift corresponding to a recessional velocity</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">sqrt</span></code>(x)</td>
-<td>Return the square root of x.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.redshift.v_recess.html#Astronomy.redshift.v_recess" title="Astronomy.redshift.v_recess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_recess</span></code></a>(distance[,&nbsp;hubble_constant])</td>
-<td>velocity of recession for a constant rate of expansion = Hubble constant</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.redshift.v_redshift.html#Astronomy.redshift.v_redshift" title="Astronomy.redshift.v_redshift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_redshift</span></code></a>(z)</td>
-<td>velocity of recession for a given redshift</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_sun</span></code>(mjd,&nbsp;ra_source,&nbsp;dec_source)</td>
-<td>LSR velocity of the sun</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.redshift.wave_stretch.html#Astronomy.redshift.wave_stretch" title="Astronomy.redshift.wave_stretch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wave_stretch</span></code></a>(z)</td>
-<td>Fractional lengthening of wavelength</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.v_sun.html#Astronomy.v_sun" title="Astronomy.v_sun"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_sun</span></code></a>(mjd, ra_source, dec_source)</p></td>
+<td><p>LSR velocity of the sun</p></td>
 </tr>
 </tbody>
 </table>
@@ -576,7 +361,7 @@ Sun’s orbit rises above the celestial plane.</p>
 <div class="section" id="utilities">
 <h4>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h4>
 <p>Provided for convenience:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>  <span class="o">-</span> <span class="n">Convert</span> <span class="n">degrees</span> <span class="n">to</span> <span class="n">radians</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>  <span class="o">-</span> <span class="n">Convert</span> <span class="n">degrees</span> <span class="n">to</span> <span class="n">radians</span>
 <span class="n">truncate</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">-</span> <span class="n">Bounds</span> <span class="n">an</span> <span class="n">angle</span> <span class="n">between</span> <span class="mi">0</span> <span class="ow">and</span> <span class="mf">360.</span>
 </pre></div>
 </div>
@@ -584,7 +369,7 @@ Sun’s orbit rises above the celestial plane.</p>
 <div class="section" id="functions-related-to-time">
 <h4>Functions Related to Time<a class="headerlink" href="#functions-related-to-time" title="Permalink to this headline">¶</a></h4>
 <p>Converts time to other formats:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">Carrington_Number</span><span class="p">(</span><span class="n">jd</span><span class="p">)</span>        <span class="o">-</span> <span class="n">Carrington</span> <span class="n">Number</span> <span class="n">gives</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">rotations</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Carrington_Number</span><span class="p">(</span><span class="n">jd</span><span class="p">)</span>        <span class="o">-</span> <span class="n">Carrington</span> <span class="n">Number</span> <span class="n">gives</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">rotations</span><span class="o">.</span>
 <span class="n">calcJD</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>              <span class="o">-</span> <span class="n">Fractional</span> <span class="n">Julian</span> <span class="n">date</span>
 <span class="n">Julian_centuries_since_2000</span><span class="p">(</span><span class="n">jd</span><span class="p">)</span> <span class="o">-</span> <span class="n">Julian</span> <span class="n">centuries</span> <span class="kn">from</span> <span class="nn">Jan</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">2000.</span>
 <span class="n">time_series</span><span class="p">(</span><span class="n">jd</span><span class="p">)</span>                 <span class="o">-</span> <span class="n">List</span> <span class="n">of</span> <span class="n">powers</span> <span class="n">of</span> <span class="n">Julian</span> <span class="n">centuries</span><span class="o">.</span>
@@ -594,7 +379,7 @@ Sun’s orbit rises above the celestial plane.</p>
 <div class="section" id="functions-related-to-the-ecliptic">
 <h4>Functions Related to the Ecliptic<a class="headerlink" href="#functions-related-to-the-ecliptic" title="Permalink to this headline">¶</a></h4>
 <p>T is a tuple with powers (0,1,2,3) of Julian centuries:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">ecliptic_obliquity</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">Inclination</span> <span class="n">of</span> <span class="n">ecliptic</span> <span class="n">plane</span> <span class="n">w</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">t</span><span class="o">.</span> <span class="n">celestial</span> <span class="n">equator</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecliptic_obliquity</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">Inclination</span> <span class="n">of</span> <span class="n">ecliptic</span> <span class="n">plane</span> <span class="n">w</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">t</span><span class="o">.</span> <span class="n">celestial</span> <span class="n">equator</span>
 <span class="n">Eccentricity_of_orbit</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">-</span> <span class="n">Eccentricity</span> <span class="n">of</span> <span class="n">the</span> <span class="n">orbit</span> <span class="n">ellipse</span><span class="o">.</span>
 <span class="n">sun_geom_mean_long</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>   <span class="o">-</span> <span class="n">Geometric</span> <span class="n">Mean</span> <span class="n">Ecliptic</span> <span class="n">Longitude</span> <span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="n">of</span> <span class="n">Sun</span>
 <span class="n">sun_mean_anomaly</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>     <span class="o">-</span> <span class="n">Position</span> <span class="n">of</span> <span class="n">Sun</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">perigee</span>
@@ -607,7 +392,7 @@ Sun’s orbit rises above the celestial plane.</p>
 <div class="section" id="functions-concerning-nutation">
 <h4>Functions concerning Nutation<a class="headerlink" href="#functions-concerning-nutation" title="Permalink to this headline">¶</a></h4>
 <p>Handle nutation of the Earth’s orbit:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">lunar_long_asc_node</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">longitude</span> <span class="n">of</span> <span class="n">the</span> <span class="n">mean</span> <span class="n">ascending</span> <span class="n">node</span> <span class="n">of</span> <span class="n">the</span> <span class="n">lunar</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lunar_long_asc_node</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">longitude</span> <span class="n">of</span> <span class="n">the</span> <span class="n">mean</span> <span class="n">ascending</span> <span class="n">node</span> <span class="n">of</span> <span class="n">the</span> <span class="n">lunar</span>
                          <span class="n">orbit</span> <span class="n">on</span> <span class="n">the</span> <span class="n">ecliptic</span><span class="p">;</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">Julian</span> <span class="n">centuries</span>
 <span class="n">longitude_nutation</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span> <span class="o">-</span> <span class="n">Nutation</span> <span class="ow">in</span> <span class="n">longitude</span>
 </pre></div>
@@ -616,7 +401,7 @@ Sun’s orbit rises above the celestial plane.</p>
 <div class="section" id="functions-for-heliographic-coordinates">
 <h4>Functions for Heliographic Coordinates<a class="headerlink" href="#functions-for-heliographic-coordinates" title="Permalink to this headline">¶</a></h4>
 <p>These provide coordinates in the Sun-based lat/long system:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">sun_coords_long_ascen_node</span><span class="p">(</span><span class="n">jd</span><span class="p">)</span> <span class="o">-</span> <span class="n">Ecliptic</span> <span class="n">longitude</span> <span class="n">at</span> <span class="n">which</span> <span class="n">solar</span> <span class="n">equator</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sun_coords_long_ascen_node</span><span class="p">(</span><span class="n">jd</span><span class="p">)</span> <span class="o">-</span> <span class="n">Ecliptic</span> <span class="n">longitude</span> <span class="n">at</span> <span class="n">which</span> <span class="n">solar</span> <span class="n">equator</span>
                                  <span class="n">intersects</span> <span class="n">the</span> <span class="n">ecliptic</span> <span class="n">plane</span>
 <span class="n">Sun_central_longitude</span><span class="p">(</span><span class="n">anomaly</span><span class="p">,</span> <span class="n">inclin</span><span class="p">,</span> <span class="n">Lsun</span><span class="p">)</span> <span class="o">-</span> <span class="n">Longitude</span> <span class="n">of</span> <span class="n">center</span> <span class="n">of</span> <span class="n">disk</span>
 <span class="n">Sun_central_latitude</span><span class="p">(</span><span class="n">longitude</span><span class="p">,</span> <span class="n">tilt</span><span class="p">)</span> <span class="o">-</span> <span class="n">Sun</span><span class="s1">&#39;s latitude where central meridian</span>
@@ -629,7 +414,7 @@ Sun’s orbit rises above the celestial plane.</p>
 <div class="section" id="geometrical-functions">
 <h4>Geometrical Functions<a class="headerlink" href="#geometrical-functions" title="Permalink to this headline">¶</a></h4>
 <p>manage projections to/from plane of the sky</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">axis_tilt_projection</span><span class="p">(</span><span class="n">longitude</span><span class="p">,</span><span class="n">tilt</span><span class="p">)</span> <span class="o">-</span> <span class="n">Projection</span> <span class="n">of</span> <span class="n">Z</span><span class="o">-</span><span class="n">axis</span> <span class="n">of</span> <span class="n">a</span> <span class="n">tilted</span> <span class="n">frame</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">axis_tilt_projection</span><span class="p">(</span><span class="n">longitude</span><span class="p">,</span><span class="n">tilt</span><span class="p">)</span> <span class="o">-</span> <span class="n">Projection</span> <span class="n">of</span> <span class="n">Z</span><span class="o">-</span><span class="n">axis</span> <span class="n">of</span> <span class="n">a</span> <span class="n">tilted</span> <span class="n">frame</span>
 <span class="n">xy_to_ra_dec</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">ra0</span><span class="p">,</span><span class="n">dec0</span><span class="p">)</span>    <span class="o">-</span> <span class="n">Convert</span> <span class="n">XY</span> <span class="n">coordinates</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">Sun</span><span class="o">-</span><span class="n">aligned</span>
                                   <span class="n">frame</span> <span class="n">to</span> <span class="n">RA</span> <span class="ow">and</span> <span class="n">dec</span>
 <span class="n">ra_dec_to_xy</span><span class="p">(</span><span class="n">ra</span><span class="p">,</span><span class="n">dec</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">ra0</span><span class="p">,</span><span class="n">dec0</span><span class="p">)</span> <span class="o">-</span> <span class="n">Convert</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="n">to</span> <span class="n">xy</span><span class="o">-</span><span class="n">coordinates</span> <span class="n">aligned</span>
@@ -640,7 +425,7 @@ Sun’s orbit rises above the celestial plane.</p>
 <div class="section" id="comprehensive-parameter-calculation">
 <h4>Comprehensive Parameter Calculation<a class="headerlink" href="#comprehensive-parameter-calculation" title="Permalink to this headline">¶</a></h4>
 <p>Handles a lot of calculations at once:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">calc_solar</span><span class="p">(</span><span class="n">jd</span><span class="p">)</span> <span class="o">-</span> <span class="n">Overall</span> <span class="n">function</span> <span class="n">to</span> <span class="n">calculate</span> <span class="n">various</span> <span class="n">solar</span> <span class="n">data</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">calc_solar</span><span class="p">(</span><span class="n">jd</span><span class="p">)</span> <span class="o">-</span> <span class="n">Overall</span> <span class="n">function</span> <span class="n">to</span> <span class="n">calculate</span> <span class="n">various</span> <span class="n">solar</span> <span class="n">data</span><span class="o">.</span>
 </pre></div>
 </div>
 <p class="rubric">Notes</p>
@@ -652,167 +437,106 @@ Jan. 1, 1900.</p>
 <div class="section" id="resources">
 <h3>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h3>
 <p>A form for calculating sunspot coordinates:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">nature1st</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">bogan</span><span class="o">/</span><span class="n">astro</span><span class="o">/</span><span class="n">sun</span><span class="o">/</span><span class="n">sunspots</span><span class="o">.</span><span class="n">html</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">nature1st</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">bogan</span><span class="o">/</span><span class="n">astro</span><span class="o">/</span><span class="n">sun</span><span class="o">/</span><span class="n">sunspots</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
 <p>Formulae for the Solar Orientation angles were taken from
 Astronomical Algorithms by Meeus.</p>
 <p>Formulae for Calculating the Sunspot lat-long taken from Smith’s Astronomical
 Calculation for Calculators from:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">idialstars</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">fipl</span><span class="o">.</span><span class="n">htm</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">idialstars</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">fipl</span><span class="o">.</span><span class="n">htm</span>
 </pre></div>
 </div>
 <p>Supporting definitions can be found at:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre>http://www.astro.washington.edu/docs/idl/cgi-bin/getpro/library32.html?GET_SUN
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://www.astro.washington.edu/docs/idl/cgi-bin/getpro/library32.html?GET_SUN
 http://sspg1.bnsc.rl.ac.uk/SEG/Coordinates/angles.htm
 http://farside.ph.utexas.edu/syntaxis/Almagest/node34.html
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h3>Functions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
+<div class="section" id="id1">
+<h3>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.solar.Carrington_Number.html#Astronomy.solar.Carrington_Number" title="Astronomy.solar.Carrington_Number"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Carrington_Number</span></code></a>(jd)</td>
-<td>Carrington Number gives the number of rotations.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.Carrington_Number.html#Astronomy.solar.Carrington_Number" title="Astronomy.solar.Carrington_Number"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Carrington_Number</span></code></a>(jd)</p></td>
+<td><p>Carrington Number gives the number of rotations.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.solar.Eccentricity_of_orbit.html#Astronomy.solar.Eccentricity_of_orbit" title="Astronomy.solar.Eccentricity_of_orbit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Eccentricity_of_orbit</span></code></a>(T)</td>
-<td>Eccentricity of the orbit ellipse.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.Eccentricity_of_orbit.html#Astronomy.solar.Eccentricity_of_orbit" title="Astronomy.solar.Eccentricity_of_orbit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Eccentricity_of_orbit</span></code></a>(T)</p></td>
+<td><p>Eccentricity of the orbit ellipse.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.solar.Julian_centuries_since_2000.html#Astronomy.solar.Julian_centuries_since_2000" title="Astronomy.solar.Julian_centuries_since_2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Julian_centuries_since_2000</span></code></a>(jd)</td>
-<td>Julian centuries from Jan 1, 2000.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.Julian_centuries_since_2000.html#Astronomy.solar.Julian_centuries_since_2000" title="Astronomy.solar.Julian_centuries_since_2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Julian_centuries_since_2000</span></code></a>(jd)</p></td>
+<td><p>Julian centuries from Jan 1, 2000.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.solar.Sun_central_latitude.html#Astronomy.solar.Sun_central_latitude" title="Astronomy.solar.Sun_central_latitude"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sun_central_latitude</span></code></a>(longitude,&nbsp;tilt)</td>
-<td>Sun’s latitude where central meridian crosses ecliptic plane</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.Sun_central_latitude.html#Astronomy.solar.Sun_central_latitude" title="Astronomy.solar.Sun_central_latitude"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sun_central_latitude</span></code></a>(longitude, tilt)</p></td>
+<td><p>Sun’s latitude where central meridian crosses ecliptic plane</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.solar.Sun_central_longitude.html#Astronomy.solar.Sun_central_longitude" title="Astronomy.solar.Sun_central_longitude"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sun_central_longitude</span></code></a>(anomaly,&nbsp;inclin,&nbsp;Lsun)</td>
-<td>Longitude of center of disk</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.Sun_central_longitude.html#Astronomy.solar.Sun_central_longitude" title="Astronomy.solar.Sun_central_longitude"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sun_central_longitude</span></code></a>(anomaly, inclin, Lsun)</p></td>
+<td><p>Longitude of center of disk</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.solar.Sun_radius_vector.html#Astronomy.solar.Sun_radius_vector" title="Astronomy.solar.Sun_radius_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sun_radius_vector</span></code></a>(e,&nbsp;tar)</td>
-<td>Distance between the Sun and the Earth</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.Sun_radius_vector.html#Astronomy.solar.Sun_radius_vector" title="Astronomy.solar.Sun_radius_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sun_radius_vector</span></code></a>(e, tar)</p></td>
+<td><p>Distance between the Sun and the Earth</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.solar.axis_tilt_projection.html#Astronomy.solar.axis_tilt_projection" title="Astronomy.solar.axis_tilt_projection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_tilt_projection</span></code></a>(longitude,&nbsp;tilt)</td>
-<td>Project of Z-axis of a tilted frame</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.axis_tilt_projection.html#Astronomy.solar.axis_tilt_projection" title="Astronomy.solar.axis_tilt_projection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_tilt_projection</span></code></a>(longitude, tilt)</p></td>
+<td><p>Project of Z-axis of a tilted frame</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.solar.calcJD.html#Astronomy.solar.calcJD" title="Astronomy.solar.calcJD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calcJD</span></code></a>(y,&nbsp;m,&nbsp;d,&nbsp;t)</td>
-<td>Julian date with fraction for UT</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.calcJD.html#Astronomy.solar.calcJD" title="Astronomy.solar.calcJD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calcJD</span></code></a>(y, m, d, t)</p></td>
+<td><p>Julian date with fraction for UT</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.solar.calc_solar.html#Astronomy.solar.calc_solar" title="Astronomy.solar.calc_solar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_solar</span></code></a>(jd)</td>
-<td>Overall function to calculate various solar data.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.calc_solar.html#Astronomy.solar.calc_solar" title="Astronomy.solar.calc_solar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_solar</span></code></a>(jd)</p></td>
+<td><p>Overall function to calculate various solar data.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.solar.ecliptic_obliquity.html#Astronomy.solar.ecliptic_obliquity" title="Astronomy.solar.ecliptic_obliquity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ecliptic_obliquity</span></code></a>(T)</td>
-<td>Inclination of ecliptic plane w.r.t.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.ecliptic_obliquity.html#Astronomy.solar.ecliptic_obliquity" title="Astronomy.solar.ecliptic_obliquity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ecliptic_obliquity</span></code></a>(T)</p></td>
+<td><p>Inclination of ecliptic plane w.r.t.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.solar.equation_of_the_center.html#Astronomy.solar.equation_of_the_center" title="Astronomy.solar.equation_of_the_center"><code class="xref py py-obj docutils literal notranslate"><span class="pre">equation_of_the_center</span></code></a>(M,&nbsp;T)</td>
-<td>Difference between mean anomaly and true anomaly</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.equation_of_the_center.html#Astronomy.solar.equation_of_the_center" title="Astronomy.solar.equation_of_the_center"><code class="xref py py-obj docutils literal notranslate"><span class="pre">equation_of_the_center</span></code></a>(M, T)</p></td>
+<td><p>Difference between mean anomaly and true anomaly</p></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">julian_date</span></code>(year,&nbsp;doy)</td>
-<td>Julian date</td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">julian_date</span></code>(year, doy)</p></td>
+<td><p>Julian date</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.solar.lat_long.html#Astronomy.solar.lat_long" title="Astronomy.solar.lat_long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lat_long</span></code></a>(radius,&nbsp;polar_position_angle,&nbsp;…)</td>
-<td>latitude and longitude of an active region</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.lat_long.html#Astronomy.solar.lat_long" title="Astronomy.solar.lat_long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lat_long</span></code></a>(radius, polar_position_angle, …)</p></td>
+<td><p>latitude and longitude of an active region</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.solar.longitude_nutation.html#Astronomy.solar.longitude_nutation" title="Astronomy.solar.longitude_nutation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">longitude_nutation</span></code></a>(omega)</td>
-<td>Nutation in longitude</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.longitude_nutation.html#Astronomy.solar.longitude_nutation" title="Astronomy.solar.longitude_nutation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">longitude_nutation</span></code></a>(omega)</p></td>
+<td><p>Nutation in longitude</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.solar.lunar_long_asc_node.html#Astronomy.solar.lunar_long_asc_node" title="Astronomy.solar.lunar_long_asc_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lunar_long_asc_node</span></code></a>(t)</td>
-<td>longitude of the mean ascending node of the lunar orbit on the ecliptic</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.lunar_long_asc_node.html#Astronomy.solar.lunar_long_asc_node" title="Astronomy.solar.lunar_long_asc_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lunar_long_asc_node</span></code></a>(t)</p></td>
+<td><p>longitude of the mean ascending node of the lunar orbit on the ecliptic</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.solar.ra_dec_to_xy.html#Astronomy.solar.ra_dec_to_xy" title="Astronomy.solar.ra_dec_to_xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ra_dec_to_xy</span></code></a>(ra,&nbsp;dec,&nbsp;P,&nbsp;ra0,&nbsp;dec0)</td>
-<td>Convert ra, dec to xy-coordinates aligned with Sun</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.ra_dec_to_xy.html#Astronomy.solar.ra_dec_to_xy" title="Astronomy.solar.ra_dec_to_xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ra_dec_to_xy</span></code></a>(ra, dec, P, ra0, dec0)</p></td>
+<td><p>Convert ra, dec to xy-coordinates aligned with Sun</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.solar.radians.html#Astronomy.solar.radians" title="Astronomy.solar.radians"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radians</span></code></a>(degrees)</td>
-<td>Convert degrees to radians</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.radians.html#Astronomy.solar.radians" title="Astronomy.solar.radians"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radians</span></code></a>(degrees)</p></td>
+<td><p>Convert degrees to radians</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.solar.semidiameter.html#Astronomy.solar.semidiameter" title="Astronomy.solar.semidiameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">semidiameter</span></code></a>(distance)</td>
-<td>Semi-diameter in arcsec</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.semidiameter.html#Astronomy.solar.semidiameter" title="Astronomy.solar.semidiameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">semidiameter</span></code></a>(distance)</p></td>
+<td><p>Semi-diameter in arcsec</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.solar.sun_coords_long_ascen_node.html#Astronomy.solar.sun_coords_long_ascen_node" title="Astronomy.solar.sun_coords_long_ascen_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_coords_long_ascen_node</span></code></a>(jd)</td>
-<td>Ecliptic longitude at which solar equator intersects the ecliptic plane</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.sun_coords_long_ascen_node.html#Astronomy.solar.sun_coords_long_ascen_node" title="Astronomy.solar.sun_coords_long_ascen_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_coords_long_ascen_node</span></code></a>(jd)</p></td>
+<td><p>Ecliptic longitude at which solar equator intersects the ecliptic plane</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.solar.sun_geom_mean_long.html#Astronomy.solar.sun_geom_mean_long" title="Astronomy.solar.sun_geom_mean_long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_geom_mean_long</span></code></a>(T)</td>
-<td>Geometric Mean Ecliptic Longitude (deg) of Sun</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.sun_geom_mean_long.html#Astronomy.solar.sun_geom_mean_long" title="Astronomy.solar.sun_geom_mean_long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_geom_mean_long</span></code></a>(T)</p></td>
+<td><p>Geometric Mean Ecliptic Longitude (deg) of Sun</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.solar.sun_mean_anomaly.html#Astronomy.solar.sun_mean_anomaly" title="Astronomy.solar.sun_mean_anomaly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_mean_anomaly</span></code></a>(T)</td>
-<td>Position of Sun relative to perigee</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.sun_mean_anomaly.html#Astronomy.solar.sun_mean_anomaly" title="Astronomy.solar.sun_mean_anomaly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_mean_anomaly</span></code></a>(T)</p></td>
+<td><p>Position of Sun relative to perigee</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.solar.time_series.html#Astronomy.solar.time_series" title="Astronomy.solar.time_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_series</span></code></a>(jd)</td>
-<td>List of powers of Julian centuries.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.time_series.html#Astronomy.solar.time_series" title="Astronomy.solar.time_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_series</span></code></a>(jd)</p></td>
+<td><p>List of powers of Julian centuries.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.solar.truncate.html#Astronomy.solar.truncate" title="Astronomy.solar.truncate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">truncate</span></code></a>(angle)</td>
-<td>Bounds an angle between 0 and 360.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.truncate.html#Astronomy.solar.truncate" title="Astronomy.solar.truncate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">truncate</span></code></a>(angle)</p></td>
+<td><p>Bounds an angle between 0 and 360.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.solar.xy_to_ra_dec.html#Astronomy.solar.xy_to_ra_dec" title="Astronomy.solar.xy_to_ra_dec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xy_to_ra_dec</span></code></a>(x,&nbsp;y,&nbsp;P,&nbsp;ra0,&nbsp;dec0)</td>
-<td>Convert XY coordinates in a Sun-aligned frame to RA and dec</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.xy_to_ra_dec.html#Astronomy.solar.xy_to_ra_dec" title="Astronomy.solar.xy_to_ra_dec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xy_to_ra_dec</span></code></a>(x, y, P, ra0, dec0)</p></td>
+<td><p>Convert XY coordinates in a Sun-aligned frame to RA and dec</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
-<div class="section" id="module-Astronomy.DSN_coordinates">
-<span id="astronomy-dsn-coordinates-module"></span><h2>Astronomy.DSN_coordinates Module<a class="headerlink" href="#module-Astronomy.DSN_coordinates" title="Permalink to this headline">¶</a></h2>
-<p>Coordinates for DSN and affiliated antennas</p>
-<div class="section" id="id4">
-<h3>Contents<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>In this module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="k">class</span> <span class="nc">DSS</span>
-<span class="n">function</span> <span class="n">DSSLocation</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id5">
-<h3>Functions<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.DSN_coordinates.DSN_complex_of.html#Astronomy.DSN_coordinates.DSN_complex_of" title="Astronomy.DSN_coordinates.DSN_complex_of"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DSN_complex_of</span></code></a>(dss)</td>
-<td>Returns the Complex to which a station belongs</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.DSN_coordinates.DSSLocation.html#Astronomy.DSN_coordinates.DSSLocation" title="Astronomy.DSN_coordinates.DSSLocation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DSSLocation</span></code></a>(dss)</td>
-<td>Gives DSN station location as astropy EarthLocation</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.DSN_coordinates.get_cartesian_coordinates.html#Astronomy.DSN_coordinates.get_cartesian_coordinates" title="Astronomy.DSN_coordinates.get_cartesian_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cartesian_coordinates</span></code></a>([station])</td>
-<td>Get the Cartesian coordinates of a DSN station, or a dictionary of all</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.DSN_coordinates.get_geodetic_coords.html#Astronomy.DSN_coordinates.get_geodetic_coords" title="Astronomy.DSN_coordinates.get_geodetic_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_geodetic_coords</span></code></a>([dss,&nbsp;observatory])</td>
-<td>Observatory’s geodetic coordinates</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="id6">
-<h3>Classes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.DSN_coordinates.DSS.html#Astronomy.DSN_coordinates.DSS" title="Astronomy.DSN_coordinates.DSS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DSS</span></code></a>(number)</td>
-<td>Observer class for DSN stations based on xephem Observer</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">EarthLocation</span></code></td>
-<td>Location on the Earth.</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Observer</span></code></td>
-<td>A location on earth for which positions are to be computed.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="id7">
-<h3>Class Inheritance Diagram<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="graphviz"><img src="_images/inheritance-ecdf5a7abf7bc245c686d9121ccf71e14c90d5d3.png" alt="Inheritance diagram of Astronomy.DSN_coordinates.DSS" usemap="#inheritancefc475b7075" class="inheritance graphviz" /></div>
-<map id="inheritancefc475b7075" name="inheritancefc475b7075">
-<area shape="rect" id="node1" href="api/Astronomy.DSN_coordinates.DSS.html#Astronomy.DSN_coordinates.DSS" target="_top" title="Observer class for DSN stations based on xephem Observer" alt="" coords="133,29,205,55"/>
-</map></div>
 </div>
 <div class="section" id="module-Astronomy.coordconv">
 <span id="astronomy-coordconv-module"></span><h2>Astronomy.coordconv Module<a class="headerlink" href="#module-Astronomy.coordconv" title="Permalink to this headline">¶</a></h2>
@@ -825,25 +549,24 @@ coordinate system.</p>
 <div class="section" id="examples-of-use">
 <h3>Examples of use<a class="headerlink" href="#examples-of-use" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
-<li><p class="first">HOUR ANGLE, DECLINATION –&gt; AZIMUTH, ELEVATION:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">Az</span><span class="p">,</span> <span class="n">El</span> <span class="o">=</span> <span class="n">coordconv</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="n">Lat</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">Lat</span><span class="p">,</span> <span class="n">HA</span><span class="p">,</span> <span class="n">Dec</span><span class="p">)</span>
+<li><p>HOUR ANGLE, DECLINATION –&gt; AZIMUTH, ELEVATION:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Az</span><span class="p">,</span> <span class="n">El</span> <span class="o">=</span> <span class="n">coordconv</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="n">Lat</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">Lat</span><span class="p">,</span> <span class="n">HA</span><span class="p">,</span> <span class="n">Dec</span><span class="p">)</span>
 <span class="n">Azimuth</span> <span class="n">will</span> <span class="n">be</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">range</span> <span class="o">-</span><span class="n">Pi</span><span class="o">/</span><span class="mi">2</span> <span class="n">to</span> <span class="n">Pi</span><span class="o">/</span><span class="mi">2</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">AZIMUTH, ELEVATION –&gt; HOUR ANGLE, DECLINATION:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">HA</span><span class="p">,</span> <span class="n">Dec</span> <span class="o">=</span> <span class="n">coordconv</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">pi</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">Lat</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">Lat</span><span class="p">,</span> <span class="n">Az</span><span class="p">,</span> <span class="n">El</span><span class="p">)</span>
+<li><p>AZIMUTH, ELEVATION –&gt; HOUR ANGLE, DECLINATION:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HA</span><span class="p">,</span> <span class="n">Dec</span> <span class="o">=</span> <span class="n">coordconv</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">pi</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">Lat</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">Lat</span><span class="p">,</span> <span class="n">Az</span><span class="p">,</span> <span class="n">El</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">RIGHT ASCENSION, DECLINATION –&gt; GALACTIC LONG &amp; LAT (System I)</p>
-</li>
+<li><p>RIGHT ASCENSION, DECLINATION –&gt; GALACTIC LONG &amp; LAT (System I)</p></li>
 </ol>
 <blockquote>
 <div><p>Refer to Kraus, P., RADIO ASTRONOMY, McGraw Hill, New York, 1966, or
 Allen, C.W., ASTROPHYSICAL QUANTITIES, Athlone Press, London, (1963) for the
 definition of System I:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">AP</span><span class="o">=</span><span class="p">(</span><span class="mf">12.</span> <span class="o">+</span> <span class="mf">40.</span><span class="o">/</span><span class="mf">60.</span><span class="p">)</span><span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">12.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AP</span><span class="o">=</span><span class="p">(</span><span class="mf">12.</span> <span class="o">+</span> <span class="mf">40.</span><span class="o">/</span><span class="mf">60.</span><span class="p">)</span><span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">12.</span>
 <span class="n">BP</span><span class="o">=</span> <span class="mf">28.</span>           <span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">180.</span>
 <span class="n">long_orig</span><span class="o">=</span><span class="p">(</span><span class="mf">18.</span> <span class="o">+</span> <span class="mf">40.</span><span class="o">/</span><span class="mf">60.</span><span class="p">)</span><span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">12.</span>
 <span class="n">lat_orig</span><span class="o">=</span> <span class="n">O</span><span class="o">.</span>
@@ -851,22 +574,22 @@ definition of System I:</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>GALACTIC LONG &amp; LAT (System I) –&gt; RIGHT ASCENSION, DECLINATION</li>
+<li><p>GALACTIC LONG &amp; LAT (System I) –&gt; RIGHT ASCENSION, DECLINATION</p></li>
 </ol>
 <p>In general, whenever we know the forward transformation (i.e. example 3 above)
 we may do the reverse transformation with at most two preliminary call to
 coordconv() to calculate the coordinates in system 2 of the pole and origin
 which are given in system 1. Often, it is possible to get the needed
 coordinates by inspection. In this particular instance:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">APP</span><span class="o">=</span> <span class="mf">6.</span> <span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">12.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">APP</span><span class="o">=</span> <span class="mf">6.</span> <span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">12.</span>
 <span class="n">BPP</span><span class="o">=</span><span class="mf">28.</span> <span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">180.</span>
 <span class="n">new_long_orig</span><span class="p">,</span><span class="n">new_lat_orig</span> <span class="o">=</span> <span class="n">coordconv</span><span class="p">(</span><span class="n">long_orig</span><span class="p">,</span> <span class="n">lat_orig</span><span class="p">,</span> <span class="n">AP</span><span class="p">,</span> <span class="n">BP</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">RA</span><span class="p">,</span> <span class="n">Dec</span> <span class="o">=</span> <span class="n">coordconv</span><span class="p">(</span><span class="n">new_long_orig</span><span class="p">,</span> <span class="n">new_lat_orig</span><span class="p">,</span> <span class="n">APP</span><span class="p">,</span> <span class="n">BPP</span><span class="p">,</span> <span class="n">lI</span><span class="p">,</span> <span class="n">bI</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic" start="5">
-<li><p class="first">RIGHT ASCENSION, DECLINATION –&gt; GALACTIC LONG &amp; LAT (System II):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">AP</span><span class="o">=</span><span class="p">(</span><span class="mf">12.</span> <span class="o">+</span> <span class="mf">49.</span><span class="o">/</span><span class="mf">60.</span><span class="p">)</span><span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">12.</span>
+<li><p>RIGHT ASCENSION, DECLINATION –&gt; GALACTIC LONG &amp; LAT (System II):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AP</span><span class="o">=</span><span class="p">(</span><span class="mf">12.</span> <span class="o">+</span> <span class="mf">49.</span><span class="o">/</span><span class="mf">60.</span><span class="p">)</span><span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">12.</span>
 <span class="n">BP</span><span class="o">=</span> <span class="mf">27.4</span>          <span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">180.</span>
 <span class="n">long_orig</span><span class="o">=</span><span class="p">(</span><span class="mf">17.</span> <span class="o">+</span> <span class="mf">42.4</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span><span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">12.</span>
 <span class="n">lat_orig</span><span class="o">=-</span><span class="p">(</span><span class="mf">28.0</span><span class="o">+</span><span class="mf">55.</span><span class="o">/</span><span class="mf">60.</span><span class="p">)</span><span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">180.</span>
@@ -874,16 +597,16 @@ coordinates by inspection. In this particular instance:</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">GALACTIC LONG &amp; LAT (System II) –&gt; RIGHT ASCENSION, DECLINATION:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">APP</span><span class="p">,</span> <span class="n">BPP</span> <span class="o">=</span> <span class="n">coordconv</span><span class="p">(</span><span class="n">long_orig</span><span class="p">,</span> <span class="n">lat_orig</span><span class="p">,</span> <span class="n">AP</span><span class="p">,</span> <span class="n">BP</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">Pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<li><p>GALACTIC LONG &amp; LAT (System II) –&gt; RIGHT ASCENSION, DECLINATION:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">APP</span><span class="p">,</span> <span class="n">BPP</span> <span class="o">=</span> <span class="n">coordconv</span><span class="p">(</span><span class="n">long_orig</span><span class="p">,</span> <span class="n">lat_orig</span><span class="p">,</span> <span class="n">AP</span><span class="p">,</span> <span class="n">BP</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">Pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">new_long_orig</span><span class="p">,</span> <span class="n">new_lat_orig</span> <span class="o">=</span> <span class="n">coordconv</span><span class="p">(</span><span class="n">long_orig</span><span class="p">,</span> <span class="n">lat_orig</span><span class="p">,</span>
                                         <span class="n">AP</span><span class="p">,</span> <span class="n">BP</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
 <span class="n">RA</span><span class="p">,</span> <span class="n">Dec</span> <span class="o">=</span> <span class="n">coordconv</span><span class="p">(</span><span class="n">new_long_orig</span><span class="p">,</span> <span class="n">new_lat_orig</span><span class="p">,</span> <span class="n">APP</span><span class="p">,</span> <span class="n">BPP</span><span class="p">,</span> <span class="n">lII</span><span class="p">,</span> <span class="n">bII</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">RIGHT ASCENSION, DECLINATION –&gt; ECLIPTIC LATITUDE AND LONGITUDE:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">The</span> <span class="n">obliquity</span> <span class="n">of</span> <span class="n">the</span> <span class="n">ecliptic</span> <span class="p">(</span><span class="n">EPS</span><span class="p">)</span> <span class="n">depends</span> <span class="n">on</span> <span class="n">the</span> <span class="n">epoch</span> <span class="ow">and</span> <span class="n">may</span>
+<li><p>RIGHT ASCENSION, DECLINATION –&gt; ECLIPTIC LATITUDE AND LONGITUDE:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">obliquity</span> <span class="n">of</span> <span class="n">the</span> <span class="n">ecliptic</span> <span class="p">(</span><span class="n">EPS</span><span class="p">)</span> <span class="n">depends</span> <span class="n">on</span> <span class="n">the</span> <span class="n">epoch</span> <span class="ow">and</span> <span class="n">may</span>
 <span class="n">be</span> <span class="n">obtained</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">AMERICAN</span> <span class="n">EPHEMERIS</span> <span class="n">AND</span> <span class="n">NAUTICAL</span> <span class="n">ALMANAC</span><span class="o">.</span>
 <span class="n">EPS</span><span class="o">=</span><span class="mf">23.443</span><span class="o">*</span><span class="n">PI</span><span class="o">/</span><span class="mf">180.</span>
 <span class="n">RA</span> <span class="ow">and</span> <span class="n">Dec</span> <span class="n">are</span> <span class="k">for</span> <span class="n">the</span> <span class="n">epoch</span> <span class="n">of</span> <span class="n">observation</span><span class="o">.</span>
@@ -896,7 +619,7 @@ coordinates by inspection. In this particular instance:</p>
 and long_orig are specified, then there are only two discrete values possible
 for lat_orig (except for a few degenerate special cases). The two possible
 values of lat_orig may be calculated from:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">sin</span><span class="p">(</span><span class="n">lat_orig</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="n">sin</span><span class="p">(</span><span class="n">BP</span><span class="p">)</span> <span class="o">+/-</span> <span class="mf">2.</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">BP</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sin</span><span class="p">(</span><span class="n">lat_orig</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="n">sin</span><span class="p">(</span><span class="n">BP</span><span class="p">)</span> <span class="o">+/-</span> <span class="mf">2.</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">BP</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
                              <span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">AP</span><span class="o">-</span><span class="n">long_orig</span><span class="p">)</span>
                              <span class="o">*</span><span class="n">sqrt</span><span class="p">{</span><span class="mf">1.</span><span class="o">+</span><span class="n">cos</span><span class="p">(</span><span class="n">AP</span><span class="o">-</span><span class="n">long_orig</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">}]</span>
         <span class="o">/</span> <span class="p">[</span><span class="n">sin</span><span class="p">(</span><span class="n">BP</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">{</span><span class="n">cos</span><span class="p">(</span><span class="n">BP</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">AP</span><span class="o">-</span><span class="n">long_orig</span><span class="p">)}</span><span class="o">**</span><span class="mi">2</span><span class="p">]</span>
@@ -904,41 +627,367 @@ values of lat_orig may be calculated from:</p>
 </div>
 <p>If AP, BP, and lat_orig are known, then the two possible values of long_orig
 may be calculated from:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">cos</span><span class="p">(</span><span class="n">AP</span><span class="o">-</span><span class="n">long_orig</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">lat_orig</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">BP</span><span class="p">)]</span><span class="o">/</span><span class="p">[</span><span class="n">cos</span><span class="p">(</span><span class="n">lat_orig</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">BP</span><span class="p">)]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cos</span><span class="p">(</span><span class="n">AP</span><span class="o">-</span><span class="n">long_orig</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">lat_orig</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">BP</span><span class="p">)]</span><span class="o">/</span><span class="p">[</span><span class="n">cos</span><span class="p">(</span><span class="n">lat_orig</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">BP</span><span class="p">)]</span>
 </pre></div>
 </div>
 <p>If, instead of long_orig and lat_orig, the longitude of the ascending node is
 known in both the old (AN1) and new (AN2) coordinate systems, then long_orig
 and lat_orig may be calculated by a preliminary call to COORD:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">long_orig</span><span class="p">,</span> <span class="n">lat_orig</span> <span class="o">=</span> <span class="n">coordonv</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">AN1</span><span class="o">-</span><span class="n">AP</span><span class="p">,</span> <span class="n">BP</span><span class="p">,</span> <span class="o">-</span><span class="n">AN2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">long_orig</span><span class="p">,</span> <span class="n">lat_orig</span> <span class="o">=</span> <span class="n">coordonv</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">AN1</span><span class="o">-</span><span class="n">AP</span><span class="p">,</span> <span class="n">BP</span><span class="p">,</span> <span class="o">-</span><span class="n">AN2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="id2">
+<h3>Functions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">acos</span></code></p></td>
+<td><p>Return the arc cosine (measured in radians) of x.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">asin</span></code></p></td>
+<td><p>Return the arc sine (measured in radians) of x.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">atan</span></code></p></td>
+<td><p>Return the arc tangent (measured in radians) of x.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.coordconv.coordconv.html#Astronomy.coordconv.coordconv" title="Astronomy.coordconv.coordconv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordconv</span></code></a>(long_orig, lat_orig, AP, BP, A1, B1)</p></td>
+<td><p>converts between many lat-long style coordinate systems</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cos</span></code></p></td>
+<td><p>Return the cosine of x (measured in radians).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sin</span></code></p></td>
+<td><p>Return the sine of x (measured in radians).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-Astronomy.DSN_coordinates">
+<span id="astronomy-dsn-coordinates-module"></span><h2>Astronomy.DSN_coordinates Module<a class="headerlink" href="#module-Astronomy.DSN_coordinates" title="Permalink to this headline">¶</a></h2>
+<p>Coordinates for DSN and affiliated antennas</p>
+<div class="section" id="id3">
+<h3>Contents<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>In this module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DSS</span>
+<span class="n">function</span> <span class="n">DSSLocation</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>Functions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.DSN_coordinates.DSN_complex_of.html#Astronomy.DSN_coordinates.DSN_complex_of" title="Astronomy.DSN_coordinates.DSN_complex_of"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DSN_complex_of</span></code></a>(dss)</p></td>
+<td><p>Returns the Complex to which a station belongs</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.DSN_coordinates.DSSLocation.html#Astronomy.DSN_coordinates.DSSLocation" title="Astronomy.DSN_coordinates.DSSLocation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DSSLocation</span></code></a>(dss)</p></td>
+<td><p>Gives DSN station location as astropy EarthLocation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.DSN_coordinates.get_cartesian_coordinates.html#Astronomy.DSN_coordinates.get_cartesian_coordinates" title="Astronomy.DSN_coordinates.get_cartesian_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cartesian_coordinates</span></code></a>([station])</p></td>
+<td><p>Get the Cartesian coordinates of a DSN station, or a dictionary of all</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.DSN_coordinates.get_geodetic_coords.html#Astronomy.DSN_coordinates.get_geodetic_coords" title="Astronomy.DSN_coordinates.get_geodetic_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_geodetic_coords</span></code></a>([dss, observatory])</p></td>
+<td><p>Observatory’s geodetic coordinates</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.DSN_coordinates.DSS.html#Astronomy.DSN_coordinates.DSS" title="Astronomy.DSN_coordinates.DSS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DSS</span></code></a>(number)</p></td>
+<td><p>Observer class for DSN stations based on xephem Observer</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">EarthLocation</span></code></p></td>
+<td><p>Location on the Earth.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Observer</span></code></p></td>
+<td><p>A location on earth for which positions are to be computed.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="class-inheritance-diagram">
+<h3>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h3>
+<div class="graphviz"><img src="_images/inheritance-fafc29fc103ecb822641e8308c10ffc77b541f24.png" alt="Inheritance diagram of Astronomy.DSN_coordinates.DSS" usemap="#inheritancefc475b7075" class="inheritance graphviz" /></div>
+<map id="inheritancefc475b7075" name="inheritancefc475b7075">
+<area shape="rect" id="node1" href="api/Astronomy.DSN_coordinates.DSS.html#Astronomy.DSN_coordinates.DSS" target="_top" title="Observer class for DSN stations based on xephem Observer" alt="" coords="135,29,207,55"/>
+</map></div>
+</div>
+<div class="section" id="module-Astronomy.formats">
+<span id="astronomy-formats-module"></span><h2>Astronomy.formats Module<a class="headerlink" href="#module-Astronomy.formats" title="Permalink to this headline">¶</a></h2>
+<p>Converts between conventional angular notation and decimal notation,
+either decimal angles or radians as designated.</p>
+<div class="section" id="id5">
+<h3>Functions<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.formats.dms_delimited_angle_to_rads.html#Astronomy.formats.dms_delimited_angle_to_rads" title="Astronomy.formats.dms_delimited_angle_to_rads"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dms_delimited_angle_to_rads</span></code></a>(angle)</p></td>
+<td><p>converts decl.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.formats.hms_delimited_angle_to_rads.html#Astronomy.formats.hms_delimited_angle_to_rads" title="Astronomy.formats.hms_delimited_angle_to_rads"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hms_delimited_angle_to_rads</span></code></a>(angle)</p></td>
+<td><p>Converts R.A.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.formats.parse_colon_delimited_angles.html#Astronomy.formats.parse_colon_delimited_angles" title="Astronomy.formats.parse_colon_delimited_angles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_colon_delimited_angles</span></code></a>(rastring, decstring)</p></td>
+<td><p>Parses RA and decl.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.formats.parse_dms_delimited_angle.html#Astronomy.formats.parse_dms_delimited_angle" title="Astronomy.formats.parse_dms_delimited_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_dms_delimited_angle</span></code></a>(angle)</p></td>
+<td><p>Parses decl.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.formats.parse_hms_delimited_angle.html#Astronomy.formats.parse_hms_delimited_angle" title="Astronomy.formats.parse_hms_delimited_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_hms_delimited_angle</span></code></a>(angle)</p></td>
+<td><p>Parses RA strings delimited with h, m and s.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-Astronomy.northpolar">
+<span id="astronomy-northpolar-module"></span><h2>Astronomy.northpolar Module<a class="headerlink" href="#module-Astronomy.northpolar" title="Permalink to this headline">¶</a></h2>
+<p>from <a class="reference external" href="http://stackoverflow.com/questions/2417794/how-to-make-the-angles-in-a-matplotlib-polar-plot-go-clockwise-with-0-at-the-top">http://stackoverflow.com/questions/2417794/how-to-make-the-angles-in-a-matplotlib-polar-plot-go-clockwise-with-0-at-the-top</a></p>
+<div class="section" id="id6">
+<h3>Classes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Affine2D</span></code>([matrix])</p></td>
+<td><p>A mutable 2D affine transformation.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Bbox</span></code>(points, **kwargs)</p></td>
+<td><p>A mutable bounding box.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentityTransform</span></code>(*args, **kwargs)</p></td>
+<td><p>A special class that does one thing, the identity transform, in a fast way.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.northpolar.NorthPolarAxes.html#Astronomy.northpolar.NorthPolarAxes" title="Astronomy.northpolar.NorthPolarAxes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NorthPolarAxes</span></code></a>(*args[, theta_offset, …])</p></td>
+<td><p>A variant of PolarAxes where theta starts pointing north and goes clockwise.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolarAxes</span></code>(*args[, theta_offset, …])</p></td>
+<td><p>A polar graph projection, where the input dimensions are <em>theta</em>, <em>r</em>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id7">
+<h3>Class Inheritance Diagram<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="graphviz"><img src="_images/inheritance-253ae13a3b53c585ad89d2b2f78276df8782b1ce.png" alt="Inheritance diagram of Astronomy.northpolar.NorthPolarAxes" usemap="#inheritance5f7a498530" class="inheritance graphviz" /></div>
+<map id="inheritance5f7a498530" name="inheritance5f7a498530">
+<area shape="rect" id="node4" href="api/Astronomy.northpolar.NorthPolarAxes.html#Astronomy.northpolar.NorthPolarAxes" target="_top" title="A variant of PolarAxes where theta starts pointing north and goes" alt="" coords="521,5,644,31"/>
+</map></div>
+</div>
+<div class="section" id="module-Astronomy.redshift">
+<span id="astronomy-redshift-module"></span><h2>Astronomy.redshift Module<a class="headerlink" href="#module-Astronomy.redshift" title="Permalink to this headline">¶</a></h2>
+<p>module Astronomy.redshift - functions for computing to/from redshift</p>
+<p>The redshift is the fractional amount by which a wavelength is shifted
+longward (to the red) due to the recessional velocity of the emitter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">lambda</span> <span class="o">-</span> <span class="n">lambda_0</span>
+<span class="n">z</span> <span class="o">=</span> <span class="o">-----------------</span>
+        <span class="n">lambda_0</span>
+</pre></div>
+</div>
+<p>For large velocities special relativity should be taken into account
+when computing the redshift from recessional velocity and vice-versa:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="p">(</span> <span class="n">c</span> <span class="o">+</span> <span class="n">V_r</span> <span class="p">)</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">z</span> <span class="o">=</span> <span class="p">(</span> <span class="o">-------</span> <span class="p">)</span>     <span class="o">-</span> <span class="mi">1</span>
+    <span class="p">(</span> <span class="n">c</span> <span class="o">-</span> <span class="n">V_r</span> <span class="p">)</span>
+
+           <span class="mi">2</span>
+<span class="n">V_r</span>   <span class="p">(</span><span class="n">z</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="o">-</span> <span class="mi">1</span>
+<span class="o">---</span> <span class="o">=</span> <span class="o">----------</span>
+ <span class="n">c</span>         <span class="mi">2</span>
+      <span class="p">(</span><span class="n">z</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>The radial velocity which gives rise to redshift can be calculated
+according to various conventions.  The most convenient is the radio
+astronomy convention which computes redshift as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">f_0</span> <span class="o">-</span> <span class="n">f</span>
+<span class="n">z</span> <span class="o">=</span> <span class="o">-------</span>
+      <span class="n">f_0</span>
+</pre></div>
+</div>
+<p>The velocity shift in the radio convention is computed as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>             <span class="n">df</span>
+<span class="n">dV</span>      <span class="o">=</span> <span class="o">-</span><span class="n">c</span> <span class="o">---</span>
+  <span class="n">radio</span>      <span class="n">f_0</span>
+</pre></div>
+</div>
+<p>The optical astronomy convention leads to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>               <span class="n">df</span>  <span class="p">(</span><span class="n">f_0</span><span class="p">)</span><span class="mi">2</span>
+<span class="n">dV</span>        <span class="o">=</span> <span class="o">-</span><span class="n">c</span> <span class="o">---</span> <span class="p">(</span><span class="o">---</span><span class="p">)</span>
+  <span class="n">optical</span>      <span class="n">f_0</span> <span class="p">(</span> <span class="n">f</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<p>Redshift: Lang, Astrophys. Formulae, eqns. 2-227 – 2-229</p>
+<p>Cosmic Time Scale: Ho; Lang, Astrophys. Formulae, eqn. 5-82</p>
+<p>Doppler Shift: astropy documentation for Spectral Doppler Equivalencies</p>
 <div class="section" id="id8">
 <h3>Functions<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">acos</span></code>(x)</td>
-<td>Return the arc cosine (measured in radians) of x.</td>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MJD</span></code>(*args)</p></td>
+<td><p>Returns modified Julian date from UNIX time or (year,doy) or (year,month,day)</p></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">asin</span></code>(x)</td>
-<td>Return the arc sine (measured in radians) of x.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.V_LSR.html#Astronomy.redshift.V_LSR" title="Astronomy.redshift.V_LSR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">V_LSR</span></code></a>(RA, dec, dss, timedate)</p></td>
+<td><p>Computes the velocity of the local standard of rest w.r.t.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">atan</span></code>(x)</td>
-<td>Return the arc tangent (measured in radians) of x.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.age.html#Astronomy.redshift.age" title="Astronomy.redshift.age"><code class="xref py py-obj docutils literal notranslate"><span class="pre">age</span></code></a>(z[, hubble_constant])</p></td>
+<td><p>Cosmic time scale = age if acceleration = 0</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.coordconv.coordconv.html#Astronomy.coordconv.coordconv" title="Astronomy.coordconv.coordconv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordconv</span></code></a>(long_orig,&nbsp;lat_orig,&nbsp;AP,&nbsp;BP,&nbsp;A1,&nbsp;B1)</td>
-<td>converts between many lat-long style coordinate systems</td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>(object[, dtype, copy, order, subok, ndmin])</p></td>
+<td><p>Create an array.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">cos</span></code>(x)</td>
-<td>Return the cosine of x (measured in radians).</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.distance.html#Astronomy.redshift.distance" title="Astronomy.redshift.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a>(z[, hubble_constant])</p></td>
+<td><p>Distance of a cosmically redshifted source, assuming constant expansion</p></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">sin</span></code>(x)</td>
-<td>Return the sine of x (measured in radians).</td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.dop_fac.html#Astronomy.redshift.dop_fac" title="Astronomy.redshift.dop_fac"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dop_fac</span></code></a>(z)</p></td>
+<td><p>Redshifted frequency as a ratio: f/f_0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.doppler_optical.html#Astronomy.redshift.doppler_optical" title="Astronomy.redshift.doppler_optical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doppler_optical</span></code></a>(rel_freq, f_ref)</p></td>
+<td><p>Returns the Doppler shift for a frequency offset by the optical convention</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.doppler_radio.html#Astronomy.redshift.doppler_radio" title="Astronomy.redshift.doppler_radio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doppler_radio</span></code></a>(rel_freq, f_ref)</p></td>
+<td><p>Returns the Doppler shift for a frequency offset by the radio convention</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.doppler_relat.html#Astronomy.redshift.doppler_relat" title="Astronomy.redshift.doppler_relat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doppler_relat</span></code></a>(rel_freq, f_ref)</p></td>
+<td><p>Returns the relativistic Doppler shift for a frequency offset</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.redshift.html#Astronomy.redshift.redshift" title="Astronomy.redshift.redshift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redshift</span></code></a>([v_recess, dop_fac])</p></td>
+<td><p>Redshift corresponding to a recessional velocity</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sqrt</span></code></p></td>
+<td><p>Return the square root of x.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.v_recess.html#Astronomy.redshift.v_recess" title="Astronomy.redshift.v_recess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_recess</span></code></a>(distance[, hubble_constant])</p></td>
+<td><p>velocity of recession for a constant rate of expansion = Hubble constant</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.v_redshift.html#Astronomy.redshift.v_redshift" title="Astronomy.redshift.v_redshift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_redshift</span></code></a>(z)</p></td>
+<td><p>velocity of recession for a given redshift</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_sun</span></code>(mjd, ra_source, dec_source)</p></td>
+<td><p>LSR velocity of the sun</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.wave_stretch.html#Astronomy.redshift.wave_stretch" title="Astronomy.redshift.wave_stretch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wave_stretch</span></code></a>(z)</p></td>
+<td><p>Fractional lengthening of wavelength</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-Astronomy.ATCA_caldb">
+<span id="astronomy-atca-caldb-module"></span><h2>Astronomy.ATCA_caldb Module<a class="headerlink" href="#module-Astronomy.ATCA_caldb" title="Permalink to this headline">¶</a></h2>
+<p>Query ATCA calibrator database</p>
+<p><a class="reference external" href="http://www.narrabri.atnf.csiro.au/calibrators/calibrator_database_search.html?position=12:30:49,12:23:28&amp;radius=1">http://www.narrabri.atnf.csiro.au/calibrators/calibrator_database_search.html?position=12:30:49,12:23:28&amp;radius=1</a></p>
+<p>Because it takes a while to read the database, try this:
+<a class="reference external" href="http://stackoverflow.com/questions/28974634/urllib2-url-open-delay-between-opening-webpage-and-getting-html-data">http://stackoverflow.com/questions/28974634/urllib2-url-open-delay-between-opening-webpage-and-getting-html-data</a></p>
+<p>That did not work.</p>
+<div class="section" id="id9">
+<h3>Functions<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.ATCA_caldb.build_ATCA_caldb_query.html#Astronomy.ATCA_caldb.build_ATCA_caldb_query" title="Astronomy.ATCA_caldb.build_ATCA_caldb_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_ATCA_caldb_query</span></code></a>([RA, dec, radius])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.ATCA_caldb.parse_ATCA_caldb_response.html#Astronomy.ATCA_caldb.parse_ATCA_caldb_response" title="Astronomy.ATCA_caldb.parse_ATCA_caldb_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_ATCA_caldb_response</span></code></a>(response)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.ATCA_caldb.query_ATCA_caldb.html#Astronomy.ATCA_caldb.query_ATCA_caldb" title="Astronomy.ATCA_caldb.query_ATCA_caldb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_ATCA_caldb</span></code></a>(url)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sleep</span></code>(seconds)</p></td>
+<td><p>Delay execution for a given number of seconds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">urlopen</span></code>(url[, data, timeout, cafile, …])</p></td>
+<td><p>Open the URL url, which can be either a string or a Request object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id10">
+<h3>Classes<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTMLParser</span></code>(*[, convert_charrefs])</p></td>
+<td><p>Find tags and other markup and call handler functions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.ATCA_caldb.lineParser.html#Astronomy.ATCA_caldb.lineParser" title="Astronomy.ATCA_caldb.lineParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineParser</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id11">
+<h3>Class Inheritance Diagram<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="graphviz"><img src="_images/inheritance-f9a1f284ae08656b20a8fc13190756a7696ff1d0.png" alt="Inheritance diagram of Astronomy.ATCA_caldb.lineParser" usemap="#inheritanceb2507e2fcc" class="inheritance graphviz" /></div>
+<map id="inheritanceb2507e2fcc" name="inheritanceb2507e2fcc">
+<area shape="rect" id="node3" href="api/Astronomy.ATCA_caldb.lineParser.html#Astronomy.ATCA_caldb.lineParser" target="_top" title="lineParser" alt="" coords="295,5,381,31"/>
+</map></div>
+</div>
+<div class="section" id="module-Astronomy.TAI">
+<span id="astronomy-tai-module"></span><h2>Astronomy.TAI Module<a class="headerlink" href="#module-Astronomy.TAI" title="Permalink to this headline">¶</a></h2>
+<p>Provides delta T = TAI - UTC</p>
+<dl class="simple">
+<dt>Example::</dt><dd><p>In [1]: from Astronomy.TAI import dTA
+In [2]: dTA(2450630)
+Out[2]: 31.0</p>
+</dd>
+</dl>
+<p>from <a class="reference external" href="http://maia.usno.navy.mil/ser7/tai-utc.dat">http://maia.usno.navy.mil/ser7/tai-utc.dat</a></p>
+<div class="section" id="id12">
+<h3>Functions<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>(object[, dtype, copy, order, subok, ndmin])</p></td>
+<td><p>Create an array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.TAI.dTA.html#Astronomy.TAI.dTA" title="Astronomy.TAI.dTA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dTA</span></code></a>(jd)</p></td>
+<td><p>This does not extrapolate into future years.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">datestr2num</span></code>(d[, default])</p></td>
+<td><p>Convert a date string to a datenum using <code class="xref py py-func docutils literal notranslate"><span class="pre">dateutil.parser.parse()</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.TAI.init_table.html#Astronomy.TAI.init_table" title="Astronomy.TAI.init_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init_table</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">num2date</span></code>(x[, tz])</p></td>
+<td><p>Convert Matplotlib dates to <cite>~datetime.datetime</cite> objects.</p></td>
 </tr>
 </tbody>
 </table>
@@ -953,166 +1002,41 @@ Sun’s surface. Heliographic latitude is an object’s angular distance north o
 south of the solar equator; heliographic longitude can be measured east or west
 of the central solar meridian, or given in terms of the Carrington rotation
 number.</p>
-<div class="section" id="id9">
-<h3>Functions<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.orbits3D.make_arc.html#Astronomy.orbits3D.make_arc" title="Astronomy.orbits3D.make_arc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_arc</span></code></a>(ax,&nbsp;radius,&nbsp;long_asc_node,&nbsp;…)</td>
-<td>Draw an arc centered on the origin</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.orbits3D.make_axis.html#Astronomy.orbits3D.make_axis" title="Astronomy.orbits3D.make_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_axis</span></code></a>(ax,&nbsp;maxval,&nbsp;direction,&nbsp;npts)</td>
-<td>Show an axis of a Euclidian space</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.orbits3D.make_orbit.html#Astronomy.orbits3D.make_orbit" title="Astronomy.orbits3D.make_orbit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_orbit</span></code></a>(ax,&nbsp;radius,&nbsp;long_asc_node,&nbsp;…)</td>
-<td>Draw a full circle around the origin</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.orbits3D.orbit_text.html#Astronomy.orbits3D.orbit_text" title="Astronomy.orbits3D.orbit_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orbit_text</span></code></a>(ax,&nbsp;radius,&nbsp;long_asc_node,&nbsp;…)</td>
-<td>Position text using orbital coordinates.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.orbits3D.orbit_vector.html#Astronomy.orbits3D.orbit_vector" title="Astronomy.orbits3D.orbit_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orbit_vector</span></code></a>(ax,&nbsp;maxval,&nbsp;long_asc_node,&nbsp;…)</td>
-<td>Draw a radial vector</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.orbits3D.show_celestial.html#Astronomy.orbits3D.show_celestial" title="Astronomy.orbits3D.show_celestial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_celestial</span></code></a>(fig,&nbsp;obliquity,&nbsp;long_perigee,&nbsp;…)</td>
-<td>Show an orbit in the celestial coordinate system</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.orbits3D.show_heliographic.html#Astronomy.orbits3D.show_heliographic" title="Astronomy.orbits3D.show_heliographic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_heliographic</span></code></a>(fig,&nbsp;inclin_sun,&nbsp;…[,&nbsp;Title])</td>
-<td>Show a celestial coordinate system in heliographic coordinates</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.orbits3D.unit_vector.html#Astronomy.orbits3D.unit_vector" title="Astronomy.orbits3D.unit_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unit_vector</span></code></a>(long_asc_node,&nbsp;inclination,&nbsp;…)</td>
-<td>Cartesian components of a unit vector.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="module-Astronomy.formats">
-<span id="astronomy-formats-module"></span><h2>Astronomy.formats Module<a class="headerlink" href="#module-Astronomy.formats" title="Permalink to this headline">¶</a></h2>
-<p>Converts between conventional angular notation and decimal notation,
-either decimal angles or radians as designated.</p>
-<div class="section" id="id10">
-<h3>Functions<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.formats.dms_delimited_angle_to_rads.html#Astronomy.formats.dms_delimited_angle_to_rads" title="Astronomy.formats.dms_delimited_angle_to_rads"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dms_delimited_angle_to_rads</span></code></a>(angle)</td>
-<td>converts decl.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.formats.hms_delimited_angle_to_rads.html#Astronomy.formats.hms_delimited_angle_to_rads" title="Astronomy.formats.hms_delimited_angle_to_rads"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hms_delimited_angle_to_rads</span></code></a>(angle)</td>
-<td>Converts R.A.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.formats.parse_colon_delimited_angles.html#Astronomy.formats.parse_colon_delimited_angles" title="Astronomy.formats.parse_colon_delimited_angles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_colon_delimited_angles</span></code></a>(rastring,&nbsp;decstring)</td>
-<td>Parses RA and decl.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.formats.parse_dms_delimited_angle.html#Astronomy.formats.parse_dms_delimited_angle" title="Astronomy.formats.parse_dms_delimited_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_dms_delimited_angle</span></code></a>(angle)</td>
-<td>Parses decl.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.formats.parse_hms_delimited_angle.html#Astronomy.formats.parse_hms_delimited_angle" title="Astronomy.formats.parse_hms_delimited_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_hms_delimited_angle</span></code></a>(angle)</td>
-<td>Parses RA strings delimited with h, m and s.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="module-Astronomy.IAU_names">
-<span id="astronomy-iau-names-module"></span><h2>Astronomy.IAU_names Module<a class="headerlink" href="#module-Astronomy.IAU_names" title="Permalink to this headline">¶</a></h2>
-<p>module IAU_names - IAU source name conversion and matching</p>
-<p>IAU source nomenclature rules are here:
-<a class="reference external" href="http://cdsweb.u-strasbg.fr/Dic/iau-spec.html">http://cdsweb.u-strasbg.fr/Dic/iau-spec.html</a></p>
-<p>Coordinate based IAU source names can have the following forms.  Lowercase
-letters indicate a decimal part, except s which means sign:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">*</span> <span class="n">Explicit</span> <span class="n">use</span> <span class="n">of</span> <span class="n">a</span> <span class="n">decimal</span> <span class="n">point</span> <span class="ow">is</span> <span class="n">recommended</span><span class="o">.</span>
-<span class="o">*</span> <span class="n">A</span> <span class="n">source</span> <span class="nb">type</span> <span class="n">designation</span> <span class="ow">is</span> <span class="n">also</span> <span class="n">recommended</span><span class="p">,</span> <span class="n">such</span> <span class="k">as</span> <span class="n">H2O</span><span class="p">,</span> <span class="n">PSR</span><span class="p">,</span> <span class="n">QSO</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span>
-<span class="o">*</span> <span class="n">No</span> <span class="n">spaces</span> <span class="n">may</span> <span class="n">appear</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">designator</span><span class="o">.</span>
-<span class="o">*</span> <span class="n">Leading</span> <span class="n">zeros</span> <span class="n">are</span> <span class="n">required</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>For sources in our galaxy:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">G</span> <span class="n">LLL</span><span class="p">[</span><span class="o">.</span><span class="n">ll</span><span class="p">]</span><span class="n">sBB</span><span class="p">[</span><span class="o">.</span><span class="n">bb</span><span class="p">]</span>
-<span class="n">G</span> <span class="n">LLLllsBBbb</span>
-  <span class="n">The</span> <span class="n">G</span> <span class="ow">is</span> <span class="n">required</span><span class="o">.</span> <span class="n">The</span> <span class="n">decimal</span> <span class="n">part</span> <span class="n">of</span> <span class="n">the</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">precision</span><span class="p">,</span>
-  <span class="ow">is</span> <span class="n">optional</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>For sidereal sources:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">J</span> <span class="n">HHMM</span><span class="p">[</span><span class="n">SS</span><span class="p">[</span><span class="o">.</span><span class="n">s</span><span class="p">]]</span><span class="n">sDDMM</span><span class="p">[</span><span class="n">SS</span><span class="p">[</span><span class="o">.</span><span class="n">s</span><span class="p">]]</span>
-<span class="n">J</span> <span class="n">HHMMsDDMM</span><span class="p">[</span><span class="o">.</span><span class="n">m</span><span class="p">]</span>
-</pre></div>
-</div>
-<div class="section" id="id11">
-<h3>Functions<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.IAU_names.find_IAU_name_match.html#Astronomy.IAU_names.find_IAU_name_match" title="Astronomy.IAU_names.find_IAU_name_match"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_IAU_name_match</span></code></a>(name,&nbsp;namelist,&nbsp;template)</td>
-<td>Check a name against all the names in a list and return the match</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.IAU_names.match_IAU_names.html#Astronomy.IAU_names.match_IAU_names" title="Astronomy.IAU_names.match_IAU_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_IAU_names</span></code></a>(name1,&nbsp;name2,&nbsp;template)</td>
-<td>Compare two IAU designations.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.IAU_names.parse_IAU_name.html#Astronomy.IAU_names.parse_IAU_name" title="Astronomy.IAU_names.parse_IAU_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_IAU_name</span></code></a>(name)</td>
-<td>Parse an IAU source designation.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.IAU_names.parse_decimal_angle.html#Astronomy.IAU_names.parse_decimal_angle" title="Astronomy.IAU_names.parse_decimal_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_decimal_angle</span></code></a>(angle)</td>
-<td>Parse an angle given in degrees, with or without a decimal point.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.IAU_names.parse_sexagesimal_angle.html#Astronomy.IAU_names.parse_sexagesimal_angle" title="Astronomy.IAU_names.parse_sexagesimal_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_sexagesimal_angle</span></code></a>(angle)</td>
-<td>Parse a sexagesimal angle, with or without an explicit decimal point.</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">pow</span></code>(x,&nbsp;y)</td>
-<td>Return x**y (x to the power of y).</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.IAU_names.split_on_sign.html#Astronomy.IAU_names.split_on_sign" title="Astronomy.IAU_names.split_on_sign"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_on_sign</span></code></a>(designator)</td>
-<td>Separate the ra/l part from the dec/b part of an IAU designation,</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="module-Astronomy.northpolar">
-<span id="astronomy-northpolar-module"></span><h2>Astronomy.northpolar Module<a class="headerlink" href="#module-Astronomy.northpolar" title="Permalink to this headline">¶</a></h2>
-<p>from <a class="reference external" href="http://stackoverflow.com/questions/2417794/how-to-make-the-angles-in-a-matplotlib-polar-plot-go-clockwise-with-0-at-the-top">http://stackoverflow.com/questions/2417794/how-to-make-the-angles-in-a-matplotlib-polar-plot-go-clockwise-with-0-at-the-top</a></p>
-<div class="section" id="id12">
-<h3>Classes<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Affine2D</span></code>([matrix])</td>
-<td>A mutable 2D affine transformation.</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Bbox</span></code>(points,&nbsp;**kwargs)</td>
-<td>A mutable bounding box.</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentityTransform</span></code>(*args,&nbsp;**kwargs)</td>
-<td>A special class that does on thing, the identity transform, in a fast way.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.northpolar.NorthPolarAxes.html#Astronomy.northpolar.NorthPolarAxes" title="Astronomy.northpolar.NorthPolarAxes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NorthPolarAxes</span></code></a>(*args,&nbsp;**kwargs)</td>
-<td>A variant of PolarAxes where theta starts pointing north and goes clockwise.</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolarAxes</span></code>(*args,&nbsp;**kwargs)</td>
-<td>A polar graph projection, where the input dimensions are <em>theta</em>, <em>r</em>.</td>
-</tr>
-</tbody>
-</table>
-</div>
 <div class="section" id="id13">
-<h3>Class Inheritance Diagram<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<div class="graphviz"><img src="_images/inheritance-2dc29c41bfaf6f46a6d0b4e0e76fad83eefcb1f9.png" alt="Inheritance diagram of Astronomy.northpolar.NorthPolarAxes" usemap="#inheritance5f7a498530" class="inheritance graphviz" /></div>
-<map id="inheritance5f7a498530" name="inheritance5f7a498530">
-<area shape="rect" id="node4" href="api/Astronomy.northpolar.NorthPolarAxes.html#Astronomy.northpolar.NorthPolarAxes" target="_top" title="A variant of PolarAxes where theta starts pointing north and goes" alt="" coords="519,5,640,31"/>
-</map></div>
+<h3>Functions<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.orbits3D.make_arc.html#Astronomy.orbits3D.make_arc" title="Astronomy.orbits3D.make_arc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_arc</span></code></a>(ax, radius, long_asc_node, …)</p></td>
+<td><p>Draw an arc centered on the origin</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.orbits3D.make_axis.html#Astronomy.orbits3D.make_axis" title="Astronomy.orbits3D.make_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_axis</span></code></a>(ax, maxval, direction, npts)</p></td>
+<td><p>Show an axis of a Euclidian space</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.orbits3D.make_orbit.html#Astronomy.orbits3D.make_orbit" title="Astronomy.orbits3D.make_orbit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_orbit</span></code></a>(ax, radius, long_asc_node, …)</p></td>
+<td><p>Draw a full circle around the origin</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.orbits3D.orbit_text.html#Astronomy.orbits3D.orbit_text" title="Astronomy.orbits3D.orbit_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orbit_text</span></code></a>(ax, radius, long_asc_node, …)</p></td>
+<td><p>Position text using orbital coordinates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.orbits3D.orbit_vector.html#Astronomy.orbits3D.orbit_vector" title="Astronomy.orbits3D.orbit_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orbit_vector</span></code></a>(ax, maxval, long_asc_node, …)</p></td>
+<td><p>Draw a radial vector</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.orbits3D.show_celestial.html#Astronomy.orbits3D.show_celestial" title="Astronomy.orbits3D.show_celestial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_celestial</span></code></a>(fig, obliquity, long_perigee, …)</p></td>
+<td><p>Show an orbit in the celestial coordinate system</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.orbits3D.show_heliographic.html#Astronomy.orbits3D.show_heliographic" title="Astronomy.orbits3D.show_heliographic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_heliographic</span></code></a>(fig, inclin_sun, …[, Title])</p></td>
+<td><p>Show a celestial coordinate system in heliographic coordinates</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.orbits3D.unit_vector.html#Astronomy.orbits3D.unit_vector" title="Astronomy.orbits3D.unit_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unit_vector</span></code></a>(long_asc_node, inclination, …)</p></td>
+<td><p>Cartesian components of a unit vector.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="module-Astronomy.SIMBAD">
 <span id="astronomy-simbad-module"></span><h2>Astronomy.SIMBAD Module<a class="headerlink" href="#module-Astronomy.SIMBAD" title="Permalink to this headline">¶</a></h2>
@@ -1122,23 +1046,23 @@ letters indicate a decimal part, except s which means sign:</p>
 an example.</p>
 <div class="section" id="id14">
 <h3>Functions<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.SIMBAD.build_SIMBAD_query.html#Astronomy.SIMBAD.build_SIMBAD_query" title="Astronomy.SIMBAD.build_SIMBAD_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_SIMBAD_query</span></code></a>(source)</td>
-<td></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.SIMBAD.build_SIMBAD_query.html#Astronomy.SIMBAD.build_SIMBAD_query" title="Astronomy.SIMBAD.build_SIMBAD_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_SIMBAD_query</span></code></a>(source)</p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Astronomy.SIMBAD.parse_SIMBAD_response.html#Astronomy.SIMBAD.parse_SIMBAD_response" title="Astronomy.SIMBAD.parse_SIMBAD_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_SIMBAD_response</span></code></a>(response[,&nbsp;catalogs])</td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.SIMBAD.parse_SIMBAD_response.html#Astronomy.SIMBAD.parse_SIMBAD_response" title="Astronomy.SIMBAD.parse_SIMBAD_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_SIMBAD_response</span></code></a>(response[, catalogs])</p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Astronomy.SIMBAD.query_SIMBAD.html#Astronomy.SIMBAD.query_SIMBAD" title="Astronomy.SIMBAD.query_SIMBAD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_SIMBAD</span></code></a>(url)</td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.SIMBAD.query_SIMBAD.html#Astronomy.SIMBAD.query_SIMBAD" title="Astronomy.SIMBAD.query_SIMBAD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_SIMBAD</span></code></a>(url)</p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">urlopen</span></code>(url[,&nbsp;data,&nbsp;timeout,&nbsp;cafile,&nbsp;…])</td>
-<td></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">urlopen</span></code>(url[, data, timeout, cafile, …])</p></td>
+<td><p>Open the URL url, which can be either a string or a Request object.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1150,9 +1074,9 @@ an example.</p>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 
@@ -1179,7 +1103,7 @@ an example.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Tom Kuiper.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
     </div>
   </body>
 </html>

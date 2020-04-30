@@ -1,11 +1,9 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>DSS &#8212; Astronomy 0.9 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,9 +12,10 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="dms_delimited_angle_to_rads" href="Astronomy.formats.dms_delimited_angle_to_rads.html" />
     <link rel="prev" title="get_geodetic_coords" href="Astronomy.DSN_coordinates.get_geodetic_coords.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -29,6 +28,9 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
+          <a href="Astronomy.formats.dms_delimited_angle_to_rads.html" title="dms_delimited_angle_to_rads"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
           <a href="Astronomy.DSN_coordinates.get_geodetic_coords.html" title="get_geodetic_coords"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
@@ -39,6 +41,9 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="Astronomy.DSN_coordinates.get_geodetic_coords.html"
                         title="previous chapter">get_geodetic_coords</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Astronomy.formats.dms_delimited_angle_to_rads.html"
+                        title="next chapter">dms_delimited_angle_to_rads</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -47,13 +52,11 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -70,13 +73,13 @@
 <h1>DSS<a class="headerlink" href="#dss" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="Astronomy.DSN_coordinates.DSS">
-<em class="property">class </em><code class="descclassname">Astronomy.DSN_coordinates.</code><code class="descname">DSS</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.DSN_coordinates.DSS" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">Astronomy.DSN_coordinates.</code><code class="sig-name descname">DSS</code><span class="sig-paren">(</span><em class="sig-param">number</em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.DSN_coordinates.DSS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ephem.Observer</span></code></p>
 <p>Observer class for DSN stations based on xephem Observer</p>
 <p>For use with xephem.</p>
 <dl class="attribute">
 <dt>
-<code class="descname">of this class::</code></dt>
+<code class="sig-name descname">of this class::</code></dt>
 <dd><p>lon       - east longitude (degrees)
 lat       - north latitude (degrees)
 elevation - altitude (meters)
@@ -86,21 +89,21 @@ diam      - diameter (m)</p>
 </dd></dl>
 
 <p class="rubric">Attributes Summary</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#Astronomy.DSN_coordinates.DSS.name" title="Astronomy.DSN_coordinates.DSS.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></td>
-<td></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#Astronomy.DSN_coordinates.DSS.name" title="Astronomy.DSN_coordinates.DSS.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Attributes Documentation</p>
 <dl class="attribute">
 <dt id="Astronomy.DSN_coordinates.DSS.name">
-<code class="descname">name</code><a class="headerlink" href="#Astronomy.DSN_coordinates.DSS.name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">name</code><a class="headerlink" href="#Astronomy.DSN_coordinates.DSS.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -123,6 +126,9 @@ diam      - diameter (m)</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
+          <a href="Astronomy.formats.dms_delimited_angle_to_rads.html" title="dms_delimited_angle_to_rads"
+             >next</a> |</li>
+        <li class="right" >
           <a href="Astronomy.DSN_coordinates.get_geodetic_coords.html" title="get_geodetic_coords"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
@@ -130,7 +136,7 @@ diam      - diameter (m)</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Tom Kuiper.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
     </div>
   </body>
 </html>
