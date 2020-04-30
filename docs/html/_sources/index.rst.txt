@@ -3,8 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Radio Astronomy Software Tools
-==============================
+Single Dish Radio Astronomy Software Tools
+==========================================
+
+For an overview of SDRAST and the current status please visit https://sdrast.github.io/.
 
 .. automodapi:: Astronomy
 .. automodapi:: Astronomy.solar
