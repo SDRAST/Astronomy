@@ -45,27 +45,27 @@ class Quasar(ephem.FixedBody):
       try:
         self.Bname = "B"+Bnames[self.name]
       except KeyError:
-        raise(EphemException(name,"unknown J-name"))
+        raise EphemException
     elif name[0] == "B":
       self.Bname = name
       try:
         self.name = Bname_dict[name[1:]]
       except KeyError:
-        raise(EphemException(name,"unknown B-name"))
+        raise EphemException
       self.Jname = "J"+self.name
     elif name[:2] == "3C":
       name = name.replace(" ","")
       try:
         self.name = cat_3C_dict[name]
       except KeyError:
-        raise(EphemException(name,"unknown 3C source"))
+        raise EphemException
       self.Jname = "J"+self.name
       self.Bname = "B"+Bnames[self.name]
     else:
       try:
         Jnames.index("J"+name)
       except:
-        raise(EphemException(name,"unknown quasar"))
+        raise EphemException
       self.name = name
       self.Jname = "J"+self.name
       self.Bname = "B"+Bnames[self.name]
@@ -112,7 +112,7 @@ class Quasar(ephem.FixedBody):
         self.logger.debug("interpolate_flux: %s = %s is not in the Michigan catalog",
                           self.name, self.Bname)
     else:
-      print "Outside Michigan frequency range"
+      print("Outside Michigan frequency range")
     # try VLA cals
     try:
       cal_data = vla_cal.get_cal_data(self.Jname[1:])

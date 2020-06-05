@@ -70,7 +70,7 @@ Planets = ['Jupiter', 'Mars', 'Mercury', 'Moon', 'Neptune', 'Pluto',
            'Saturn', 'Sun', 'Uranus', 'Venus']
 
 try:
-    Jnames = PD.data.keys() # pulsar Julian epoch names
+    Jnames = list(PD.data.keys()) # pulsar Julian epoch names
     Jnames.sort()
 
     cal_dict = vla_cal.get_cal_dict() # VLA calibrators
