@@ -1,18 +1,18 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
     <title>Single Dish Radio Astronomy Software Tools &#8212; Astronomy 0.9 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="AzEl_to_HaDec" href="api/Astronomy.AzEl_to_HaDec.html" /> 
@@ -48,6 +48,7 @@
 <li><a class="reference internal" href="#icrs">ICRS</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#celestial-coordinates">Celestial Coordinates</a></li>
 <li><a class="reference internal" href="#ecliptic-coordinates">Ecliptic Coordinates</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 </ul>
@@ -136,7 +137,7 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -228,11 +229,24 @@ in space. The ICRS is based on the International Celestial Reference Frame
 using VLBI.</p>
 </div>
 </div>
+<div class="section" id="celestial-coordinates">
+<h3>Celestial Coordinates<a class="headerlink" href="#celestial-coordinates" title="Permalink to this headline">¶</a></h3>
+<p>Brandon Rhodes gives an excellent explanation in the documentation for
+PyEphem.  Summarizing:</p>
+<dl class="simple">
+<dt>Astrometric Geocentric</dt><dd><p>Mean geocentric position for the epoch of the specified star atlas</p>
+</dd>
+<dt>Apparent Geocentric</dt><dd><p>current geocentric position at the date and time of observation</p>
+</dd>
+<dt>Apparent Topocentric</dt><dd><p>current position for the observatory at the date and time of observation</p>
+</dd>
+</dl>
+</div>
 <div class="section" id="ecliptic-coordinates">
 <h3>Ecliptic Coordinates<a class="headerlink" href="#ecliptic-coordinates" title="Permalink to this headline">¶</a></h3>
-<p>astropy does not yet support ecliptic coordinates so we use pyephem for that.
-<a class="reference external" href="https://github.com/firelab/met_utils/blob/master/sun.py">https://github.com/firelab/met_utils/blob/master/sun.py</a> has some extensions for
-astropy for that and other things.</p>
+<p><code class="docutils literal notranslate"><span class="pre">astropy</span></code> does not yet support ecliptic coordinates so we use <code class="docutils literal notranslate"><span class="pre">pyephem</span></code> for that.
+<code class="docutils literal notranslate"><span class="pre">https://github.com/firelab/met_utils/blob/master/sun.py</span></code> has some extensions for
+<code class="docutils literal notranslate"><span class="pre">astropy</span></code> for that and other things.</p>
 </div>
 <div class="section" id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
@@ -724,7 +738,7 @@ and lat_orig may be calculated by a preliminary call to COORD:</p>
 </div>
 <div class="section" id="class-inheritance-diagram">
 <h3>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h3>
-<div class="graphviz"><img src="_images/inheritance-fafc29fc103ecb822641e8308c10ffc77b541f24.png" alt="Inheritance diagram of Astronomy.DSN_coordinates.DSS" usemap="#inheritancefc475b7075" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="_images/inheritance-d00d0c4109e5d58b32794fcae5f8f7fd41e506ea.png" alt="Inheritance diagram of Astronomy.DSN_coordinates.DSS" usemap="#inheritancefc475b7075" class="inheritance graphviz" /></div>
 <map id="inheritancefc475b7075" name="inheritancefc475b7075">
 <area shape="rect" id="node1" href="api/Astronomy.DSN_coordinates.DSS.html#Astronomy.DSN_coordinates.DSS" target="_top" title="Observer class for DSN stations based on xephem Observer" alt="" coords="135,29,207,55"/>
 </map></div>
@@ -791,7 +805,7 @@ either decimal angles or radians as designated.</p>
 </div>
 <div class="section" id="id7">
 <h3>Class Inheritance Diagram<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="graphviz"><img src="_images/inheritance-253ae13a3b53c585ad89d2b2f78276df8782b1ce.png" alt="Inheritance diagram of Astronomy.northpolar.NorthPolarAxes" usemap="#inheritance5f7a498530" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="_images/inheritance-156a75455675996e417c9e23609d45d0a7653e4e.png" alt="Inheritance diagram of Astronomy.northpolar.NorthPolarAxes" usemap="#inheritance5f7a498530" class="inheritance graphviz" /></div>
 <map id="inheritance5f7a498530" name="inheritance5f7a498530">
 <area shape="rect" id="node4" href="api/Astronomy.northpolar.NorthPolarAxes.html#Astronomy.northpolar.NorthPolarAxes" target="_top" title="A variant of PolarAxes where theta starts pointing north and goes" alt="" coords="521,5,644,31"/>
 </map></div>
@@ -952,7 +966,7 @@ astronomy convention which computes redshift as:</p>
 </div>
 <div class="section" id="id11">
 <h3>Class Inheritance Diagram<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<div class="graphviz"><img src="_images/inheritance-f9a1f284ae08656b20a8fc13190756a7696ff1d0.png" alt="Inheritance diagram of Astronomy.ATCA_caldb.lineParser" usemap="#inheritanceb2507e2fcc" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="_images/inheritance-61f94453e111680a212c4507620cb22b557fb776.png" alt="Inheritance diagram of Astronomy.ATCA_caldb.lineParser" usemap="#inheritanceb2507e2fcc" class="inheritance graphviz" /></div>
 <map id="inheritanceb2507e2fcc" name="inheritanceb2507e2fcc">
 <area shape="rect" id="node3" href="api/Astronomy.ATCA_caldb.lineParser.html#Astronomy.ATCA_caldb.lineParser" target="_top" title="lineParser" alt="" coords="295,5,381,31"/>
 </map></div>
@@ -1104,7 +1118,7 @@ an example.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Tom Kuiper.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.3.
     </div>
   </body>
 </html>

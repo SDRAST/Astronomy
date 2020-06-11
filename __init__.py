@@ -78,11 +78,24 @@ in space. The ICRS is based on the International Celestial Reference Frame
 (ICRF) which consists of the positions of 3414 compact radio sources measured 
 using VLBI. 
 
+Celestial Coordinates
+=====================
+
+Brandon Rhodes gives an excellent explanation in the documentation for 
+PyEphem.  Summarizing:
+
+Astrometric Geocentric
+  Mean geocentric position for the epoch of the specified star atlas
+Apparent Geocentric
+  current geocentric position at the date and time of observation
+Apparent Topocentric
+  current position for the observatory at the date and time of observation
+
 Ecliptic Coordinates
 ====================
-astropy does not yet support ecliptic coordinates so we use pyephem for that.
-https://github.com/firelab/met_utils/blob/master/sun.py has some extensions for
-astropy for that and other things.
+``astropy`` does not yet support ecliptic coordinates so we use ``pyephem`` for that.
+``https://github.com/firelab/met_utils/blob/master/sun.py`` has some extensions for
+``astropy`` for that and other things.
 
 """
 import logging

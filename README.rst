@@ -1,8 +1,8 @@
-Support
-=======
+Astronomy
+=========
 
 Classes and functions for astronomical calculations
 
-Project `Link website <https://github.com/SDRAST/Astronomy/>`_.
+Link to `Project <https://github.com/SDRAST/Astronomy/>`_.
 
-Source code `Link documentation <https://sdrast.github.io/Astronomy/>`_.
+Link to `source code documentation <https://sdrast.github.io/Astronomy/>`_.
