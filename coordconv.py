@@ -86,8 +86,6 @@ and lat_orig may be calculated by a preliminary call to COORD::
 
     long_orig, lat_orig = coordonv(0., 0., AN1-AP, BP, -AN2, 0)
 """
-from math import acos, asin, atan, cos, pi, sin
-
 def coordconv(long_orig, lat_orig, AP, BP, A1, B1):
   """
   converts between many lat-long style coordinate systems
@@ -112,20 +110,20 @@ def coordconv(long_orig, lat_orig, AP, BP, A1, B1):
 
   @return: (float,float) - long., lat. of point in new coordinate system (rad)
   """
-  sin_lat_orig = sin(lat_orig)
-  cos_lat_orig = cos(lat_orig)
-  SBP = sin(BP)
-  CBP = cos(BP)
-  SB1 = sin(B1)
-  CB1 = cos(B1)
+  sin_lat_orig = math.sin(lat_orig)
+  cos_lat_orig = math.cos(lat_orig)
+  SBP = math.sin(BP)
+  CBP = math.cos(BP)
+  SB1 = math.sin(B1)
+  CB1 = math.cos(B1)
 
-  SB2 = SBP*SB1 + CBP*CB1*cos(AP-A1) 
-  B2  = asin(SB2) 
-  CB2 = cos(B2)
-  SAA = sin(AP-A1)*CB1/CB2 
+  SB2 = SBP*SB1 + CBP*CB1*math.cos(AP-A1) 
+  B2  = math.asin(SB2) 
+  CB2 = math.cos(B2)
+  SAA = math.sin(AP-A1)*CB1/CB2 
   CAA = (SB1-SB2*SBP)/(CB2*CBP) 
   CBB = sin_lat_orig/CBP 
-  SBB = sin(AP-long_orig)*cos_lat_orig 
+  SBB = math.sin(AP-long_orig)*math.cos_lat_orig 
   SA2 = SAA*CBB-CAA*SBB 
   CA2 = CAA*CBB+SAA*SBB 
  
@@ -136,6 +134,6 @@ def coordconv(long_orig, lat_orig, AP, BP, A1, B1):
     TA2O2 = (1.0-CA2)/SA2
   else:
     TA2O2 = SA2/(1.0+CA2)
-  A2=2.*atan(TA2O2)
+  A2=2.*math.atan(TA2O2)
   return A2,B2
 

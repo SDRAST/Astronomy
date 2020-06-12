@@ -60,7 +60,8 @@ from math import pi, sqrt
 from novas import compat as novas
 from numpy import array
 
-from Astronomy import MJD, v_sun
+from Astronomy import v_sun
+from DatesTimes import MJD
 from Astronomy.DSN_coordinates import DSS
 
 c            = 3e5;  # km/s

@@ -103,7 +103,7 @@ Supporting definitions can be found at::
   http://farside.ph.utexas.edu/syntaxis/Almagest/node34.html
   
 """
-from Astronomy import julian_date
+import DatesTimes as DT
 import math
 
 radian = 180./math.pi
@@ -164,7 +164,7 @@ def calcJD(y,m,d,t):
 
   @return: float
   """
-  return julian_date(y,day_of_year(y,m,d)) + t/24.
+  return DT.julian_date(y,day_of_year(y,m,d)) + t/24.
 
 def Julian_centuries_since_2000(jd):
   """
@@ -550,7 +550,7 @@ def calc_solar(jd):
 
 if __name__ == "__main__":
   DOY = day_of_year(2012,5,21)
-  jd = julian_date(2012,DOY)+(1./24)
+  jd = DT.julian_date(2012,DOY)+(1./24)
   print(calc_solar(jd))
   print("Bogan's calculator gives:")
   print("2123, 57.888144736760296, -1.93752, -19.0764")

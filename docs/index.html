@@ -151,23 +151,7 @@
 <p>For an overview of SDRAST and the current status please visit <a class="reference external" href="https://sdrast.github.io/">https://sdrast.github.io/</a>.</p>
 <div class="section" id="module-Astronomy">
 <span id="astronomy-package"></span><h2>Astronomy Package<a class="headerlink" href="#module-Astronomy" title="Permalink to this headline">¶</a></h2>
-<p>Classes and functions for astronomical calculations</p>
-<p>This is a complete re-write of the package to base it on astropy instead of
-heritage code.  The following were removed:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">List</span> <span class="n">Months</span><span class="p">,</span>       <span class="k">with</span> <span class="n">long</span> <span class="n">month</span> <span class="n">names</span>
-<span class="o">*</span> <span class="n">default_astro_dir</span><span class="p">,</span> <span class="k">for</span> <span class="n">source</span> <span class="n">catalogs</span>
-<span class="o">*</span> <span class="n">cat_path</span><span class="p">,</span>          <span class="k">for</span> <span class="n">source</span> <span class="n">catalogs</span>
-<span class="o">*</span> <span class="n">eph_url</span><span class="p">,</span>           <span class="n">IERS</span> <span class="n">site</span> <span class="k">for</span> <span class="n">UT1</span><span class="o">-</span><span class="n">UTC</span>
-<span class="o">*</span> <span class="n">short_month</span><span class="p">(),</span>     <span class="n">which</span> <span class="n">truncates</span> <span class="n">the</span> <span class="n">month</span> <span class="n">name</span>
-<span class="o">*</span> <span class="n">long_month</span><span class="p">(),</span>      <span class="n">extracts</span> <span class="n">the</span> <span class="n">month</span> <span class="n">name</span> <span class="kn">from</span> <span class="nn">Months</span> <span class="n">by</span> <span class="n">number</span>
-<span class="o">*</span> <span class="n">parse_iers_line</span><span class="p">(),</span> <span class="k">for</span> <span class="n">earth</span> <span class="n">orientation</span> <span class="n">parameters</span>
-<span class="o">*</span> <span class="n">get_cartesian_coordinates</span><span class="p">(),</span> <span class="n">now</span> <span class="ow">in</span> <span class="n">MonitorControl</span><span class="o">.</span><span class="n">Configurations</span>
-<span class="o">*</span> <span class="n">show_catalogs</span><span class="p">()</span>
-<span class="o">*</span> <span class="n">get_sources</span><span class="p">()</span>
-<span class="o">*</span> <span class="n">get_coords</span><span class="p">()</span>
-<span class="o">*</span> <span class="n">geodetic_coords</span><span class="p">,</span>   <span class="n">now</span> <span class="ow">in</span> <span class="n">MonitorControl</span><span class="o">.</span><span class="n">Configurations</span>
-</pre></div>
-</div>
+<p><strong>Classes and functions for astronomical calculations</strong></p>
 <div class="section" id="basic-terminology">
 <h3>Basic Terminology<a class="headerlink" href="#basic-terminology" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="time">
@@ -231,8 +215,9 @@ using VLBI.</p>
 </div>
 <div class="section" id="celestial-coordinates">
 <h3>Celestial Coordinates<a class="headerlink" href="#celestial-coordinates" title="Permalink to this headline">¶</a></h3>
-<p>Brandon Rhodes gives an excellent explanation in the documentation for
-PyEphem.  Summarizing:</p>
+<p>Brandon Rhodes gives an
+<a class="reference external" href="https://rhodesmill.org/pyephem/radec.html">excellent explanation</a> in the
+documentation for <a href="#id15"><span class="problematic" id="id16">`PyEphem https://rhodesmill.org/pyephem/`_</span></a>.  Summarizing:</p>
 <dl class="simple">
 <dt>Astrometric Geocentric</dt><dd><p>Mean geocentric position for the epoch of the specified star atlas</p>
 </dd>
@@ -244,8 +229,10 @@ PyEphem.  Summarizing:</p>
 </div>
 <div class="section" id="ecliptic-coordinates">
 <h3>Ecliptic Coordinates<a class="headerlink" href="#ecliptic-coordinates" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">astropy</span></code> does not yet support ecliptic coordinates so we use <code class="docutils literal notranslate"><span class="pre">pyephem</span></code> for that.
-<code class="docutils literal notranslate"><span class="pre">https://github.com/firelab/met_utils/blob/master/sun.py</span></code> has some extensions for
+<p><code class="docutils literal notranslate"><span class="pre">astropy</span></code> does not yet support ecliptic coordinates so we use <code class="docutils literal notranslate"><span class="pre">pyephem</span></code> for
+that.</p>
+<p><a class="reference external" href="https://rhodesmill.org/skyfield/">https://rhodesmill.org/skyfield/</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">https://github.com/firelab/met_utils/blob/master/sun.py</span></code> has some extensions for
 <code class="docutils literal notranslate"><span class="pre">astropy</span></code> for that and other things.</p>
 </div>
 <div class="section" id="functions">
@@ -274,26 +261,14 @@ PyEphem.  Summarizing:</p>
 <tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.J_epoch_to_B.html#Astronomy.J_epoch_to_B" title="Astronomy.J_epoch_to_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">J_epoch_to_B</span></code></a>(ra2000, dec2000, format)</p></td>
 <td><p>Convert J2000 coordinates to B1950.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MJD</span></code>(*args)</p></td>
-<td><p>Returns modified Julian date from UNIX time or (year,doy) or (year,month,day)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.YMD_to_MJD.html#Astronomy.YMD_to_MJD" title="Astronomy.YMD_to_MJD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">YMD_to_MJD</span></code></a>(year, month, day)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.YMD_to_MJD.html#Astronomy.YMD_to_MJD" title="Astronomy.YMD_to_MJD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">YMD_to_MJD</span></code></a>(year, month, day)</p></td>
 <td><p>Modified Julian date from calendar date</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">calendar_date</span></code>(year, doy)</p></td>
-<td><p>Calendar date from day of year</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#module-Astronomy.coordconv" title="Astronomy.coordconv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordconv</span></code></a>(long_orig, lat_orig, AP, BP, A1, B1)</p></td>
 <td><p>converts between many lat-long style coordinate systems</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.current_to_ecliptic.html#Astronomy.current_to_ecliptic" title="Astronomy.current_to_ecliptic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_to_ecliptic</span></code></a>(…)</p></td>
 <td><p>Apparent ecliptic coordinates from apparent RA and dec</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">day_of_week</span></code>(doy, year)</p></td>
-<td><p>Numeric value for the day of week</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">day_of_year</span></code>(year, month, day)</p></td>
-<td><p>Day of year</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.decimal_day_to_HMS.html#Astronomy.decimal_day_to_HMS" title="Astronomy.decimal_day_to_HMS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decimal_day_to_HMS</span></code></a>(day)</p></td>
 <td><p>Formatted time to 0.01 seconds</p></td>
@@ -302,7 +277,7 @@ PyEphem.  Summarizing:</p>
 <td><p>Float day to (h,m,s) tuple</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.ecliptic_to_J2000.html#Astronomy.ecliptic_to_J2000" title="Astronomy.ecliptic_to_J2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ecliptic_to_J2000</span></code></a>(elong, elat, mjd)</p></td>
-<td><p>convert from ecliptic coordinates to RA and dec</p></td>
+<td><p>convert from ephem.Ecliptic coordinates to RA and dec</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.galactic_offsets_to_celestial.html#Astronomy.galactic_offsets_to_celestial" title="Astronomy.galactic_offsets_to_celestial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">galactic_offsets_to_celestial</span></code></a>(RA, Dec[, …])</p></td>
 <td><p>Converts offsets in Galactic coordinates to celestial</p></td>
@@ -316,46 +291,37 @@ PyEphem.  Summarizing:</p>
 <tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.get_geodetic_coords.html#Astronomy.get_geodetic_coords" title="Astronomy.get_geodetic_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_geodetic_coords</span></code></a>([dss, observatory])</p></td>
 <td><p>Observatory’s geodetic coordinates</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_icrs_coordinates</span></code>(name[, parse])</p></td>
-<td><p>Retrieve an ICRS object by using an online name resolving service to retrieve coordinates for the specified name.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.get_sky_coords.html#Astronomy.get_sky_coords" title="Astronomy.get_sky_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sky_coords</span></code></a>(RA, Dec)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.get_sky_coords.html#Astronomy.get_sky_coords" title="Astronomy.get_sky_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sky_coords</span></code></a>(RA, Dec)</p></td>
 <td><p>return SkyCoord from both float and str inputs</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.great_circle_angle.html#Astronomy.great_circle_angle" title="Astronomy.great_circle_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">great_circle_angle</span></code></a>(lat1, long1, lat2, long2)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.great_circle_angle.html#Astronomy.great_circle_angle" title="Astronomy.great_circle_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">great_circle_angle</span></code></a>(lat1, long1, lat2, long2)</p></td>
 <td><p>Great circle angle between two points on a sphere</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.great_circle_distance.html#Astronomy.great_circle_distance" title="Astronomy.great_circle_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">great_circle_distance</span></code></a>(central_angle)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.great_circle_distance.html#Astronomy.great_circle_distance" title="Astronomy.great_circle_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">great_circle_distance</span></code></a>(central_angle)</p></td>
 <td><p>Great circle distance in km on Earth from great circle angle</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.greenwich_sidereal_time.html#Astronomy.greenwich_sidereal_time" title="Astronomy.greenwich_sidereal_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">greenwich_sidereal_time</span></code></a>(year, doy)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.greenwich_sidereal_time.html#Astronomy.greenwich_sidereal_time" title="Astronomy.greenwich_sidereal_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">greenwich_sidereal_time</span></code></a>(year, doy)</p></td>
 <td><p>Approximate sidereal time at Greenwich</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.ha_rise_set.html#Astronomy.ha_rise_set" title="Astronomy.ha_rise_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ha_rise_set</span></code></a>(el_limit, lat, dec)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.ha_rise_set.html#Astronomy.ha_rise_set" title="Astronomy.ha_rise_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ha_rise_set</span></code></a>(el_limit, lat, dec)</p></td>
 <td><p>Hour angle from transit for rising and setting.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.horizon_range.html#Astronomy.horizon_range" title="Astronomy.horizon_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">horizon_range</span></code></a>(planet_radius, observer_height)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.horizon_range.html#Astronomy.horizon_range" title="Astronomy.horizon_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">horizon_range</span></code></a>(planet_radius, observer_height)</p></td>
 <td><p>Range to horizon</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">julian_date</span></code>(year, doy)</p></td>
-<td><p>Julian date</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">leap_year</span></code>(year)</p></td>
-<td><p>Leap year</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.object_az_el.html#Astronomy.object_az_el" title="Astronomy.object_az_el"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object_az_el</span></code></a>(source, site, year, doy)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.object_az_el.html#Astronomy.object_az_el" title="Astronomy.object_az_el"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object_az_el</span></code></a>(source, site, year, doy)</p></td>
 <td><p>Compute object’s position in alt-az for a given site and time</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.refresh_ierstab.html#Astronomy.refresh_ierstab" title="Astronomy.refresh_ierstab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refresh_ierstab</span></code></a>([url, force])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.refresh_ierstab.html#Astronomy.refresh_ierstab" title="Astronomy.refresh_ierstab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refresh_ierstab</span></code></a>([url, force])</p></td>
 <td><p>Updates the UT1-UTC offset table from ‘url’.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.source_start_stop.html#Astronomy.source_start_stop" title="Astronomy.source_start_stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_start_stop</span></code></a>(HAstart, HAend, HAlimit)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.source_start_stop.html#Astronomy.source_start_stop" title="Astronomy.source_start_stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_start_stop</span></code></a>(HAstart, HAend, HAlimit)</p></td>
 <td><p>Find when sources are up</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.time_aliases.html#Astronomy.time_aliases" title="Astronomy.time_aliases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_aliases</span></code></a>(year, UTdoy, obs_long)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.time_aliases.html#Astronomy.time_aliases" title="Astronomy.time_aliases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_aliases</span></code></a>(year, UTdoy, obs_long)</p></td>
 <td><p>Time as days since 1900, centuries since 1900 and LST</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.v_sun.html#Astronomy.v_sun" title="Astronomy.v_sun"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_sun</span></code></a>(mjd, ra_source, dec_source)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.v_sun.html#Astronomy.v_sun" title="Astronomy.v_sun"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_sun</span></code></a>(mjd, ra_source, dec_source)</p></td>
 <td><p>LSR velocity of the sun</p></td>
 </tr>
 </tbody>
@@ -510,43 +476,40 @@ http://farside.ph.utexas.edu/syntaxis/Almagest/node34.html
 <tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.equation_of_the_center.html#Astronomy.solar.equation_of_the_center" title="Astronomy.solar.equation_of_the_center"><code class="xref py py-obj docutils literal notranslate"><span class="pre">equation_of_the_center</span></code></a>(M, T)</p></td>
 <td><p>Difference between mean anomaly and true anomaly</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">julian_date</span></code>(year, doy)</p></td>
-<td><p>Julian date</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.lat_long.html#Astronomy.solar.lat_long" title="Astronomy.solar.lat_long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lat_long</span></code></a>(radius, polar_position_angle, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.lat_long.html#Astronomy.solar.lat_long" title="Astronomy.solar.lat_long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lat_long</span></code></a>(radius, polar_position_angle, …)</p></td>
 <td><p>latitude and longitude of an active region</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.longitude_nutation.html#Astronomy.solar.longitude_nutation" title="Astronomy.solar.longitude_nutation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">longitude_nutation</span></code></a>(omega)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.longitude_nutation.html#Astronomy.solar.longitude_nutation" title="Astronomy.solar.longitude_nutation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">longitude_nutation</span></code></a>(omega)</p></td>
 <td><p>Nutation in longitude</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.lunar_long_asc_node.html#Astronomy.solar.lunar_long_asc_node" title="Astronomy.solar.lunar_long_asc_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lunar_long_asc_node</span></code></a>(t)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.lunar_long_asc_node.html#Astronomy.solar.lunar_long_asc_node" title="Astronomy.solar.lunar_long_asc_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lunar_long_asc_node</span></code></a>(t)</p></td>
 <td><p>longitude of the mean ascending node of the lunar orbit on the ecliptic</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.ra_dec_to_xy.html#Astronomy.solar.ra_dec_to_xy" title="Astronomy.solar.ra_dec_to_xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ra_dec_to_xy</span></code></a>(ra, dec, P, ra0, dec0)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.ra_dec_to_xy.html#Astronomy.solar.ra_dec_to_xy" title="Astronomy.solar.ra_dec_to_xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ra_dec_to_xy</span></code></a>(ra, dec, P, ra0, dec0)</p></td>
 <td><p>Convert ra, dec to xy-coordinates aligned with Sun</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.radians.html#Astronomy.solar.radians" title="Astronomy.solar.radians"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radians</span></code></a>(degrees)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.radians.html#Astronomy.solar.radians" title="Astronomy.solar.radians"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radians</span></code></a>(degrees)</p></td>
 <td><p>Convert degrees to radians</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.semidiameter.html#Astronomy.solar.semidiameter" title="Astronomy.solar.semidiameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">semidiameter</span></code></a>(distance)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.semidiameter.html#Astronomy.solar.semidiameter" title="Astronomy.solar.semidiameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">semidiameter</span></code></a>(distance)</p></td>
 <td><p>Semi-diameter in arcsec</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.sun_coords_long_ascen_node.html#Astronomy.solar.sun_coords_long_ascen_node" title="Astronomy.solar.sun_coords_long_ascen_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_coords_long_ascen_node</span></code></a>(jd)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.sun_coords_long_ascen_node.html#Astronomy.solar.sun_coords_long_ascen_node" title="Astronomy.solar.sun_coords_long_ascen_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_coords_long_ascen_node</span></code></a>(jd)</p></td>
 <td><p>Ecliptic longitude at which solar equator intersects the ecliptic plane</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.sun_geom_mean_long.html#Astronomy.solar.sun_geom_mean_long" title="Astronomy.solar.sun_geom_mean_long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_geom_mean_long</span></code></a>(T)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.sun_geom_mean_long.html#Astronomy.solar.sun_geom_mean_long" title="Astronomy.solar.sun_geom_mean_long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_geom_mean_long</span></code></a>(T)</p></td>
 <td><p>Geometric Mean Ecliptic Longitude (deg) of Sun</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.sun_mean_anomaly.html#Astronomy.solar.sun_mean_anomaly" title="Astronomy.solar.sun_mean_anomaly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_mean_anomaly</span></code></a>(T)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.sun_mean_anomaly.html#Astronomy.solar.sun_mean_anomaly" title="Astronomy.solar.sun_mean_anomaly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_mean_anomaly</span></code></a>(T)</p></td>
 <td><p>Position of Sun relative to perigee</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.time_series.html#Astronomy.solar.time_series" title="Astronomy.solar.time_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_series</span></code></a>(jd)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.time_series.html#Astronomy.solar.time_series" title="Astronomy.solar.time_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_series</span></code></a>(jd)</p></td>
 <td><p>List of powers of Julian centuries.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.truncate.html#Astronomy.solar.truncate" title="Astronomy.solar.truncate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">truncate</span></code></a>(angle)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.truncate.html#Astronomy.solar.truncate" title="Astronomy.solar.truncate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">truncate</span></code></a>(angle)</p></td>
 <td><p>Bounds an angle between 0 and 360.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.solar.xy_to_ra_dec.html#Astronomy.solar.xy_to_ra_dec" title="Astronomy.solar.xy_to_ra_dec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xy_to_ra_dec</span></code></a>(x, y, P, ra0, dec0)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.solar.xy_to_ra_dec.html#Astronomy.solar.xy_to_ra_dec" title="Astronomy.solar.xy_to_ra_dec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xy_to_ra_dec</span></code></a>(x, y, P, ra0, dec0)</p></td>
 <td><p>Convert XY coordinates in a Sun-aligned frame to RA and dec</p></td>
 </tr>
 </tbody>
@@ -660,23 +623,8 @@ and lat_orig may be calculated by a preliminary call to COORD:</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">acos</span></code></p></td>
-<td><p>Return the arc cosine (measured in radians) of x.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">asin</span></code></p></td>
-<td><p>Return the arc sine (measured in radians) of x.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">atan</span></code></p></td>
-<td><p>Return the arc tangent (measured in radians) of x.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.coordconv.coordconv.html#Astronomy.coordconv.coordconv" title="Astronomy.coordconv.coordconv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordconv</span></code></a>(long_orig, lat_orig, AP, BP, A1, B1)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.coordconv.coordconv.html#Astronomy.coordconv.coordconv" title="Astronomy.coordconv.coordconv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordconv</span></code></a>(long_orig, lat_orig, AP, BP, A1, B1)</p></td>
 <td><p>converts between many lat-long style coordinate systems</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cos</span></code></p></td>
-<td><p>Return the cosine of x (measured in radians).</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sin</span></code></p></td>
-<td><p>Return the sine of x (measured in radians).</p></td>
 </tr>
 </tbody>
 </table>

@@ -1,22 +1,5 @@
 """
-Classes and functions for astronomical calculations
-
-This is a complete re-write of the package to base it on astropy instead of 
-heritage code.  The following were removed::
-
- * List Months,       with long month names
- * default_astro_dir, for source catalogs
- * cat_path,          for source catalogs
- * eph_url,           IERS site for UT1-UTC
- * short_month(),     which truncates the month name
- * long_month(),      extracts the month name from Months by number
- * parse_iers_line(), for earth orientation parameters
- * get_cartesian_coordinates(), now in MonitorControl.Configurations
- * show_catalogs()
- * get_sources()
- * get_coords()
- * geodetic_coords,   now in MonitorControl.Configurations
- 
+**Classes and functions for astronomical calculations**
 
 Basic Terminology
 =================
@@ -81,8 +64,9 @@ using VLBI.
 Celestial Coordinates
 =====================
 
-Brandon Rhodes gives an excellent explanation in the documentation for 
-PyEphem.  Summarizing:
+Brandon Rhodes gives an 
+`excellent explanation <https://rhodesmill.org/pyephem/radec.html>`_ in the
+documentation for `PyEphem https://rhodesmill.org/pyephem/`_.  Summarizing:
 
 Astrometric Geocentric
   Mean geocentric position for the epoch of the specified star atlas
@@ -93,7 +77,11 @@ Apparent Topocentric
 
 Ecliptic Coordinates
 ====================
-``astropy`` does not yet support ecliptic coordinates so we use ``pyephem`` for that.
+``astropy`` does not yet support ecliptic coordinates so we use ``pyephem`` for 
+that.
+
+https://rhodesmill.org/skyfield/
+
 ``https://github.com/firelab/met_utils/blob/master/sun.py`` has some extensions for
 ``astropy`` for that and other things.
 
@@ -105,20 +93,16 @@ import datetime
 import os.path
 
 import astropy
-from astropy.coordinates import AltAz, EarthLocation, SkyCoord  # High-level
-from astropy.coordinates import ICRS, FK4, FK5            # Low-level frames
-from astropy.coordinates import Angle, Latitude, Longitude          # Angles
-from astropy.time import Time
+import astropy.coordinates as APc
+import astropy.coordinates.name_resolve as APcn
+import astropy.time as APt
 import astropy.units as u
 from astropy.units import cds
-from astropy.coordinates.name_resolve import get_icrs_coordinates, \
-                                             NameResolveError
 import ephem
-from ephem import Ecliptic, Equatorial
 
 from Astronomy.coordconv import coordconv
-from DatesTimes import calendar_date, MJD
-from Math.geometry import Circular
+import DatesTimes as DT
+import Math
 
 from math import pi
 c = cds.c.in_units('m / s')
@@ -127,14 +111,6 @@ AU = cds.AU.in_units('m')
 
 R_earth = cds.Rgeo.in_units('m') # 6731e3 # m
 R_sun = cds.Rsun.in_units('m')   # 695800e3 # m
-
-# for backward compatibility
-import DatesTimes as DT
-day_of_week = DT.day_of_week
-day_of_year = DT.day_of_year
-MJD         = DT.MJD
-julian_date = DT.julian_date
-leap_year   = DT.leap_year
 
 from . import DSN_coordinates as C
 get_cartesian_coordinates = C.get_cartesian_coordinates
@@ -232,7 +208,7 @@ def B_epoch_to_J(ra50, dec50, format=None):
   """
   coordstr = ra50+" "+dec50
   logger.debug("B_epoch_to_J: 1950 coordinates: %s", coordstr)
-  coords = SkyCoord(coordstr, frame="fk4", unit=(u.hourangle, u.deg))
+  coords = APc.SkyCoord(coordstr, frame="fk4", unit=(u.hourangle, u.deg))
   if format == None:
     rastr, decstr = coords.fk5.to_string('hmsdms').split()
     h = rastr.split('h')[0]
@@ -279,7 +255,7 @@ def J_epoch_to_B(ra2000, dec2000, format):
   @return: tuple of strings
   """
   coordstr = ra2000+" "+dec2000
-  coords = SkyCoord(coordstr, frame="fk5")
+  coords = APc.SkyCoord(coordstr, frame="fk5")
   if format == None:
     rastr, decstr = coords.fk4.to_string('hmsdms').split()
     h = rastr.split('h')[0]
@@ -310,7 +286,7 @@ def YMD_to_MJD(year,month,day):
 
   @return: long
   """
-  return MJD(year,month,day)
+  return DT.MJD(year,month,day)
 
 def v_sun(mjd, ra_source, dec_source):
   """
@@ -336,10 +312,10 @@ def v_sun(mjd, ra_source, dec_source):
     Sun with respect to the Local Standard of Rest on the date given by
     mjd at UT = 0h.
   """
-  LSR = SkyCoord('''18h03m50.29s +30d00'16.8"''')
+  LSR = APc.SkyCoord('''18h03m50.29s +30d00'16.8"''')
   # Precess solar motion from J2000 to epoch
-  mjd = Time(mjd, format='mjd')
-  LSRmjd = LSR.transform_to(FK5(equinox=mjd))
+  mjd = APt.Time(mjd, format='mjd')
+  LSRmjd = LSR.transform_to(APc.FK5(equinox=mjd))
   ra_epoch = LSRmjd.ra.radian
   dec_epoch = LSRmjd.dec.radian
   # Cartesian coordinates
@@ -364,7 +340,7 @@ def decimal_day_to_tuple(day):
 
   @return: tuple (int, int, float)
   """
-  t = Longitude(day, unit='cycle')
+  t = APc.Longitude(day, unit='cycle')
   return (int(t.hms.h), int(t.hms.m), t.hms.s)
 
 def decimal_day_to_HMS(day):
@@ -418,13 +394,13 @@ def time_aliases(year, UTdoy, obs_long):
     in Julian centuries, and the local sidereal time in decimal days
   """
   doy = int(UTdoy)
-  date_tuple = calendar_date(year,doy)
+  date_tuple = DT.calendar_date(year,doy)
   h,m,s = decimal_day_to_tuple(UTdoy-doy)
   dt_tuple = date_tuple+(h,m,int(s),int((s-int(s))*1e6))
   logger.debug("dt_tuple: %s", dt_tuple)
   time = datetime.datetime( *dt_tuple )
-  t = Time(time)
-  days_since_1900 = t.mjd - MJD(1900,1,1) + 1
+  t = APt.Time(time)
+  days_since_1900 = t.mjd - DT.MJD(1900,1,1) + 1
   try:
     lst = t.sidereal_time('mean',longitude=-obs_long*u.deg)
   except IndexError:
@@ -455,24 +431,24 @@ def current_to_ecliptic(julian_centuries_since_1900,\
   @return: tuple of floats
     (eclip_long, eclip_lat) in radians
   """
-  t = Time(julian_centuries_since_1900*36525 + MJD(1900,1,1) - 1, format='mjd')
-  sc = SkyCoord(ra=current_ra, dec=current_dec, unit='radian',
+  t = APt.Time(julian_centuries_since_1900*36525 + DT.MJD(1900,1,1) - 1, format='mjd')
+  sc = APc.SkyCoord(ra=current_ra, dec=current_dec, unit='radian',
                 frame='icrs')
   ra, dec = sc.to_string('hmsdms').split()
   ra = ra.replace('h',':').replace('m',':')[:-1]
   dec = dec.replace('d',':').replace('m',':')[:-1]
-  eq = Equatorial(str(ra), str(dec), epoch=1950)
+  eq = ephem.Equatorial(str(ra), str(dec), epoch=1950)
   eclip = Ecliptic(eq)
   return eclip.long, eclip.lat
 
 def ecliptic_to_J2000(elong, elat, mjd):
   """
-  convert from ecliptic coordinates to RA and dec
+  convert from ephem.Ecliptic coordinates to RA and dec
   """
   t = Time(mjd, format='mjd')
   # t is probably needed for convert from current to J2000
   eq = Ecliptic(str(elong), str(elat), epoch=2000)
-  ra, dec = Equatorial(eq).to_radec()
+  ra, dec = ephem.Equatorial(eq).to_radec()
   #print "Astronomy:",type(ra),type(dec)
   #print "Astronomy:", type(ra.real), type(dec.real)
   return ra.real, dec.real
@@ -497,12 +473,12 @@ def HaDec_to_AzEl(HourAngle, Declination, Latitude):
   @return: tuple
     Azimuth and elevation in degrees.
   """
-  t = Time.now()
-  l = EarthLocation(lon=0*u.deg, lat=Latitude*u.deg)
+  t = APt.Time.now()
+  l = APc.EarthLocation(lon=0*u.deg, lat=Latitude*u.deg)
   t.location = l
   t.delta_ut1_utc = 0
   lst = t.sidereal_time('mean')
-  c = SkyCoord(ra=(lst.hour-HourAngle)*u.hourangle, dec=Declination*u.deg,
+  c = APc.SkyCoord(ra=(lst.hour-HourAngle)*u.hourangle, dec=Declination*u.deg,
                obstime=t)
   c.location = l
   return c.altaz.az.deg, c.altaz.alt.deg
@@ -626,9 +602,9 @@ def J2000_to_apparent(MJD, UT, ra2000, dec2000):
 
   @return: tuple
   """
-  t = Time(MJD+UT/24., format='mjd')
-  coords = SkyCoord(ra=ra2000*u.rad, dec=dec2000*u.rad, frame='icrs')
-  c = coords.transform_to(FK5(equinox=t))
+  t = APt.Time(MJD+UT/24., format='mjd')
+  coords = APc.SkyCoord(ra=ra2000*u.rad, dec=dec2000*u.rad, frame='icrs')
+  c = coords.transform_to(APc.FK5(equinox=t))
   return c.ra.hourangle, c.dec.deg
   
 def get_sky_coords(RA, Dec):
@@ -636,9 +612,9 @@ def get_sky_coords(RA, Dec):
   return SkyCoord from both float and str inputs
   """
   if type(RA) == str and type(Dec) == str:
-    skypos = SkyCoord(RA, Dec, unit=(u.hourangle, u.deg))
+    skypos = APc.SkyCoord(RA, Dec, unit=(u.hourangle, u.deg))
   elif type(RA) == float and type(Dec) == float:
-    skypos = SkyCoord(RA*u.hour, Dec*u.degree)
+    skypos = APc.SkyCoord(RA*u.hour, Dec*u.degree)
   else:
     raise RuntimeError(RA, dec, "cannot be parsed")
   return skypos
@@ -661,7 +637,7 @@ def get_altaz(RA, Dec, time, location):
   """
   skypos = get_sky_coords(RA, Dec)
   #logger.debug("get_altaz: called for RA,dec: %s", skypos)
-  skypos.obstime = Time(time)
+  skypos.obstime = APt.Time(time)
   skypos.location = location
   altaz = skypos.altaz.az.deg, skypos.altaz.alt.deg
   #logger.debug("get_altaz: az,el: %s", altaz)
@@ -686,9 +662,9 @@ def object_az_el(source, site, year, doy):
   @type  doy : float
   """
   try:
-    coords = get_icrs_coordinates(source)
-  except NameResolveError as details:
-    raise NameResolveError(details)
+    coords = APcn.get_icrs_coordinates(source)
+  except APcn.NameResolveError as details:
+    raise APcn.NameResolveError(details)
   module_logger.debug("Sky coords: %s", coords)
   
   try:
@@ -696,14 +672,14 @@ def object_az_el(source, site, year, doy):
     module_logger.debug("DSS-%d: %f, %f", site, dss.long*180/pi, dss.lat*180/pi)
   except KeyError:
     raise KeyError('%d is not a valid DSS station' % site)
-  loc = EarthLocation(dss.long*u.rad, dss.lat*u.rad)
+  loc = APc.EarthLocation(dss.long*u.rad, dss.lat*u.rad)
   module_logger.debug("Site coords: %s", loc)
   
   if doy:
-    mjd = MJD(year,doy)
+    mjd = DT.MJD(year,doy)
   else:
     raise RuntimeError("no DOY given")
-  tt = Time(mjd, format='mjd')
+  tt = APt.Time(mjd, format='mjd')
   module_logger.debug("ISO time = %s", tt.iso)
   tt.delta_ut1_utc = 0
   coords.obstime = tt
@@ -797,7 +773,7 @@ def horizon_range(planet_radius, observer_height):
 
   Both arguments in the same units and range will be in those units too.
   """
-  circle = Circular(planet_radius)
+  circle = Math.geometry.Circular(planet_radius)
   #cos_theta = float(planet_radius)/(planet_radius + observer_height)
   #theta = math.acos(cos_theta)
   #return planet_radius*math.sin(theta)
@@ -878,13 +854,13 @@ def galactic_offsets_to_celestial(RA, Dec, glongoff=3, glatoff=0):
   @type  glatoff : float
   """
   # Initialize SkyCoord Object
-  gc = SkyCoord(ra=RA*u.degree, dec=Dec*u.degree, frame='fk5') 
+  gc = APc.SkyCoord(ra=RA*u.degree, dec=Dec*u.degree, frame='fk5') 
   # Add offset in galactic longitude
   glongOFF=gc.galactic.b.value + glongoff
   # Add offset in galactic latitude
   glat=gc.galactic.l.value + glatoff
   # Convert reference position to RA/DEC
-  radecoff=SkyCoord(l=glat*u.degree, b=glongOFF*u.degree, frame='galactic')
+  radecoff=APc.SkyCoord(l=glat*u.degree, b=glongOFF*u.degree, frame='galactic')
   # Replace Raoff and Decoff with new values 
   RAoff = radecoff.fk5.ra.value - RA
   Decoff = radecoff.fk5.dec.value - Dec     
