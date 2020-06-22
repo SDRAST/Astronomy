@@ -86,6 +86,8 @@ and lat_orig may be calculated by a preliminary call to COORD::
 
     long_orig, lat_orig = coordonv(0., 0., AN1-AP, BP, -AN2, 0)
 """
+import math
+
 def coordconv(long_orig, lat_orig, AP, BP, A1, B1):
   """
   converts between many lat-long style coordinate systems
@@ -123,7 +125,7 @@ def coordconv(long_orig, lat_orig, AP, BP, A1, B1):
   SAA = math.sin(AP-A1)*CB1/CB2 
   CAA = (SB1-SB2*SBP)/(CB2*CBP) 
   CBB = sin_lat_orig/CBP 
-  SBB = math.sin(AP-long_orig)*math.cos_lat_orig 
+  SBB = math.sin(AP-long_orig)*cos_lat_orig 
   SA2 = SAA*CBB-CAA*SBB 
   CA2 = CAA*CBB+SAA*SBB 
  

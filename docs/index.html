@@ -46,10 +46,12 @@
 <li><a class="reference internal" href="#fk4">FK4</a></li>
 <li><a class="reference internal" href="#fk5">FK5</a></li>
 <li><a class="reference internal" href="#icrs">ICRS</a></li>
+<li><a class="reference internal" href="#cirs">CIRS</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#celestial-coordinates">Celestial Coordinates</a></li>
 <li><a class="reference internal" href="#ecliptic-coordinates">Ecliptic Coordinates</a></li>
+<li><a class="reference internal" href="#evolving-packages">Evolving Packages</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 </ul>
 </li>
@@ -212,6 +214,12 @@ in space. The ICRS is based on the International Celestial Reference Frame
 (ICRF) which consists of the positions of 3414 compact radio sources measured
 using VLBI.</p>
 </div>
+<div class="section" id="cirs">
+<h4>CIRS<a class="headerlink" href="#cirs" title="Permalink to this headline">¶</a></h4>
+<p>The Celestial Intermediate Reference System has the same pole as the geocentric
+coordinate system at the time of observation, but its rotation – the Earth
+Rotation Angle (ERA) – differs from Greenwich Apparent Sidereal Time.</p>
+</div>
 </div>
 <div class="section" id="celestial-coordinates">
 <h3>Celestial Coordinates<a class="headerlink" href="#celestial-coordinates" title="Permalink to this headline">¶</a></h3>
@@ -229,11 +237,17 @@ documentation for <a href="#id15"><span class="problematic" id="id16">`PyEphem h
 </div>
 <div class="section" id="ecliptic-coordinates">
 <h3>Ecliptic Coordinates<a class="headerlink" href="#ecliptic-coordinates" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">astropy</span></code> does not yet support ecliptic coordinates so we use <code class="docutils literal notranslate"><span class="pre">pyephem</span></code> for
-that.</p>
-<p><a class="reference external" href="https://rhodesmill.org/skyfield/">https://rhodesmill.org/skyfield/</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">https://github.com/firelab/met_utils/blob/master/sun.py</span></code> has some extensions for
-<code class="docutils literal notranslate"><span class="pre">astropy</span></code> for that and other things.</p>
+<p>At the time of writing the code <code class="docutils literal notranslate"><span class="pre">astropy</span></code> did not yet support ecliptic
+coordinates so <a class="reference external" href="https://rhodesmill.org/skyfield/">pyephem</a> was used for that.</p>
+</div>
+<div class="section" id="evolving-packages">
+<h3>Evolving Packages<a class="headerlink" href="#evolving-packages" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">astropy</span></code> continues to improve and so there is a need to evolves this package
+<code class="docutils literal notranslate"><span class="pre">Astronomy</span></code> to bring it into aligment with <code class="docutils literal notranslate"><span class="pre">astropy</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">https://github.com/firelab/met_utils/blob/master/sun.py</span></code> has some extensions
+for <code class="docutils literal notranslate"><span class="pre">astropy</span></code> which can be adapted as well.  I don’t know if this evolved to
+<code class="docutils literal notranslate"><span class="pre">https://sunpy.org/</span></code> or that is a different organization, but either way the
+submodule <code class="docutils literal notranslate"><span class="pre">solar</span></code> should be adopted to use this.</p>
 </div>
 <div class="section" id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
@@ -247,7 +261,7 @@ that.</p>
 <td><p>converts from azimuth and elevation to hour angle and declination</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.AzEl_to_RaDec.html#Astronomy.AzEl_to_RaDec" title="Astronomy.AzEl_to_RaDec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AzEl_to_RaDec</span></code></a>(azimuth, elevation, latitude, …)</p></td>
-<td><p>Convert azimuth and elevation to right ascension and declination</p></td>
+<td><p>Convert azimuth and elevation to CIRS right ascension and declination</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.B_epoch_to_J.html#Astronomy.B_epoch_to_J" title="Astronomy.B_epoch_to_J"><code class="xref py py-obj docutils literal notranslate"><span class="pre">B_epoch_to_J</span></code></a>(ra50, dec50[, format])</p></td>
 <td><p>Convert B1950 coordinates to J2000</p></td>
@@ -261,20 +275,32 @@ that.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.J_epoch_to_B.html#Astronomy.J_epoch_to_B" title="Astronomy.J_epoch_to_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">J_epoch_to_B</span></code></a>(ra2000, dec2000, format)</p></td>
 <td><p>Convert J2000 coordinates to B1950.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.YMD_to_MJD.html#Astronomy.YMD_to_MJD" title="Astronomy.YMD_to_MJD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">YMD_to_MJD</span></code></a>(year, month, day)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.RaDec_to_AzEl.html#Astronomy.RaDec_to_AzEl" title="Astronomy.RaDec_to_AzEl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RaDec_to_AzEl</span></code></a>(RA, dec, latitude, longitude, …)</p></td>
+<td><p>converts CIRS right ascension and declination to azimuth and elevation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.YMD_to_MJD.html#Astronomy.YMD_to_MJD" title="Astronomy.YMD_to_MJD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">YMD_to_MJD</span></code></a>(year, month, day)</p></td>
 <td><p>Modified Julian date from calendar date</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#module-Astronomy.coordconv" title="Astronomy.coordconv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordconv</span></code></a>(long_orig, lat_orig, AP, BP, A1, B1)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.apparent_to_J2000.html#Astronomy.apparent_to_J2000" title="Astronomy.apparent_to_J2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apparent_to_J2000</span></code></a>(MJD, UT, ra, dec, …)</p></td>
+<td><p>observed celestial coordinates to J2000</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.cirs_ra_to_obs_ra.html#Astronomy.cirs_ra_to_obs_ra" title="Astronomy.cirs_ra_to_obs_ra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cirs_ra_to_obs_ra</span></code></a>(cirs_ra, mjd, longitude, …)</p></td>
+<td><p>convert apparent RA at time of observation to CIRS RA</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-Astronomy.coordconv" title="Astronomy.coordconv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordconv</span></code></a>(long_orig, lat_orig, AP, BP, A1, B1)</p></td>
 <td><p>converts between many lat-long style coordinate systems</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.current_to_ecliptic.html#Astronomy.current_to_ecliptic" title="Astronomy.current_to_ecliptic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_to_ecliptic</span></code></a>(…)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.current_to_ecliptic.html#Astronomy.current_to_ecliptic" title="Astronomy.current_to_ecliptic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_to_ecliptic</span></code></a>(…)</p></td>
 <td><p>Apparent ecliptic coordinates from apparent RA and dec</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.decimal_day_to_HMS.html#Astronomy.decimal_day_to_HMS" title="Astronomy.decimal_day_to_HMS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decimal_day_to_HMS</span></code></a>(day)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.decimal_day_to_HMS.html#Astronomy.decimal_day_to_HMS" title="Astronomy.decimal_day_to_HMS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decimal_day_to_HMS</span></code></a>(day)</p></td>
 <td><p>Formatted time to 0.01 seconds</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.decimal_day_to_tuple.html#Astronomy.decimal_day_to_tuple" title="Astronomy.decimal_day_to_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decimal_day_to_tuple</span></code></a>(day)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.decimal_day_to_tuple.html#Astronomy.decimal_day_to_tuple" title="Astronomy.decimal_day_to_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decimal_day_to_tuple</span></code></a>(day)</p></td>
 <td><p>Float day to (h,m,s) tuple</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.delta_obs_ra_to_circ_ra.html#Astronomy.delta_obs_ra_to_circ_ra" title="Astronomy.delta_obs_ra_to_circ_ra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delta_obs_ra_to_circ_ra</span></code></a>(mjd, longitude, latitude)</p></td>
+<td><p>difference between radio astronomers observed coords and CIRS coords</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.ecliptic_to_J2000.html#Astronomy.ecliptic_to_J2000" title="Astronomy.ecliptic_to_J2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ecliptic_to_J2000</span></code></a>(elong, elat, mjd)</p></td>
 <td><p>convert from ephem.Ecliptic coordinates to RA and dec</p></td>
@@ -312,16 +338,19 @@ that.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.object_az_el.html#Astronomy.object_az_el" title="Astronomy.object_az_el"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object_az_el</span></code></a>(source, site, year, doy)</p></td>
 <td><p>Compute object’s position in alt-az for a given site and time</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.refresh_ierstab.html#Astronomy.refresh_ierstab" title="Astronomy.refresh_ierstab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refresh_ierstab</span></code></a>([url, force])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.obs_ra_to_cirs_ra.html#Astronomy.obs_ra_to_cirs_ra" title="Astronomy.obs_ra_to_cirs_ra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">obs_ra_to_cirs_ra</span></code></a>(obs_ra, mjd, longitude, …)</p></td>
+<td><p>convert apparent RA at time of observation to CIRS RA</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.refresh_ierstab.html#Astronomy.refresh_ierstab" title="Astronomy.refresh_ierstab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refresh_ierstab</span></code></a>([url, force])</p></td>
 <td><p>Updates the UT1-UTC offset table from ‘url’.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.source_start_stop.html#Astronomy.source_start_stop" title="Astronomy.source_start_stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_start_stop</span></code></a>(HAstart, HAend, HAlimit)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.source_start_stop.html#Astronomy.source_start_stop" title="Astronomy.source_start_stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_start_stop</span></code></a>(HAstart, HAend, HAlimit)</p></td>
 <td><p>Find when sources are up</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.time_aliases.html#Astronomy.time_aliases" title="Astronomy.time_aliases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_aliases</span></code></a>(year, UTdoy, obs_long)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.time_aliases.html#Astronomy.time_aliases" title="Astronomy.time_aliases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_aliases</span></code></a>(year, UTdoy, obs_long)</p></td>
 <td><p>Time as days since 1900, centuries since 1900 and LST</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.v_sun.html#Astronomy.v_sun" title="Astronomy.v_sun"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_sun</span></code></a>(mjd, ra_source, dec_source)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.v_sun.html#Astronomy.v_sun" title="Astronomy.v_sun"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_sun</span></code></a>(mjd, ra_source, dec_source)</p></td>
 <td><p>LSR velocity of the sun</p></td>
 </tr>
 </tbody>
@@ -813,38 +842,32 @@ astronomy convention which computes redshift as:</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MJD</span></code>(*args)</p></td>
-<td><p>Returns modified Julian date from UNIX time or (year,doy) or (year,month,day)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.V_LSR.html#Astronomy.redshift.V_LSR" title="Astronomy.redshift.V_LSR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">V_LSR</span></code></a>(RA, dec, dss, timedate)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.V_LSR.html#Astronomy.redshift.V_LSR" title="Astronomy.redshift.V_LSR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">V_LSR</span></code></a>(RA, dec, dss, timedate)</p></td>
 <td><p>Computes the velocity of the local standard of rest w.r.t.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.age.html#Astronomy.redshift.age" title="Astronomy.redshift.age"><code class="xref py py-obj docutils literal notranslate"><span class="pre">age</span></code></a>(z[, hubble_constant])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.age.html#Astronomy.redshift.age" title="Astronomy.redshift.age"><code class="xref py py-obj docutils literal notranslate"><span class="pre">age</span></code></a>(z[, hubble_constant])</p></td>
 <td><p>Cosmic time scale = age if acceleration = 0</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>(object[, dtype, copy, order, subok, ndmin])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>(object[, dtype, copy, order, subok, ndmin])</p></td>
 <td><p>Create an array.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.distance.html#Astronomy.redshift.distance" title="Astronomy.redshift.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a>(z[, hubble_constant])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.distance.html#Astronomy.redshift.distance" title="Astronomy.redshift.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a>(z[, hubble_constant])</p></td>
 <td><p>Distance of a cosmically redshifted source, assuming constant expansion</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.dop_fac.html#Astronomy.redshift.dop_fac" title="Astronomy.redshift.dop_fac"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dop_fac</span></code></a>(z)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.dop_fac.html#Astronomy.redshift.dop_fac" title="Astronomy.redshift.dop_fac"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dop_fac</span></code></a>(z)</p></td>
 <td><p>Redshifted frequency as a ratio: f/f_0</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.doppler_optical.html#Astronomy.redshift.doppler_optical" title="Astronomy.redshift.doppler_optical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doppler_optical</span></code></a>(rel_freq, f_ref)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.doppler_optical.html#Astronomy.redshift.doppler_optical" title="Astronomy.redshift.doppler_optical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doppler_optical</span></code></a>(rel_freq, f_ref)</p></td>
 <td><p>Returns the Doppler shift for a frequency offset by the optical convention</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.doppler_radio.html#Astronomy.redshift.doppler_radio" title="Astronomy.redshift.doppler_radio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doppler_radio</span></code></a>(rel_freq, f_ref)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.doppler_radio.html#Astronomy.redshift.doppler_radio" title="Astronomy.redshift.doppler_radio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doppler_radio</span></code></a>(rel_freq, f_ref)</p></td>
 <td><p>Returns the Doppler shift for a frequency offset by the radio convention</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.doppler_relat.html#Astronomy.redshift.doppler_relat" title="Astronomy.redshift.doppler_relat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doppler_relat</span></code></a>(rel_freq, f_ref)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.doppler_relat.html#Astronomy.redshift.doppler_relat" title="Astronomy.redshift.doppler_relat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doppler_relat</span></code></a>(rel_freq, f_ref)</p></td>
 <td><p>Returns the relativistic Doppler shift for a frequency offset</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.redshift.html#Astronomy.redshift.redshift" title="Astronomy.redshift.redshift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redshift</span></code></a>([v_recess, dop_fac])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.redshift.html#Astronomy.redshift.redshift" title="Astronomy.redshift.redshift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redshift</span></code></a>([v_recess, dop_fac])</p></td>
 <td><p>Redshift corresponding to a recessional velocity</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sqrt</span></code></p></td>
-<td><p>Return the square root of x.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.v_recess.html#Astronomy.redshift.v_recess" title="Astronomy.redshift.v_recess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_recess</span></code></a>(distance[, hubble_constant])</p></td>
 <td><p>velocity of recession for a constant rate of expansion = Hubble constant</p></td>
@@ -852,10 +875,7 @@ astronomy convention which computes redshift as:</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.v_redshift.html#Astronomy.redshift.v_redshift" title="Astronomy.redshift.v_redshift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_redshift</span></code></a>(z)</p></td>
 <td><p>velocity of recession for a given redshift</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_sun</span></code>(mjd, ra_source, dec_source)</p></td>
-<td><p>LSR velocity of the sun</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.redshift.wave_stretch.html#Astronomy.redshift.wave_stretch" title="Astronomy.redshift.wave_stretch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wave_stretch</span></code></a>(z)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.redshift.wave_stretch.html#Astronomy.redshift.wave_stretch" title="Astronomy.redshift.wave_stretch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wave_stretch</span></code></a>(z)</p></td>
 <td><p>Fractional lengthening of wavelength</p></td>
 </tr>
 </tbody>

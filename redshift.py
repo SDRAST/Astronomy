@@ -54,15 +54,15 @@ Doppler Shift: astropy documentation for Spectral Doppler Equivalencies
 """
 import astropy.units as u
 import logging
+import math
 
 from astropy.coordinates import EarthLocation, SkyCoord
-from math import pi, sqrt
 from novas import compat as novas
 from numpy import array
 
-from Astronomy import v_sun
-from DatesTimes import MJD
-from Astronomy.DSN_coordinates import DSS
+import Astronomy
+import Astronomy.DSN_coordinates
+import DatesTimes
 
 c            = 3e5;  # km/s
 Ho           = 73.8 # ± 2.40 (km/s)/Mpc
@@ -114,7 +114,7 @@ def redshift (v_recess=None, dop_fac=None):
   if v_recess == None and dop_fac == None:
     raise RuntimeError("No Doppler velocity or Doppler factor given.")
   elif v_recess:
-    return sqrt((c + v_recess)/(c - v_recess)) - 1
+    return math.sqrt((c + v_recess)/(c - v_recess)) - 1
   else:
     return (1-dop_fac)/dop_fac
 
@@ -251,15 +251,15 @@ def V_LSR(RA, dec, dss, timedate):
                                    ra2000, dec2000,
                                    0, 0, 0, 0)
   source = novas.make_object(2, 0, sourcename, cat_entry)
-  station = DSS(dss)
-  logger.debug("V_LSR: station lat=%f", station.lat*180/pi)
-  logger.debug("V_LSR: station long=%f", station.lon*180/pi)
-  observer = novas.make_observer_on_surface(station.lat*180/pi,
-                                         station.lon*180/pi,
+  station = Astronomy.DSN_coordinates.DSS(dss)
+  logger.debug("V_LSR: station lat=%f", station.lat*180/math.pi)
+  logger.debug("V_LSR: station long=%f", station.lon*180/math.pi)
+  observer = novas.make_observer_on_surface(station.lat*180/math.pi,
+                                         station.lon*180/math.pi,
                                          station.elev, 0, 0)
   jd = novas.julian_date(timedate.year, timedate.month, timedate.day,
                          timedate.hour+timedate.minute/60.)
-  mjd = MJD(timedate.year, timedate.month, timedate.day)
+  mjd = DatesTimes.MJD(timedate.year, timedate.month, timedate.day)
   earth = novas.make_object(0, 3, 'Earth', None)
   urthpos,urthvel = novas.ephemeris((jd,0), earth, origin=0)
   (obspos,obsvel) = novas.geo_posvel(jd,0,observer,0)
@@ -267,6 +267,6 @@ def V_LSR(RA, dec, dss, timedate):
   (srcpos,srcvel) = novas.starvectors(cat_entry)
   V = novas.rad_vel(source, srcpos, srcvel, totvel,0,0,0)
   logger.debug("V_LSR: velocity of observer w.r.t. Sun= %.2f", V)
-  return V+v_sun(mjd,ra2000/15.,dec2000)
+  return V+Astronomy.v_sun(mjd,ra2000/15.,dec2000)
 
 

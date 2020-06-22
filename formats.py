@@ -18,12 +18,12 @@ def parse_hms_delimited_angle(angle):
     
     @return: list of str
     """
-    temp = string.split(angle,'h')
+    temp = angle.split('h')
     h = temp[0]
     the_rest = temp[1]
-    temp = string.split(the_rest,'m')
+    temp = the_rest.split('m')
     m = temp[0]
-    s = string.rstrip(temp[1],'s')
+    s = temp[1].rstrip('s')
     return [h,m,s]
 
 def parse_dms_delimited_angle(angle):
@@ -40,12 +40,12 @@ def parse_dms_delimited_angle(angle):
     
     @return: list of str
     """
-    temp = string.split(angle,'d')
+    temp = angle.split('d')
     d = temp[0]
     the_rest = temp[1]
-    temp = string.split(the_rest,"""'""")
+    temp = the_rest.split("""'""")
     m = temp[0]
-    s = string.rstrip(temp[1],'''"''')
+    s = temp[1].rstrip('''"''')
     return [d,m,s]
     
 def parse_colon_delimited_angles(rastring, decstring):

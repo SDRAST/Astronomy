@@ -61,6 +61,12 @@ in space. The ICRS is based on the International Celestial Reference Frame
 (ICRF) which consists of the positions of 3414 compact radio sources measured 
 using VLBI. 
 
+CIRS
+----
+The Celestial Intermediate Reference System has the same pole as the geocentric 
+coordinate system at the time of observation, but its rotation -- the Earth
+Rotation Angle (ERA) -- differs from Greenwich Apparent Sidereal Time.
+
 Celestial Coordinates
 =====================
 
@@ -77,13 +83,18 @@ Apparent Topocentric
 
 Ecliptic Coordinates
 ====================
-``astropy`` does not yet support ecliptic coordinates so we use ``pyephem`` for 
-that.
+At the time of writing the code ``astropy`` did not yet support ecliptic 
+coordinates so `pyephem <https://rhodesmill.org/skyfield/>`_ was used for that.
 
-https://rhodesmill.org/skyfield/
+Evolving Packages
+=================
+``astropy`` continues to improve and so there is a need to evolves this package
+``Astronomy`` to bring it into aligment with ``astropy``
 
-``https://github.com/firelab/met_utils/blob/master/sun.py`` has some extensions for
-``astropy`` for that and other things.
+``https://github.com/firelab/met_utils/blob/master/sun.py`` has some extensions
+for ``astropy`` which can be adapted as well.  I don't know if this evolved to
+``https://sunpy.org/`` or that is a different organization, but either way the
+submodule ``solar`` should be adopted to use this.
 
 """
 import logging
@@ -461,27 +472,66 @@ def HaDec_to_AzEl(HourAngle, Declination, Latitude):
   =====
   Sidereal Time verified with http://tycho.usno.navy.mil/sidereal.html
 
-  @param HourAngle : float
-    decimal hours
+  @param HourAngle : hour angle in decimal hours
+  @type  HourAngle : float
+  
+  @param Declination : declination in decimal degrees
+  @type  Declination : float
 
-  @param Declination : float
-    decimal degrees
-
-  @param Latitude : float
-    decimal degrees
-
-  @return: tuple
-    Azimuth and elevation in degrees.
+  @param Latitude : in decimal degrees
+  @type  Latitude : float
+  
+  @return: (tuple)
   """
-  t = APt.Time.now()
-  l = APc.EarthLocation(lon=0*u.deg, lat=Latitude*u.deg)
-  t.location = l
-  t.delta_ut1_utc = 0
-  lst = t.sidereal_time('mean')
-  c = APc.SkyCoord(ra=(lst.hour-HourAngle)*u.hourangle, dec=Declination*u.deg,
-               obstime=t)
-  c.location = l
-  return c.altaz.az.deg, c.altaz.alt.deg
+  HA = HourAngle*math.pi/12
+  dec = Declination*math.pi/180
+  lat = Latitude*math.pi/180
+  Az, El = coordconv(math.pi, math.pi/2-lat, # long, lat of origin of 'azel'
+                     0., lat,           # long, lat of pole of 'azel' frame
+                     HA, dec)
+  return Az*180/math.pi, El*180/math.pi
+  #t = APt.Time.now()
+  #l = APc.EarthLocation(lon=0*u.deg, lat=Latitude*u.deg)
+  #t.location = l
+  #t.delta_ut1_utc = 0
+  #lst = t.sidereal_time('mean')
+  #ra = (lst.hour-HourAngle)*u.hourangle
+  #c = APc.SkyCoord(ra=ra, dec=Declination*u.deg, obstime=t)
+  #c.location = l
+  #return c.altaz.az.deg, c.altaz.alt.deg
+
+def RaDec_to_AzEl(RA, dec, latitude, longitude, dateUTtime):
+  """
+  converts CIRS right ascension and declination to azimuth and elevation
+  
+  See the Notes for ``AzEl_to_RaDec`` for details.
+
+  @param RA : observed right ascension (hours)
+  @type  RA : float
+  
+  @param dec : declination (degrees)
+  @type  dec : float
+  
+  @param latitude : above the equator, in degrees
+  @type  latitude : float
+
+  @param longitude : west from Greenwich
+  @type  longitude : float
+
+  @param dateUTtime : (year, DOY) tuple, with fractional day of year
+  @type  dateUTtime : (int, float)
+
+  @return: (azimuth (deg), elevation (deg))
+  """
+  year, doy = dateUTtime
+  mjd = DT.MJD(year, doy)
+  cirs_ra = cirs_ra_to_obs_ra(RA, mjd, longitude, latitude)
+  LST = greenwich_sidereal_time(*dateUTtime)-longitude/15.
+  HourAngle = LST - cirs_ra
+  if HourAngle < -12:
+    HourAngle += 24.
+  az, el = HaDec_to_AzEl(HourAngle, dec, latitude)
+  return az, el   
   
 def AzEl_to_HaDec(Azimuth, Elevation, Latitude):
   """
@@ -505,9 +555,9 @@ def AzEl_to_HaDec(Azimuth, Elevation, Latitude):
   har,decr = coordconv(pi, pi/2-latr, 0, latr, azr, elr)
   return har*12/pi, decr*180/pi
 
-def AzEl_to_RaDec(azimuth,elevation,latitude,longitude,date_time):
+def AzEl_to_RaDec(azimuth,elevation,latitude,longitude,dateUTtime):
   """
-  Convert azimuth and elevation to right ascension and declination
+  Convert azimuth and elevation to CIRS right ascension and declination
 
   @param azimuth : east from north (clockwise) in degrees
   @type  azimuth : float
@@ -521,8 +571,8 @@ def AzEl_to_RaDec(azimuth,elevation,latitude,longitude,date_time):
   @param longitude : west from Greenwich
   @type  longitude : float
 
-  @param date_time : (year, DOY) tuple, with fractional day of year
-  @type  date_time : (int, float)
+  @param dateUTtime : (year, DOY) tuple, with fractional day of year
+  @type  dateUTtime : (int, float)
 
   @return: (RA (hrs), dec (degs))
   
@@ -577,13 +627,72 @@ def AzEl_to_RaDec(azimuth,elevation,latitude,longitude,date_time):
                     act
   
   """
-  LST = greenwich_sidereal_time(*date_time)-longitude/15.
+  year, doy = dateUTtime
+  mjd = DT.MJD(year, doy)
+  LST = greenwich_sidereal_time(*dateUTtime)-longitude/15.
   HA,dec  = AzEl_to_HaDec(azimuth, elevation, latitude)
   RA = math.fmod(LST - HA, 24.)
-  if RA < 0:
-    RA += 24.
-  return RA,dec
+  cirs_ra = obs_ra_to_cirs_ra(RA, mjd, longitude, latitude)
+  if cirs_ra < 0:
+    cirs_ra += 24.
+  return cirs_ra,dec
+
+def delta_obs_ra_to_circ_ra(mjd, longitude, latitude):
+  """
+  difference between radio astronomers observed coords and CIRS coords
+  """
+  from astropy import _erfa as erfa
+  from astropy.coordinates.builtin_frames.utils import get_jd12
+  era = erfa.era00(*get_jd12(APt.Time(mjd, format='mjd'), 'ut1'))
+  theta_earth = APc.Angle(era, unit='rad')
+  obs_time = APt.Time(mjd, format='mjd', location = (longitude, latitude))
+  gast = obs_time.sidereal_time('apparent', longitude=0) # Greenwich ST
+  return (gast-theta_earth)
   
+def obs_ra_to_cirs_ra(obs_ra, mjd, longitude, latitude):
+  """
+  convert apparent RA at time of observation to CIRS RA
+  
+  @param obs_ra : apparent RA at time of observation
+  @type  obs_ra : float (astropy.time.Time)
+  
+  @param time : modified Julian date
+  @type  time : float
+  """
+  delta_ra = delta_obs_ra_to_circ_ra(mjd, longitude, latitude)
+  cirs_ra = obs_ra - delta_ra.hour
+  return cirs_ra
+  
+def cirs_ra_to_obs_ra(cirs_ra, mjd, longitude, latitude):
+  """
+  convert apparent RA at time of observation to CIRS RA
+  
+  @param obs_ra : apparent RA at time of observation
+  @type  obs_ra : float (not astropy.time.Time)
+  
+  @param time : modified Julian date
+  @type  time : float
+  """
+  delta_ra = delta_obs_ra_to_circ_ra(mjd, longitude, latitude)
+  obs_ra = cirs_ra + delta_ra.hour
+  return obs_ra
+
+def apparent_to_J2000(MJD, UT, ra, dec, longitude, latitude):
+  """
+  observed celestial coordinates to J2000
+  
+  This converts observed RA to CIRS RA, and then transforms the coordinates
+  to the FK5 frame.
+  """
+  mjd = MJD+UT/24.
+  obs_time = Time(mjd, format='mjd', location = (longitude, latitude))
+  loc_obj = APc.EarthLocation.from_geodetic(lon=longitude, lat=latitude)
+  cirs_ra = Astronomy.obs_ra_to_cirs_ra(ra, obs_time, longitude, latitude)
+  obs_coord = SkyCoord(ra=cirs_ra, dec=dec, frame='cirs', obstime=obs_time,
+                       location = loc_obj)
+  c = obs_coord.transform_to(APc.FK5(equinox=obs_time))
+  return c.ra.hourangle, c.dec.deg  
+
 def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   """
   Apparent right ascension and declination

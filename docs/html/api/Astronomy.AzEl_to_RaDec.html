@@ -73,8 +73,8 @@
 <h1>AzEl_to_RaDec<a class="headerlink" href="#azel-to-radec" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="Astronomy.AzEl_to_RaDec">
-<code class="sig-prename descclassname">Astronomy.</code><code class="sig-name descname">AzEl_to_RaDec</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">azimuth</span></em>, <em class="sig-param"><span class="n">elevation</span></em>, <em class="sig-param"><span class="n">latitude</span></em>, <em class="sig-param"><span class="n">longitude</span></em>, <em class="sig-param"><span class="n">date_time</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.AzEl_to_RaDec" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert azimuth and elevation to right ascension and declination</p>
+<code class="sig-prename descclassname">Astronomy.</code><code class="sig-name descname">AzEl_to_RaDec</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">azimuth</span></em>, <em class="sig-param"><span class="n">elevation</span></em>, <em class="sig-param"><span class="n">latitude</span></em>, <em class="sig-param"><span class="n">longitude</span></em>, <em class="sig-param"><span class="n">dateUTtime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.AzEl_to_RaDec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert azimuth and elevation to CIRS right ascension and declination</p>
 <p>:param azimuth : east from north (clockwise) in degrees
 :type  azimuth : float</p>
 <p>:param elevation : above the horizon in degrees
@@ -83,8 +83,8 @@
 :type  latitude : float</p>
 <p>:param longitude : west from Greenwich
 :type  longitude : float</p>
-<p>:param date_time : (year, DOY) tuple, with fractional day of year
-:type  date_time : (int, float)</p>
+<p>:param dateUTtime : (year, DOY) tuple, with fractional day of year
+:type  dateUTtime : (int, float)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>(RA (hrs), dec (degs))</p>
