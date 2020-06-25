@@ -685,11 +685,11 @@ def apparent_to_J2000(MJD, UT, ra, dec, longitude, latitude):
   to the FK5 frame.
   """
   mjd = MJD+UT/24.
-  obs_time = Time(mjd, format='mjd', location = (longitude, latitude))
+  obs_time = APt.Time(mjd, format='mjd', location = (longitude, latitude))
   loc_obj = APc.EarthLocation.from_geodetic(lon=longitude, lat=latitude)
-  cirs_ra = Astronomy.obs_ra_to_cirs_ra(ra, obs_time, longitude, latitude)
-  obs_coord = SkyCoord(ra=cirs_ra, dec=dec, frame='cirs', obstime=obs_time,
-                       location = loc_obj)
+  cirs_ra = obs_ra_to_cirs_ra(ra, obs_time, longitude, latitude)
+  obs_coord = APc.SkyCoord(ra=cirs_ra, dec=dec, unit=(u.hourangle, u.deg),
+                           frame='cirs', obstime=obs_time, location = loc_obj)
   c = obs_coord.transform_to(APc.FK5(equinox=obs_time))
   return c.ra.hourangle, c.dec.deg  
 
@@ -709,7 +709,7 @@ def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   @param dec2000 : float
     radians
 
-  @return: tuple
+  @return: tuple (hour, deg)
   """
   t = APt.Time(MJD+UT/24., format='mjd')
   coords = APc.SkyCoord(ra=ra2000*u.rad, dec=dec2000*u.rad, frame='icrs')
