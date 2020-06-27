@@ -87,10 +87,9 @@ class EphemException(Exception):
     """
     Creates an instance of EphemException()
     """
-    if value:
-      self.value = value
-    if details:
-      self.details = details
+    self.value = value
+    self.details = details
+
   def __str__(self):
     """
     EphemException() instance message
@@ -123,20 +122,31 @@ def calibrator(name):
   """
   Creates an Ephem (pyephem) Body() instance for a flux calibrator
   """
+  global calsource # needed for exec() below
   try:
     # planet?
     idx = Planets.index(name)
     module_logger.debug("calibrator: %s is planet %d", name, idx)
-    code_line = 'calibrator = ephem.'+name+'()'
+  except:
+    module_logger.info("calibrator: %s is not planet", name)
+    try:
+      calsource = Quasar(name)
+      return calsource
+    except Exception as details:
+      # not a Quasar either
+      module_logger.error("calibrator: not a quasar: {}".format(details))
+      return None  
+  # It's a planet
+  try:
+    code_line = 'global calsource; calsource = ephem.'+name+'()'
     module_logger.debug("calibrator: executing '%s'", code_line)
     exec(code_line)
-    return calibrator
-  except Exception as details:
-    module_logger.info("calibrator: not a planet: {}".format(details))
-    # quasar?
-    try:
-      calibrator = Quasar(name)
-      return calibrator
-    except Exception as details:
-      module_logger.error("calibrator: not a quasar: {}".format(details))
-      return None
+  except Exception as errmsg:
+    module_logger.info("calibrator: exec error: {}".format(errmsg))
+  if calsource:
+    module_logger.debug("calibrator: is %s", calsource)
+    return calsource
+  else:
+    module_logger.debug("calibrator: exec() left 'calsource' as None")
+    return None    
+
