@@ -53,12 +53,12 @@ Cosmic Time Scale: Ho; Lang, Astrophys. Formulae, eqn. 5-82
 Doppler Shift: astropy documentation for Spectral Doppler Equivalencies
 """
 import astropy.units as u
+import astropy.coordinates as coord
 import logging
 import math
 
-from astropy.coordinates import EarthLocation, SkyCoord
 from novas import compat as novas
-from numpy import array
+import numpy
 
 import Astronomy
 import Astronomy.DSN_coordinates
@@ -237,9 +237,9 @@ def V_LSR(RA, dec, dss, timedate):
   @type  timedate : datetime object
   """
   if type(RA) == unicode and type(dec) == unicode:
-    skypos = SkyCoord(RA, dec, unit=(u.hourangle, u.deg))
+    skypos = coord.SkyCoord(RA, dec, unit=(u.hourangle, u.deg))
   elif type(RA) == float and type(dec) == float:
-    skypos = SkyCoord(RA*u.hour,dec*u.degree)
+    skypos = coord.SkyCoord(RA*u.hour,dec*u.degree)
   else:
     raise RuntimeError(RA, dec, "cannot be parsed")
   logger.debug("V_LSR: sky pos: %s", skypos)
@@ -263,7 +263,7 @@ def V_LSR(RA, dec, dss, timedate):
   earth = novas.make_object(0, 3, 'Earth', None)
   urthpos,urthvel = novas.ephemeris((jd,0), earth, origin=0)
   (obspos,obsvel) = novas.geo_posvel(jd,0,observer,0)
-  totvel = tuple(array(urthvel)+array(obsvel))
+  totvel = tuple(numpy.array(urthvel)+numpy.array(obsvel))
   (srcpos,srcvel) = novas.starvectors(cat_entry)
   V = novas.rad_vel(source, srcpos, srcvel, totvel,0,0,0)
   logger.debug("V_LSR: velocity of observer w.r.t. Sun= %.2f", V)

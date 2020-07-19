@@ -3,35 +3,39 @@
 
 Basic Terminology
 =================
+
 Time
 ----
-Terrestrial Time (TT) is a modern astronomical time standard defined by the 
+
+Time Systems
+^^^^^^^^^^^^
+**Terrestrial Time** (TT) is a modern astronomical time standard defined by the 
 IAU, primarily for time-measurements of astronomical observations made from 
-the surface of Earth. TT continues Terrestrial Dynamical Time (TDT) which in
-turn succeeded ephemeris time (ET). The purpose for which ET was designed is to
+the surface of Earth. TT continues *Terrestrial Dynamical Time* (TDT) which in
+turn succeeded *ephemeris time* (ET). The purpose for which ET was designed is to
 be free of the irregularities in the rotation of Earth.  The unit of TT is the 
 SI second, the definition of which is currently based on the caesium atomic 
 clock.
 
 TT is distinct from UTC, the time scale used as a basis for civil 
-purposes, Coordinated Universal Time (UTC). TT indirectly underlies UTC, via 
-International Atomic Time (TAI). Each leap second that is introduced into UTC 
+purposes, *Coordinated Universal Time* (UTC). TT indirectly underlies UTC, via 
+*International Atomic Time* (TAI). Each leap second that is introduced into UTC 
 causes UTC to diverge a little further from TT.
 
 Epoch
------
+^^^^^
 An epoch is a moment in time used as a reference point for some time-varying 
 astronomical quantity, such as the celestial coordinates.
 
 Equinox
--------
+^^^^^^^
 In its broadest sense this is the moment when the day and night are exactly
 equally long.  This defines the equator (and the ecliptic), latitude zero.
 This moment does not occur at exactly the same time each year so a mean
 equinox time is defined.
 
 Besselian Year
---------------
+^^^^^^^^^^^^^^
 The beginning of a Besselian year to be the moment at which the mean longitude
 of the Sun, including the effect of aberration and measured from the mean 
 equinox of the date, is exactly 280 degrees.  This moment falls near the 
@@ -42,37 +46,68 @@ some commonly used Besselian years are::
   B1900.0 = JD 2415020.3135 = 1900 January 0.8135 TT
   B1950.0 = JD 2433282.4235 = 1950 January 0.9235 TT
 
+Coordinate Systems
+------------------
+
+In optical astronomy, the normal way of tracking an object is to locate it
+roughly, and then lock onto it or a nearby visible object if the object being
+tracked is not visible.  The exact, instantaneous relationship between the
+local coordinates and the celestial coordinates is not that critical.  The
+important thing is that the celestial coordinate system used is well defined.
+
+Modern radio telescopes are pointed with reference to the local horizon and
+zenith.  Encoders measure the rotation about the vertical axis (*azimuth*) and
+tilt with respect to the vertical (*elevation* or altitude, measured upwards,
+or zenith angle, measured downwards).
+
+Converting from a direction in the horizontal coordinate systems (azimuth and
+elevation) to the corresponding direction in the celestial coordinate system
+(hour angle and declination) is a simple trigonometric conversion which the
+antenna tracking computer does in real time. That means that the radio
+astronomer needs to know the relationship between the current, apparent
+celestial coordinate system and the celestial coordinate system in which the
+source coordinates are specified in a time-independent way.  This means that the
+exact position of the poles and the amount of rotation (defined by time) must
+be known.
+
+*Precession* is a slow rotation of the Earth's poles about a long-term mean
+position. *Nutation* is a rapid rotation wobbling of the pole around the 
+precessing mean.  Computation of precession and nutation are critical to the
+pointing of a radio telescope.
+
 FK4
----
-The Fourth Fundamental Catalogue is a reference frame published in 1963 based
-on 1,535 stars in various equinoxes from 1950.0 to 1975.0.
+^^^
+The *Fourth Fundamental Catalogue* is a reference frame published in 1963 based
+on 1,535 stars in various equinoxes from 1950.0 to 1975.0. The equinox for
+this system is 1950 in Besselian years.
 
 FK5
----
-The Fifth Fundamental Catalog is a reference frame published in 1988 with 
-updated new positions for the 1,535 stars.
+^^^
+The *Fifth Fundamental Catalog* is a reference frame published in 1988 with 
+updated new positions for the 1,535 stars.  The equinox of this system is 2000
+in Julian years.
 
 ICRS
-----
-The International Celestial Reference System (ICRS) is the current standard 
+^^^^
+The *International Celestial Reference System* (ICRS) is the current standard 
 celestial reference system adopted by the IAU. Its origin is at the 
 barycenter of the solar system, with axes that are intended to be fixed 
-in space. The ICRS is based on the International Celestial Reference Frame
+in space. The ICRS is based on the *International Celestial Reference Frame*
 (ICRF) which consists of the positions of 3414 compact radio sources measured 
 using VLBI. 
 
 CIRS
-----
-The Celestial Intermediate Reference System has the same pole as the geocentric 
+^^^^
+The *Celestial Intermediate Reference System* has the same pole as the geocentric 
 coordinate system at the time of observation, but its rotation -- the Earth
-Rotation Angle (ERA) -- differs from Greenwich Apparent Sidereal Time.
+Rotation Angle (ERA) -- differs from *Greenwich Apparent Sidereal Time*.
 
-Celestial Coordinates
-=====================
+Coordinate Conversions
+^^^^^^^^^^^^^^^^^^^^^^
 
 Brandon Rhodes gives an 
 `excellent explanation <https://rhodesmill.org/pyephem/radec.html>`_ in the
-documentation for `PyEphem https://rhodesmill.org/pyephem/`_.  Summarizing:
+documentation for `PyEphem <https://rhodesmill.org/pyephem/>`_.  Summarizing:
 
 Astrometric Geocentric
   Mean geocentric position for the epoch of the specified star atlas
@@ -80,11 +115,19 @@ Apparent Geocentric
   current geocentric position at the date and time of observation
 Apparent Topocentric
   current position for the observatory at the date and time of observation
+  
+Rick Fisher gives a clear and detailed explanation of precession and nutation
+and their effect on astronomical coordinates in `Earth Rotation and Equatorial 
+Coordinates
+<https://www.cv.nrao.edu/~rfisher/Ephemerides/earth_rot.html>`_.
 
 Ecliptic Coordinates
 ====================
+
 At the time of writing the code ``astropy`` did not yet support ecliptic 
-coordinates so `pyephem <https://rhodesmill.org/skyfield/>`_ was used for that.
+coordinates so `pyephem <https://rhodesmill.org/pyephem/>`_ was used for that.
+Note that this package is deprecated in favor of 
+`skyfield <https://rhodesmill.org/skyfield/>`_
 
 Evolving Packages
 =================
@@ -95,7 +138,6 @@ Evolving Packages
 for ``astropy`` which can be adapted as well.  I don't know if this evolved to
 ``https://sunpy.org/`` or that is a different organization, but either way the
 submodule ``solar`` should be adopted to use this.
-
 """
 import logging
 logger = logging.getLogger(__name__)
@@ -490,19 +532,12 @@ def HaDec_to_AzEl(HourAngle, Declination, Latitude):
                      0., lat,           # long, lat of pole of 'azel' frame
                      HA, dec)
   return Az*180/math.pi, El*180/math.pi
-  #t = APt.Time.now()
-  #l = APc.EarthLocation(lon=0*u.deg, lat=Latitude*u.deg)
-  #t.location = l
-  #t.delta_ut1_utc = 0
-  #lst = t.sidereal_time('mean')
-  #ra = (lst.hour-HourAngle)*u.hourangle
-  #c = APc.SkyCoord(ra=ra, dec=Declination*u.deg, obstime=t)
-  #c.location = l
-  #return c.altaz.az.deg, c.altaz.alt.deg
 
 def RaDec_to_AzEl(RA, dec, latitude, longitude, dateUTtime):
   """
-  converts CIRS right ascension and declination to azimuth and elevation
+  converts right ascension and declination to azimuth and elevation
+  
+  This converts apparent RA to CIRS RA and 
   
   See the Notes for ``AzEl_to_RaDec`` for details.
 
@@ -679,7 +714,16 @@ def cirs_ra_to_obs_ra(cirs_ra, mjd, longitude, latitude):
 
 def apparent_to_J2000(MJD, UT, ra, dec, longitude, latitude):
   """
-  observed celestial coordinates to J2000
+  observed celestial coordinates to J2000.  THIS HAS A PROBLEM THAT NEEDS FIXING
+  
+  Args
+  ====
+    MJD (int):         modified Julian Day
+    UT (float):        Universal Time in hours
+    ra (float):        apparent right ascension in hours
+    dec (float):       apparent declination in hours
+    longitude (float): observer east longitude in deg
+    latitude (float):  observer latitude in deg
   
   This converts observed RA to CIRS RA, and then transforms the coordinates
   to the FK5 frame.
@@ -974,3 +1018,42 @@ def galactic_offsets_to_celestial(RA, Dec, glongoff=3, glatoff=0):
   RAoff = radecoff.fk5.ra.value - RA
   Decoff = radecoff.fk5.dec.value - Dec     
   return RAoff, Decoff
+
+def format_angles(*args):
+  """
+  converts angles to hexagesimal strings
+  
+  formats a tuple (hour, degree, ..) into HH:MM:SS.S DD:MM:SS.S
+  """
+  result = []
+  for arg in args:
+    # separate the sign and the magnitude
+    arg_value = abs(arg)
+    arg_sign = arg/arg_value
+    logger.debug("format_angles: arg sign is %+d", arg_sign)
+    logger.debug("format_angles: arg value is %f", arg_value)
+    # get the integer degrees or hours
+    argHH = int(arg_value)
+    logger.debug("format_angles: degree/hour is %d", argHH)
+    # get the integer (arc)minutes
+    argMM = int((arg_value - argHH)*60)
+    logger.debug("format_angles: minute is %d", argMM)
+    # get the seconds to one decimal place
+    argSS = (arg_value - argHH)*3600 - argMM*60
+    logger.debug("format_angles: second is %f", argSS)
+    argSSS = round(argSS,1)
+    logger.debug("format_angles: rounded second is %f", argSSS)
+    # did we end up with 60.0 seconds?
+    logger.debug("format_angles: delta is %f", argSSS - 60.0)
+    if abs(argSSS - 60.0) < 0.1:
+      logger.debug("format_angles: carry")
+      # yes; fix that
+      argSSS = 0.0
+      argMM += 1
+      # now that could possibly give us 60 min
+      if abs(argMM - 60) < 1:
+        argMM = 0
+        argHH += 1
+    result.append("%3d:%02d:%04.1f" % (arg_sign*argHH, argMM, argSSS))
+  return result
+  

@@ -15,7 +15,7 @@
     <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="dms_delimited_angle_to_rads" href="Astronomy.formats.dms_delimited_angle_to_rads.html" />
+    <link rel="next" title="calibrator" href="Astronomy.Ephem.calibrator.html" />
     <link rel="prev" title="get_geodetic_coords" href="Astronomy.DSN_coordinates.get_geodetic_coords.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -28,7 +28,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="Astronomy.formats.dms_delimited_angle_to_rads.html" title="dms_delimited_angle_to_rads"
+          <a href="Astronomy.Ephem.calibrator.html" title="calibrator"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="Astronomy.DSN_coordinates.get_geodetic_coords.html" title="get_geodetic_coords"
@@ -42,8 +42,8 @@
   <p class="topless"><a href="Astronomy.DSN_coordinates.get_geodetic_coords.html"
                         title="previous chapter">get_geodetic_coords</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="Astronomy.formats.dms_delimited_angle_to_rads.html"
-                        title="next chapter">dms_delimited_angle_to_rads</a></p>
+  <p class="topless"><a href="Astronomy.Ephem.calibrator.html"
+                        title="next chapter">calibrator</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -75,19 +75,38 @@
 <dt id="Astronomy.DSN_coordinates.DSS">
 <em class="property">class </em><code class="sig-prename descclassname">Astronomy.DSN_coordinates.</code><code class="sig-name descname">DSS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">number</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.DSN_coordinates.DSS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ephem.Observer</span></code></p>
-<p>Observer class for DSN stations based on xephem Observer</p>
+<p>Observer suclass class for DSN stations based on xephem Observer</p>
 <p>For use with xephem.</p>
 <dl class="py attribute">
 <dt>
 <code class="sig-name descname">of this class::</code></dt>
-<dd><p>lon       - east longitude (degrees)
-lat       - north latitude (degrees)
+<dd><p>lon       - east longitude (radians)
+lat       - north latitude (radians)
 elevation - altitude (meters)
 timezone  - difference (hours) from UTC
 name      -
-diam      - diameter (m)</p>
+diam      - diameter (m)
+xyz       - geocentric Cartesian coordinates</p>
 </dd></dl>
 
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">long</span></code> is an alias for <code class="docutils literal notranslate"><span class="pre">lon</span></code>.</p></li>
+<li><p>Longitudes are measured eastwards.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<p>In [8]: import ephem as E</p>
+<p>In [18]: LA = E.city(“Los Angeles”)
+In [19]: LA.long, LA.lat
+Out[19]: (-2.0637416211957023, 0.5943236044502173)
+In [20]: print(LA.long, LA.lat)
+-118:14:37.3 34:03:08.0</p>
+<p>In [25]: from Astronomy.DSN_coordinates import DSS
+In [26]: dss14 = DSS(14)
+In [27]: dss14.long, dss14.lat
+Out[27]: (-2.0400918530711474, 0.6182990806837911)
+In [28]: print(dss14.long, dss14.lat)
+-116:53:19.2 35:25:33.3</p>
 <p class="rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -126,7 +145,7 @@ diam      - diameter (m)</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="Astronomy.formats.dms_delimited_angle_to_rads.html" title="dms_delimited_angle_to_rads"
+          <a href="Astronomy.Ephem.calibrator.html" title="calibrator"
              >next</a> |</li>
         <li class="right" >
           <a href="Astronomy.DSN_coordinates.get_geodetic_coords.html" title="get_geodetic_coords"

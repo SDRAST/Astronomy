@@ -1,6 +1,10 @@
 """
 Coordinates for DSN and affiliated antennas
 
+The DSN uses west longitudes, whereas most astronomical packages like 
+``astropy`` and ``ephem`` use east longitudes.
+
+
 Contents
 ========
 
@@ -10,11 +14,11 @@ In this module::
   function DSSLocation
   
 """
-from ephem import Observer
-from math import pi
+import ephem
+import math
 
 import astropy.units as u
-from astropy.coordinates import EarthLocation
+import astropy.coordinates
 
 Complex = {"Canberra":  [34, 35, 36, 43, 45],
            "Goldstone": [13, 14, 15, 24, 25, 26],
@@ -26,35 +30,63 @@ complexCode = {"Canberra": 40,
                "Goldstone": 10,
                "Madrid": 60}
 
-class DSS(Observer):
+class DSS(ephem.Observer):
   """
-  Observer class for DSN stations based on xephem Observer
+  Observer suclass class for DSN stations based on xephem Observer
 
-  For use with xephem.
+  For use with xephem.  
 
   Attributes
   ==========
   
   of this class::
     
-    lon       - east longitude (degrees)
-    lat       - north latitude (degrees)
+    lon       - east longitude (radians)
+    lat       - north latitude (radians)
     elevation - altitude (meters)
     timezone  - difference (hours) from UTC
     name      -
     diam      - diameter (m)
+    xyz       - geocentric Cartesian coordinates
+    
+  Notes
+  =====
+  
+  * ``long`` is an alias for ``lon``.
+  * Longitudes are measured eastwards.
+      
+  Examples
+  ========
+
+    In [8]: import ephem as E 
+   
+    In [18]: LA = E.city("Los Angeles")
+    In [19]: LA.long, LA.lat
+    Out[19]: (-2.0637416211957023, 0.5943236044502173)
+    In [20]: print(LA.long, LA.lat)
+    -118:14:37.3 34:03:08.0
+    
+    In [25]: from Astronomy.DSN_coordinates import DSS
+    In [26]: dss14 = DSS(14)
+    In [27]: dss14.long, dss14.lat
+    Out[27]: (-2.0400918530711474, 0.6182990806837911)
+    In [28]: print(dss14.long, dss14.lat)
+    -116:53:19.2 35:25:33.3
+
   """
   def __init__(self, number):
     """
     Creates an instance of a DSN station Observer()
+    
+    Note the longitude sign change from DSN usage to astronomical convention.
 
     @param number : station number
     """
     super(DSS,self).__init__()
     self.number = number
     dsn = get_geodetic_coords()
-    self.lon       = -dsn[number][0]*pi/180.
-    self.lat       =  dsn[number][1]*pi/180.
+    self.lon       = -dsn[number][0]*math.pi/180.
+    self.lat       =  dsn[number][1]*math.pi/180.
     self.elevation =  dsn[number][2]
     self.timezone  =  dsn[number][3]
     self.name      =  dsn[number][4]
@@ -68,6 +100,9 @@ class DSS(Observer):
 def DSSLocation(dss):
   """
   Gives DSN station location as astropy EarthLocation
+  
+  Notes that ``DSS`` longitudes are positive to the east and negative to the 
+  west.
 
   @param dss : DSN station
   @type  dss : DSS class instance or station number
@@ -80,9 +115,9 @@ def DSSLocation(dss):
   else:
     station = DSS(dss)
     number = dss
-  loc = EarthLocation(lat= (station.lat*180/pi)*u.deg,
-                      lon= (station.long*180/pi)*u.deg,
-                      height=station.elevation*u.m)
+  loc = astropy.coordinates.EarthLocation(lat= (station.lat*180/math.pi)*u.deg,
+                                          lon= (station.long*180/math.pi)*u.deg,
+                                          height=station.elevation*u.m)
   loc.number = number
   return loc
 

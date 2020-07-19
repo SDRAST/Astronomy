@@ -6,17 +6,17 @@ from http://stackoverflow.com/questions/2417794/how-to-make-the-angles-in-a-matp
 import numpy as N
 import matplotlib.pyplot as P
 
-from matplotlib.projections import PolarAxes, register_projection
-from matplotlib.transforms import Affine2D, Bbox, IdentityTransform
+import matplotlib.projections as MPLproj
+import matplotlib.transforms as MPLtrans
 
-class NorthPolarAxes(PolarAxes):
+class NorthPolarAxes(MPLproj.PolarAxes):
     '''
     A variant of PolarAxes where theta starts pointing north and goes
     clockwise.
     '''
     name = 'northpolar'
 
-    class NorthPolarTransform(PolarAxes.PolarTransform):
+    class NorthPolarTransform(MPLproj.PolarAxes.PolarTransform):
         def transform(self, tr):
             xy   = N.zeros(tr.shape, N.float_)
             t    = tr[:, 0:1]
@@ -32,7 +32,7 @@ class NorthPolarAxes(PolarAxes):
         def inverted(self):
             return NorthPolarAxes.InvertedNorthPolarTransform()
 
-    class InvertedNorthPolarTransform(PolarAxes.InvertedPolarTransform):
+    class InvertedNorthPolarTransform(MPLproj.PolarAxes.InvertedPolarTransform):
         def transform(self, xy):
             x = xy[:, 0:1]
             y = xy[:, 1:]
@@ -44,7 +44,7 @@ class NorthPolarAxes(PolarAxes):
             return NorthPolarAxes.NorthPolarTransform()
 
     def _set_lim_and_transforms(self):
-        PolarAxes._set_lim_and_transforms(self)
+        MPLproj.PolarAxes._set_lim_and_transforms(self)
         self.transProjection = self.NorthPolarTransform()
         self.transData = (
             self.transScale +
@@ -52,17 +52,17 @@ class NorthPolarAxes(PolarAxes):
             (self.transProjectionAffine + self.transAxes))
         self._xaxis_transform = (
             self.transProjection +
-            self.PolarAffine(IdentityTransform(), Bbox.unit()) +
-            self.transAxes)
+            self.PolarAffine(MPLtrans.IdentityTransform(),
+                             MPLtrans.Bbox.unit()) + self.transAxes)
         self._xaxis_text1_transform = (
             self._theta_label1_position +
             self._xaxis_transform)
         self._yaxis_transform = (
-            Affine2D().scale(N.pi * 2.0, 1.0) +
+            MPLtrans.Affine2D().scale(N.pi * 2.0, 1.0) +
             self.transData)
         self._yaxis_text1_transform = (
             self._r_label1_position +
-            Affine2D().scale(1.0 / 360.0, 1.0) +
+            MPLtrans.Affine2D().scale(1.0 / 360.0, 1.0) +
             self._yaxis_transform)
 
 if __name__ == "__main__":

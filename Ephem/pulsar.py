@@ -3,8 +3,9 @@ import logging
 import ephem
 
 from . import PD, Jnames
+from support.lists import remove_item
 
-module_logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 class Pulsar(ephem.FixedBody):
   """
@@ -56,6 +57,7 @@ class Pulsar(ephem.FixedBody):
     All methods and attributes of ephem.FixedBody()
     """
     super(Pulsar,self).__init__()
+    self.logger = logging.getLogger(logger.name+".Pulsar")
     if name[0] == "J":
       self.name = name
     elif name[0] == "B":
@@ -66,22 +68,20 @@ class Pulsar(ephem.FixedBody):
       Jnames.index(self.name)
     except:
       raise self.name
-    if diag:
-      print(self.name)
+    self.logger.debug("__init__: for %s", self.name)
     pulsar_data = PD.data[self.name]
     [ra,dec]    = PD.equatorial(pulsar_data)
-    if diag:
-      print("From catalogue:", ra, dec)
-      print("In ephem format:",ephem.hours(str(ra)),ephem.degrees(str(dec)))
+    self.logger.debug("__init__: from catalogue: %f, %f", ra, dec)
+    self.logger.debug("__init__: in ephem format: %s, %s",
+                                   ephem.hours(str(ra)),ephem.degrees(str(dec)))
     self._ra    = ephem.hours(str(ra))     # pulsar_data['RAJ']  or derived
     self._dec   = ephem.degrees(str(dec)) # pulsar_data['DECJ'] or derived
     self._pmra  = float(pulsar_data['PMRA'])
     self._pmdec = float(pulsar_data['PMDEC'])
     self.period = PD.period(pulsar_data)
     self.dpdt   = PD.period_change_rate(pulsar_data)
-    if diag:
-      print("As attributes:",self._ra, self._dec)
-    self._epoch = J2000
+    self.logger.debug("__init__: as attributes: %f, %f",self._ra, self._dec)
+    self._epoch = "2000/1/1 12:00:00"
     self._class = "L"
     # to initialize ra, dec to something
     self.compute("2000/1/1 00:00:00")
@@ -95,8 +95,7 @@ class Pulsar(ephem.FixedBody):
     keys = remove_item(keys,'PSRB')
     keys = remove_item(keys,'P0')
     keys = remove_item(keys,'P1')
-    if diag:
-      print("Properties:",keys)
+    self.logger.debug("__init__: properties: %s", keys)
     self.properties = {}
     for prop in keys:
       self.properties[prop] = pulsar_data[prop]

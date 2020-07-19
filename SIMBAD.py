@@ -7,7 +7,7 @@ This is unnecessary if astropy is used. See Automation/apps/find_sources.py for
 an example.
 """
 
-from urllib.request import urlopen
+import urllib.request
 import re
 
 def build_SIMBAD_query(source):
@@ -18,7 +18,7 @@ def build_SIMBAD_query(source):
     return url
     
 def query_SIMBAD(url):
-    response = urlopen(url)
+    response = urllib.request.urlopen(url)
     return response
 
 def parse_SIMBAD_response(response,

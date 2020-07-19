@@ -12,6 +12,7 @@ For an overview of SDRAST and the current status please visit https://sdrast.git
 .. automodapi:: Astronomy.solar
 .. automodapi:: Astronomy.coordconv
 .. automodapi:: Astronomy.DSN_coordinates
+.. automodapi:: Astronomy.Ephem
 .. automodapi:: Astronomy.formats
 .. automodapi:: Astronomy.northpolar
 .. automodapi:: Astronomy.redshift

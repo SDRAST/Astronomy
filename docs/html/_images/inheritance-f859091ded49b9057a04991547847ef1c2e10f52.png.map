@@ -1,0 +1,8 @@
+<map id="inheritance05090c75ca" name="inheritance05090c75ca">
+<area shape="rect" id="node1" title="A celestial body, that can compute() its sky position" alt="" coords="35,55,107,80"/>
+<area shape="rect" id="node3" title="A celestial body, that can compute() its sky position" alt="" coords="184,55,273,80"/>
+<area shape="rect" id="node2" href="api/Astronomy.Ephem.EphemException.html#Astronomy.Ephem.EphemException" target="_top" title="Exception class for Ephem module" alt="" coords="5,5,136,31"/>
+<area shape="rect" id="node4" href="api/Astronomy.Ephem.Pulsar.html#Astronomy.Ephem.Pulsar" target="_top" title="ephem.FixedBody() with pulsar properties." alt="" coords="351,5,423,31"/>
+<area shape="rect" id="node5" href="api/Astronomy.Ephem.Quasar.html#Astronomy.Ephem.Quasar" target="_top" title="ephem.FixedBody() with &quot;J&quot; or &quot;B&quot; name" alt="" coords="351,55,423,80"/>
+<area shape="rect" id="node6" href="api/Astronomy.Ephem.SerializableBody.html#Astronomy.Ephem.SerializableBody" target="_top" title="Simple extension to ephem.FixedBody that allows for conversion to and" alt="" coords="321,104,452,129"/>
+</map>

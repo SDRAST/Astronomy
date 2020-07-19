@@ -8,9 +8,9 @@ Example::
 
 from http://maia.usno.navy.mil/ser7/tai-utc.dat
 """
-from datetime import datetime
-from matplotlib.dates import datestr2num, num2date
-from numpy import array
+import datetime
+import matplotlib.dates as MPLd
+import numpy
 
 def init_table():
   """
@@ -25,11 +25,13 @@ def init_table():
   delim3 = "S +"
   datalist = []
   for line in lines:
-    date = num2date(datestr2num(line[:line.index(delim1)]))
+    date = MPLd.num2date(MPLd.datestr2num(line[:line.index(delim1)]))
     JD = float(line[line.index(delim1)+len(delim1):line.index(delim2)])
     deltaT = float(line[line.index(delim2)+len(delim2):line.index(delim3)])
     datalist.append( (date, JD, deltaT) )
-  data = array(datalist, dtype=[('date',datetime),('JD',float),('dTA',float)])
+  data = numpy.array(datalist, dtype=[('date',datetime.datetime),
+                                ('JD',float),
+                                ('dTA',float)])
 
 def dTA(jd):
   """

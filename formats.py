@@ -9,7 +9,9 @@ def parse_hms_delimited_angle(angle):
     Parses RA strings delimited with h, m and s.
     
     As in VLA Calibrator List: 00h01m08.621563s
+    
     Example::
+    
       >>> parse_hms_delimited_angle('00h01m08.621563s')
       ['00', '01', '08.621563']
     
@@ -31,7 +33,9 @@ def parse_dms_delimited_angle(angle):
     Parses decl. strings delimited with d, ' and ".
     
     As in VLA Calibrator List: 19d14'33.801860"
+    
     Example::
+    
       >>> parse_dms_delimited_angle('''19d14'33.801860"''')
       ['19', '14', '33.801860']
     
@@ -48,20 +52,8 @@ def parse_dms_delimited_angle(angle):
     s = temp[1].rstrip('''"''')
     return [d,m,s]
     
-def parse_colon_delimited_angles(rastring, decstring):
+def old_parse_colon_delimited_angles(rastring, decstring):
     """
-    Parses RA and decl. strings delimited with colons
-    
-    Input data like ('1:38:48.0','41:24:23')
-    and it will return [1.64666666667 41.4063888889]
-       
-    @param rastring : R.A. formatted like '1:38:48.0'
-    @type  rastring : str
-    
-    @param decstring : decl. formatted like '41:24:23'
-    @type  decstring : str
-    
-    @return: list of float
     """
     ralist = rastring.split(":")
     if len(ralist) == 3:
@@ -98,12 +90,46 @@ def parse_colon_delimited_angles(rastring, decstring):
         decs = -decs
     dec = (decd+(decm+(decs/60.))/60.)
     return [ra, dec]
+
+def parse_colon_delimited_angles(*args):
+    """
+    Parses angle strings delimited with colons
+    
+    Input data like ('1:38:48.0','41:24:23')
+    and it will return [1.64666666667 41.4063888889]
+       
+    @param args : list of hexadecimal strings
+    @type  args : list of str
+        
+    @return: list of float
+    """
+    result = []
+    for arg in args:
+        arglist = arg.split(":")
+        if len(arglist) == 3:
+            argH = int(arglist[0])
+            argM = int(arglist[1])
+            argS = float(arglist[2])
+        elif len(arglist) == 2:
+            argH = int(arglist[0])
+            argM = int(arglist[1])
+            argS = 0
+        else:
+            argH = float(ralist[0])
+            argM = 0
+            argS = 0
+        if ( arg[0] == "-" ):
+            argM = -argM
+            argS = -argS
+        result.append(argH+(argM+(argS/60.))/60.)
+    return result
     
 def hms_delimited_angle_to_rads(angle):
     """
     Converts R.A. formatted as 00h01m08.621563s to radians
     
     As in VLA Calibrator List::
+    
       >>> hms_delimited_angle_to_rads('00h01m08.621563s')
       0.0049903008842279899
     
@@ -126,6 +152,7 @@ def dms_delimited_angle_to_rads(angle):
     converts decl. formatted as 19d14'33.801860 to radians
     As in VLA Calibrator List: 19d14'33.801860"
     Example::
+    
       >>> dms_delimited_angle_to_rads('''19d14'33.801860"''')
       0.33584886884199222
     
