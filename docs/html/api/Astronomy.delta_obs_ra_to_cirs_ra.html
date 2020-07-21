@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>cirs_ra_to_obs_ra &#8212; Astronomy 0.9 documentation</title>
+    <title>delta_obs_ra_to_cirs_ra &#8212; Astronomy 0.9 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,8 +15,8 @@
     <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="coordconv" href="Astronomy.coordconv.html" />
-    <link rel="prev" title="apparent_to_J2000" href="Astronomy.apparent_to_J2000.html" /> 
+    <link rel="next" title="ecliptic_to_J2000" href="Astronomy.ecliptic_to_J2000.html" />
+    <link rel="prev" title="decimal_day_to_tuple" href="Astronomy.decimal_day_to_tuple.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -28,10 +28,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="Astronomy.coordconv.html" title="coordconv"
+          <a href="Astronomy.ecliptic_to_J2000.html" title="ecliptic_to_J2000"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="Astronomy.apparent_to_J2000.html" title="apparent_to_J2000"
+          <a href="Astronomy.decimal_day_to_tuple.html" title="decimal_day_to_tuple"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
       </ul>
@@ -39,15 +39,15 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="Astronomy.apparent_to_J2000.html"
-                        title="previous chapter">apparent_to_J2000</a></p>
+  <p class="topless"><a href="Astronomy.decimal_day_to_tuple.html"
+                        title="previous chapter">decimal_day_to_tuple</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="Astronomy.coordconv.html"
-                        title="next chapter">coordconv</a></p>
+  <p class="topless"><a href="Astronomy.ecliptic_to_J2000.html"
+                        title="next chapter">ecliptic_to_J2000</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/api/Astronomy.cirs_ra_to_obs_ra.rst.txt"
+      <li><a href="../_sources/api/Astronomy.delta_obs_ra_to_cirs_ra.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -69,23 +69,25 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="cirs-ra-to-obs-ra">
-<h1>cirs_ra_to_obs_ra<a class="headerlink" href="#cirs-ra-to-obs-ra" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="delta-obs-ra-to-cirs-ra">
+<h1>delta_obs_ra_to_cirs_ra<a class="headerlink" href="#delta-obs-ra-to-cirs-ra" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="Astronomy.cirs_ra_to_obs_ra">
-<code class="sig-prename descclassname">Astronomy.</code><code class="sig-name descname">cirs_ra_to_obs_ra</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cirs_ra</span></em>, <em class="sig-param"><span class="n">mjd</span></em>, <em class="sig-param"><span class="n">longitude</span></em>, <em class="sig-param"><span class="n">latitude</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.cirs_ra_to_obs_ra" title="Permalink to this definition">¶</a></dt>
-<dd><p>convert apparent RA at time of observation to CIRS RA</p>
-<p>:param obs_ra : apparent RA at time of observation
-:type  obs_ra : float (not astropy.time.Time)</p>
-<p>:param mjd : modified Julian date
-:type  mjd : float</p>
-<p>:param longitude : of the observer
-:type  longitude : float or astropy.coordinates.Angle</p>
-<p>:param latitude : of the observer
-:type  latitude : float or astropy.coordinates.Angle</p>
+<dt id="Astronomy.delta_obs_ra_to_cirs_ra">
+<code class="sig-prename descclassname">Astronomy.</code><code class="sig-name descname">delta_obs_ra_to_cirs_ra</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mjd</span></em>, <em class="sig-param"><span class="n">longitude</span></em>, <em class="sig-param"><span class="n">latitude</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.delta_obs_ra_to_cirs_ra" title="Permalink to this definition">¶</a></dt>
+<dd><p>difference between radio astronomers observed coords and CIRS coords</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>(hour angle)</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mjd</strong> (<em>(</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>) </em><em>modified Julian date</em>) – </p></li>
+<li><p><strong>longitude</strong> (<em>(</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>) </em><em>in degrees</em><em> or </em><em>as astropy Angle</em>) – </p></li>
+<li><p><strong>latitude</strong> (<em>(</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>) </em><em>in degrees</em><em> or </em><em>as astropy Angle</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>hour angle as astropy.coordinates.Angle</p>
 </dd>
 </dl>
 </dd></dl>
@@ -108,10 +110,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="Astronomy.coordconv.html" title="coordconv"
+          <a href="Astronomy.ecliptic_to_J2000.html" title="ecliptic_to_J2000"
              >next</a> |</li>
         <li class="right" >
-          <a href="Astronomy.apparent_to_J2000.html" title="apparent_to_J2000"
+          <a href="Astronomy.decimal_day_to_tuple.html" title="decimal_day_to_tuple"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
       </ul>

@@ -77,8 +77,17 @@
 <dd><p>convert apparent RA at time of observation to CIRS RA</p>
 <p>:param obs_ra : apparent RA at time of observation
 :type  obs_ra : float (astropy.time.Time)</p>
-<p>:param time : modified Julian date
-:type  time : float</p>
+<p>:param mjd : modified Julian date
+:type  mjd : float</p>
+<p>:param longitude : of the observer
+:type  longitude : float or astropy.coordinates.Angle</p>
+<p>:param latitude : of the observer
+:type  latitude : float or astropy.coordinates.Angle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>(hour angle)</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

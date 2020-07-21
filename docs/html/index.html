@@ -57,7 +57,6 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#ecliptic-coordinates">Ecliptic Coordinates</a></li>
-<li><a class="reference internal" href="#evolving-packages">Evolving Packages</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 </ul>
 </li>
@@ -73,17 +72,17 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#resources">Resources</a></li>
-<li><a class="reference internal" href="#id2">Functions</a></li>
+<li><a class="reference internal" href="#id3">Functions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-Astronomy.coordconv">Astronomy.coordconv Module</a><ul>
 <li><a class="reference internal" href="#examples-of-use">Examples of use</a></li>
-<li><a class="reference internal" href="#id3">Functions</a></li>
+<li><a class="reference internal" href="#id4">Functions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-Astronomy.DSN_coordinates">Astronomy.DSN_coordinates Module</a><ul>
-<li><a class="reference internal" href="#id4">Contents</a></li>
-<li><a class="reference internal" href="#id5">Functions</a></li>
+<li><a class="reference internal" href="#id5">Contents</a></li>
+<li><a class="reference internal" href="#id6">Functions</a></li>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#class-inheritance-diagram">Class Inheritance Diagram</a></li>
 </ul>
@@ -91,40 +90,40 @@
 <li><a class="reference internal" href="#module-Astronomy.Ephem">Astronomy.Ephem Package</a><ul>
 <li><a class="reference internal" href="#module-ephem">module ephem</a></li>
 <li><a class="reference internal" href="#about-celestial-coordinates">About Celestial Coordinates</a></li>
-<li><a class="reference internal" href="#id6">Functions</a></li>
-<li><a class="reference internal" href="#id7">Classes</a></li>
-<li><a class="reference internal" href="#id8">Class Inheritance Diagram</a></li>
+<li><a class="reference internal" href="#id7">Functions</a></li>
+<li><a class="reference internal" href="#id8">Classes</a></li>
+<li><a class="reference internal" href="#id9">Class Inheritance Diagram</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-Astronomy.formats">Astronomy.formats Module</a><ul>
-<li><a class="reference internal" href="#id9">Functions</a></li>
+<li><a class="reference internal" href="#id10">Functions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-Astronomy.northpolar">Astronomy.northpolar Module</a><ul>
-<li><a class="reference internal" href="#id10">Classes</a></li>
-<li><a class="reference internal" href="#id11">Class Inheritance Diagram</a></li>
+<li><a class="reference internal" href="#id11">Classes</a></li>
+<li><a class="reference internal" href="#id12">Class Inheritance Diagram</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-Astronomy.redshift">Astronomy.redshift Module</a><ul>
-<li><a class="reference internal" href="#id12">Functions</a></li>
+<li><a class="reference internal" href="#id13">Functions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-Astronomy.ATCA_caldb">Astronomy.ATCA_caldb Module</a><ul>
-<li><a class="reference internal" href="#id13">Functions</a></li>
-<li><a class="reference internal" href="#id14">Classes</a></li>
-<li><a class="reference internal" href="#id15">Class Inheritance Diagram</a></li>
+<li><a class="reference internal" href="#id14">Functions</a></li>
+<li><a class="reference internal" href="#id15">Classes</a></li>
+<li><a class="reference internal" href="#id16">Class Inheritance Diagram</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-Astronomy.TAI">Astronomy.TAI Module</a><ul>
-<li><a class="reference internal" href="#id16">Functions</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-Astronomy.orbits3D">Astronomy.orbits3D Module</a><ul>
 <li><a class="reference internal" href="#id17">Functions</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#module-Astronomy.orbits3D">Astronomy.orbits3D Module</a><ul>
+<li><a class="reference internal" href="#id18">Functions</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-Astronomy.SIMBAD">Astronomy.SIMBAD Module</a><ul>
-<li><a class="reference internal" href="#id18">Functions</a><ul>
+<li><a class="reference internal" href="#id19">Functions</a><ul>
 </ul>
 </li>
 </ul>
@@ -235,7 +234,22 @@ be known.</p>
 <p><em>Precession</em> is a slow rotation of the Earth’s poles about a long-term mean
 position. <em>Nutation</em> is a rapid rotation wobbling of the pole around the
 precessing mean.  Computation of precession and nutation are critical to the
-pointing of a radio telescope.</p>
+pointing of a radio telescope. An additional correction is needed for
+<em>aberration</em>, an apparent displacement of a celestial object from its true
+position due to the velocity of the observer around the Sun, which may be as
+large as 20 arcsec. For very accurate positions, a correction for light-bending
+around the Sun may also need to be included in aberration.</p>
+<p>Rick Fisher gives a clear and detailed explanation of precession and nutation
+and their effect on astronomical coordinates in <a class="reference external" href="https://www.cv.nrao.edu/~rfisher/Ephemerides/earth_rot.html">Earth Rotation and Equatorial
+Coordinates</a>.  He also
+provided a <a class="reference external" href="https://www.cv.nrao.edu/~rfisher/Python/py_solar_system.html">Python package</a>
+for these calculations and others.  The package depends on
+<a class="reference external" href="http://www.iausofa.org/">SOFA</a>, and a
+<a class="reference external" href="ftp://ssd.jpl.nasa.gov/pub/eph/planets/ascii">JPL ephemeris</a>.  There is also
+a <a class="reference external" href="https://pypi.org/project/pysofa/">Python wrapper</a> for SOFA.</p>
+<p>Bryna Hazelton explains the <a class="reference external" href="http://reionization.org/wp-content/uploads/2013/03/HERA_Memo46_lst2ra.html">difference between CIRS and the apparent celestial
+coordinates</a>
+and gives the code on which function <code class="docutils literal notranslate"><span class="pre">delta_obs_ra_to_circ_ra()</span></code> is based.</p>
 <div class="section" id="fk4">
 <h5>FK4<a class="headerlink" href="#fk4" title="Permalink to this headline">¶</a></h5>
 <p>The <em>Fourth Fundamental Catalogue</em> is a reference frame published in 1963 based
@@ -276,9 +290,6 @@ documentation for <a class="reference external" href="https://rhodesmill.org/pye
 <dt>Apparent Topocentric</dt><dd><p>current position for the observatory at the date and time of observation</p>
 </dd>
 </dl>
-<p>Rick Fisher gives a clear and detailed explanation of precession and nutation
-and their effect on astronomical coordinates in <a class="reference external" href="https://www.cv.nrao.edu/~rfisher/Ephemerides/earth_rot.html">Earth Rotation and Equatorial
-Coordinates</a>.</p>
 </div>
 </div>
 </div>
@@ -288,15 +299,33 @@ Coordinates</a>.</p>
 coordinates so <a class="reference external" href="https://rhodesmill.org/pyephem/">pyephem</a> was used for that.
 Note that this package is deprecated in favor of
 <a class="reference external" href="https://rhodesmill.org/skyfield/">skyfield</a></p>
-</div>
-<div class="section" id="evolving-packages">
-<h3>Evolving Packages<a class="headerlink" href="#evolving-packages" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">astropy</span></code> continues to improve and so there is a need to evolves this package
-<code class="docutils literal notranslate"><span class="pre">Astronomy</span></code> to bring it into aligment with <code class="docutils literal notranslate"><span class="pre">astropy</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">https://github.com/firelab/met_utils/blob/master/sun.py</span></code> has some extensions
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>The argument units in this module are haphazard. This needs to be fixed to
+that the units are natural to the context, that is,</p>
+<ul>
+<li><p>Purely mathematical operations with angles like coordinate transformations
+should use radians.</p></li>
+<li><p>Earth-based coordinates (azimuth, elevation, longitude, latitude) should be
+in degrees.</p></li>
+<li><p>Celestial coordinates (right ascension, hour angle, declination) should be
+in hours for the longitude-like quantities and in degrees for latitude-like
+quantities.</p></li>
+<li><p>Longitude-like coordinates will be in degrees if time is not involved,
+<em>e.g.</em> Galactic longitude, ecliptic longitude.</p></li>
+<li><p>Terrestrial longitude, like right ascebsion, should be positive eastwards.
+(The DSN and most maps measure longitude westward.)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">astropy</span></code> continues to improve and so there is a need to evolves this package
+<code class="docutils literal notranslate"><span class="pre">Astronomy</span></code> to bring it into aligment with <code class="docutils literal notranslate"><span class="pre">astropy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://github.com/firelab/met_utils/blob/master/sun.py</span></code> has some extensions
 for <code class="docutils literal notranslate"><span class="pre">astropy</span></code> which can be adapted as well.  I don’t know if this evolved to
 <code class="docutils literal notranslate"><span class="pre">https://sunpy.org/</span></code> or that is a different organization, but either way the
-submodule <code class="docutils literal notranslate"><span class="pre">solar</span></code> should be adopted to use this.</p>
+submodule <code class="docutils literal notranslate"><span class="pre">solar</span></code> should be adopted to use this.</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
@@ -315,11 +344,17 @@ submodule <code class="docutils literal notranslate"><span class="pre">solar</sp
 <tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.B_epoch_to_J.html#Astronomy.B_epoch_to_J" title="Astronomy.B_epoch_to_J"><code class="xref py py-obj docutils literal notranslate"><span class="pre">B_epoch_to_J</span></code></a>(ra50, dec50[, format])</p></td>
 <td><p>Convert B1950 coordinates to J2000</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.HaDec_to_AzEl.html#Astronomy.HaDec_to_AzEl" title="Astronomy.HaDec_to_AzEl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HaDec_to_AzEl</span></code></a>(HourAngle, Declination, Latitude)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.CIRS_to_J2000.html#Astronomy.CIRS_to_J2000" title="Astronomy.CIRS_to_J2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CIRS_to_J2000</span></code></a>(MJD, UT, raCIRS, decCIRS)</p></td>
+<td><p>J2000 right ascension and declination from ICRS</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.HaDec_to_AzEl.html#Astronomy.HaDec_to_AzEl" title="Astronomy.HaDec_to_AzEl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HaDec_to_AzEl</span></code></a>(HourAngle, Declination, Latitude)</p></td>
 <td><p>Celestial to horizon coordinates</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.J2000_to_apparent.html#Astronomy.J2000_to_apparent" title="Astronomy.J2000_to_apparent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">J2000_to_apparent</span></code></a>(MJD, UT, ra2000, dec2000)</p></td>
-<td><p>Apparent right ascension and declination</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.J2000_to_CIRS.html#Astronomy.J2000_to_CIRS" title="Astronomy.J2000_to_CIRS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">J2000_to_CIRS</span></code></a>(MJD, UT, ra2000, dec2000)</p></td>
+<td><p>CIRS right ascension and declination from J2000</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.J2000_to_apparent.html#Astronomy.J2000_to_apparent" title="Astronomy.J2000_to_apparent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">J2000_to_apparent</span></code></a>(MJD, UT, ra2000, dec2000, …)</p></td>
+<td><p>apparent right ascension and declination from J2000</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.J_epoch_to_B.html#Astronomy.J_epoch_to_B" title="Astronomy.J_epoch_to_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">J_epoch_to_B</span></code></a>(ra2000, dec2000, format)</p></td>
 <td><p>Convert J2000 coordinates to B1950.</p></td>
@@ -348,7 +383,7 @@ submodule <code class="docutils literal notranslate"><span class="pre">solar</sp
 <tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.decimal_day_to_tuple.html#Astronomy.decimal_day_to_tuple" title="Astronomy.decimal_day_to_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decimal_day_to_tuple</span></code></a>(day)</p></td>
 <td><p>Float day to (h,m,s) tuple</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.delta_obs_ra_to_circ_ra.html#Astronomy.delta_obs_ra_to_circ_ra" title="Astronomy.delta_obs_ra_to_circ_ra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delta_obs_ra_to_circ_ra</span></code></a>(mjd, longitude, latitude)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.delta_obs_ra_to_cirs_ra.html#Astronomy.delta_obs_ra_to_cirs_ra" title="Astronomy.delta_obs_ra_to_cirs_ra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delta_obs_ra_to_cirs_ra</span></code></a>(mjd, longitude, latitude)</p></td>
 <td><p>difference between radio astronomers observed coords and CIRS coords</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.ecliptic_to_J2000.html#Astronomy.ecliptic_to_J2000" title="Astronomy.ecliptic_to_J2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ecliptic_to_J2000</span></code></a>(elong, elat, mjd)</p></td>
@@ -516,8 +551,8 @@ http://farside.ph.utexas.edu/syntaxis/Almagest/node34.html
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h3>Functions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Functions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -696,8 +731,8 @@ and lat_orig may be calculated by a preliminary call to COORD:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h3>Functions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>Functions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -716,16 +751,16 @@ and lat_orig may be calculated by a preliminary call to COORD:</p>
 <p>Coordinates for DSN and affiliated antennas</p>
 <p>The DSN uses west longitudes, whereas most astronomical packages like
 <code class="docutils literal notranslate"><span class="pre">astropy</span></code> and <code class="docutils literal notranslate"><span class="pre">ephem</span></code> use east longitudes.</p>
-<div class="section" id="id4">
-<h3>Contents<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>Contents<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>In this module:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DSS</span>
 <span class="n">function</span> <span class="n">DSSLocation</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h3>Functions<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>Functions<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -853,8 +888,8 @@ and refraction. Set the <code class="docutils literal notranslate"><span class="
 you want PyEphem to ignore the effects of atmospheric refraction</p></li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h3>Functions<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>Functions<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -867,8 +902,8 @@ you want PyEphem to ignore the effects of atmospheric refraction</p></li>
 </tbody>
 </table>
 </div>
-<div class="section" id="id7">
-<h3>Classes<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>Classes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -890,8 +925,8 @@ you want PyEphem to ignore the effects of atmospheric refraction</p></li>
 </tbody>
 </table>
 </div>
-<div class="section" id="id8">
-<h3>Class Inheritance Diagram<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>Class Inheritance Diagram<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <div class="graphviz"><img src="_images/inheritance-f859091ded49b9057a04991547847ef1c2e10f52.png" alt="Inheritance diagram of Astronomy.Ephem.quasar.Quasar, Astronomy.Ephem.pulsar.Pulsar, Astronomy.Ephem.serializable_body.SerializableBody, Astronomy.Ephem.EphemException" usemap="#inheritance05090c75ca" class="inheritance graphviz" /></div>
 <map id="inheritance05090c75ca" name="inheritance05090c75ca">
 <area shape="rect" id="node2" href="api/Astronomy.Ephem.EphemException.html#Astronomy.Ephem.EphemException" target="_top" title="Exception class for Ephem module" alt="" coords="5,5,136,31"/>
@@ -904,8 +939,8 @@ you want PyEphem to ignore the effects of atmospheric refraction</p></li>
 <span id="astronomy-formats-module"></span><h2>Astronomy.formats Module<a class="headerlink" href="#module-Astronomy.formats" title="Permalink to this headline">¶</a></h2>
 <p>Converts between conventional angular notation and decimal notation,
 either decimal angles or radians as designated.</p>
-<div class="section" id="id9">
-<h3>Functions<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Functions<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -915,19 +950,22 @@ either decimal angles or radians as designated.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.formats.dms_delimited_angle_to_rads.html#Astronomy.formats.dms_delimited_angle_to_rads" title="Astronomy.formats.dms_delimited_angle_to_rads"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dms_delimited_angle_to_rads</span></code></a>(angle)</p></td>
 <td><p>converts decl.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.formats.hms_delimited_angle_to_rads.html#Astronomy.formats.hms_delimited_angle_to_rads" title="Astronomy.formats.hms_delimited_angle_to_rads"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hms_delimited_angle_to_rads</span></code></a>(angle)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.formats.format_angles.html#Astronomy.formats.format_angles" title="Astronomy.formats.format_angles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_angles</span></code></a>(*args)</p></td>
+<td><p>converts angles to hexagesimal strings</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.formats.hms_delimited_angle_to_rads.html#Astronomy.formats.hms_delimited_angle_to_rads" title="Astronomy.formats.hms_delimited_angle_to_rads"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hms_delimited_angle_to_rads</span></code></a>(angle)</p></td>
 <td><p>Converts R.A.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.formats.old_parse_colon_delimited_angles.html#Astronomy.formats.old_parse_colon_delimited_angles" title="Astronomy.formats.old_parse_colon_delimited_angles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">old_parse_colon_delimited_angles</span></code></a>(rastring, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.formats.old_parse_colon_delimited_angles.html#Astronomy.formats.old_parse_colon_delimited_angles" title="Astronomy.formats.old_parse_colon_delimited_angles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">old_parse_colon_delimited_angles</span></code></a>(rastring, …)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.formats.parse_colon_delimited_angles.html#Astronomy.formats.parse_colon_delimited_angles" title="Astronomy.formats.parse_colon_delimited_angles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_colon_delimited_angles</span></code></a>(*args)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.formats.parse_colon_delimited_angles.html#Astronomy.formats.parse_colon_delimited_angles" title="Astronomy.formats.parse_colon_delimited_angles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_colon_delimited_angles</span></code></a>(*args)</p></td>
 <td><p>Parses angle strings delimited with colons</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.formats.parse_dms_delimited_angle.html#Astronomy.formats.parse_dms_delimited_angle" title="Astronomy.formats.parse_dms_delimited_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_dms_delimited_angle</span></code></a>(angle)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.formats.parse_dms_delimited_angle.html#Astronomy.formats.parse_dms_delimited_angle" title="Astronomy.formats.parse_dms_delimited_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_dms_delimited_angle</span></code></a>(angle)</p></td>
 <td><p>Parses decl.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/Astronomy.formats.parse_hms_delimited_angle.html#Astronomy.formats.parse_hms_delimited_angle" title="Astronomy.formats.parse_hms_delimited_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_hms_delimited_angle</span></code></a>(angle)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astronomy.formats.parse_hms_delimited_angle.html#Astronomy.formats.parse_hms_delimited_angle" title="Astronomy.formats.parse_hms_delimited_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_hms_delimited_angle</span></code></a>(angle)</p></td>
 <td><p>Parses RA strings delimited with h, m and s.</p></td>
 </tr>
 </tbody>
@@ -937,8 +975,8 @@ either decimal angles or radians as designated.</p>
 <div class="section" id="module-Astronomy.northpolar">
 <span id="astronomy-northpolar-module"></span><h2>Astronomy.northpolar Module<a class="headerlink" href="#module-Astronomy.northpolar" title="Permalink to this headline">¶</a></h2>
 <p>from <a class="reference external" href="http://stackoverflow.com/questions/2417794/how-to-make-the-angles-in-a-matplotlib-polar-plot-go-clockwise-with-0-at-the-top">http://stackoverflow.com/questions/2417794/how-to-make-the-angles-in-a-matplotlib-polar-plot-go-clockwise-with-0-at-the-top</a></p>
-<div class="section" id="id10">
-<h3>Classes<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>Classes<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -951,8 +989,8 @@ either decimal angles or radians as designated.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="id11">
-<h3>Class Inheritance Diagram<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>Class Inheritance Diagram<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <div class="graphviz"><img src="_images/inheritance-156a75455675996e417c9e23609d45d0a7653e4e.png" alt="Inheritance diagram of Astronomy.northpolar.NorthPolarAxes" usemap="#inheritance5f7a498530" class="inheritance graphviz" /></div>
 <map id="inheritance5f7a498530" name="inheritance5f7a498530">
 <area shape="rect" id="node4" href="api/Astronomy.northpolar.NorthPolarAxes.html#Astronomy.northpolar.NorthPolarAxes" target="_top" title="A variant of PolarAxes where theta starts pointing north and goes" alt="" coords="521,5,644,31"/>
@@ -1005,8 +1043,8 @@ astronomy convention which computes redshift as:</p>
 <p>Redshift: Lang, Astrophys. Formulae, eqns. 2-227 – 2-229</p>
 <p>Cosmic Time Scale: Ho; Lang, Astrophys. Formulae, eqn. 5-82</p>
 <p>Doppler Shift: astropy documentation for Spectral Doppler Equivalencies</p>
-<div class="section" id="id12">
-<h3>Functions<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>Functions<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -1057,8 +1095,8 @@ astronomy convention which computes redshift as:</p>
 <p>Because it takes a while to read the database, try this:
 <a class="reference external" href="http://stackoverflow.com/questions/28974634/urllib2-url-open-delay-between-opening-webpage-and-getting-html-data">http://stackoverflow.com/questions/28974634/urllib2-url-open-delay-between-opening-webpage-and-getting-html-data</a></p>
 <p>That did not work.</p>
-<div class="section" id="id13">
-<h3>Functions<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>Functions<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -1077,8 +1115,8 @@ astronomy convention which computes redshift as:</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="id14">
-<h3>Classes<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>Classes<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -1091,8 +1129,8 @@ astronomy convention which computes redshift as:</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="id15">
-<h3>Class Inheritance Diagram<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>Class Inheritance Diagram<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <div class="graphviz"><img src="_images/inheritance-61f94453e111680a212c4507620cb22b557fb776.png" alt="Inheritance diagram of Astronomy.ATCA_caldb.lineParser" usemap="#inheritanceb2507e2fcc" class="inheritance graphviz" /></div>
 <map id="inheritanceb2507e2fcc" name="inheritanceb2507e2fcc">
 <area shape="rect" id="node3" href="api/Astronomy.ATCA_caldb.lineParser.html#Astronomy.ATCA_caldb.lineParser" target="_top" title="lineParser" alt="" coords="295,5,381,31"/>
@@ -1108,8 +1146,8 @@ Out[2]: 31.0</p>
 </dd>
 </dl>
 <p>from <a class="reference external" href="http://maia.usno.navy.mil/ser7/tai-utc.dat">http://maia.usno.navy.mil/ser7/tai-utc.dat</a></p>
-<div class="section" id="id16">
-<h3>Functions<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>Functions<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -1135,8 +1173,8 @@ Sun’s surface. Heliographic latitude is an object’s angular distance north o
 south of the solar equator; heliographic longitude can be measured east or west
 of the central solar meridian, or given in terms of the Carrington rotation
 number.</p>
-<div class="section" id="id17">
-<h3>Functions<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>Functions<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -1177,8 +1215,8 @@ number.</p>
 <p><a class="reference external" href="http://simbad.u-strasbg.fr/simbad/sim-id?Ident=3c274&amp;output.format=ASCII">http://simbad.u-strasbg.fr/simbad/sim-id?Ident=3c274&amp;output.format=ASCII</a></p>
 <p>This is unnecessary if astropy is used. See Automation/apps/find_sources.py for
 an example.</p>
-<div class="section" id="id18">
-<h3>Functions<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3>Functions<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />

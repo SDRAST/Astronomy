@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>cirs_ra_to_obs_ra &#8212; Astronomy 0.9 documentation</title>
+    <title>format_angles &#8212; Astronomy 0.9 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,8 +15,8 @@
     <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="coordconv" href="Astronomy.coordconv.html" />
-    <link rel="prev" title="apparent_to_J2000" href="Astronomy.apparent_to_J2000.html" /> 
+    <link rel="next" title="hms_delimited_angle_to_rads" href="Astronomy.formats.hms_delimited_angle_to_rads.html" />
+    <link rel="prev" title="dms_delimited_angle_to_rads" href="Astronomy.formats.dms_delimited_angle_to_rads.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -28,10 +28,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="Astronomy.coordconv.html" title="coordconv"
+          <a href="Astronomy.formats.hms_delimited_angle_to_rads.html" title="hms_delimited_angle_to_rads"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="Astronomy.apparent_to_J2000.html" title="apparent_to_J2000"
+          <a href="Astronomy.formats.dms_delimited_angle_to_rads.html" title="dms_delimited_angle_to_rads"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
       </ul>
@@ -39,15 +39,15 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="Astronomy.apparent_to_J2000.html"
-                        title="previous chapter">apparent_to_J2000</a></p>
+  <p class="topless"><a href="Astronomy.formats.dms_delimited_angle_to_rads.html"
+                        title="previous chapter">dms_delimited_angle_to_rads</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="Astronomy.coordconv.html"
-                        title="next chapter">coordconv</a></p>
+  <p class="topless"><a href="Astronomy.formats.hms_delimited_angle_to_rads.html"
+                        title="next chapter">hms_delimited_angle_to_rads</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/api/Astronomy.cirs_ra_to_obs_ra.rst.txt"
+      <li><a href="../_sources/api/Astronomy.formats.format_angles.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -69,25 +69,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="cirs-ra-to-obs-ra">
-<h1>cirs_ra_to_obs_ra<a class="headerlink" href="#cirs-ra-to-obs-ra" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="format-angles">
+<h1>format_angles<a class="headerlink" href="#format-angles" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="Astronomy.cirs_ra_to_obs_ra">
-<code class="sig-prename descclassname">Astronomy.</code><code class="sig-name descname">cirs_ra_to_obs_ra</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cirs_ra</span></em>, <em class="sig-param"><span class="n">mjd</span></em>, <em class="sig-param"><span class="n">longitude</span></em>, <em class="sig-param"><span class="n">latitude</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.cirs_ra_to_obs_ra" title="Permalink to this definition">¶</a></dt>
-<dd><p>convert apparent RA at time of observation to CIRS RA</p>
-<p>:param obs_ra : apparent RA at time of observation
-:type  obs_ra : float (not astropy.time.Time)</p>
-<p>:param mjd : modified Julian date
-:type  mjd : float</p>
-<p>:param longitude : of the observer
-:type  longitude : float or astropy.coordinates.Angle</p>
-<p>:param latitude : of the observer
-:type  latitude : float or astropy.coordinates.Angle</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>(hour angle)</p>
-</dd>
-</dl>
+<dt id="Astronomy.formats.format_angles">
+<code class="sig-prename descclassname">Astronomy.formats.</code><code class="sig-name descname">format_angles</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.formats.format_angles" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts angles to hexagesimal strings</p>
+<p>formats a tuple (hour, degree, ..) into HH:MM:SS.S DD:MM:SS.S</p>
 </dd></dl>
 
 </div>
@@ -108,10 +96,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="Astronomy.coordconv.html" title="coordconv"
+          <a href="Astronomy.formats.hms_delimited_angle_to_rads.html" title="hms_delimited_angle_to_rads"
              >next</a> |</li>
         <li class="right" >
-          <a href="Astronomy.apparent_to_J2000.html" title="apparent_to_J2000"
+          <a href="Astronomy.formats.dms_delimited_angle_to_rads.html" title="dms_delimited_angle_to_rads"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
       </ul>

@@ -73,7 +73,25 @@ be known.
 *Precession* is a slow rotation of the Earth's poles about a long-term mean
 position. *Nutation* is a rapid rotation wobbling of the pole around the 
 precessing mean.  Computation of precession and nutation are critical to the
-pointing of a radio telescope.
+pointing of a radio telescope. An additional correction is needed for
+*aberration*, an apparent displacement of a celestial object from its true 
+position due to the velocity of the observer around the Sun, which may be as
+large as 20 arcsec. For very accurate positions, a correction for light-bending 
+around the Sun may also need to be included in aberration.
+
+Rick Fisher gives a clear and detailed explanation of precession and nutation
+and their effect on astronomical coordinates in `Earth Rotation and Equatorial 
+Coordinates
+<https://www.cv.nrao.edu/~rfisher/Ephemerides/earth_rot.html>`_.  He also
+provided a `Python package <https://www.cv.nrao.edu/~rfisher/Python/py_solar_system.html>`_
+for these calculations and others.  The package depends on
+`SOFA <http://www.iausofa.org/>`_, and a 
+`JPL ephemeris <ftp://ssd.jpl.nasa.gov/pub/eph/planets/ascii>`_.  There is also
+a `Python wrapper <https://pypi.org/project/pysofa/>`_ for SOFA.
+
+Bryna Hazelton explains the `difference between CIRS and the apparent celestial
+coordinates <http://reionization.org/wp-content/uploads/2013/03/HERA_Memo46_lst2ra.html>`_
+and gives the code on which function ``delta_obs_ra_to_circ_ra()`` is based.
 
 FK4
 ^^^
@@ -115,11 +133,6 @@ Apparent Geocentric
   current geocentric position at the date and time of observation
 Apparent Topocentric
   current position for the observatory at the date and time of observation
-  
-Rick Fisher gives a clear and detailed explanation of precession and nutation
-and their effect on astronomical coordinates in `Earth Rotation and Equatorial 
-Coordinates
-<https://www.cv.nrao.edu/~rfisher/Ephemerides/earth_rot.html>`_.
 
 Ecliptic Coordinates
 ====================
@@ -129,15 +142,33 @@ coordinates so `pyephem <https://rhodesmill.org/pyephem/>`_ was used for that.
 Note that this package is deprecated in favor of 
 `skyfield <https://rhodesmill.org/skyfield/>`_
 
-Evolving Packages
-=================
-``astropy`` continues to improve and so there is a need to evolves this package
-``Astronomy`` to bring it into aligment with ``astropy``
+Todo
+====
 
-``https://github.com/firelab/met_utils/blob/master/sun.py`` has some extensions
-for ``astropy`` which can be adapted as well.  I don't know if this evolved to
-``https://sunpy.org/`` or that is a different organization, but either way the
-submodule ``solar`` should be adopted to use this.
+* The argument units in this module are haphazard. This needs to be fixed to
+  that the units are natural to the context, that is,
+  
+  * Purely mathematical operations with angles like coordinate transformations
+    should use radians.
+  * Earth-based coordinates (azimuth, elevation, longitude, latitude) should be
+    in degrees.
+  * Celestial coordinates (right ascension, hour angle, declination) should be 
+    in hours for the longitude-like quantities and in degrees for latitude-like 
+    quantities.
+  * Longitude-like coordinates will be in degrees if time is not involved, 
+    *e.g.* Galactic longitude, ecliptic longitude.
+  * Terrestrial longitude, like right ascebsion, should be positive eastwards.
+    (The DSN and most maps measure longitude westward.)
+    
+* ``astropy`` continues to improve and so there is a need to evolves this package
+  ``Astronomy`` to bring it into aligment with ``astropy``
+
+* ``https://github.com/firelab/met_utils/blob/master/sun.py`` has some extensions
+  for ``astropy`` which can be adapted as well.  I don't know if this evolved to
+  ``https://sunpy.org/`` or that is a different organization, but either way the
+  submodule ``solar`` should be adopted to use this.
+
+
 """
 import logging
 logger = logging.getLogger(__name__)
@@ -153,6 +184,7 @@ import astropy.units as u
 from astropy.units import cds
 import ephem
 
+from Astronomy.formats import format_angles
 from Astronomy.coordconv import coordconv
 import DatesTimes as DT
 import Math
@@ -672,16 +704,35 @@ def AzEl_to_RaDec(azimuth,elevation,latitude,longitude,dateUTtime):
     cirs_ra += 24.
   return cirs_ra,dec
 
-def delta_obs_ra_to_circ_ra(mjd, longitude, latitude):
+def delta_obs_ra_to_cirs_ra(mjd, longitude, latitude):
   """
   difference between radio astronomers observed coords and CIRS coords
+  
+  Args
+  ====
+    mjd:       (float) modified Julian date
+    longitude: (float) in degrees or as astropy Angle
+    latitude:  (float) in degrees or as astropy Angle
+  
+  Return
+  ======
+    hour angle as astropy.coordinates.Angle
   """
   from astropy import _erfa as erfa
   from astropy.coordinates.builtin_frames.utils import get_jd12
+  # get the Earth Rotation Angle
   era = erfa.era00(*get_jd12(APt.Time(mjd, format='mjd'), 'ut1'))
+  logger.debug("delta_obs_ra_to_cirs_ra: ERA = %f rad", era)
+  logger.debug("delta_obs_ra_to_cirs_ra: ERA = %s", format_angles(era*12/pi))
   theta_earth = APc.Angle(era, unit='rad')
-  obs_time = APt.Time(mjd, format='mjd', location = (longitude, latitude))
+  # get the time of observation
+  obs_time = APt.Time(mjd, format='mjd', 
+                      location = (APc.Angle(longitude, unit="deg"),
+                                  APc.Angle(latitude,  unit="deg")))
+  # Greenwich apparent sidereal time of observation
   gast = obs_time.sidereal_time('apparent', longitude=0) # Greenwich ST
+  logger.debug("delta_obs_ra_to_cirs_ra: GAST = %s", gast)
+  logger.debug("delta_obs_ra_to_cirs_ra: delta = %s", gast-theta_earth)
   return (gast-theta_earth)
   
 def obs_ra_to_cirs_ra(obs_ra, mjd, longitude, latitude):
@@ -691,11 +742,22 @@ def obs_ra_to_cirs_ra(obs_ra, mjd, longitude, latitude):
   @param obs_ra : apparent RA at time of observation
   @type  obs_ra : float (astropy.time.Time)
   
-  @param time : modified Julian date
-  @type  time : float
+  @param mjd : modified Julian date
+  @type  mjd : float
+  
+  @param longitude : of the observer
+  @type  longitude : float or astropy.coordinates.Angle
+  
+  @param latitude : of the observer
+  @type  latitude : float or astropy.coordinates.Angle
+  
+  @return: (hour angle)
   """
-  delta_ra = delta_obs_ra_to_circ_ra(mjd, longitude, latitude)
+  logger.debug("obs_ra_to_cirs_ra: obs.RA=%f", obs_ra*180/pi)
+  # returns hours
+  delta_ra = delta_obs_ra_to_cirs_ra(mjd, longitude, latitude)
   cirs_ra = obs_ra - delta_ra.hour
+  logger.debug("obs_ra_to_cirs_ra: CIRS RA=%f", cirs_ra*180/pi)
   return cirs_ra
   
 def cirs_ra_to_obs_ra(cirs_ra, mjd, longitude, latitude):
@@ -705,42 +767,56 @@ def cirs_ra_to_obs_ra(cirs_ra, mjd, longitude, latitude):
   @param obs_ra : apparent RA at time of observation
   @type  obs_ra : float (not astropy.time.Time)
   
-  @param time : modified Julian date
-  @type  time : float
+  @param mjd : modified Julian date
+  @type  mjd : float
+  
+  @param longitude : of the observer
+  @type  longitude : float or astropy.coordinates.Angle
+  
+  @param latitude : of the observer
+  @type  latitude : float or astropy.coordinates.Angle
+  
+  @return: (hour angle)
   """
-  delta_ra = delta_obs_ra_to_circ_ra(mjd, longitude, latitude)
+  logger.debug("cirs_ra_to_obs_ra: CIRS RA=%f", cirs_ra*15)
+  # returns hours
+  delta_ra = delta_obs_ra_to_cirs_ra(mjd, longitude, latitude)
   obs_ra = cirs_ra + delta_ra.hour
+  logger.debug("cirs_ra_to_obs_ra: obs.RA=%f", obs_ra*15)
   return obs_ra
 
-def apparent_to_J2000(MJD, UT, ra, dec, longitude, latitude):
+def CIRS_to_J2000(MJD, UT, raCIRS, decCIRS):
   """
-  observed celestial coordinates to J2000.  THIS HAS A PROBLEM THAT NEEDS FIXING
+  J2000 right ascension and declination from ICRS
   
-  Args
-  ====
-    MJD (int):         modified Julian Day
-    UT (float):        Universal Time in hours
-    ra (float):        apparent right ascension in hours
-    dec (float):       apparent declination in hours
-    longitude (float): observer east longitude in deg
-    latitude (float):  observer latitude in deg
+  @param MJD : int
+    mean Julian day
+
+  @param UT : float
+    decimal hours
+
+  @param ra2000 : float
+    radians
+
+  @param dec2000 : float
+    radians
+
+  @return: tuple (float, float) in hours, degrees
+  """
+  t = APt.Time(MJD+UT/24., format='mjd')
+  coords = APc.SkyCoord(ra     =raCIRS*u.rad, 
+                        dec    =decCIRS*u.rad,
+                        frame  =APc.FK5, 
+                        equinox=t)
+  logger.debug("CIRS_to_J2000: CIRS position = %s", coords)
+  c = coords.transform_to(APc.ICRS)
+  logger.debug("CIRS_to_J2000: J2000 position = %s", c)
+  return c.ra.hourangle, c.dec.deg
+
+def J2000_to_CIRS(MJD, UT, ra2000, dec2000):
+  """
+  CIRS right ascension and declination from J2000
   
-  This converts observed RA to CIRS RA, and then transforms the coordinates
-  to the FK5 frame.
-  """
-  mjd = MJD+UT/24.
-  obs_time = APt.Time(mjd, format='mjd', location = (longitude, latitude))
-  loc_obj = APc.EarthLocation.from_geodetic(lon=longitude, lat=latitude)
-  cirs_ra = obs_ra_to_cirs_ra(ra, obs_time, longitude, latitude)
-  obs_coord = APc.SkyCoord(ra=cirs_ra, dec=dec, unit=(u.hourangle, u.deg),
-                           frame='cirs', obstime=obs_time, location = loc_obj)
-  c = obs_coord.transform_to(APc.FK5(equinox=obs_time))
-  return c.ra.hourangle, c.dec.deg  
-
-def J2000_to_apparent(MJD, UT, ra2000, dec2000):
-  """
-  Apparent right ascension and declination
-
   @param MJD : int
     mean Julian day
 
@@ -756,9 +832,78 @@ def J2000_to_apparent(MJD, UT, ra2000, dec2000):
   @return: tuple (hour, deg)
   """
   t = APt.Time(MJD+UT/24., format='mjd')
-  coords = APc.SkyCoord(ra=ra2000*u.rad, dec=dec2000*u.rad, frame='icrs')
+  coords = APc.SkyCoord(ra   =ra2000*u.rad, 
+                        dec  =dec2000*u.rad, 
+                        frame='icrs')
+  logger.debug("J2000_to_CIRS: J2000 position = %s", coords)
   c = coords.transform_to(APc.FK5(equinox=t))
+  logger.debug("J2000_to_CIRS: CIRS position = %s", c)
   return c.ra.hourangle, c.dec.deg
+
+def apparent_to_J2000(MJD, UT, ra, dec, longitude, latitude):
+  """
+  observed celestial coordinates to J2000.  THIS HAS A PROBLEM THAT NEEDS FIXING
+  
+  Args
+  ====
+    MJD (int):         modified Julian Day
+    UT (float):        Universal Time in hours
+    ra (float):        apparent right ascension in radians
+    dec (float):       apparent declination in radians
+    longitude (float): observer east longitude in deg
+    latitude (float):  observer latitude in deg
+  
+  This converts observed RA to CIRS RA, and then transforms the coordinates
+  to the FK5 frame.
+  """
+  mjd = MJD+UT/24.
+  logger.debug("apparent_to_J2000: apparent: %f, %f (%f,%f)",
+               ra, dec, ra*180/pi, dec*180/pi)
+  # input RA must be in hours
+  cirs_ra = obs_ra_to_cirs_ra(ra*12/pi, mjd, longitude, latitude)*pi/12
+  # output RA inhours was converted to radians
+  logger.debug("apparent_to_J2000: CIRS pos: %f, %f", cirs_ra*180/pi, dec*180/pi)
+  # inpute coords in radians
+  J2000_ra, J2000_dec = CIRS_to_J2000(MJD, UT, cirs_ra, dec)
+  # output coords in deg
+  logger.debug("apparent_to_J2000: J2000 position: %f, %f", J2000_ra*15, J2000_dec)
+  return J2000_ra, J2000_dec  
+
+def J2000_to_apparent(MJD, UT, ra2000, dec2000, longitude, latitude):
+  """
+  apparent right ascension and declination from J2000
+  
+  @param MJD : int
+    mean Julian day
+
+  @param UT : float
+    decimal hours
+
+  @param ra2000 : float
+    radians
+
+  @param dec2000 : float
+    radians
+  
+  @param longitude : float
+    radians
+  
+  @param latitude : float
+    radians
+  """
+  mjd = MJD+UT/24.
+  logger.debug("J2000_to_apparent: %f, %f (%f,%f)", ra2000, dec2000,
+                                                    ra2000*180/pi, 
+                                                    dec2000*180/pi)
+  # input coords in radians
+  cirs_ra, cirs_dec = J2000_to_CIRS(MJD, UT, ra2000, dec2000)
+  # output coords in hours, degrees.
+  logger.debug("J2000_to_apparent: CIRS position: %f, %f", cirs_ra*15, cirs_dec)
+  # input RA must be in hours
+  obs_ra = cirs_ra_to_obs_ra(cirs_ra, mjd, longitude, latitude)
+  # output RA in hours
+  logger.debug("J2000_to_apparent: obs RA: %f", obs_ra*15)
+  return obs_ra, cirs_dec
   
 def get_sky_coords(RA, Dec):
   """
@@ -1019,41 +1164,4 @@ def galactic_offsets_to_celestial(RA, Dec, glongoff=3, glatoff=0):
   Decoff = radecoff.fk5.dec.value - Dec     
   return RAoff, Decoff
 
-def format_angles(*args):
-  """
-  converts angles to hexagesimal strings
-  
-  formats a tuple (hour, degree, ..) into HH:MM:SS.S DD:MM:SS.S
-  """
-  result = []
-  for arg in args:
-    # separate the sign and the magnitude
-    arg_value = abs(arg)
-    arg_sign = arg/arg_value
-    logger.debug("format_angles: arg sign is %+d", arg_sign)
-    logger.debug("format_angles: arg value is %f", arg_value)
-    # get the integer degrees or hours
-    argHH = int(arg_value)
-    logger.debug("format_angles: degree/hour is %d", argHH)
-    # get the integer (arc)minutes
-    argMM = int((arg_value - argHH)*60)
-    logger.debug("format_angles: minute is %d", argMM)
-    # get the seconds to one decimal place
-    argSS = (arg_value - argHH)*3600 - argMM*60
-    logger.debug("format_angles: second is %f", argSS)
-    argSSS = round(argSS,1)
-    logger.debug("format_angles: rounded second is %f", argSSS)
-    # did we end up with 60.0 seconds?
-    logger.debug("format_angles: delta is %f", argSSS - 60.0)
-    if abs(argSSS - 60.0) < 0.1:
-      logger.debug("format_angles: carry")
-      # yes; fix that
-      argSSS = 0.0
-      argMM += 1
-      # now that could possibly give us 60 min
-      if abs(argMM - 60) < 1:
-        argMM = 0
-        argHH += 1
-    result.append("%3d:%02d:%04.1f" % (arg_sign*argHH, argMM, argSSS))
-  return result
-  
+

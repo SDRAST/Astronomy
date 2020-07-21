@@ -3,6 +3,9 @@ either decimal angles or radians as designated."""
 
 import string
 import math
+import logging
+
+logger = logging.getLogger(__name__)
 
 def parse_hms_delimited_angle(angle):
     """
@@ -115,7 +118,7 @@ def parse_colon_delimited_angles(*args):
             argM = int(arglist[1])
             argS = 0
         else:
-            argH = float(ralist[0])
+            argH = float(arglist[0])
             argM = 0
             argS = 0
         if ( arg[0] == "-" ):
@@ -170,3 +173,41 @@ def dms_delimited_angle_to_rads(angle):
     s = float(parsed[2])
     return sign*(d + (m + s/60.)/60.)*math.pi/180.
 
+def format_angles(*args):
+  """
+  converts angles to hexagesimal strings
+  
+  formats a tuple (hour, degree, ..) into HH:MM:SS.S DD:MM:SS.S
+  """
+  result = []
+  for arg in args:
+    # separate the sign and the magnitude
+    arg_value = abs(arg)
+    arg_sign = arg/arg_value
+    logger.debug("format_angles: arg sign is %+d", arg_sign)
+    logger.debug("format_angles: arg value is %f", arg_value)
+    # get the integer degrees or hours
+    argHH = int(arg_value)
+    logger.debug("format_angles: degree/hour is %d", argHH)
+    # get the integer (arc)minutes
+    argMM = int((arg_value - argHH)*60)
+    logger.debug("format_angles: minute is %d", argMM)
+    # get the seconds to one decimal place
+    argSS = (arg_value - argHH)*3600 - argMM*60
+    logger.debug("format_angles: second is %f", argSS)
+    argSSS = round(argSS,1)
+    logger.debug("format_angles: rounded second is %f", argSSS)
+    # did we end up with 60.0 seconds?
+    logger.debug("format_angles: delta is %f", argSSS - 60.0)
+    if abs(argSSS - 60.0) < 0.1:
+      logger.debug("format_angles: carry")
+      # yes; fix that
+      argSSS = 0.0
+      argMM += 1
+      # now that could possibly give us 60 min
+      if abs(argMM - 60) < 1:
+        argMM = 0
+        argHH += 1
+    result.append("%3d:%02d:%04.1f" % (arg_sign*argHH, argMM, argSSS))
+  return result
+  
