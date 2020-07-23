@@ -77,6 +77,10 @@ class testDatesTimes(unittest.TestCase):
                                                           sep=('deg', 'm', 's'))
     self.assertEqual(obs_ZD, '-0deg00m00.5114s')
   
+  # make a test based on comparison with the IPAC calculator. Check ipython
+  # notebooks 'Astropy Coordinate Transformations.ipynb', 
+  # 'Precession Checks.ipynb', and 'Venus Coords 2020-06-11.ipynb'.
+  
   def test_HaDec_to_AzEl(self):
     Az,El = Astronomy.HaDec_to_AzEl( 0,0,30)
     self.assertAlmostEqual(Az,-180.0)

@@ -38,22 +38,21 @@
   <ul>
 <li><a class="reference internal" href="#">Single Dish Radio Astronomy Software Tools</a><ul>
 <li><a class="reference internal" href="#module-Astronomy">Astronomy Package</a><ul>
-<li><a class="reference internal" href="#basic-terminology">Basic Terminology</a><ul>
-<li><a class="reference internal" href="#time">Time</a><ul>
-<li><a class="reference internal" href="#time-systems">Time Systems</a></li>
-<li><a class="reference internal" href="#epoch">Epoch</a></li>
-<li><a class="reference internal" href="#equinox">Equinox</a></li>
-<li><a class="reference internal" href="#besselian-year">Besselian Year</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#coordinate-systems">Coordinate Systems</a><ul>
+<li><a class="reference internal" href="#celestial-coordinates">Celestial Coordinates</a><ul>
 <li><a class="reference internal" href="#fk4">FK4</a></li>
 <li><a class="reference internal" href="#fk5">FK5</a></li>
 <li><a class="reference internal" href="#icrs">ICRS</a></li>
 <li><a class="reference internal" href="#cirs">CIRS</a></li>
-<li><a class="reference internal" href="#coordinate-conversions">Coordinate Conversions</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#time">Time</a><ul>
+<li><a class="reference internal" href="#time-systems">Time Systems</a></li>
+<li><a class="reference internal" href="#besselian-year">Besselian Year</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#coordinate-transformations">Coordinate Transformations</a><ul>
+<li><a class="reference internal" href="#precession-and-nutation">Precession and Nutation</a></li>
+<li><a class="reference internal" href="#tools">Tools</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ecliptic-coordinates">Ecliptic Coordinates</a></li>
@@ -167,12 +166,81 @@
 <div class="section" id="module-Astronomy">
 <span id="astronomy-package"></span><h2>Astronomy Package<a class="headerlink" href="#module-Astronomy" title="Permalink to this headline">¶</a></h2>
 <p><strong>Classes and functions for astronomical calculations</strong></p>
-<div class="section" id="basic-terminology">
-<h3>Basic Terminology<a class="headerlink" href="#basic-terminology" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="celestial-coordinates">
+<h3>Celestial Coordinates<a class="headerlink" href="#celestial-coordinates" title="Permalink to this headline">¶</a></h3>
+<p>A position on the Earth is defined by a latitude and a longitude.  A position on
+the sky can be defined in terms of the position on the Earth which is exactly
+underneath it at a moment in time. <strong>Epoch</strong> is the name for a moment in time
+used as a reference point for some time-varying astronomical quantity, such as
+the celestial coordinates.</p>
+<p>The Earth’s axis wobbles on long and short time scales.  <em>Precession</em> is the
+long-term variation which averages over short term variations such as
+<em>nutation</em> and <em>aberration</em>.</p>
+<p><strong>Equinox</strong> is the moment and direction when the day and night are exactly
+equally long as the Sun moves from the southern hemisphere to the northern
+hemisphere. This is also known as “the First Point of Aries” because it
+was at the far western end of that constellation at the time of Hipparchus.
+<em>Precession of the equinoxes</em> is the result of the changing relationship between
+the terrestrial and celestial coordinates systems.</p>
+<p>Far distant radio sources hold their same relative positions to very precise
+accuracy (micro-arseconds) over very long time-scales.  These define the
+International Coordinate Reference Frame (ICRF), which is the basis for the
+International Coordinate Reference System (ICRS).</p>
+<p>The positions of stars relative to each other and distant radio sources change
+with time and so their positions on the grid must be given at a specified epoch.
+While today’s grid is based on radio sources, earlier star catalogues such as
+the Fourth Fundamental Catalogue (FK4) and  Fifth Fundamental Catalogue (FK5)
+were based on distant bright stars and galaxies which appeared to be at rest
+relative to each other.</p>
+<p>Epochs used for star catalogues have been based on the equinoxes of 1900,
+1950 (FK4), and now 2000 (FK5 and FK6).  Because there are different ways of
+measuring time, these dates are prefaced by a letter designating the time
+system. The earlier catalogues were based on Besselian dates (B1900.0, B1950.0,
+and J2000.0). The word <em>equinox</em> refers to the <em>epoch</em> when the Sun is at the
+First Point of Aries.</p>
+<p>In modern usage, <em>equinox</em> refers to the celestial grid being used and <em>epoch</em>
+refers to the positions at a given moment in that grid. These are the
+coordinate systems used in <cite>pyephem</cite>.</p>
+<dl class="simple">
+<dt>Astrometric Geocentric</dt><dd><p>Mean geocentric position for the epoch of the specified star atlas</p>
+</dd>
+<dt>Apparent Geocentric</dt><dd><p>current geocentric position at the date and time of observation</p>
+</dd>
+<dt>Apparent Topocentric</dt><dd><p>current position for the observatory at the date and time of observation</p>
+</dd>
+</dl>
+<div class="section" id="fk4">
+<h4>FK4<a class="headerlink" href="#fk4" title="Permalink to this headline">¶</a></h4>
+<p>The <em>Fourth Fundamental Catalogue</em> is a reference frame published in 1963 based
+on 1,535 stars in various equinoxes from 1950.0 to 1975.0. The equinox for
+this system is 1950 in Besselian years.</p>
+</div>
+<div class="section" id="fk5">
+<h4>FK5<a class="headerlink" href="#fk5" title="Permalink to this headline">¶</a></h4>
+<p>The <em>Fifth Fundamental Catalog</em> is a reference frame published in 1988 with
+updated new positions for the 1,535 stars.  The equinox of this system is 2000
+in Julian years.</p>
+</div>
+<div class="section" id="icrs">
+<h4>ICRS<a class="headerlink" href="#icrs" title="Permalink to this headline">¶</a></h4>
+<p>The <em>International Celestial Reference System</em> (ICRS) is the current standard
+celestial reference system adopted by the IAU. Its origin is at the
+barycenter of the solar system, with axes that are intended to be fixed
+in space. The ICRS is based on the <em>International Celestial Reference Frame</em>
+(ICRF) which consists of the positions of 3414 compact radio sources measured
+using VLBI.</p>
+</div>
+<div class="section" id="cirs">
+<h4>CIRS<a class="headerlink" href="#cirs" title="Permalink to this headline">¶</a></h4>
+<p>The <em>Celestial Intermediate Reference System</em> has the same pole as the geocentric
+coordinate system at the time of observation, but its rotation – the Earth
+Rotation Angle (ERA) – differs from <em>Greenwich Apparent Sidereal Time</em>.</p>
+</div>
+</div>
 <div class="section" id="time">
-<h4>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h4>
+<h3>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="time-systems">
-<h5>Time Systems<a class="headerlink" href="#time-systems" title="Permalink to this headline">¶</a></h5>
+<h4>Time Systems<a class="headerlink" href="#time-systems" title="Permalink to this headline">¶</a></h4>
 <p><strong>Terrestrial Time</strong> (TT) is a modern astronomical time standard defined by the
 IAU, primarily for time-measurements of astronomical observations made from
 the surface of Earth. TT continues <em>Terrestrial Dynamical Time</em> (TDT) which in
@@ -185,20 +253,8 @@ purposes, <em>Coordinated Universal Time</em> (UTC). TT indirectly underlies UTC
 <em>International Atomic Time</em> (TAI). Each leap second that is introduced into UTC
 causes UTC to diverge a little further from TT.</p>
 </div>
-<div class="section" id="epoch">
-<h5>Epoch<a class="headerlink" href="#epoch" title="Permalink to this headline">¶</a></h5>
-<p>An epoch is a moment in time used as a reference point for some time-varying
-astronomical quantity, such as the celestial coordinates.</p>
-</div>
-<div class="section" id="equinox">
-<h5>Equinox<a class="headerlink" href="#equinox" title="Permalink to this headline">¶</a></h5>
-<p>In its broadest sense this is the moment when the day and night are exactly
-equally long.  This defines the equator (and the ecliptic), latitude zero.
-This moment does not occur at exactly the same time each year so a mean
-equinox time is defined.</p>
-</div>
 <div class="section" id="besselian-year">
-<h5>Besselian Year<a class="headerlink" href="#besselian-year" title="Permalink to this headline">¶</a></h5>
+<h4>Besselian Year<a class="headerlink" href="#besselian-year" title="Permalink to this headline">¶</a></h4>
 <p>The beginning of a Besselian year to be the moment at which the mean longitude
 of the Sun, including the effect of aberration and measured from the mean
 equinox of the date, is exactly 280 degrees.  This moment falls near the
@@ -211,8 +267,8 @@ some commonly used Besselian years are:</p>
 </div>
 </div>
 </div>
-<div class="section" id="coordinate-systems">
-<h4>Coordinate Systems<a class="headerlink" href="#coordinate-systems" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="coordinate-transformations">
+<h3>Coordinate Transformations<a class="headerlink" href="#coordinate-transformations" title="Permalink to this headline">¶</a></h3>
 <p>In optical astronomy, the normal way of tracking an object is to locate it
 roughly, and then lock onto it or a nearby visible object if the object being
 tracked is not visible.  The exact, instantaneous relationship between the
@@ -231,6 +287,8 @@ celestial coordinate system and the celestial coordinate system in which the
 source coordinates are specified in a time-independent way.  This means that the
 exact position of the poles and the amount of rotation (defined by time) must
 be known.</p>
+<div class="section" id="precession-and-nutation">
+<h4>Precession and Nutation<a class="headerlink" href="#precession-and-nutation" title="Permalink to this headline">¶</a></h4>
 <p><em>Precession</em> is a slow rotation of the Earth’s poles about a long-term mean
 position. <em>Nutation</em> is a rapid rotation wobbling of the pole around the
 precessing mean.  Computation of precession and nutation are critical to the
@@ -239,7 +297,10 @@ pointing of a radio telescope. An additional correction is needed for
 position due to the velocity of the observer around the Sun, which may be as
 large as 20 arcsec. For very accurate positions, a correction for light-bending
 around the Sun may also need to be included in aberration.</p>
-<p>Rick Fisher gives a clear and detailed explanation of precession and nutation
+</div>
+<div class="section" id="tools">
+<h4>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h4>
+<p><em>Rick Fisher</em> gives a clear and detailed explanation of precession and nutation
 and their effect on astronomical coordinates in <a class="reference external" href="https://www.cv.nrao.edu/~rfisher/Ephemerides/earth_rot.html">Earth Rotation and Equatorial
 Coordinates</a>.  He also
 provided a <a class="reference external" href="https://www.cv.nrao.edu/~rfisher/Python/py_solar_system.html">Python package</a>
@@ -247,50 +308,12 @@ for these calculations and others.  The package depends on
 <a class="reference external" href="http://www.iausofa.org/">SOFA</a>, and a
 <a class="reference external" href="ftp://ssd.jpl.nasa.gov/pub/eph/planets/ascii">JPL ephemeris</a>.  There is also
 a <a class="reference external" href="https://pypi.org/project/pysofa/">Python wrapper</a> for SOFA.</p>
-<p>Bryna Hazelton explains the <a class="reference external" href="http://reionization.org/wp-content/uploads/2013/03/HERA_Memo46_lst2ra.html">difference between CIRS and the apparent celestial
+<p><em>Bryna Hazelton</em> explains the <a class="reference external" href="http://reionization.org/wp-content/uploads/2013/03/HERA_Memo46_lst2ra.html">difference between CIRS and the apparent celestial
 coordinates</a>
 and gives the code on which function <code class="docutils literal notranslate"><span class="pre">delta_obs_ra_to_circ_ra()</span></code> is based.</p>
-<div class="section" id="fk4">
-<h5>FK4<a class="headerlink" href="#fk4" title="Permalink to this headline">¶</a></h5>
-<p>The <em>Fourth Fundamental Catalogue</em> is a reference frame published in 1963 based
-on 1,535 stars in various equinoxes from 1950.0 to 1975.0. The equinox for
-this system is 1950 in Besselian years.</p>
-</div>
-<div class="section" id="fk5">
-<h5>FK5<a class="headerlink" href="#fk5" title="Permalink to this headline">¶</a></h5>
-<p>The <em>Fifth Fundamental Catalog</em> is a reference frame published in 1988 with
-updated new positions for the 1,535 stars.  The equinox of this system is 2000
-in Julian years.</p>
-</div>
-<div class="section" id="icrs">
-<h5>ICRS<a class="headerlink" href="#icrs" title="Permalink to this headline">¶</a></h5>
-<p>The <em>International Celestial Reference System</em> (ICRS) is the current standard
-celestial reference system adopted by the IAU. Its origin is at the
-barycenter of the solar system, with axes that are intended to be fixed
-in space. The ICRS is based on the <em>International Celestial Reference Frame</em>
-(ICRF) which consists of the positions of 3414 compact radio sources measured
-using VLBI.</p>
-</div>
-<div class="section" id="cirs">
-<h5>CIRS<a class="headerlink" href="#cirs" title="Permalink to this headline">¶</a></h5>
-<p>The <em>Celestial Intermediate Reference System</em> has the same pole as the geocentric
-coordinate system at the time of observation, but its rotation – the Earth
-Rotation Angle (ERA) – differs from <em>Greenwich Apparent Sidereal Time</em>.</p>
-</div>
-<div class="section" id="coordinate-conversions">
-<h5>Coordinate Conversions<a class="headerlink" href="#coordinate-conversions" title="Permalink to this headline">¶</a></h5>
-<p>Brandon Rhodes gives an
+<p><em>Brandon Rhodes</em> gives an
 <a class="reference external" href="https://rhodesmill.org/pyephem/radec.html">excellent explanation</a> in the
 documentation for <a class="reference external" href="https://rhodesmill.org/pyephem/">PyEphem</a>.  Summarizing:</p>
-<dl class="simple">
-<dt>Astrometric Geocentric</dt><dd><p>Mean geocentric position for the epoch of the specified star atlas</p>
-</dd>
-<dt>Apparent Geocentric</dt><dd><p>current geocentric position at the date and time of observation</p>
-</dd>
-<dt>Apparent Topocentric</dt><dd><p>current position for the observatory at the date and time of observation</p>
-</dd>
-</dl>
-</div>
 </div>
 </div>
 <div class="section" id="ecliptic-coordinates">
