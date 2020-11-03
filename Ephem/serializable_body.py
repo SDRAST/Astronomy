@@ -1,5 +1,6 @@
 import ephem
 
+
 __all__ = ["SerializerBase"]
 
 
@@ -85,19 +86,19 @@ class SerializableBody(ephem.FixedBody):
         return obj
 
     @classmethod
-    def register_with_Pyro4(cls):
+    def register_with_Pyro5(cls):
         """
         Make sure that we can serialize and deserialize this class when
-        sending SerializableBody between Pyro4 clients and servers.
+        sending SerializableBody between Pyro5 clients and servers.
         """
-        from Pyro4.util import SerializerBase
+        import Pyro5.serializers as pyro
 
         def from_dict(name, src_dict):
             return cls.from_dict(src_dict)
 
-        SerializerBase.register_class_to_dict(cls, cls.to_dict)
+        pyro.SerializerBase.register_class_to_dict(cls, cls.to_dict)
         try:
-          SerializerBase.register_dict_to_class(cls.__name__, from_dict)
+          pyro.SerializerBase.register_dict_to_class(cls.__name__, from_dict)
         except AttributeError:
           pass
           
@@ -114,4 +115,4 @@ class SerializableBody(ephem.FixedBody):
             observer.epoch = self.observer_info["epoch"]
             return observer
 
-SerializableBody.register_with_Pyro4()
+SerializableBody.register_with_Pyro5()

@@ -35,6 +35,21 @@ and is useful in this context.
   In [18]: print(dss43.long, dss43.lat, dss43.elev)
   -211:01:11.8 -35:24:14.3 688.867
 
+  In [2]: from Astronomy.Ephem import DSS
+  In [3]: from Astronomy.DSN_coordinates import DSS 
+  In [4]: import datetime
+  In [5]: now = datetime.datetime.now()
+  In [6]: dss14 = DSS(14)
+  In [7]: dss14.date = now
+  In [8]: mars = ephem.Mars()
+  In [9]: mars.compute(dss14)     
+  In [10]: mars.<Tab>
+    a_dec    az           dec             g_ra   mag                 ra            set_az     
+    a_epoch  circumpolar  earth_distance  hlat   name                transit_alt   set_time   
+    a_ra     compute()    elong           hlon   neverup             radius        transit_time       
+    alt      copy()       g_dec           hlong  parallactic_angle() rise_az       size              
+    g_ra     instance     mag             phase  rise_time           sun_distance  writedb() 
+                          
 Class ``Pulsar`` provides pulsar physical data::
 
   In [1]: from Astronomy.Ephem import Pulsar                                      

@@ -236,7 +236,8 @@ def V_LSR(RA, dec, dss, timedate):
   @param timedate : date/time of the observation
   @type  timedate : datetime object
   """
-  if type(RA) == unicode and type(dec) == unicode:
+  logger.debug("V_LSR: entered with coord types %s and %s", type(RA), type(dec))
+  if type(RA) == str and type(dec) == str:
     skypos = coord.SkyCoord(RA, dec, unit=(u.hourangle, u.deg))
   elif type(RA) == float and type(dec) == float:
     skypos = coord.SkyCoord(RA*u.hour,dec*u.degree)
@@ -254,9 +255,15 @@ def V_LSR(RA, dec, dss, timedate):
   station = Astronomy.DSN_coordinates.DSS(dss)
   logger.debug("V_LSR: station lat=%f", station.lat*180/math.pi)
   logger.debug("V_LSR: station long=%f", station.lon*180/math.pi)
+  if station.long > math.pi:
+    longitude = station.long - 2*math.pi
+  elif station.long < math.pi:
+    longitude = station.long + 2*math.pi
+  else:
+    longitude = station.long
   observer = novas.make_observer_on_surface(station.lat*180/math.pi,
-                                         station.lon*180/math.pi,
-                                         station.elev, 0, 0)
+                                            longitude*180/math.pi,
+                                            station.elev, 0, 0)
   jd = novas.julian_date(timedate.year, timedate.month, timedate.day,
                          timedate.hour+timedate.minute/60.)
   mjd = DatesTimes.MJD(timedate.year, timedate.month, timedate.day)
