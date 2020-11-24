@@ -12,12 +12,12 @@ SerializableBody
 
       ~SerializableBody.from_dict
       ~SerializableBody.get_observer
-      ~SerializableBody.register_with_Pyro4
+      ~SerializableBody.register_with_Pyro5
       ~SerializableBody.to_dict
 
    .. rubric:: Methods Documentation
 
    .. automethod:: from_dict
    .. automethod:: get_observer
-   .. automethod:: register_with_Pyro4
+   .. automethod:: register_with_Pyro5
    .. automethod:: to_dict

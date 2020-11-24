@@ -26,7 +26,7 @@ calibrating fluxes::
   Out[14]: (28.9862540298923, 'Planet')
 
 Class ``DSS``, a subclass of ``Observer`` is imported from ``.DSS_coordinates``
-and is useful in this context.
+and is useful in this context::
  
   In [15]: from Astronomy.Ephem import DSS                                        
   In [16]: dss43 = DSS(43)                                                        

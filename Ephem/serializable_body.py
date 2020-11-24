@@ -1,7 +1,7 @@
 import ephem
 
-
-__all__ = ["SerializerBase"]
+# see Software Work log for Nov. 14, 2020.
+#__all__ = ["SerializerBase"]
 
 
 class SerializableBody(ephem.FixedBody):

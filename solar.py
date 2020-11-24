@@ -105,6 +105,7 @@ Supporting definitions can be found at::
 """
 import DatesTimes as DT
 import math
+import numpy
 
 radian = 180./math.pi
 sidereal_rotation_period = 25.38 # days
@@ -128,7 +129,7 @@ def truncate(angle):
 
   @return: float
   """
-  truncated = fmod(angle,360.)
+  truncated = numpy.mod(angle,360.)
   if truncated < 0.:
     truncated += 360.
   return truncated
@@ -144,7 +145,7 @@ def Carrington_Number(jd):
   @param jd : Julian date including UT
   @type  jd : float
   """
-  return floor((jd - 2398140.22710)/27.2752316)
+  return math.floor((jd - 2398140.22710)/27.2752316)
 
 def calcJD(y,m,d,t):
   """
@@ -351,7 +352,7 @@ def Sun_central_longitude(anomaly,inclin,Lsun):
   etax = -math.cos(anomaly)
   eta = (math.atan2(etay,etax))*radian; # longitude of the Sun's central meridian
   L0 = (eta - Lsun)
-  L0 = fmod(L0,360.)
+  L0 = numpy.mod(L0,360.)
   if L0 < 0.:
     L0 += 360.
   return L0
@@ -499,7 +500,7 @@ def calc_solar(jd):
 
   # Apparent ecliptic longitude (deg) from true ecliptic longitude
   omega = lunar_long_asc_node(T[1])
-  longitude = fmod(sunL + longitude_nutation(omega),360.)
+  longitude = numpy.mod(sunL + longitude_nutation(omega),360.)
 
   ecc = Eccentricity_of_orbit(T)
   distance = Sun_radius_vector(ecc, v/radian)
@@ -508,7 +509,7 @@ def calc_solar(jd):
   # Ecliptic longitude of ascending node of the Sun's equator
   long_asc_node = (sun_coords_long_ascen_node(jd))
 
-  relative_long_asc_node = fmod((longitude-long_asc_node),360.) 
+  relative_long_asc_node = numpy.mod((longitude-long_asc_node),360.) 
 
   # True Obliquity of the ecliptic (deg)
   obliq = ecliptic_obliquity(T)
@@ -540,7 +541,7 @@ def calc_solar(jd):
   result["eclip long"]       = longitude
   result["sun incl"]         = sun_inclination
   result["sun perigee long"] = long_perigee
-  result["anomaly"]          = fmod(v,360)
+  result["anomaly"]          = numpy.mod(v,360)
   result["sun asc node"]     = long_asc_node
   result["sun inclin"]       = sun_inclination
   result["eccentricity"]     = ecc

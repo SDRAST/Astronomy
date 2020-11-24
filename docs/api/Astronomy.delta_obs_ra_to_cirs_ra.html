@@ -4,6 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>delta_obs_ra_to_cirs_ra &#8212; Astronomy 0.9 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -33,9 +34,46 @@
         <li class="right" >
           <a href="Astronomy.decimal_day_to_tuple.html" title="decimal_day_to_tuple"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">delta_obs_ra_to_cirs_ra</a></li> 
       </ul>
-    </div>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="delta-obs-ra-to-cirs-ra">
+<h1>delta_obs_ra_to_cirs_ra<a class="headerlink" href="#delta-obs-ra-to-cirs-ra" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="Astronomy.delta_obs_ra_to_cirs_ra">
+<code class="sig-prename descclassname">Astronomy.</code><code class="sig-name descname">delta_obs_ra_to_cirs_ra</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mjd</span></em>, <em class="sig-param"><span class="n">longitude</span></em>, <em class="sig-param"><span class="n">latitude</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.delta_obs_ra_to_cirs_ra" title="Permalink to this definition">¶</a></dt>
+<dd><p>difference between radio astronomers observed coords and CIRS coords</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mjd</strong> (<em>(</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a><em>) </em><em>modified Julian date</em>) – </p></li>
+<li><p><strong>longitude</strong> (<em>(</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a><em>) </em><em>in degrees</em><em> or </em><em>as astropy Angle</em>) – </p></li>
+<li><p><strong>latitude</strong> (<em>(</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a><em>) </em><em>in degrees</em><em> or </em><em>as astropy Angle</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>hour angle as astropy.coordinates.Angle</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
@@ -63,41 +101,6 @@
 <script>$('#searchbox').show(0);</script>
         </div>
       </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="delta-obs-ra-to-cirs-ra">
-<h1>delta_obs_ra_to_cirs_ra<a class="headerlink" href="#delta-obs-ra-to-cirs-ra" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
-<dt id="Astronomy.delta_obs_ra_to_cirs_ra">
-<code class="sig-prename descclassname">Astronomy.</code><code class="sig-name descname">delta_obs_ra_to_cirs_ra</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mjd</span></em>, <em class="sig-param"><span class="n">longitude</span></em>, <em class="sig-param"><span class="n">latitude</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Astronomy.delta_obs_ra_to_cirs_ra" title="Permalink to this definition">¶</a></dt>
-<dd><p>difference between radio astronomers observed coords and CIRS coords</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>mjd</strong> (<em>(</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>) </em><em>modified Julian date</em>) – </p></li>
-<li><p><strong>longitude</strong> (<em>(</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>) </em><em>in degrees</em><em> or </em><em>as astropy Angle</em>) – </p></li>
-<li><p><strong>latitude</strong> (<em>(</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>) </em><em>in degrees</em><em> or </em><em>as astropy Angle</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>hour angle as astropy.coordinates.Angle</p>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
       <div class="clearer"></div>
     </div>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -115,12 +118,13 @@
         <li class="right" >
           <a href="Astronomy.decimal_day_to_tuple.html" title="decimal_day_to_tuple"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Astronomy 0.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">delta_obs_ra_to_cirs_ra</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Tom Kuiper.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
     </div>
   </body>
 </html>
